@@ -24,7 +24,8 @@
     "openai": "^4.81.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "recharts": "^2.15.1"
+    "recharts": "^2.15.1",
+    "stripe": "^17.7.0"
   },
   "devDependencies": {
     "postcss": "^8",
