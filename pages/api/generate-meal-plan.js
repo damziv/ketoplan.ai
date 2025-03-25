@@ -70,7 +70,7 @@ export default async function handler(req, res) {
     return res.status(405).send({ message: 'Only POST requests allowed' });
   }
 
-  const { email } = req.body;
+  const { email, stream: shouldStream } = req.body;
 
   if (!email) {
     return res.status(400).json({ error: 'Email is required' });
@@ -105,7 +105,7 @@ export default async function handler(req, res) {
       answer: session.quiz_answers[questionId] ? session.quiz_answers[questionId].join(", ") : "Not answered"
     }));
 
-    // ✅ Step 3: Call OpenAI API to generate a structured meal plan
+    // ✅ Prepare OpenAI request
     const openAIRequest = {
       model: "gpt-4",
       messages: [
@@ -135,6 +135,83 @@ export default async function handler(req, res) {
       max_tokens: 1200
     };
 
+    // If streaming is requested, use streaming mode.
+    if (shouldStream === true) {
+      // Set headers for Server-Sent Events (SSE)
+      res.writeHead(200, {
+        'Content-Type': 'text/event-stream',
+        'Cache-Control': 'no-cache',
+        'Connection': 'keep-alive'
+      });
+
+      console.log('✅ Starting OpenAI streaming request...');
+      let buffer = '';
+
+      try {
+        // Add the stream flag to the OpenAI request
+        const streamRequest = { ...openAIRequest, stream: true };
+        // The openai.chat.completions.create() now returns an async iterable when stream: true is set
+        const stream = await openai.chat.completions.create(streamRequest);
+
+        // Iterate over streamed chunks
+        for await (const chunk of stream) {
+          // Each chunk may contain a delta with new token content
+          const token = chunk.choices[0].delta?.content || '';
+          buffer += token;
+          // Send the token to the client as an SSE message
+          res.write(`data: ${token}\n\n`);
+          // Flush the response to ensure immediate delivery (if supported)
+          if (res.flush) res.flush();
+        }
+
+        // Signal stream end to the client
+        res.write('data: [DONE]\n\n');
+        res.end();
+
+        console.log('✅ OpenAI streaming complete.');
+
+        // After streaming, parse the full response and process it.
+        let mealPlanText;
+        try {
+          mealPlanText = JSON.parse(buffer.trim());
+        } catch (parseError) {
+          console.error('❌ OpenAI streaming response is not valid JSON:', parseError);
+          return;
+        }
+
+        console.log('✅ 5-day meal plan with recipes generated successfully (streaming).');
+
+        // Store meal plan in Supabase
+        const { error: saveError } = await supabase
+          .from('sessions')
+          .update({ meal_plan: mealPlanText })
+          .eq('id', session.id)
+          .select();
+
+        if (saveError) {
+          console.error('❌ Error saving meal plan:', saveError);
+        }
+
+        // Send meal plan via email
+        const emailTemplate = generateEmailTemplate(mealPlanText);
+        await sgMail.send({
+          to: email,
+          from: process.env.SENDGRID_SENDER,
+          subject: '🍽️ Your 5-Day Personalized Meal Plan with Recipes',
+          html: emailTemplate,
+        });
+
+        console.log('✅ Meal plan emailed successfully (streaming).');
+      } catch (streamError) {
+        console.error('❌ Error streaming meal plan:', streamError);
+        if (!res.headersSent) {
+          res.status(500).json({ error: 'Error streaming meal plan' });
+        }
+      }
+      return; // End streaming branch here.
+    }
+
+    // If not streaming, proceed with the synchronous request (original behavior)
     const openAIResponse = await openai.chat.completions.create(openAIRequest);
 
     // ✅ Ensure response is valid JSON
@@ -165,7 +242,7 @@ export default async function handler(req, res) {
 
     await sgMail.send({
       to: email,
-      from: process.env.SENDGRID_SENDER, 
+      from: process.env.SENDGRID_SENDER,
       subject: '🍽️ Your 5-Day Personalized Meal Plan with Recipes',
       html: emailTemplate,
     });

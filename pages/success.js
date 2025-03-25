@@ -12,6 +12,7 @@ export default function SuccessPage() {
   const [email, setEmail] = useState("");
   const [progress, setProgress] = useState(0);
   const [animationsComplete, setAnimationsComplete] = useState(false);
+  const [streamingText, setStreamingText] = useState("");
 
   const steps = [
     "Demographic Profile",
@@ -50,16 +51,45 @@ export default function SuccessPage() {
         const response = await fetch("/api/generate-meal-plan", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ email }),
+          // Pass stream flag to trigger streaming response from backend
+          body: JSON.stringify({ email, stream: true }),
         });
 
-        const data = await response.json();
-
         if (!response.ok) {
-          throw new Error(data.error || "Failed to generate meal plan");
+          const errorData = await response.json();
+          throw new Error(errorData.error || "Failed to generate meal plan");
         }
 
-        setMealPlan(data.meal_plan);
+        const reader = response.body.getReader();
+        const decoder = new TextDecoder("utf-8");
+        let result = "";
+        let done = false;
+
+        while (!done) {
+          const { value, done: doneReading } = await reader.read();
+          done = doneReading;
+          const chunkValue = decoder.decode(value, { stream: true });
+          // Split the chunk into lines (SSE events)
+          const lines = chunkValue.split("\n");
+          for (let line of lines) {
+            if (line.startsWith("data: ")) {
+              // Remove the prefix "data: " without trimming spaces
+              const token = line.slice("data: ".length);
+              if (token.trim() === "[DONE]") {
+                done = true;
+                break;
+              }
+              // Append the token to our accumulated result and update state
+              result += token;
+              setStreamingText((prev) => prev + token);
+            }
+          }
+        }
+
+        // Once done, parse the complete JSON output
+        const parsedMealPlan = JSON.parse(result);
+        setMealPlan(parsedMealPlan);
+        setStreamingText(""); // Clear the streaming text after full receipt
         setTimeout(() => setAnimationsComplete(true), 3000);
       } catch (err) {
         setError(err.message);
@@ -80,7 +110,7 @@ export default function SuccessPage() {
     return () => clearInterval(interval);
   }, [email]);
 
-  // ✅ FIX: Function to Download Full Meal Plan as PDF (Handles Long Content)
+  // Function to download the meal plan as a PDF
   const downloadPDF = async () => {
     const input = document.getElementById("meal-plan-content");
 
@@ -115,10 +145,11 @@ export default function SuccessPage() {
         {(!animationsComplete || loading) && (
           <>
             <p className="mb-4">Your meal plan is being generated. Please wait...</p>
-            <p className="text-gray-600 text-sm mb-2">Do not leave this page.</p>
+            <p className="text-gray-600 text-sm mb-2">Process can take 1min, do not leave this page!</p>
           </>
         )}
- {loading && (
+
+        {loading && (
           <div className="w-full text-left">
             {steps.map((step, index) => (
               <motion.div
@@ -149,7 +180,15 @@ export default function SuccessPage() {
             </div>
           </div>
         )}
+
         {error && <p className="text-red-500">{error}</p>}
+
+        {/* Display streaming text as it arrives 
+        {streamingText && !mealPlan && (
+          <div className="mt-4 p-4 bg-gray-200 rounded-md text-left">
+            <pre>{streamingText}</pre>
+          </div>
+        )} */}
 
         {mealPlan && animationsComplete && mealPlan.meal_plan && Array.isArray(mealPlan.meal_plan) && (
           <>
@@ -157,7 +196,7 @@ export default function SuccessPage() {
               Your 5-Day Personalized Meal Plan with Recipes 📖
             </h3>
 
-            {/* ✅ Download PDF Button */}
+            {/* Download PDF Button */}
             <button
               onClick={downloadPDF}
               className="mt-4 bg-green-600 text-white py-2 px-4 rounded-md hover:bg-green-700"
