@@ -116,12 +116,20 @@ export default function SuccessPage() {
           throw new Error("Received invalid meal plan format.");
         }
 
-        setMealPlan(parsedMealPlan);
         setStreamingText("");
 
-        if (!parsedMealPlan?.meal_plan || !Array.isArray(parsedMealPlan.meal_plan)) {
+        // Transform { day1: {...}, day2: {...} } → [ { day: "Day 1", ... }, ... ]
+        let extractedPlan = [];
+        if (parsedMealPlan.mealPlan && typeof parsedMealPlan.mealPlan === "object") {
+          extractedPlan = Object.entries(parsedMealPlan.mealPlan).map(([key, value]) => ({
+            day: key,
+            ...value
+          }));
+        } else {
           throw new Error("Meal plan format is invalid or empty.");
         }
+        
+        setMealPlan({ meal_plan: extractedPlan });
 
         try {
           const saveRes = await fetch("/api/save-meal-plan", {
