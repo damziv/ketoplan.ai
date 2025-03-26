@@ -1,4 +1,4 @@
-// Updated SuccessPage with call to /api/save-meal-plan
+// Updated SuccessPage with call to /api/save-meal-plan and cleaned JSON parsing
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { motion } from "framer-motion";
@@ -97,7 +97,22 @@ export default function SuccessPage() {
           }
         }
 
-        const parsedMealPlan = JSON.parse(result);
+        // 🧹 Clean the streamed result before parsing
+        let cleaned = result.trim();
+        const firstBrace = cleaned.indexOf("{");
+        const lastBrace = cleaned.lastIndexOf("}");
+        if (firstBrace !== -1 && lastBrace !== -1) {
+          cleaned = cleaned.substring(firstBrace, lastBrace + 1);
+        }
+
+        let parsedMealPlan;
+        try {
+          parsedMealPlan = JSON.parse(cleaned);
+        } catch (e) {
+          console.error("❌ Failed to parse streamed JSON:", e, cleaned);
+          throw new Error("Received invalid meal plan format.");
+        }
+
         setMealPlan(parsedMealPlan);
         setStreamingText("");
 
