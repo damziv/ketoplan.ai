@@ -47,26 +47,25 @@ export default async function handler(req, res) {
     }
 
     try {
-      console.log(`🔎 Searching for latest unpaid session for email: ${email}`);
+      console.log(`🔎 Searching for latest session for email: ${email}`);
 
-      // ✅ Get the latest unpaid session
+      // Get the latest session for this email (remove payment_status filter to ensure a session is found)
       const { data: latestSession, error: fetchError } = await supabase
         .from('sessions')
         .select('id, payment_status')
         .eq('email', email)
-        .eq('payment_status', false) // Ensure it's an unpaid session
-        .order('created_at', { ascending: false }) // Get the latest session
+        .order('created_at', { ascending: false })
         .limit(1)
         .single();
 
       if (fetchError || !latestSession) {
-        console.error('❌ No unpaid session found for email:', email);
-        return res.status(404).send('No unpaid session found');
+        console.error('❌ No session found for email:', email, fetchError);
+        return res.status(404).send('No session found for email');
       }
 
       console.log(`✅ Found latest session: ${latestSession.id}`);
 
-      // ✅ Update existing session with payment status & Stripe session ID
+      // Update the session with payment_status true and store the Stripe payment intent ID.
       const { error: updateError } = await supabase
         .from('sessions')
         .update({
@@ -81,9 +80,6 @@ export default async function handler(req, res) {
       }
 
       console.log(`✅ Payment status updated for session: ${latestSession.id}`);
-
-      // Option A: Do not trigger meal plan generation automatically.
-      // The client (SuccessPage) will detect the payment status update and initiate meal plan generation.
       console.log('✅ Payment status updated; client will generate meal plan upon redirection.');
 
       return res.status(200).send('Payment status updated; client will generate meal plan.');
