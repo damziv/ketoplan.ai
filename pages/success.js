@@ -99,17 +99,16 @@ export default function SuccessPage() {
 
         // 🧹 Clean the streamed result before parsing
         let cleaned = result.trim();
-        const firstBrace = cleaned.indexOf("{");
-        const lastBrace = cleaned.lastIndexOf("}");
-        if (firstBrace !== -1 && lastBrace !== -1) {
-          cleaned = cleaned.substring(firstBrace, lastBrace + 1);
-        }
 
+        // Extract only the first valid JSON object using regex
+        const match = cleaned.match(/{[\\s\\S]*}/); // matches first {...} block
+        
         let parsedMealPlan;
         try {
-          parsedMealPlan = JSON.parse(cleaned);
+          if (!match) throw new Error("No JSON object found in stream");
+          parsedMealPlan = JSON.parse(match[0]);
         } catch (e) {
-          console.error("❌ Failed to parse streamed JSON:", e, cleaned);
+          console.error("❌ Failed to parse streamed JSON:", e, match ? match[0] : cleaned);
           throw new Error("Received invalid meal plan format.");
         }
 
