@@ -1,4 +1,4 @@
-// Updated SuccessPage with call to /api/save-meal-plan and cleaned JSON parsing
+// Updated SuccessPage with fallback logging for /api/save-meal-plan
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { motion } from "framer-motion";
@@ -97,39 +97,39 @@ export default function SuccessPage() {
           }
         }
 
-        // 🧹 Clean the streamed result before parsing
         let cleaned = result.trim();
-        let match = cleaned.match(/{[\s\S]*}/);
-        
+        const match = cleaned.match(/{[\s\S]*}/);
+
         let parsedMealPlan;
         try {
           if (!match) throw new Error("No JSON object found in stream");
-        
-          // Also remove anything after the final } (OpenAI may add newlines or trailing junk)
-          const jsonEndIndex = match[0].lastIndexOf("}") + 1;
-          const safeJSON = match[0].slice(0, jsonEndIndex);
-        
-          parsedMealPlan = JSON.parse(safeJSON);
+          parsedMealPlan = JSON.parse(match[0]);
         } catch (e) {
           console.error("❌ Failed to parse streamed JSON:", e, match ? match[0] : cleaned);
           throw new Error("Received invalid meal plan format.");
         }
-        
 
         setMealPlan(parsedMealPlan);
         setStreamingText("");
 
-        // ✅ Guard against invalid data
         if (!parsedMealPlan?.meal_plan || !Array.isArray(parsedMealPlan.meal_plan)) {
           throw new Error("Meal plan format is invalid or empty.");
         }
 
-        // ✅ Save meal plan and send email
-        await fetch("/api/save-meal-plan", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ email, meal_plan: parsedMealPlan.meal_plan }),
-        });
+        try {
+          const saveRes = await fetch("/api/save-meal-plan", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ email, meal_plan: parsedMealPlan.meal_plan }),
+          });
+
+          if (!saveRes.ok) {
+            const text = await saveRes.text();
+            console.error("❌ Failed to save meal plan:", text);
+          }
+        } catch (e) {
+          console.error("❌ Exception during save-meal-plan request:", e);
+        }
 
         setTimeout(() => setAnimationsComplete(true), 3000);
       } catch (err) {
