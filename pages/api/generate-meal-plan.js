@@ -121,7 +121,8 @@ export default async function handler(req, res) {
       messages: [
         {
           role: "system",
-          content: "You are a nutritionist generating personalized 5-day meal plans. Each meal should include a recipe with ingredients and preparation steps. Your response MUST be valid JSON. DO NOT include any extra text."
+          content: "You are a JSON API that returns only strict, valid JSON. No explanations, no markdown. Reply ONLY with a JSON object containing a 5-day meal plan, each with breakfast, lunch, dinner — all with names, ingredients, and instructions."
+          
         },
         {
           role: "user",
