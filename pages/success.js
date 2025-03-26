@@ -99,16 +99,22 @@ export default function SuccessPage() {
 
         // 🧹 Clean the streamed result before parsing
         let cleaned = result.trim();
-        const match = cleaned.match(/{[\s\S]*}/);
-
+        let match = cleaned.match(/{[\s\S]*}/);
+        
         let parsedMealPlan;
         try {
           if (!match) throw new Error("No JSON object found in stream");
-          parsedMealPlan = JSON.parse(match[0]);
+        
+          // Also remove anything after the final } (OpenAI may add newlines or trailing junk)
+          const jsonEndIndex = match[0].lastIndexOf("}") + 1;
+          const safeJSON = match[0].slice(0, jsonEndIndex);
+        
+          parsedMealPlan = JSON.parse(safeJSON);
         } catch (e) {
           console.error("❌ Failed to parse streamed JSON:", e, match ? match[0] : cleaned);
           throw new Error("Received invalid meal plan format.");
         }
+        
 
         setMealPlan(parsedMealPlan);
         setStreamingText("");
