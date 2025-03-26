@@ -8,7 +8,7 @@ const supabase = createClient(
 );
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
-// Helper function to extract JSON substring (if needed)
+// Helper to extract valid JSON (in case extra characters exist)
 function extractJSON(text) {
   const firstBrace = text.indexOf('{');
   const lastBrace = text.lastIndexOf('}');
@@ -60,23 +60,42 @@ export default async function handler(req, res) {
   }
   let mealPlanText;
   try {
-    // Use extractJSON if necessary, or assume fullResponse is valid JSON
+    // In case there are extra characters, extract the valid JSON substring
     mealPlanText = JSON.parse(extractJSON(fullResponse));
   } catch (error) {
     console.error("Error parsing JSON:", error);
     return res.status(500).json({ error: "Invalid meal plan format" });
   }
-  // Update Supabase session
+
+  // Re-fetch the session to check payment status (and optionally update with the meal plan)
+  const { data: session, error: sessionError } = await supabase
+    .from('sessions')
+    .select('id, payment_status')
+    .eq('email', email)
+    .order('created_at', { ascending: false })
+    .limit(1)
+    .single();
+
+  if (sessionError || !session) {
+    return res.status(404).json({ error: "Session not found" });
+  }
+  if (!session.payment_status) {
+    return res.status(403).json({ error: "Payment not completed for this session" });
+  }
+
+  // Update the session with the generated meal plan
   const { error: saveError } = await supabase
     .from('sessions')
     .update({ meal_plan: mealPlanText })
-    .eq('email', email)
+    .eq('id', session.id)
     .select();
+
   if (saveError) {
     console.error("Error saving meal plan:", saveError);
     return res.status(500).json({ error: "Error saving meal plan" });
   }
-  // Send email via SendGrid
+
+  // Send the meal plan email using SendGrid
   const emailTemplate = generateEmailTemplate(mealPlanText);
   try {
     await sgMail.send({
@@ -89,5 +108,9 @@ export default async function handler(req, res) {
     console.error("Error sending email:", err);
     return res.status(500).json({ error: "Error sending email" });
   }
-  res.status(200).json({ message: "Meal plan generated, stored, and emailed successfully", meal_plan: mealPlanText });
+
+  res.status(200).json({
+    message: "Meal plan generated, stored, and emailed successfully",
+    meal_plan: mealPlanText
+  });
 }

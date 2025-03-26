@@ -4,12 +4,38 @@ export const config = {
   };
   
   import { createParser } from "eventsource-parser";
+  import { createClient } from '@supabase/supabase-js';
+  
+  // Initialize the Supabase client (this should work in Edge if using the browser‑compatible version)
+  const supabase = createClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL,
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+  );
   
   export default async function handler(request) {
-    // Expect JSON payload with at least { email, quiz_answers }
-    const { email, quiz_answers } = await request.json();
+    // Expect JSON payload with at least { email }
+    const { email } = await request.json();
+    if (!email) {
+      return new Response(JSON.stringify({ error: "Email is required" }), { status: 400 });
+    }
   
-    // Build formattedData using your question map
+    // Fetch the latest session from Supabase using the email
+    const { data: session, error: sessionError } = await supabase
+      .from('sessions')
+      .select('id, quiz_answers, payment_status')
+      .eq('email', email)
+      .order('created_at', { ascending: false })
+      .limit(1)
+      .single();
+  
+    if (sessionError || !session) {
+      return new Response(JSON.stringify({ error: "Session not found" }), { status: 404 });
+    }
+    if (!session.payment_status) {
+      return new Response(JSON.stringify({ error: "Payment not completed for this session" }), { status: 403 });
+    }
+  
+    // Build the formatted data from the stored quiz_answers using your questionMap
     const questionMap = {
       "1": "What is your gender?",
       "2": "Do you have any dietary restrictions?",
@@ -27,10 +53,12 @@ export const config = {
   
     const formattedData = Object.entries(questionMap).map(([id, question]) => ({
       question,
-      answer: quiz_answers && quiz_answers[id] ? quiz_answers[id].join(", ") : "Not answered"
+      answer: session.quiz_answers && session.quiz_answers[id]
+        ? session.quiz_answers[id].join(", ")
+        : "Not answered"
     }));
   
-    // Create OpenAI messages with explicit instructions
+    // Construct the ChatGPT messages with explicit instructions
     const messages = [
       {
         role: "system",
@@ -64,18 +92,20 @@ export const config = {
       stream: true,
     };
   
-    const encoder = new TextEncoder();
-    const decoder = new TextDecoder();
-  
+    // Call OpenAI’s Chat Completions endpoint with streaming enabled
     const openaiRes = await fetch("https://api.openai.com/v1/chat/completions", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
+        "Authorization": `Bearer ${process.env.OPENAI_API_KEY}`
       },
       body: JSON.stringify(payload),
     });
   
+    const encoder = new TextEncoder();
+    const decoder = new TextDecoder();
+  
+    // Create a ReadableStream to process and stream tokens as SSE
     const stream = new ReadableStream({
       async start(controller) {
         let buffer = "";
@@ -99,8 +129,8 @@ export const config = {
         for await (const chunk of openaiRes.body) {
           parser.feed(decoder.decode(chunk));
         }
-        // Optionally log the full buffer if needed
-        console.log("Complete buffer:", buffer);
+        // Optionally, log the full response buffer for debugging:
+        console.log("Complete response:", buffer);
       }
     });
   

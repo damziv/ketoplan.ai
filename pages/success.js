@@ -12,7 +12,7 @@ export default function SuccessPage() {
   const [email, setEmail] = useState("");
   const [progress, setProgress] = useState(0);
   const [animationsComplete, setAnimationsComplete] = useState(false);
-  // This state holds the full streamed JSON text
+  // fullResponse accumulates the entire streamed JSON string from the Edge endpoint
   const [fullResponse, setFullResponse] = useState("");
 
   const steps = [
@@ -23,9 +23,9 @@ export default function SuccessPage() {
     "Finalizing Your Meal Plan"
   ];
 
+  // Retrieve email from sessionStorage or router query
   useEffect(() => {
     let storedEmail = sessionStorage.getItem("email") || router.query.email;
-
     if (!storedEmail) {
       fetch("/api/fetch-latest-email")
         .then((res) => res.json())
@@ -44,17 +44,18 @@ export default function SuccessPage() {
     }
   }, [router]);
 
+  // When email is available, initiate the streaming process
   useEffect(() => {
     if (!email) return;
 
     const fetchMealPlanStream = async () => {
       try {
-        // Call the Edge streaming endpoint
+        // Call the Edge endpoint to stream the meal plan.
+        // Optionally, pass quiz_answers if available. Here we send an empty object.
         const response = await fetch("/api/edge-generate-meal-plan", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          // Send email and quiz_answers (if available) as payload
-          body: JSON.stringify({ email, quiz_answers: {} /* replace with your quiz answers */ }),
+          body: JSON.stringify({ email, quiz_answers: {} }),
         });
 
         if (!response.ok) {
@@ -62,6 +63,7 @@ export default function SuccessPage() {
           throw new Error(errorData.error || "Failed to generate meal plan");
         }
 
+        // Read the streamed response from the Edge endpoint.
         const reader = response.body.getReader();
         const decoder = new TextDecoder("utf-8");
         let done = false;
@@ -72,11 +74,12 @@ export default function SuccessPage() {
           done = doneReading;
           const chunkValue = decoder.decode(value, { stream: true });
           accumulated += chunkValue;
-          // Optionally, update progress or show partial data if desired.
+          // Optionally update state to show progress (if you wish to display the raw stream)
           setFullResponse(accumulated);
         }
 
-        // Once streaming is complete, call the finalize endpoint
+        // Now that we have the full JSON from streaming,
+        // call the finalize endpoint to update Supabase and send email.
         const finalizeRes = await fetch("/api/finalize-meal-plan", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -89,6 +92,7 @@ export default function SuccessPage() {
         }
         const data = await finalizeRes.json();
         setMealPlan(data.meal_plan);
+        // Optionally delay animations completion for UI effect.
         setTimeout(() => setAnimationsComplete(true), 3000);
       } catch (err) {
         setError(err.message);
@@ -97,6 +101,7 @@ export default function SuccessPage() {
       }
     };
 
+    // Simulate progress (increments every second) and then call stream fetch when progress reaches 100.
     let interval = setInterval(() => {
       setProgress((prev) => {
         if (prev < 100) return prev + 25;
@@ -137,8 +142,12 @@ export default function SuccessPage() {
         <h2 className="text-2xl font-bold mb-4">Payment Successful 🎉</h2>
         {(!animationsComplete || loading) && (
           <>
-            <p className="mb-4">Your meal plan is being generated. Please wait...</p>
-            <p className="text-gray-600 text-sm mb-2">Process can take up to 1min. Do not leave this page!</p>
+            <p className="mb-4">
+              Your meal plan is being generated. Please wait...
+            </p>
+            <p className="text-gray-600 text-sm mb-2">
+              Process can take up to 1min. Do not leave this page!
+            </p>
           </>
         )}
         {loading && (
@@ -155,8 +164,11 @@ export default function SuccessPage() {
                 <div className="w-full h-2 bg-gray-200 rounded-full overflow-hidden">
                   <motion.div
                     className="h-full bg-green-500"
-                    initial={{ width: '0%' }}
-                    animate={{ width: progress >= (index + 1) * 25 ? '100%' : '0%' }}
+                    initial={{ width: "0%" }}
+                    animate={{
+                      width:
+                        progress >= (index + 1) * 25 ? "100%" : "0%",
+                    }}
                     transition={{ duration: 1.3 }}
                   ></motion.div>
                 </div>
@@ -184,7 +196,10 @@ export default function SuccessPage() {
             >
               📥 Download PDF
             </button>
-            <div id="meal-plan-content" className="text-left bg-gray-100 p-4 rounded-md overflow-auto mt-2">
+            <div
+              id="meal-plan-content"
+              className="text-left bg-gray-100 p-4 rounded-md overflow-auto mt-2"
+            >
               {mealPlan.meal_plan.map((day, index) => (
                 <div key={index} className="mb-6 p-4 bg-white rounded-lg shadow-md">
                   <h3 className="text-lg font-bold text-green-600">📅 {day.day}</h3>
