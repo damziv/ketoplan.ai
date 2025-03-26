@@ -86,16 +86,23 @@ export default function SuccessPage() {
           const lines = chunkValue.split("\n");
           for (let line of lines) {
             if (line.startsWith("data: ")) {
-              const token = line.slice("data: ".length);
-              if (token.trim() === "[DONE]") {
+              const json = line.slice("data: ".length).trim();
+              if (json === "[DONE]") {
                 done = true;
                 break;
               }
-              result += token;
-              setStreamingText((prev) => prev + token);
+              try {
+                const parsed = JSON.parse(json);
+                const token = parsed.choices?.[0]?.delta?.content || "";
+                result += token;
+                setStreamingText((prev) => prev + token);
+              } catch (err) {
+                console.warn("Could not parse chunk line:", line);
+              }
             }
           }
         }
+
 
         let cleaned = result.trim();
         const match = cleaned.match(/{[\s\S]*}/);
