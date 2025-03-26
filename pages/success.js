@@ -12,7 +12,8 @@ export default function SuccessPage() {
   const [email, setEmail] = useState("");
   const [progress, setProgress] = useState(0);
   const [animationsComplete, setAnimationsComplete] = useState(false);
-  const [streamingText, setStreamingText] = useState("");
+  // This state holds the full streamed JSON text
+  const [fullResponse, setFullResponse] = useState("");
 
   const steps = [
     "Demographic Profile",
@@ -46,13 +47,14 @@ export default function SuccessPage() {
   useEffect(() => {
     if (!email) return;
 
-    const fetchMealPlan = async () => {
+    const fetchMealPlanStream = async () => {
       try {
-        const response = await fetch("/api/generate-meal-plan", {
+        // Call the Edge streaming endpoint
+        const response = await fetch("/api/edge-generate-meal-plan", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          // Pass stream flag to trigger streaming response from backend
-          body: JSON.stringify({ email, stream: true }),
+          // Send email and quiz_answers (if available) as payload
+          body: JSON.stringify({ email, quiz_answers: {} /* replace with your quiz answers */ }),
         });
 
         if (!response.ok) {
@@ -62,34 +64,31 @@ export default function SuccessPage() {
 
         const reader = response.body.getReader();
         const decoder = new TextDecoder("utf-8");
-        let result = "";
         let done = false;
+        let accumulated = "";
 
         while (!done) {
           const { value, done: doneReading } = await reader.read();
           done = doneReading;
           const chunkValue = decoder.decode(value, { stream: true });
-          // Split the chunk into lines (SSE events)
-          const lines = chunkValue.split("\n");
-          for (let line of lines) {
-            if (line.startsWith("data: ")) {
-              // Remove the prefix "data: " without trimming spaces
-              const token = line.slice("data: ".length);
-              if (token.trim() === "[DONE]") {
-                done = true;
-                break;
-              }
-              // Append the token to our accumulated result and update state
-              result += token;
-              setStreamingText((prev) => prev + token);
-            }
-          }
+          accumulated += chunkValue;
+          // Optionally, update progress or show partial data if desired.
+          setFullResponse(accumulated);
         }
 
-        // Once done, parse the complete JSON output
-        const parsedMealPlan = JSON.parse(result);
-        setMealPlan(parsedMealPlan);
-        setStreamingText(""); // Clear the streaming text after full receipt
+        // Once streaming is complete, call the finalize endpoint
+        const finalizeRes = await fetch("/api/finalize-meal-plan", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email, fullResponse: accumulated }),
+        });
+
+        if (!finalizeRes.ok) {
+          const errData = await finalizeRes.json();
+          throw new Error(errData.error || "Failed to finalize meal plan");
+        }
+        const data = await finalizeRes.json();
+        setMealPlan(data.meal_plan);
         setTimeout(() => setAnimationsComplete(true), 3000);
       } catch (err) {
         setError(err.message);
@@ -102,7 +101,7 @@ export default function SuccessPage() {
       setProgress((prev) => {
         if (prev < 100) return prev + 25;
         clearInterval(interval);
-        fetchMealPlan();
+        fetchMealPlanStream();
         return prev;
       });
     }, 1000);
@@ -113,27 +112,22 @@ export default function SuccessPage() {
   // Function to download the meal plan as a PDF
   const downloadPDF = async () => {
     const input = document.getElementById("meal-plan-content");
-
     const canvas = await html2canvas(input, { scale: 2, useCORS: true });
     const imgData = canvas.toDataURL("image/png");
-
     const pdf = new jsPDF("p", "mm", "a4");
     const imgWidth = 210; // A4 width in mm
     const pageHeight = 297; // A4 height in mm
     const imgHeight = (canvas.height * imgWidth) / canvas.width;
     let heightLeft = imgHeight;
     let position = 0;
-
     pdf.addImage(imgData, "PNG", 0, position, imgWidth, imgHeight);
     heightLeft -= pageHeight;
-
     while (heightLeft > 0) {
       position -= pageHeight;
       pdf.addPage();
       pdf.addImage(imgData, "PNG", 0, position, imgWidth, imgHeight);
       heightLeft -= pageHeight;
     }
-
     pdf.save("Meal_Plan.pdf");
   };
 
@@ -141,14 +135,12 @@ export default function SuccessPage() {
     <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100 p-5">
       <div className="bg-white p-6 rounded-lg shadow-md w-full max-w-3xl text-center">
         <h2 className="text-2xl font-bold mb-4">Payment Successful 🎉</h2>
-
         {(!animationsComplete || loading) && (
           <>
             <p className="mb-4">Your meal plan is being generated. Please wait...</p>
-            <p className="text-gray-600 text-sm mb-2">Process can take 1min, do not leave this page!</p>
+            <p className="text-gray-600 text-sm mb-2">Process can take up to 1min. Do not leave this page!</p>
           </>
         )}
-
         {loading && (
           <div className="w-full text-left">
             {steps.map((step, index) => (
@@ -170,7 +162,6 @@ export default function SuccessPage() {
                 </div>
               </motion.div>
             ))}
-
             <div className="flex justify-center mt-4">
               <motion.div
                 animate={{ rotate: 360 }}
@@ -180,22 +171,12 @@ export default function SuccessPage() {
             </div>
           </div>
         )}
-
         {error && <p className="text-red-500">{error}</p>}
-
-        {/* Display streaming text as it arrives 
-        {streamingText && !mealPlan && (
-          <div className="mt-4 p-4 bg-gray-200 rounded-md text-left">
-            <pre>{streamingText}</pre>
-          </div>
-        )} */}
-
         {mealPlan && animationsComplete && mealPlan.meal_plan && Array.isArray(mealPlan.meal_plan) && (
           <>
             <h3 className="text-lg font-semibold mt-4">
               Your 5-Day Personalized Meal Plan with Recipes 📖
             </h3>
-
             {/* Download PDF Button */}
             <button
               onClick={downloadPDF}
@@ -203,7 +184,6 @@ export default function SuccessPage() {
             >
               📥 Download PDF
             </button>
-
             <div id="meal-plan-content" className="text-left bg-gray-100 p-4 rounded-md overflow-auto mt-2">
               {mealPlan.meal_plan.map((day, index) => (
                 <div key={index} className="mb-6 p-4 bg-white rounded-lg shadow-md">
@@ -230,7 +210,6 @@ export default function SuccessPage() {
             </div>
           </>
         )}
-
         <button
           className="mt-4 bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700"
           onClick={() => router.push("/")}
