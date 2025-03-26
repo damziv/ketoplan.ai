@@ -99,10 +99,8 @@ export default function SuccessPage() {
 
         // 🧹 Clean the streamed result before parsing
         let cleaned = result.trim();
+        const match = cleaned.match(/{[\s\S]*}/);
 
-        // Extract only the first valid JSON object using regex
-        const match = cleaned.match(/{[\\s\\S]*}/); // matches first {...} block
-        
         let parsedMealPlan;
         try {
           if (!match) throw new Error("No JSON object found in stream");
@@ -115,11 +113,16 @@ export default function SuccessPage() {
         setMealPlan(parsedMealPlan);
         setStreamingText("");
 
+        // ✅ Guard against invalid data
+        if (!parsedMealPlan?.meal_plan || !Array.isArray(parsedMealPlan.meal_plan)) {
+          throw new Error("Meal plan format is invalid or empty.");
+        }
+
         // ✅ Save meal plan and send email
         await fetch("/api/save-meal-plan", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ email, meal_plan: parsedMealPlan }),
+          body: JSON.stringify({ email, meal_plan: parsedMealPlan.meal_plan }),
         });
 
         setTimeout(() => setAnimationsComplete(true), 3000);
