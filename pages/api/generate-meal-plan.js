@@ -13,6 +13,16 @@ const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY, // Ensure your .env.local has OPENAI_API_KEY
 });
 
+// Helper function to extract JSON substring
+function extractJSON(text) {
+  const firstBrace = text.indexOf('{');
+  const lastBrace = text.lastIndexOf('}');
+  if (firstBrace !== -1 && lastBrace !== -1) {
+    return text.substring(firstBrace, lastBrace + 1);
+  }
+  throw new Error("Valid JSON not found in string.");
+}
+
 // ✅ Map Question IDs to Text
 const questionMap = {
   "1": "What is your gender?",
@@ -111,7 +121,7 @@ export default async function handler(req, res) {
       messages: [
         {
           role: "system",
-          content: "You are a nutritionist generating personalized 5-day meal plans. Each meal should include a recipe with ingredients and preparation steps. Your response MUST be valid JSON."
+          content: "You are a nutritionist generating personalized 5-day meal plans. Each meal should include a recipe with ingredients and preparation steps. Your response MUST be valid JSON. DO NOT include any extra text."
         },
         {
           role: "user",
@@ -160,7 +170,6 @@ export default async function handler(req, res) {
           buffer += token;
           // Send the token to the client as an SSE message
           res.write(`data: ${token}\n\n`);
-          // Flush the response to ensure immediate delivery (if supported)
           if (res.flush) res.flush();
         }
 
@@ -170,10 +179,10 @@ export default async function handler(req, res) {
 
         console.log('✅ OpenAI streaming complete.');
 
-        // After streaming, parse the full response and process it.
+        // After streaming, extract and parse the full response
         let mealPlanText;
         try {
-          mealPlanText = JSON.parse(buffer.trim());
+          mealPlanText = JSON.parse(extractJSON(buffer));
         } catch (parseError) {
           console.error('❌ OpenAI streaming response is not valid JSON:', parseError);
           return;
@@ -213,11 +222,10 @@ export default async function handler(req, res) {
 
     // If not streaming, proceed with the synchronous request (original behavior)
     const openAIResponse = await openai.chat.completions.create(openAIRequest);
-
-    // ✅ Ensure response is valid JSON
     let mealPlanText;
     try {
-      mealPlanText = JSON.parse(openAIResponse.choices[0]?.message?.content.trim());
+      const rawContent = openAIResponse.choices[0]?.message?.content;
+      mealPlanText = JSON.parse(extractJSON(rawContent));
     } catch (parseError) {
       console.error('❌ OpenAI response is not valid JSON:', parseError);
       return res.status(500).json({ error: 'Invalid meal plan format' });
@@ -225,7 +233,7 @@ export default async function handler(req, res) {
 
     console.log('✅ 5-day meal plan with recipes generated successfully.');
 
-    // ✅ Store meal plan in Supabase
+    // Store meal plan in Supabase
     const { error: saveError } = await supabase
       .from('sessions')
       .update({ meal_plan: mealPlanText })
@@ -237,9 +245,8 @@ export default async function handler(req, res) {
       return res.status(500).json({ error: 'Error saving meal plan' });
     }
 
-    // ✅ Send meal plan via email
+    // Send meal plan via email
     const emailTemplate = generateEmailTemplate(mealPlanText);
-
     await sgMail.send({
       to: email,
       from: process.env.SENDGRID_SENDER,
