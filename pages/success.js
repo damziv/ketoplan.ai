@@ -1,3 +1,4 @@
+// Updated SuccessPage with call to /api/save-meal-plan
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { motion } from "framer-motion";
@@ -10,6 +11,7 @@ export default function SuccessPage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const [email, setEmail] = useState("");
+  const [quizAnswers, setQuizAnswers] = useState(null);
   const [progress, setProgress] = useState(0);
   const [animationsComplete, setAnimationsComplete] = useState(false);
   const [streamingText, setStreamingText] = useState("");
@@ -19,7 +21,7 @@ export default function SuccessPage() {
     "Health and Medical Conditions",
     "Calculating Nutrition Needs",
     "Activity and Habits",
-    "Finalizing Your Meal Plan"
+    "Finalizing Your Meal Plan",
   ];
 
   useEffect(() => {
@@ -46,18 +48,30 @@ export default function SuccessPage() {
   useEffect(() => {
     if (!email) return;
 
-    const fetchMealPlan = async () => {
+    const fetchSessionAndGenerate = async () => {
       try {
+        const sessionRes = await fetch("/api/get-latest-session", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email }),
+        });
+
+        const sessionData = await sessionRes.json();
+        if (!sessionRes.ok || !sessionData.quiz_answers) {
+          throw new Error("No quiz data found for this session.");
+        }
+
+        setQuizAnswers(sessionData.quiz_answers);
+
         const response = await fetch("/api/generate-meal-plan", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          // Pass stream flag to trigger streaming response from backend
-          body: JSON.stringify({ email, stream: true }),
+          body: JSON.stringify({ email, quiz_answers: sessionData.quiz_answers }),
         });
 
         if (!response.ok) {
-          const errorData = await response.json();
-          throw new Error(errorData.error || "Failed to generate meal plan");
+          const errorData = await response.text();
+          throw new Error(errorData || "Failed to generate meal plan");
         }
 
         const reader = response.body.getReader();
@@ -69,27 +83,31 @@ export default function SuccessPage() {
           const { value, done: doneReading } = await reader.read();
           done = doneReading;
           const chunkValue = decoder.decode(value, { stream: true });
-          // Split the chunk into lines (SSE events)
           const lines = chunkValue.split("\n");
           for (let line of lines) {
             if (line.startsWith("data: ")) {
-              // Remove the prefix "data: " without trimming spaces
               const token = line.slice("data: ".length);
               if (token.trim() === "[DONE]") {
                 done = true;
                 break;
               }
-              // Append the token to our accumulated result and update state
               result += token;
               setStreamingText((prev) => prev + token);
             }
           }
         }
 
-        // Once done, parse the complete JSON output
         const parsedMealPlan = JSON.parse(result);
         setMealPlan(parsedMealPlan);
-        setStreamingText(""); // Clear the streaming text after full receipt
+        setStreamingText("");
+
+        // ✅ Save meal plan and send email
+        await fetch("/api/save-meal-plan", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email, meal_plan: parsedMealPlan }),
+        });
+
         setTimeout(() => setAnimationsComplete(true), 3000);
       } catch (err) {
         setError(err.message);
@@ -102,7 +120,7 @@ export default function SuccessPage() {
       setProgress((prev) => {
         if (prev < 100) return prev + 25;
         clearInterval(interval);
-        fetchMealPlan();
+        fetchSessionAndGenerate();
         return prev;
       });
     }, 1000);
@@ -110,16 +128,13 @@ export default function SuccessPage() {
     return () => clearInterval(interval);
   }, [email]);
 
-  // Function to download the meal plan as a PDF
   const downloadPDF = async () => {
     const input = document.getElementById("meal-plan-content");
-
     const canvas = await html2canvas(input, { scale: 2, useCORS: true });
     const imgData = canvas.toDataURL("image/png");
-
     const pdf = new jsPDF("p", "mm", "a4");
-    const imgWidth = 210; // A4 width in mm
-    const pageHeight = 297; // A4 height in mm
+    const imgWidth = 210;
+    const pageHeight = 297;
     const imgHeight = (canvas.height * imgWidth) / canvas.width;
     let heightLeft = imgHeight;
     let position = 0;
@@ -170,7 +185,6 @@ export default function SuccessPage() {
                 </div>
               </motion.div>
             ))}
-
             <div className="flex justify-center mt-4">
               <motion.div
                 animate={{ rotate: 360 }}
@@ -183,20 +197,12 @@ export default function SuccessPage() {
 
         {error && <p className="text-red-500">{error}</p>}
 
-        {/* Display streaming text as it arrives 
-        {streamingText && !mealPlan && (
-          <div className="mt-4 p-4 bg-gray-200 rounded-md text-left">
-            <pre>{streamingText}</pre>
-          </div>
-        )} */}
-
         {mealPlan && animationsComplete && mealPlan.meal_plan && Array.isArray(mealPlan.meal_plan) && (
           <>
             <h3 className="text-lg font-semibold mt-4">
               Your 5-Day Personalized Meal Plan with Recipes 📖
             </h3>
 
-            {/* Download PDF Button */}
             <button
               onClick={downloadPDF}
               className="mt-4 bg-green-600 text-white py-2 px-4 rounded-md hover:bg-green-700"

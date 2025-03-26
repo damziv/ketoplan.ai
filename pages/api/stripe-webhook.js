@@ -85,11 +85,6 @@ export default async function handler(req, res) {
       // ✅ Trigger meal plan generation for the same session
       console.log(`🚀 Generating a new meal plan for session: ${latestSession.id}`);
 
-      const generateMealPlanResponse = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/generate-meal-plan`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email }),
-      });
 
       if (!generateMealPlanResponse.ok) {
         console.error('❌ Error generating meal plan:', await generateMealPlanResponse.text());
