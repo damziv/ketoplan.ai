@@ -14,13 +14,14 @@ function generateEmailTemplate(mealPlan) {
   let html = `<div style="font-family: sans-serif;">`;
   html += `<h2>Your 5-Day Meal Plan 🍽️</h2>`;
 
-  mealPlan.meal_plan.forEach(day => {
+  mealPlan.forEach(day => {
     html += `<h3>${day.day}</h3>`;
     ['breakfast', 'lunch', 'dinner'].forEach(meal => {
       const m = day[meal];
+      if (!m) return;
       html += `<h4>${meal.toUpperCase()}: ${m.name}</h4>`;
-      html += `<p><strong>Ingredients:</strong></p><ul>${m.ingredients.map(i => `<li>${i}</li>`).join('')}</ul>`;
-      html += `<p><strong>Instructions:</strong> ${m.instructions}</p>`;
+      html += `<p><strong>Ingredients:</strong></p><ul>${(m.ingredients || []).map(i => `<li>${i}</li>`).join('')}</ul>`;
+      html += `<p><strong>Instructions:</strong> ${m.instructions || ''}</p>`;
     });
   });
 
@@ -33,8 +34,8 @@ export default async function handler(req, res) {
 
   const { email, meal_plan } = req.body;
 
-  if (!email || !meal_plan) {
-    return res.status(400).json({ error: 'Missing email or meal_plan' });
+  if (!email || !meal_plan || !Array.isArray(meal_plan)) {
+    return res.status(400).json({ error: 'Missing or invalid email or meal_plan' });
   }
 
   try {
