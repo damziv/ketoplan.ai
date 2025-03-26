@@ -1,4 +1,4 @@
-// Updated SuccessPage with fallback logging for /api/save-meal-plan
+// Updated SuccessPage with transformation of mealPlan object into array
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { motion } from "framer-motion";
@@ -103,14 +103,15 @@ export default function SuccessPage() {
           }
         }
 
-
         let cleaned = result.trim();
         const match = cleaned.match(/{[\s\S]*}/);
 
         let parsedMealPlan;
         try {
           if (!match) throw new Error("No JSON object found in stream");
-          parsedMealPlan = JSON.parse(match[0]);
+          const jsonEndIndex = match[0].lastIndexOf("}") + 1;
+          const safeJSON = match[0].slice(0, jsonEndIndex);
+          parsedMealPlan = JSON.parse(safeJSON);
         } catch (e) {
           console.error("❌ Failed to parse streamed JSON:", e, match ? match[0] : cleaned);
           throw new Error("Received invalid meal plan format.");
@@ -118,7 +119,6 @@ export default function SuccessPage() {
 
         setStreamingText("");
 
-        // Transform { day1: {...}, day2: {...} } → [ { day: "Day 1", ... }, ... ]
         let extractedPlan = [];
         if (parsedMealPlan.mealPlan && typeof parsedMealPlan.mealPlan === "object") {
           extractedPlan = Object.entries(parsedMealPlan.mealPlan).map(([key, value]) => ({
@@ -128,14 +128,14 @@ export default function SuccessPage() {
         } else {
           throw new Error("Meal plan format is invalid or empty.");
         }
-        
+
         setMealPlan({ meal_plan: extractedPlan });
 
         try {
           const saveRes = await fetch("/api/save-meal-plan", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ email, meal_plan: parsedMealPlan.meal_plan }),
+            body: JSON.stringify({ email, meal_plan: extractedPlan }),
           });
 
           if (!saveRes.ok) {
