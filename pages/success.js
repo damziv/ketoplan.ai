@@ -83,24 +83,26 @@ export default function SuccessPage() {
           const { value, done: doneReading } = await reader.read();
           done = doneReading;
           const chunkValue = decoder.decode(value, { stream: true });
-          const lines = chunkValue.split("\n");
+          const lines = chunkValue.split("\n").filter(Boolean);
           for (let line of lines) {
-            if (line.startsWith("data: ")) {
-              const json = line.slice("data: ".length).trim();
-              if (json === "[DONE]") {
+            if (line.trim().startsWith("data:")) {
+              const json = line.replace(/^data:\s*/, "").trim();
+              if (!json || json === "[DONE]") {
                 done = true;
                 break;
               }
+          
               try {
                 const parsed = JSON.parse(json);
                 const token = parsed.choices?.[0]?.delta?.content || "";
                 jsonBuffer += token;
                 setStreamingText((prev) => prev + token);
               } catch (err) {
-                console.warn("Could not parse chunk line:", line);
+                console.warn("⚠️ Could not parse chunk line:", json, err);
               }
             }
           }
+          
         }
 
         let parsedMealPlan;
