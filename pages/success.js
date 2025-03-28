@@ -253,23 +253,26 @@ export default function SuccessPage() {
               {mealPlan.meal_plan.map((day, index) => (
                 <div key={index} className="mb-6 p-4 bg-white rounded-lg shadow-md">
                   <h3 className="text-lg font-bold text-green-600">📅 {day.day}</h3>
-                  {["breakfast", "lunch", "dinner"].map((mealType) => (
-                    <div key={mealType} className="mt-4">
-                      <h4 className="text-md font-semibold text-gray-900">
-                        🍴 {day[mealType]?.name || "No meal available"}
-                      </h4>
-                      <p className="text-sm font-bold text-gray-700">Ingredients:</p>
-                      <ul className="list-disc pl-5 text-sm text-gray-700">
-                        {day[mealType]?.ingredients?.map((ingredient, i) => (
-                          <li key={i}>{ingredient}</li>
-                        )) || <li>No ingredients available</li>}
-                      </ul>
-                      <p className="text-sm font-bold text-gray-700 mt-2">Instructions:</p>
-                      <p className="text-sm text-gray-700">
-                        {day[mealType]?.instructions || "No instructions available"}
-                      </p>
-                    </div>
-                  ))}
+                  {Object.entries(day).map(([mealType, meal], i) => {
+                   if (mealType === "day") return null;
+                  return (
+                    <div key={i} className="mt-4">
+                     <h4 className="text-md font-semibold text-gray-900">
+                        🍴 {meal?.name || "No meal available"}
+                       </h4>
+                 <p className="text-sm font-bold text-gray-700">Ingredients:</p>
+                <ul className="list-disc pl-5 text-sm text-gray-700">
+                     {meal?.ingredients?.map((ingredient, j) => (
+                 <li key={j}>{ingredient}</li>
+                  )) || <li>No ingredients available</li>}
+               </ul>
+             <p className="text-sm font-bold text-gray-700 mt-2">Instructions:</p>
+             <p className="text-sm text-gray-700">
+             {meal?.instructions || "No instructions available"}
+               </p>
+            </div>
+          );
+        })}
                 </div>
               ))}
             </div>
