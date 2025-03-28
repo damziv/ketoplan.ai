@@ -1,4 +1,4 @@
-// Updated SuccessPage with transformation of mealPlan object into array
+// Updated SuccessPage to parse strict JSON structure from GPT response
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { motion } from "framer-motion";
@@ -76,7 +76,7 @@ export default function SuccessPage() {
 
         const reader = response.body.getReader();
         const decoder = new TextDecoder("utf-8");
-        let result = "";
+        let jsonBuffer = "";
         let done = false;
 
         while (!done) {
@@ -94,7 +94,7 @@ export default function SuccessPage() {
               try {
                 const parsed = JSON.parse(json);
                 const token = parsed.choices?.[0]?.delta?.content || "";
-                result += token;
+                jsonBuffer += token;
                 setStreamingText((prev) => prev + token);
               } catch (err) {
                 console.warn("Could not parse chunk line:", line);
@@ -103,16 +103,12 @@ export default function SuccessPage() {
           }
         }
 
-        let cleaned = result.trim();
         let parsedMealPlan;
         try {
-          const jsonStart = cleaned.indexOf("{");
-          const jsonEnd = cleaned.lastIndexOf("}") + 1;
-          const jsonString = cleaned.slice(jsonStart, jsonEnd);
-          parsedMealPlan = JSON.parse(jsonString);
+          parsedMealPlan = JSON.parse(jsonBuffer);
         } catch (e) {
-          console.error("❌ Failed to parse streamed JSON:", e, cleaned);
-          throw new Error("Received invalid meal plan format.");
+          console.error("❌ Failed to parse streamed JSON:", e, jsonBuffer);
+          throw new Error("Received invalid JSON from stream.");
         }
 
         setStreamingText("");
@@ -121,7 +117,7 @@ export default function SuccessPage() {
         if (parsedMealPlan.mealPlan && typeof parsedMealPlan.mealPlan === "object") {
           extractedPlan = Object.entries(parsedMealPlan.mealPlan).map(([key, value]) => ({
             day: key,
-            ...value
+            ...value,
           }));
         } else {
           throw new Error("Meal plan format is invalid or empty.");

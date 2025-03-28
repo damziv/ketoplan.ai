@@ -57,15 +57,24 @@ export default async function handler(req) {
               {
                 role: "system",
                 content:
-                  "You are a JSON API that returns only strict, valid JSON. No explanations, no markdown. Reply ONLY with a JSON object containing a 5-day meal plan, each with breakfast, lunch, dinner — all with names, ingredients, and instructions.",
+                  "You are a JSON API that returns only strict, valid JSON. Reply with a JSON object like {\"mealPlan\": {\"Day1\": {...}}}. No explanations, markdown, or natural text. Only JSON, strictly valid.",
               },
               {
                 role: "user",
-                content: `Create a 5-day meal plan with full recipes based on: \n${JSON.stringify(
-                  formattedData,
-                  null,
-                  2
-                )}`,
+                content: `Create a 5-day meal plan with full recipes based on:
+${JSON.stringify(formattedData, null, 2)}
+
+Use this structure:
+{
+  \"mealPlan\": {
+    \"Day1\": {
+      \"Breakfast\": { \"name\": \"...\", \"ingredients\": [...], \"instructions\": \"...\" },
+      \"Lunch\": { ... },
+      \"Dinner\": { ... }
+    },
+    \"Day2\": {...}
+  }
+}`,
               },
             ],
           }),
