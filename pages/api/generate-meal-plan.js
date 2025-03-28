@@ -51,30 +51,28 @@ export default async function handler(req) {
             Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
           },
           body: JSON.stringify({
-            model: "gpt-4",
+            model: "gpt-4", // or "gpt-3.5-turbo" for faster/lighter
             stream: true,
             messages: [
               {
                 role: "system",
-                content:
-                  "You are a JSON API that returns only strict, valid JSON. Reply with a JSON object like {\"mealPlan\": {\"Day1\": {...}}}. No explanations, markdown, or natural text. Only JSON, strictly valid.",
+                content: `You are a JSON API that only replies with valid JSON. No markdown, no explanation. Strict JSON object like:
+{
+  "mealPlan": {
+    "Day1": {
+      "Breakfast": { "name": "...", "ingredients": [...], "instructions": "..." },
+      "Lunch": { ... },
+      "Dinner": { ... }
+    },
+    ...
+  }
+}
+Use ONLY double quotes. No trailing commas. Escape newlines and invalid characters if needed.`,
               },
               {
                 role: "user",
-                content: `Create a 5-day meal plan with full recipes based on:
-${JSON.stringify(formattedData, null, 2)}
-
-Use this structure:
-{
-  \"mealPlan\": {
-    \"Day1\": {
-      \"Breakfast\": { \"name\": \"...\", \"ingredients\": [...], \"instructions\": \"...\" },
-      \"Lunch\": { ... },
-      \"Dinner\": { ... }
-    },
-    \"Day2\": {...}
-  }
-}`,
+                content: `Create a 5-day personalized meal plan with full recipes (name, ingredients, instructions) based on:
+${JSON.stringify(formattedData)}`,
               },
             ],
           }),
@@ -88,23 +86,29 @@ Use this structure:
 
         const reader = openaiRes.body.getReader();
         const decoder = new TextDecoder("utf-8");
-        let done = false;
 
-        while (!done) {
-          const { value, done: doneReading } = await reader.read();
-          done = doneReading;
-          const chunk = decoder.decode(value);
+        let buffer = "";
 
-          chunk.split("\n").forEach(line => {
+        while (true) {
+          const { value, done } = await reader.read();
+          if (done) break;
+
+          const chunk = decoder.decode(value, { stream: true });
+          buffer += chunk;
+
+          const lines = buffer.split("\n");
+          buffer = lines.pop(); // last line might be incomplete
+
+          for (const line of lines) {
             if (line.startsWith("data: ")) {
-              const text = line.replace("data: ", "");
-              if (text === "[DONE]") {
+              const data = line.replace("data: ", "").trim();
+              if (data === "[DONE]") {
                 controller.enqueue(encoder.encode("data: [DONE]\n\n"));
               } else {
-                controller.enqueue(encoder.encode(`data: ${text}\n\n`));
+                controller.enqueue(encoder.encode(`data: ${data}\n\n`));
               }
             }
-          });
+          }
         }
 
         controller.close();
