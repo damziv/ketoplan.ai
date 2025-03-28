@@ -78,31 +78,36 @@ export default function SuccessPage() {
         const decoder = new TextDecoder("utf-8");
         let jsonBuffer = "";
         let done = false;
-
+        let streamFinished = false;
+        
         while (!done) {
           const { value, done: doneReading } = await reader.read();
           done = doneReading;
           const chunkValue = decoder.decode(value, { stream: true });
-          const lines = chunkValue.split("\n").filter(Boolean);
+          const lines = chunkValue.split("\n");
           for (let line of lines) {
-            if (line.trim().startsWith("data:")) {
-              const json = line.replace(/^data:\s*/, "").trim();
-              if (!json || json === "[DONE]") {
+            if (line.startsWith("data: ")) {
+              const json = line.slice("data: ".length).trim();
+              if (json === "[DONE]") {
+                streamFinished = true;
                 done = true;
                 break;
               }
-          
               try {
                 const parsed = JSON.parse(json);
                 const token = parsed.choices?.[0]?.delta?.content || "";
                 jsonBuffer += token;
                 setStreamingText((prev) => prev + token);
               } catch (err) {
-                console.warn("⚠️ Could not parse chunk line:", json, err);
+                console.warn("Could not parse chunk line:", line);
               }
             }
           }
-          
+        }
+        
+        // ✅ ONLY NOW attempt to parse JSON
+        if (!streamFinished) {
+          throw new Error("Stream ended unexpectedly.");
         }
 
         let parsedMealPlan;

@@ -56,7 +56,7 @@ export default async function handler(req) {
             messages: [
               {
                 role: "system",
-                content: `You are a JSON API that only replies with valid JSON. No markdown, no explanation. Strict JSON object like:
+                content: `You are a JSON API that only replies with valid JSON. No markdown, no explanation, do not include '...' or placeholders. Strict JSON object like:
 {
   "mealPlan": {
     "Day1": {
