@@ -67,11 +67,11 @@ export default async function handler(req) {
     ...
   }
 }
-Use ONLY double quotes. No trailing commas. Escape newlines and invalid characters if needed.`,
+Use only METRIC system. Use ONLY double quotes. No trailing commas. Escape newlines and invalid characters if needed.`,
               },
               {
                 role: "user",
-                content: `Create a 5-day personalized KETO meal plan with full recipes (name, ingredients, instructions) based on:
+                content: `Create a 5-day personalized keto meal plan with full recipes (name, ingredients, instructions) based on:
 ${JSON.stringify(formattedData)}`,
               },
             ],

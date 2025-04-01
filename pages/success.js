@@ -1,4 +1,3 @@
-// Updated SuccessPage to parse strict JSON structure from GPT response
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { motion } from "framer-motion";
@@ -105,7 +104,6 @@ export default function SuccessPage() {
           }
         }
         
-        // ✅ ONLY NOW attempt to parse JSON
         if (!streamFinished) {
           throw new Error("Stream ended unexpectedly.");
         }
@@ -155,13 +153,12 @@ export default function SuccessPage() {
       }
     };
 
+    // Start the endpoint call immediately
+    fetchSessionAndGenerate();
+
+    // Also, start the progress animation concurrently
     let interval = setInterval(() => {
-      setProgress((prev) => {
-        if (prev < 100) return prev + 25;
-        clearInterval(interval);
-        fetchSessionAndGenerate();
-        return prev;
-      });
+      setProgress((prev) => (prev < 100 ? prev + 25 : 100));
     }, 1000);
 
     return () => clearInterval(interval);
@@ -199,7 +196,9 @@ export default function SuccessPage() {
         {(!animationsComplete || loading) && (
           <>
             <p className="mb-4">Your meal plan is being generated. Please wait...</p>
-            <p className="text-gray-600 text-sm mb-2">Process can take 1min, do not leave this page!</p>
+            <p className="text-gray-600 text-sm mb-2">
+              Process can take 1 minute, do not leave this page!
+            </p>
           </>
         )}
 
@@ -217,8 +216,8 @@ export default function SuccessPage() {
                 <div className="w-full h-2 bg-gray-200 rounded-full overflow-hidden">
                   <motion.div
                     className="h-full bg-green-500"
-                    initial={{ width: '0%' }}
-                    animate={{ width: progress >= (index + 1) * 25 ? '100%' : '0%' }}
+                    initial={{ width: "0%" }}
+                    animate={{ width: progress >= (index + 1) * 25 ? "100%" : "0%" }}
                     transition={{ duration: 1.3 }}
                   ></motion.div>
                 </div>
@@ -241,6 +240,9 @@ export default function SuccessPage() {
             <h3 className="text-lg font-semibold mt-4">
               Your 5-Day Personalized Meal Plan with Recipes 📖
             </h3>
+            <p className="text-gray-600 text-sm mb-2">
+              Plan is sent to your email! Please check SPAM folder
+            </p>
 
             <button
               onClick={downloadPDF}
@@ -254,25 +256,25 @@ export default function SuccessPage() {
                 <div key={index} className="mb-6 p-4 bg-white rounded-lg shadow-md">
                   <h3 className="text-lg font-bold text-green-600">📅 {day.day}</h3>
                   {Object.entries(day).map(([mealType, meal], i) => {
-                   if (mealType === "day") return null;
-                  return (
-                    <div key={i} className="mt-4">
-                     <h4 className="text-md font-semibold text-gray-900">
-                        🍴 {meal?.name || "No meal available"}
-                       </h4>
-                 <p className="text-sm font-bold text-gray-700">Ingredients:</p>
-                <ul className="list-disc pl-5 text-sm text-gray-700">
-                     {meal?.ingredients?.map((ingredient, j) => (
-                 <li key={j}>{ingredient}</li>
-                  )) || <li>No ingredients available</li>}
-               </ul>
-             <p className="text-sm font-bold text-gray-700 mt-2">Instructions:</p>
-             <p className="text-sm text-gray-700">
-             {meal?.instructions || "No instructions available"}
-               </p>
-            </div>
-          );
-        })}
+                    if (mealType === "day") return null;
+                    return (
+                      <div key={i} className="mt-4">
+                        <h4 className="text-md font-semibold text-gray-900">
+                          🍴 {meal?.name || "No meal available"}
+                        </h4>
+                        <p className="text-sm font-bold text-gray-700">Ingredients:</p>
+                        <ul className="list-disc pl-5 text-sm text-gray-700">
+                          {meal?.ingredients?.map((ingredient, j) => (
+                            <li key={j}>{ingredient}</li>
+                          )) || <li>No ingredients available</li>}
+                        </ul>
+                        <p className="text-sm font-bold text-gray-700 mt-2">Instructions:</p>
+                        <p className="text-sm text-gray-700">
+                          {meal?.instructions || "No instructions available"}
+                        </p>
+                      </div>
+                    );
+                  })}
                 </div>
               ))}
             </div>

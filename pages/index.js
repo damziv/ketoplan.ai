@@ -26,6 +26,9 @@ export default function Home() {
         >
           Start Quiz
         </button>
+        <p className="text-gray-600 text-sm mb-2">
+        By pressing 'Start Quiz', you are confirming your acceptance of our Terms.
+            </p>
       </div>
 
       {/* ✅ Footer */}
