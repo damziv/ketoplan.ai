@@ -76,7 +76,7 @@ export default function PaymentPage() {
         transition={{ duration: 0.5 }}
         className="bg-white shadow-lg rounded-2xl p-6 w-full max-w-md text-center mt-16"
       >
-        <h2 className="text-2xl font-bold text-gray-800 mb-2">🏆 4-Week Weight Loss Plan Ready!</h2>
+        <h2 className="text-2xl font-bold text-gray-800 mb-2">🏆 Your Weight Loss Plan is Ready!</h2>
         <p className="text-gray-500 mb-4">We'll work on your goal together.</p>
 
         <div className="h-44 w-full">

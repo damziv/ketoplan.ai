@@ -1,5 +1,6 @@
 export default function Home() {
   return (
+    
     <div className="relative min-h-screen flex flex-col justify-between text-white">
       {/* Background Image */}
       <div className="absolute inset-0">
