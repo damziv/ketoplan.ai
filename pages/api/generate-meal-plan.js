@@ -71,7 +71,7 @@ Use ONLY double quotes. No trailing commas. Escape newlines and invalid characte
               },
               {
                 role: "user",
-                content: `Create a 5-day personalized meal plan with full recipes (name, ingredients, instructions) based on:
+                content: `Create a 5-day personalized KETO meal plan with full recipes (name, ingredients, instructions) based on:
 ${JSON.stringify(formattedData)}`,
               },
             ],
