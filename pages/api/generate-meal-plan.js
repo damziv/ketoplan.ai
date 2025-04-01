@@ -51,7 +51,7 @@ export default async function handler(req) {
             Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
           },
           body: JSON.stringify({
-            model: "gpt-3.5-turbo-16k", // or "gpt-3.5-turbo" for faster/lighter
+            model: "gpt-3.5-turbo-0125", // or "gpt-3.5-turbo" for faster/lighter
             stream: true,
             messages: [
               {
