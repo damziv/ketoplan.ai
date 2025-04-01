@@ -5,6 +5,7 @@ export default function Document() {
   return (
     <Html lang="en">
       <Head>
+        <title>AI Keto Meal Plan</title>
         <link rel="icon" href="/favicon.png" type="image/png" />
         <meta name="theme-color" content="#ffffff" />
         <meta name="description" content="Your personalized Keto Meal Plan App" />
