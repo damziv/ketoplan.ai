@@ -6,7 +6,7 @@ export const config = {
 
 const questionMap = {
   "1": "What is your gender?",
-  "2": "Do you have any dietary restrictions?",
+  "2": "How much variety do you want in your meal plan?",
   "3": "Choose the meat you want to include",
   "4": "Choose the vegetable you want to include",
   "5": "Choose other products you want to include",

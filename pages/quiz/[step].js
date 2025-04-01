@@ -49,12 +49,12 @@ const foodTranslationMap = {
 
 const questions = [
   { id: 1, question: 'What is your gender?', options: ['Male', 'Female', 'Other'], multiple: false },
-  { id: 2, question: 'Do you have any dietary restrictions?', options: ['Vegetarian', 'Vegan', 'None'], multiple: false },
+  { id: 2, question: 'How much variety do you want in your meal plan?', options: ['High', 'Moderate', 'Low'], multiple: false },
   { id: 3, question: 'Choose the meat you want to include', options: ['Chicken', 'Pork', 'Beef', 'Bacon', 'Salmon', 'Tuna', 'Lamb', 'None'], multiple: true },
   { id: 4, question: 'Choose the vegetable you want to include', options: ['Broccoli', 'Spinach', 'Lettuce', 'Cauliflower', 'Cabbage', 'Zucchini', 'Asparagus', 'Eggplant', 'None'], multiple: true },
   { id: 5, question: 'Choose another products you want to include', options: ['Eggs', 'Cheese', 'Butter', 'Tofu', 'Shrimp', 'Chia', 'None'], multiple: true },
   { id: 6, question: 'What is your activity level?', options: ['Sedentary', 'Moderately Active', 'Very Active'], multiple: false },
-  { id: 7, question: 'Do you have any allergies?', options: ['Nuts', 'Dairy', 'Gluten', 'None'], multiple: true },
+  { id: 7, question: 'Do you have any allergies?', options: ['Nuts', 'Dairy', 'Soy', 'None'], multiple: true },
   { id: 8, question: 'What is your primary goal?', options: ['Weight Loss', 'Maintain Weight', 'Gain Muscle'], multiple: false },
   { id: 9, question: 'Do you have a budget preference for meal prep?', options: ['Low', 'Medium', 'High'], multiple: false },
   { id: 10, question: 'Do you snack frequently?', options: ['Yes', 'No'], multiple: false },
