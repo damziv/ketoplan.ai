@@ -1,0 +1,24 @@
+{
+    "title": "Payment Successful 🎉",
+    "generating": "Your meal plan is being generated. Please wait...",
+    "warning": "Process can take 1 minute, do not leave this page!",
+    "steps": [
+      "Demographic Profile",
+      "Health and Medical Conditions",
+      "Calculating Nutrition Needs",
+      "Activity and Habits",
+      "Finalizing Your Meal Plan"
+    ],
+    "planTitle": "Your 5-Day Personalized Meal Plan with Recipes 📖",
+    "planEmailNote": "Plan is sent to your email! Please check SPAM folder",
+    "planDownloadNote": "We recommend you to download the plan! Email can be blocked by provider",
+    "downloadBtn": "📥 Download PDF",
+    "ingredients": "Ingredients:",
+    "instructions": "Instructions:",
+    "noIngredients": "No ingredients available",
+    "noInstructions": "No instructions available",
+    "backHome": "Back to Home",
+    "error": "An error occurred while generating your meal plan.",
+    "day": "Day {{day}}"
+  }
+ 

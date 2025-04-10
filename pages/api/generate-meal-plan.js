@@ -19,20 +19,25 @@ const questionMap = {
   "12": "What motivates you the most?"
 };
 
+const localePrompts = {
+  en: "Respond in English.",
+  hr: "Odgovori na hrvatskom jeziku.",
+  de: "Antworte auf Deutsch.",
+  fr: "Répondez en français."
+};
+
 export default async function handler(req) {
   if (req.method !== 'POST') {
-    return new Response(JSON.stringify({ error: 'Only POST allowed' }), {
-      status: 405,
-    });
+    return new Response(JSON.stringify({ error: 'Only POST allowed' }), { status: 405 });
   }
 
-  const { email, quiz_answers } = await req.json();
+  const { email, quiz_answers, locale = 'en' } = await req.json();
 
   if (!email || !quiz_answers) {
-    return new Response(JSON.stringify({ error: 'Missing email or quiz_answers' }), {
-      status: 400,
-    });
+    return new Response(JSON.stringify({ error: 'Missing email or quiz_answers' }), { status: 400 });
   }
+
+  const languageInstruction = localePrompts[locale] || localePrompts.en;
 
   const formattedData = Object.entries(questionMap).map(([id, question]) => ({
     question,
@@ -51,12 +56,12 @@ export default async function handler(req) {
             Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
           },
           body: JSON.stringify({
-            model: "gpt-3.5-turbo-0125", // or "gpt-3.5-turbo" for faster/lighter
+            model: "gpt-3.5-turbo-0125",
             stream: true,
             messages: [
               {
                 role: "system",
-                content: `You are a JSON API that only replies with valid JSON. No markdown, no explanation, do not include '...' or placeholders. Strict JSON object like:
+                content: `You are a JSON API that only replies with valid JSON. No markdown, no explanation, no placeholders. Use METRIC units. Strictly return:
 {
   "mealPlan": {
     "Day1": {
@@ -67,11 +72,13 @@ export default async function handler(req) {
     ...
   }
 }
-Use only METRIC system. Use ONLY double quotes. No trailing commas. Escape newlines and invalid characters if needed.`,
+${languageInstruction}
+
+Use ONLY double quotes. Escape invalid characters. No trailing commas.`,
               },
               {
                 role: "user",
-                content: `Create a 5-day personalized keto meal plan with full recipes (name, ingredients, instructions) based on:
+                content: `Create a 5-day personalized keto meal plan with full recipes based on:
 ${JSON.stringify(formattedData)}`,
               },
             ],
@@ -97,7 +104,7 @@ ${JSON.stringify(formattedData)}`,
           buffer += chunk;
 
           const lines = buffer.split("\n");
-          buffer = lines.pop(); // last line might be incomplete
+          buffer = lines.pop(); // handle partial
 
           for (const line of lines) {
             if (line.startsWith("data: ")) {

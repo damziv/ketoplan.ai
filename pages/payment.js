@@ -5,6 +5,8 @@ import { loadStripe } from '@stripe/stripe-js';
 import { Elements, PaymentElement, useStripe, useElements } from '@stripe/react-stripe-js';
 import { motion } from 'framer-motion';
 import { LineChart, Line, XAxis, YAxis, ResponsiveContainer } from 'recharts';
+import { useTranslation } from 'next-i18next';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL,
@@ -15,6 +17,7 @@ const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY);
 
 export default function PaymentPage() {
   const router = useRouter();
+  const { t } = useTranslation('payment');
   const [clientSecret, setClientSecret] = useState(null);
   const [loading, setLoading] = useState(true);
   const [currentWeight, setCurrentWeight] = useState(80);
@@ -23,40 +26,34 @@ export default function PaymentPage() {
   useEffect(() => {
     const fetchPaymentIntent = async () => {
       const email = sessionStorage.getItem('email');
-      const sessionId = sessionStorage.getItem('sessionId'); // Latest session
-  
-      console.log("📌 Retrieved from sessionStorage:", { email, sessionId });
-  
+      const sessionId = sessionStorage.getItem('sessionId');
+
       if (!email || !sessionId) {
-        console.error('❌ Missing email or sessionId. Redirecting to /email...');
         router.push('/email');
         return;
       }
-  
+
       try {
-        console.log('📌 Creating Payment Intent...');
-        const response = await fetch('/api/create-payment-intent', { // Updated API route
+        const response = await fetch('/api/create-payment-intent', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ email, sessionId }), // ✅ Always link payment to latest session
+          body: JSON.stringify({ email, sessionId }),
         });
-  
+
         if (!response.ok) throw new Error('Failed to create payment intent');
-  
+
         const { clientSecret } = await response.json();
         setClientSecret(clientSecret);
         setLoading(false);
       } catch (error) {
-        console.error('❌ Failed to get clientSecret:', error);
+        console.error('Failed to get clientSecret:', error);
         setLoading(false);
       }
     };
-  
+
     fetchPaymentIntent();
   }, [router]);
-  
 
-  // Mock Data for Weight Loss Chart
   const weightData = [
     { week: 'Now', weight: currentWeight },
     { week: 'Week 1', weight: currentWeight - 1.5 },
@@ -65,19 +62,22 @@ export default function PaymentPage() {
     { week: 'Week 4', weight: targetWeight },
   ];
 
+  const reviews = t('reviews', { returnObjects: true });
+  const why = t('why', { returnObjects: true });
+
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100 p-5">
       <div className="fixed top-0 w-full bg-gray-800 py-4 text-center text-white font-bold text-2xl z-50">AImealPrep</div>
 
-      {/* Animated Chart & Weight Loss Goal */}
+      {/* Weight Chart */}
       <motion.div
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
         className="bg-white shadow-lg rounded-2xl p-6 w-full max-w-md text-center mt-16"
       >
-        <h2 className="text-2xl font-bold text-gray-800 mb-2">🏆 Your Weight Loss Plan is Ready!</h2>
-        <p className="text-gray-500 mb-4">We'll work on your goal together.</p>
+        <h2 className="text-2xl font-bold text-gray-800 mb-2">🏆 {t('title')}</h2>
+        <p className="text-gray-500 mb-4">{t('subtitle')}</p>
 
         <div className="h-44 w-full">
           <ResponsiveContainer width="100%" height="100%">
@@ -89,14 +89,14 @@ export default function PaymentPage() {
           </ResponsiveContainer>
         </div>
 
-        <p className="text-sm text-gray-400 mt-2">This is a tentative timeline based on your answers.</p>
+        <p className="text-sm text-gray-400 mt-2">{t('chartNote')}</p>
       </motion.div>
 
-      {/* Customer Reviews */}
+      {/* Reviews */}
       <div className="mt-8 w-full max-w-md">
-        <h3 className="text-lg font-bold text-center mb-4">What Our Customers Are Saying:</h3>
+        <h3 className="text-lg font-bold text-center mb-4">{t('reviewsTitle')}</h3>
         <div className="flex flex-wrap gap-4 justify-center md:flex-nowrap">
-          {['Best meal plan ever! ⭐⭐⭐⭐⭐', 'Lost 5kg in 4 weeks! ⭐⭐⭐⭐⭐', 'So easy to follow! ⭐⭐⭐⭐⭐'].map((review, index) => (
+          {reviews.map((review, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 10 }}
@@ -110,14 +110,11 @@ export default function PaymentPage() {
         </div>
       </div>
 
+      {/* Why Us */}
       <div className="mt-8 w-full max-w-md mx-auto bg-white p-6 rounded-lg shadow-lg">
-        <h3 className="text-2xl font-bold text-center mb-6 text-gray-800">Why Choose AI Keto Meal Recipe App?</h3>
+        <h3 className="text-2xl font-bold text-center mb-6 text-gray-800">{t('whyTitle')}</h3>
         <ul className="space-y-4">
-          {[
-            'One-time payment – no hidden fees!',
-            'Personalized keto recipes generated from your quiz!',
-            'Effortless meal planning for a healthier lifestyle!',
-          ].map((cta, index) => (
+          {why.map((text, index) => (
             <motion.li
               key={index}
               initial={{ opacity: 0, x: -20 }}
@@ -126,25 +123,25 @@ export default function PaymentPage() {
               className="flex items-start space-x-3 p-3 bg-green-50 rounded-md hover:bg-green-100 transition-colors"
             >
               <span className="text-green-600 text-xl font-bold">✓</span>
-              <span className="text-gray-700 text-lg">{cta}</span>
+              <span className="text-gray-700 text-lg">{text}</span>
             </motion.li>
           ))}
         </ul>
       </div>
 
-      {/* Payment Section */}
+      {/* Payment */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
         className="bg-white p-6 rounded-lg shadow-md w-full max-w-md text-center mt-6"
       >
-        <h2 className="text-2xl font-bold mb-2">Secure Payment</h2>
-        <p className="mb-4">One-time payment, no subscription. Get your 4-week keto meal plan now.</p>
-        <p className="font-bold mb-4">ONLY $5.99 ONCE</p>
+        <h2 className="text-2xl font-bold mb-2">{t('paymentTitle')}</h2>
+        <p className="mb-4">{t('paymentSubtitle')}</p>
+        <p className="font-bold mb-4">{t('price')}</p>
 
         {loading ? (
-          <p>Loading payment...</p>
+          <p>{t('loadingPayment')}</p>
         ) : (
           <Elements stripe={stripePromise} options={{ clientSecret }}>
             <CheckoutForm />
@@ -156,6 +153,7 @@ export default function PaymentPage() {
 }
 
 function CheckoutForm() {
+  const { t } = useTranslation('payment');
   const stripe = useStripe();
   const elements = useElements();
   const [loading, setLoading] = useState(false);
@@ -168,7 +166,7 @@ function CheckoutForm() {
 
     const { error } = await stripe.confirmPayment({
       elements,
-      confirmParams: { return_url: `${window.location.origin}/success` }, // ✅ Keeps user inside app
+      confirmParams: { return_url: `${window.location.origin}/success` },
     });
 
     if (error) {
@@ -185,8 +183,16 @@ function CheckoutForm() {
         disabled={!stripe || loading}
         className="bg-green-600 text-white py-3 px-6 rounded-md hover:bg-green-700 transition"
       >
-        {loading ? 'Processing...' : 'Pay Now'}
+        {loading ? t('processing') : t('payNow')}
       </button>
     </form>
   );
+}
+
+export async function getServerSideProps({ locale }) {
+  return {
+    props: {
+      ...(await serverSideTranslations(locale, ['payment']))
+    }
+  };
 }

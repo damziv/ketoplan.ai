@@ -3,8 +3,11 @@ import { useRouter } from "next/router";
 import { motion } from "framer-motion";
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
+import { useTranslation } from "next-i18next";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 export default function SuccessPage() {
+  const { t } = useTranslation('success');
   const router = useRouter();
   const [mealPlan, setMealPlan] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -15,13 +18,7 @@ export default function SuccessPage() {
   const [animationsComplete, setAnimationsComplete] = useState(false);
   const [streamingText, setStreamingText] = useState("");
 
-  const steps = [
-    "Demographic Profile",
-    "Health and Medical Conditions",
-    "Calculating Nutrition Needs",
-    "Activity and Habits",
-    "Finalizing Your Meal Plan",
-  ];
+  const steps = t('steps', { returnObjects: true });
 
   useEffect(() => {
     let storedEmail = sessionStorage.getItem("email") || router.query.email;
@@ -34,22 +31,22 @@ export default function SuccessPage() {
             setEmail(data.email);
             sessionStorage.setItem("email", data.email);
           } else {
-            setError("No email found. Please restart the process.");
+            setError(t('error'));
           }
         })
-        .catch(() => setError("Error retrieving email from database."))
+        .catch(() => setError(t('error')))
         .finally(() => setLoading(false));
     } else {
       setEmail(storedEmail);
     }
-  }, [router]);
+  }, [router, t]);
 
   useEffect(() => {
     if (!email) return;
 
     const fetchSessionAndGenerate = async () => {
       try {
-        const sessionRes = await fetch("/api/get-latest-session", {
+        const sessionRes = await fetch(`${window.location.origin}/api/get-latest-session`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ email }),
@@ -62,10 +59,12 @@ export default function SuccessPage() {
 
         setQuizAnswers(sessionData.quiz_answers);
 
+        const { locale } = router; // ✅ Add this line at the top of the function or use directly
+
         const response = await fetch("/api/generate-meal-plan", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ email, quiz_answers: sessionData.quiz_answers }),
+          body: JSON.stringify({ email, quiz_answers: sessionData.quiz_answers, locale }), // ✅ Add `locale`
         });
 
         if (!response.ok) {
@@ -78,7 +77,7 @@ export default function SuccessPage() {
         let jsonBuffer = "";
         let done = false;
         let streamFinished = false;
-        
+
         while (!done) {
           const { value, done: doneReading } = await reader.read();
           done = doneReading;
@@ -103,7 +102,7 @@ export default function SuccessPage() {
             }
           }
         }
-        
+
         if (!streamFinished) {
           throw new Error("Stream ended unexpectedly.");
         }
@@ -153,10 +152,8 @@ export default function SuccessPage() {
       }
     };
 
-    // Start the endpoint call immediately
     fetchSessionAndGenerate();
 
-    // Also, start the progress animation concurrently
     let interval = setInterval(() => {
       setProgress((prev) => (prev < 100 ? prev + 25 : 100));
     }, 1000);
@@ -191,14 +188,12 @@ export default function SuccessPage() {
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100 p-5">
       <div className="bg-white p-6 rounded-lg shadow-md w-full max-w-3xl text-center">
-        <h2 className="text-2xl font-bold mb-4">Payment Successful 🎉</h2>
+        <h2 className="text-2xl font-bold mb-4">{t('title')}</h2>
 
         {(!animationsComplete || loading) && (
           <>
-            <p className="mb-4">Your meal plan is being generated. Please wait...</p>
-            <p className="text-gray-600 text-sm mb-2">
-              Process can take 1 minute, do not leave this page!
-            </p>
+            <p className="mb-4">{t('generating')}</p>
+            <p className="text-gray-600 text-sm mb-2">{t('warning')}</p>
           </>
         )}
 
@@ -233,22 +228,19 @@ export default function SuccessPage() {
           </div>
         )}
 
-        {error && <p className="text-red-500">{error}</p>}
+        {error && <p className="text-red-500">{t('error')}</p>}
 
-        {mealPlan && animationsComplete && mealPlan.meal_plan && Array.isArray(mealPlan.meal_plan) && (
+        {mealPlan && animationsComplete && Array.isArray(mealPlan.meal_plan) && (
           <>
-            <h3 className="text-lg font-semibold mt-4">
-              Your 5-Day Personalized Meal Plan with Recipes 📖
-            </h3>
-            <p className="text-gray-600 text-sm mb-2">
-              Plan is sent to your email! Please check SPAM folder
-            </p>
+            <h3 className="text-lg font-semibold mt-4">{t('planTitle')}</h3>
+            <p className="text-gray-600 text-sm mb-2">{t('planEmailNote')}</p>
+            <p className="text-gray-600 text-sm mb-2">{t('planDownloadNote')}</p>
 
             <button
               onClick={downloadPDF}
               className="mt-4 bg-green-600 text-white py-2 px-4 rounded-md hover:bg-green-700"
             >
-              📥 Download PDF
+              {t('downloadBtn')}
             </button>
 
             <div id="meal-plan-content" className="text-left bg-gray-100 p-4 rounded-md overflow-auto mt-2">
@@ -262,15 +254,15 @@ export default function SuccessPage() {
                         <h4 className="text-md font-semibold text-gray-900">
                           🍴 {meal?.name || "No meal available"}
                         </h4>
-                        <p className="text-sm font-bold text-gray-700">Ingredients:</p>
+                        <p className="text-sm font-bold text-gray-700">{t('ingredients')}</p>
                         <ul className="list-disc pl-5 text-sm text-gray-700">
-                          {meal?.ingredients?.map((ingredient, j) => (
-                            <li key={j}>{ingredient}</li>
-                          )) || <li>No ingredients available</li>}
+                          {meal?.ingredients?.length > 0
+                            ? meal.ingredients.map((ingredient, j) => <li key={j}>{ingredient}</li>)
+                            : <li>{t('noIngredients')}</li>}
                         </ul>
-                        <p className="text-sm font-bold text-gray-700 mt-2">Instructions:</p>
+                        <p className="text-sm font-bold text-gray-700 mt-2">{t('instructions')}</p>
                         <p className="text-sm text-gray-700">
-                          {meal?.instructions || "No instructions available"}
+                          {meal?.instructions || t('noInstructions')}
                         </p>
                       </div>
                     );
@@ -285,9 +277,17 @@ export default function SuccessPage() {
           className="mt-4 bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700"
           onClick={() => router.push("/")}
         >
-          Back to Home
+          {t('backHome')}
         </button>
       </div>
     </div>
   );
+}
+
+export async function getServerSideProps({ locale }) {
+  return {
+    props: {
+      ...(await serverSideTranslations(locale, ['success']))
+    }
+  };
 }

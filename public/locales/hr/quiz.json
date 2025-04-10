@@ -1,0 +1,56 @@
+{
+    "questions": [
+      {
+        "question": "Koji je tvoj spol?",
+        "options": ["Muško", "Žensko", "Drugo"]
+      },
+      {
+        "question": "Koliko raznolikosti želiš u svom planu prehrane?",
+        "options": ["Visoka", "Umjerena", "Niska"]
+      },
+      {
+        "question": "Odaberi meso koje želiš uključiti",
+        "options": ["Piletina", "Svinjetina", "Govedina", "Slanina", "Losos", "Tuna", "Janjetina", "Ništa"]
+      },
+      {
+        "question": "Odaberi povrće koje želiš uključiti",
+        "options": ["Brokula", "Špinat", "Zelena salata", "Cvjetača", "Kupus", "Tikvica", "Šparoge", "Patlidžan", "Ništa"]
+      },
+      {
+        "question": "Odaberi ostale proizvode koje želiš uključiti",
+        "options": ["Jaja", "Sir", "Maslac", "Tofu", "Škampi", "Chia", "Ništa"]
+      },
+      {
+        "question": "Koja je tvoja razina aktivnosti?",
+        "options": ["Sjedilački način života", "Umjereno aktivan", "Vrlo aktivan"]
+      },
+      {
+        "question": "Imaš li neke alergije?",
+        "options": ["Oraščasti plodovi", "Mliječni proizvodi", "Soja", "Nema"]
+      },
+      {
+        "question": "Koji je tvoj glavni cilj?",
+        "options": ["Mršavljenje", "Održavanje težine", "Dobivanje mišićne mase"]
+      },
+      {
+        "question": "Imaš li budžet za pripremu obroka?",
+        "options": ["Nizak", "Srednji", "Visok"]
+      },
+      {
+        "question": "Grickaš li često između obroka?",
+        "options": ["Da", "Ne"]
+      },
+      {
+        "question": "Što te najviše motivira?",
+        "options": ["Obitelj i voljene osobe", "Samo-poboljšanje", "Zdravstveni ciljevi", "Povećana energija", "Ništa"]
+      },
+      {
+        "question": "Koliko vremena želiš provoditi kuhajući?",
+        "options": ["<30 minuta", "30-60 minuta", ">60 minuta"]
+      }
+    ],
+    "selectYourPreference": "Odaberi svoje preferencije",
+    "next": "Dalje",
+    "back": "Natrag"
+  }
+  

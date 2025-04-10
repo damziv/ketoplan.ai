@@ -1,0 +1,56 @@
+{
+    "questions": [
+      {
+        "question": "What is your gender?",
+        "options": ["Male", "Female", "Other"]
+      },
+      {
+        "question": "How much variety do you want in your meal plan?",
+        "options": ["High", "Moderate", "Low"]
+      },
+      {
+        "question": "Choose the meat you want to include",
+        "options": ["Chicken", "Pork", "Beef", "Bacon", "Salmon", "Tuna", "Lamb", "None"]
+      },
+      {
+        "question": "Choose the vegetable you want to include",
+        "options": ["Broccoli", "Spinach", "Lettuce", "Cauliflower", "Cabbage", "Zucchini", "Asparagus", "Eggplant", "None"]
+      },
+      {
+        "question": "Choose other products you want to include",
+        "options": ["Eggs", "Cheese", "Butter", "Tofu", "Shrimp", "Chia", "None"]
+      },
+      {
+        "question": "What is your activity level?",
+        "options": ["Sedentary", "Moderately Active", "Very Active"]
+      },
+      {
+        "question": "Do you have any allergies?",
+        "options": ["Nuts", "Dairy", "Soy", "None"]
+      },
+      {
+        "question": "What is your primary goal?",
+        "options": ["Weight Loss", "Maintain Weight", "Gain Muscle"]
+      },
+      {
+        "question": "Do you have a budget preference for meal prep?",
+        "options": ["Low", "Medium", "High"]
+      },
+      {
+        "question": "Do you snack frequently?",
+        "options": ["Yes", "No"]
+      },
+      {
+        "question": "What motivates you the most?",
+        "options": ["Family & Loved Ones", "Self-Improvement", "Health Goals", "Increased Energy", "None"]
+      },
+      {
+        "question": "What is your preferred cooking time?",
+        "options": ["<30 minutes", "30-60 minutes", ">60 minutes"]
+      }
+    ],
+    "selectYourPreference": "Select your preference",
+    "next": "Next",
+    "back": "Back"
+  }
+  

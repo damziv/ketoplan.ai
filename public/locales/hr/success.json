@@ -1,0 +1,24 @@
+{
+    "title": "Plaćanje uspješno 🎉",
+    "generating": "Tvoj plan prehrane se generira. Molimo pričekaj...",
+    "warning": "Proces može potrajati do 1 minute. Nemoj napuštati stranicu!",
+    "steps": [
+      "Demografski profil",
+      "Zdravstveni uvjeti",
+      "Izračun nutritivnih potreba",
+      "Aktivnosti i navike",
+      "Završetak plana prehrane"
+    ],
+    "planTitle": "Tvoj 5-dnevni personalizirani plan prehrane 📖",
+    "planEmailNote": "Plan je poslan na tvoj email! Provjeri SPAM folder.",
+    "planDownloadNote": "Preporučujemo preuzimanje plana! Email može biti blokiran.",
+    "downloadBtn": "📥 Preuzmi PDF",
+    "ingredients": "Sastojci:",
+    "instructions": "Upute:",
+    "noIngredients": "Nema dostupnih sastojaka",
+    "noInstructions": "Nema dostupnih uputa",
+    "backHome": "Povratak na početnu",
+    "error": "Došlo je do pogreške prilikom generiranja plana prehrane.",
+    "day": "Dan {{day}}"
+  }
+  

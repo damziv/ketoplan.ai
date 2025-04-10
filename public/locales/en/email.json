@@ -1,0 +1,17 @@
+{
+    "title": "Almost Done!",
+    "subtitle": "Just a few more details before we generate your meal plan.",
+    "fields": {
+      "age": "Age",
+      "height": "Height (cm)",
+      "currentWeight": "Current Weight (kg)",
+      "desiredWeight": "Desired Weight (kg)",
+      "email": "Your email address"
+    },
+    "error": {
+      "fillAll": "Please fill in all fields to continue.",
+      "invalidEmail": "Enter a valid email address."
+    },
+    "continue": "Continue"
+  }
+  
