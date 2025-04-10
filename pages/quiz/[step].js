@@ -123,6 +123,15 @@ export default function QuizStep() {
 
   if (!question) return <div>Loading...</div>;
 
+
+  if (!question || !question.options) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-red-100 text-red-700 font-semibold text-center px-4">
+        ⚠️ Error: Missing translation for this question. Please check quiz.json.
+      </div>
+    );
+  }
+
   return (
     <div className="relative min-h-screen flex flex-col items-center justify-center text-white px-6 md:px-0">
       <div className="fixed top-0 w-full bg-gray-800 py-4 text-center text-white font-bold text-2xl z-50">Smart Keto-Meal</div>
@@ -134,7 +143,10 @@ export default function QuizStep() {
         <h2 className="text-2xl font-bold mb-4 text-gray-900">{question.question}</h2>
         <p className="text-gray-700 text-sm mb-4">{t('selectYourPreference')}</p>
 
+
+
         <div className="flex flex-col space-y-4">
+          
           {question.options.map((option, index) => {
             const foodImage = getFoodImage(option);
             return (
