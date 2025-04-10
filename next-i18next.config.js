@@ -4,15 +4,15 @@ module.exports = {
       locales: ['en', 'hr', 'de'],
       domains: [
         {
-          domain: 'localhost',
+          domain: 'keto-meal.com',
           defaultLocale: 'en',
         },
         {
-          domain: 'hr.localhost',
+          domain: 'hr.keto-meal.com',
           defaultLocale: 'hr',
         },
         {
-          domain: 'de.localhost',
+          domain: 'de.keto-meal.com',
           defaultLocale: 'de',
         },
       ],
