@@ -198,17 +198,11 @@ console.log("🈶 Loaded question from t:", question);
   );
 }
 
-export async function getStaticProps({ locale }) {
+export async function getServerSideProps({ locale }) {
+  console.log('📣 Detected locale (SSR):', locale);
   return {
     props: {
       ...(await serverSideTranslations(locale, ['quiz'])),
     },
-  };
-}
-
-export function getStaticPaths() {
-  return {
-    paths: [],
-    fallback: 'blocking',
   };
 }
