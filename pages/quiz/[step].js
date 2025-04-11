@@ -200,14 +200,26 @@ export default function QuizStep() {
   );
 }
 
-export async function getStaticProps({ locale }) {
-  const translations = await serverSideTranslations(locale, ['quiz']);
-  console.log("✅ Loaded quiz translations for locale:", locale);
-  console.log("🧪 Translations keys:", Object.keys(translations._nextI18Next.initialI18nStore[locale]));
+export async function getStaticPaths() {
+  const steps = Array.from({ length: 12 }, (_, i) => i + 1);
+
+  const paths = ['en', 'hr'].flatMap((locale) =>
+    steps.map((step) => ({
+      params: { step: step.toString() },
+      locale,
+    }))
+  );
 
   return {
+    paths,
+    fallback: 'blocking',
+  };
+}
+
+export async function getStaticProps({ locale }) {
+  return {
     props: {
-      ...translations,
+      ...(await serverSideTranslations(locale, ['quiz'])),
     },
   };
 }
