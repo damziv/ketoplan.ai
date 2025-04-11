@@ -200,11 +200,14 @@ export default function QuizStep() {
   );
 }
 
-export async function getServerSideProps({ locale }) {
-  console.log('📣 Detected locale (SSR):', locale);
+export async function getStaticProps({ locale }) {
+  const translations = await serverSideTranslations(locale, ['quiz']);
+  console.log("✅ Loaded quiz translations for locale:", locale);
+  console.log("🧪 Translations keys:", Object.keys(translations._nextI18Next.initialI18nStore[locale]));
+
   return {
     props: {
-      ...(await serverSideTranslations(locale, ['quiz'])),
+      ...translations,
     },
   };
 }
