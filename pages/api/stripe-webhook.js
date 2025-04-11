@@ -2,9 +2,6 @@ import { buffer } from 'micro';
 import { createClient } from '@supabase/supabase-js';
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
-console.log('📩 Incoming Stripe webhook request:', req.url);
-
-
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL,
   process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
@@ -17,14 +14,16 @@ export const config = {
 };
 
 export default async function handler(req, res) {
+  console.log('📩 Incoming Stripe webhook');
+
   if (req.method !== 'POST') {
     res.setHeader('Allow', 'POST');
     return res.status(405).send('Method Not Allowed');
   }
 
   const sig = req.headers['stripe-signature'];
-
   let event;
+
   try {
     const rawBody = await buffer(req);
     event = stripe.webhooks.constructEvent(
@@ -42,7 +41,7 @@ export default async function handler(req, res) {
   if (event.type === 'payment_intent.succeeded') {
     const paymentIntent = event.data.object;
     const stripePaymentIntentId = paymentIntent.id;
-    const email = paymentIntent.metadata?.email; // Extract email from metadata
+    const email = paymentIntent.metadata?.email;
 
     if (!email) {
       console.error('❌ Missing email metadata in Stripe payment intent');
@@ -50,26 +49,29 @@ export default async function handler(req, res) {
     }
 
     try {
-      console.log(`🔎 Searching for latest unpaid session for email: ${email}`);
+      console.log(`🔎 Searching for unpaid session for email: ${email}`);
 
-      // ✅ Get the latest unpaid session
       const { data: latestSession, error: fetchError } = await supabase
         .from('sessions')
         .select('id, payment_status')
         .eq('email', email)
-        .eq('payment_status', false) // Ensure it's an unpaid session
-        .order('created_at', { ascending: false }) // Get the latest session
+        .eq('payment_status', false)
+        .order('created_at', { ascending: false })
         .limit(1)
         .single();
 
-      if (fetchError || !latestSession) {
-        console.error('❌ No unpaid session found for email:', email);
-        return res.status(404).send('No unpaid session found');
+      if (fetchError) {
+        console.error('❌ Supabase fetch error:', fetchError);
+        return res.status(500).send('Database query failed');
       }
 
-      console.log(`✅ Found latest session: ${latestSession.id}`);
+      if (!latestSession) {
+        console.error('⚠️ No unpaid session found for email:', email);
+        return res.status(404).send('Session not found');
+      }
 
-      // ✅ Update existing session with payment status & Stripe session ID
+      console.log(`✅ Found session: ${latestSession.id}`);
+
       const { error: updateError } = await supabase
         .from('sessions')
         .update({
@@ -80,18 +82,16 @@ export default async function handler(req, res) {
 
       if (updateError) {
         console.error('❌ Error updating payment status:', updateError);
-        return res.status(500).send('Failed to update session payment status');
+        return res.status(500).send('Failed to update session');
       }
 
-      console.log(`✅ Payment status updated for session: ${latestSession.id}`);
-
-     
-      return res.status(200).send('Payment status updated & new meal plan generated');
+      console.log(`✅ Session ${latestSession.id} updated successfully`);
+      return res.status(200).send('Session updated');
     } catch (err) {
-      console.error('❌ Error processing webhook:', err.message);
-      return res.status(500).send('Server error processing webhook');
+      console.error('❌ Exception in webhook handler:', err.message);
+      return res.status(500).send('Internal error');
     }
   }
 
-  res.json({ received: true });
+  res.status(200).json({ received: true });
 }
