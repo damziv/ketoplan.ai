@@ -198,8 +198,7 @@ console.log("🈶 Loaded question from t:", question);
   );
 }
 
-export async function getServerSideProps({ locale }) {
-  console.log("📣 Loaded server side props for locale:", locale);
+export async function getStaticProps({ locale }) {
   return {
     props: {
       ...(await serverSideTranslations(locale, ['quiz'])),
