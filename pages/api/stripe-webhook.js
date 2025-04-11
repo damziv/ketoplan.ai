@@ -82,17 +82,7 @@ export default async function handler(req, res) {
 
       console.log(`✅ Payment status updated for session: ${latestSession.id}`);
 
-      // ✅ Trigger meal plan generation for the same session
-      console.log(`🚀 Generating a new meal plan for session: ${latestSession.id}`);
-
-
-      if (!generateMealPlanResponse.ok) {
-        console.error('❌ Error generating meal plan:', await generateMealPlanResponse.text());
-        return res.status(500).send('Meal plan generation failed');
-      }
-
-      console.log('✅ Meal plan successfully generated.');
-
+     
       return res.status(200).send('Payment status updated & new meal plan generated');
     } catch (err) {
       console.error('❌ Error processing webhook:', err.message);

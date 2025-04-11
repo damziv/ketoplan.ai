@@ -40,7 +40,7 @@ export default function Home() {
       {/* Footer */}
       <footer className="relative z-10 w-full bg-gray-900 text-gray-300 text-sm text-center py-6 mt-10">
         <div className="container mx-auto flex flex-col md:flex-row items-center justify-center gap-4">
-          <p className="text-gray-400">© {new Date().getFullYear()} AImealPrep. All rights reserved.</p>
+          <p className="text-gray-400">© {new Date().getFullYear()} keto-meail.com All rights reserved.</p>
           <div className="flex space-x-4">
             <a href="/privacy-policy" className="hover:text-white transition">{t('footer.privacy')}</a>
             <a href="/terms" className="hover:text-white transition">{t('footer.terms')}</a>
