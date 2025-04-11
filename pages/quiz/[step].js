@@ -61,7 +61,8 @@ export default function QuizStep() {
       </div>
     );
   }
-  const question = t(`questions.${stepIndex}`, { returnObjects: true });
+  const questionsArray = t('questions', { returnObjects: true });
+  const question = questionsArray[stepIndex];
   console.log("🌐 stepIndex:", stepIndex);
 console.log("🈶 Loaded question from t:", question);
   const questionMeta = questions[stepIndex];
