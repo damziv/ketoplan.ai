@@ -53,6 +53,14 @@ export default function QuizStep() {
   const router = useRouter();
   const { step } = router.query;
   const stepIndex = parseInt(step) - 1;
+  
+  if (isNaN(stepIndex) || stepIndex < 0 || stepIndex >= questions.length) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-red-100 text-red-700 font-semibold text-center px-4">
+        ⚠️ Invalid step index. Please restart the quiz.
+      </div>
+    );
+  }
   const question = t(`questions.${stepIndex}`, { returnObjects: true });
   const questionMeta = questions[stepIndex];
 
@@ -124,10 +132,14 @@ export default function QuizStep() {
   if (!question) return <div>Loading...</div>;
 
 
-  if (!question || !question.options) {
+  if (!step || !question) {
+    return <div className="text-center py-10 text-gray-700">Loading quiz...</div>;
+  }
+  
+  if (!question.options || !Array.isArray(question.options)) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-red-100 text-red-700 font-semibold text-center px-4">
-        ⚠️ Error: Missing translation for this question. Please check quiz.json.
+        ⚠️ Error: Missing or invalid translation for this question. Please check quiz.json.
       </div>
     );
   }
