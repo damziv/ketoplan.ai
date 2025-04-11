@@ -142,10 +142,12 @@ export default function EmailPage() {
   );
 }
 
-export async function getServerSideProps({ locale }) {
+export async function getStaticProps({ locale }) {
+  console.log('📣 Detected locale:', locale); // <-- 👈 Add this line
   return {
     props: {
-      ...(await serverSideTranslations(locale, ['email'])),
+      ...(await serverSideTranslations(locale, ['common'])),
     },
   };
 }
+
