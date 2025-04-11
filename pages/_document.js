@@ -1,4 +1,5 @@
 // pages/_document.js
+import Script from 'next/script';
 import { Html, Head, Main, NextScript } from 'next/document';
 
 export default function Document() {
