@@ -62,6 +62,8 @@ export default function QuizStep() {
     );
   }
   const question = t(`questions.${stepIndex}`, { returnObjects: true });
+  console.log("🌐 stepIndex:", stepIndex);
+console.log("🈶 Loaded question from t:", question);
   const questionMeta = questions[stepIndex];
 
   const [answers, setAnswers] = useState({});
@@ -195,17 +197,11 @@ export default function QuizStep() {
   );
 }
 
-export async function getStaticProps({ locale }) {
+export async function getServerSideProps({ locale }) {
+  console.log("📣 Loaded server side props for locale:", locale);
   return {
     props: {
       ...(await serverSideTranslations(locale, ['quiz'])),
     },
-  };
-}
-
-export function getStaticPaths() {
-  return {
-    paths: [],
-    fallback: 'blocking',
   };
 }
