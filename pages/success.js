@@ -284,10 +284,10 @@ export default function SuccessPage() {
   );
 }
 
-export async function getServerSideProps({ locale }) {
+export async function getStaticProps({ locale }) {
   return {
     props: {
-      ...(await serverSideTranslations(locale, ['success']))
-    }
+      ...(await serverSideTranslations(locale, ['success'])),
+    },
   };
 }
