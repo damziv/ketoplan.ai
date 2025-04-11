@@ -72,7 +72,7 @@ export default function EmailPage() {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-50 p-6">
       <div className="fixed top-0 w-full bg-gray-800 py-4 text-center text-white font-bold text-2xl z-50">
-        AImealPrep
+      Smart Keto-Meal
       </div>
 
       <motion.div

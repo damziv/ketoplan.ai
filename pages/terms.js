@@ -7,12 +7,12 @@ export default function TermsPage() {
         <h1 className="text-3xl font-bold text-gray-900 mb-6">📜 Terms and Conditions</h1>
 
         <p className="text-gray-700 mb-4">
-          Last updated: <strong>March 2025</strong>
+          Last updated: <strong>April 2025</strong>
         </p>
 
         <h2 className="text-xl font-semibold text-gray-800 mt-6">1. Introduction</h2>
         <p className="text-gray-700">
-          Welcome to **AImealPrep** ("we", "our", "us"). These Terms and Conditions govern your use of our website and services. 
+          Welcome to **keto-meal.com** ("we", "our", "us"). These Terms and Conditions govern your use of our website and services. 
           By accessing or using our platform, you agree to these Terms in full.
         </p>
 
@@ -23,7 +23,7 @@ export default function TermsPage() {
 
         <h2 className="text-xl font-semibold text-gray-800 mt-6">3. Services Provided</h2>
         <p className="text-gray-700">
-          AImealPrep provides personalized meal plans based on user inputs. Our services do **not** constitute medical or 
+          keto-meal.com provides personalized meal plans based on user inputs. Our services do **not** constitute medical or 
           nutritional advice. Please consult a professional before making dietary changes.
         </p>
 
@@ -45,7 +45,7 @@ export default function TermsPage() {
         <p className="text-gray-700">
           We respect your privacy and comply with the **General Data Protection Regulation (GDPR)**. 
           - Your personal data is stored securely in **Supabase** and is not shared with third parties.
-          - You can request data deletion at any time via <a href="mailto:support@ai-mealprep.com" className="text-blue-600 hover:underline">support@ai-mealprep.com</a>.
+          - You can request data deletion at any time via <a href="mailto:support@keto-meal.com" className="text-blue-600 hover:underline">support@keto-meal.com</a>.
         </p>
 
         <h2 className="text-xl font-semibold text-gray-800 mt-6">7. Acceptable Use</h2>
@@ -68,7 +68,7 @@ export default function TermsPage() {
         <h2 className="text-xl font-semibold text-gray-800 mt-6">10. Contact Us</h2>
         <p className="text-gray-700">
           If you have any questions about these Terms, you can contact us at 
-          <a href="mailto:support@ai-mealprep.com" className="text-blue-600 hover:underline"> support@ai-mealprep.com</a>.
+          <a href="mailto:support@keto-meal.com" className="text-blue-600 hover:underline"> support@keto-meal.com</a>.
         </p>
 
         {/* Back to Home Button */}

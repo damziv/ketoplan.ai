@@ -284,6 +284,13 @@ export default function SuccessPage() {
   );
 }
 
+if (typeof window !== 'undefined' && window.fbq) {
+  window.fbq('track', 'Purchase', {
+    value: 5.99,
+    currency: 'USD',
+  });
+}
+
 export async function getStaticProps({ locale }) {
   return {
     props: {

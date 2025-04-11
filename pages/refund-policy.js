@@ -12,7 +12,7 @@ export default function RefundPolicy() {
 
         <h2 className="text-xl font-semibold text-gray-800 mt-6">1. Introduction</h2>
         <p className="text-gray-700">
-          AImealPrep ("we", "our", "us") aims to provide high-quality digital meal plans tailored to your needs. 
+          keto-meal.com ("we", "our", "us") aims to provide high-quality digital meal plans tailored to your needs. 
           As our services are digital products, our refund policy complies with the **EU Consumer Rights Directive**.
         </p>
 
@@ -42,7 +42,7 @@ export default function RefundPolicy() {
           To request a refund, send an email to:
         </p>
         <p className="text-gray-700 font-bold">
-          📩 <a href="mailto:support@ai-mealprep.com" className="text-blue-600 hover:underline">support@ai-mealprep.com</a>
+          📩 <a href="mailto:support@ai-mealprep.com" className="text-blue-600 hover:underline">support@keto-meal.com</a>
         </p>
         <p className="text-gray-700 mt-2">Please include:</p>
         <ul className="list-disc pl-5 text-gray-700">
@@ -77,7 +77,7 @@ export default function RefundPolicy() {
           If you have further questions about refunds, reach out to:
         </p>
         <p className="text-gray-700 font-bold">
-          📩 <a href="mailto:support@ai-mealprep.com" className="text-blue-600 hover:underline">support@ai-mealprep.com</a>
+          📩 <a href="mailto:support@keto-meal.com" className="text-blue-600 hover:underline">support@keto-meal.com</a>
         </p>
 
         {/* Back to Home Button */}

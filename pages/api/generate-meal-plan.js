@@ -61,7 +61,8 @@ export default async function handler(req) {
             messages: [
               {
                 role: "system",
-                content: `You are a JSON API that only replies with valid JSON. No markdown, no explanation, no placeholders. Use METRIC units. Strictly return:
+                content: `${languageInstruction}
+                You are a JSON API that only replies with valid JSON. No markdown, no explanation, no placeholders. Use METRIC units. Strictly return:
 {
   "mealPlan": {
     "Day1": {
@@ -78,7 +79,8 @@ Use ONLY double quotes. Escape invalid characters. No trailing commas.`,
               },
               {
                 role: "user",
-                content: `Create a 5-day personalized keto meal plan with full recipes based on:
+                content: `${languageInstruction}
+                Create a 5-day personalized keto meal plan with full recipes based on:
 ${JSON.stringify(formattedData)}`,
               },
             ],

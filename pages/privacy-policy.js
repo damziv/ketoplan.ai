@@ -6,7 +6,7 @@ export default function PrivacyPolicy() {
           <p className="text-gray-600 mb-4 text-sm text-center">Last updated: {new Date().toLocaleDateString()}</p>
   
           <p className="text-gray-700 mb-4">
-            Welcome to AImealPrep. Your privacy is important to us. This **Privacy Policy** explains how we collect, process, and protect your personal data in accordance with the **General Data Protection Regulation (GDPR) (EU) 2016/679** and other applicable data protection laws.
+            Welcome to keto-meal.com. Your privacy is important to us. This **Privacy Policy** explains how we collect, process, and protect your personal data in accordance with the **General Data Protection Regulation (GDPR) (EU) 2016/679** and other applicable data protection laws.
           </p>
   
           {/* ✅ 1. Data Controller */}
@@ -14,9 +14,9 @@ export default function PrivacyPolicy() {
           <p className="text-gray-700 mt-2">
             The **Data Controller** responsible for processing your personal data under this policy is:
           </p>
-          <p className="text-gray-900 font-bold mt-2">AImealPrep</p>
+          <p className="text-gray-900 font-bold mt-2">keto-meal.com</p>
           <p className="text-gray-900">📍 Address: [Your Company Address]</p>
-          <p className="text-gray-900">📩 Email: support@aimealprep.com</p>
+          <p className="text-gray-900">📩 Email: support@keto-meal.com</p>
   
           {/* ✅ 2. What Personal Data We Collect */}
           <h2 className="text-xl font-semibold text-gray-900 mt-6">2. What Personal Data We Collect</h2>
@@ -100,7 +100,7 @@ export default function PrivacyPolicy() {
           <p className="text-gray-700 mt-2">
             To exercise your rights or for privacy concerns, please contact us:
           </p>
-          <p className="text-gray-900 font-bold mt-2">📩 Email: support@aimealprep.com</p>
+          <p className="text-gray-900 font-bold mt-2">📩 Email: support@keto-meal.com</p>
           <p className="text-gray-900 font-bold">📍 Address: [Your Company Address]</p>
   
           {/* ✅ Back Button */}

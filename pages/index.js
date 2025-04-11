@@ -32,7 +32,7 @@ export default function Home() {
           {t('hero.cta')}
         </button>
 
-        <p className="text-gray-600 text-sm mb-2">
+        <p className="relative z-10 text-gray-800 text-sm mb-2 font-bold py-4 px-8 rounded-xl bg-[rgba(255,255,255,0.8)] shadow-md">
           {t('hero.disclaimer')}
         </p>
       </div>
