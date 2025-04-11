@@ -61,10 +61,12 @@ export default function QuizStep() {
       </div>
     );
   }
-  const questionsArray = t('questions', { returnObjects: true });
+  const questionsArray = t('questions', { returnObjects: true }) || [];
   const question = questionsArray[stepIndex];
+  
   console.log("🌐 stepIndex:", stepIndex);
-console.log("🈶 Loaded question from t:", question);
+  console.log("🧪 Full quiz translation object:", t('', { returnObjects: true }));
+  console.log("🈶 Loaded question from t:", question);
   const questionMeta = questions[stepIndex];
 
   const [answers, setAnswers] = useState({});
