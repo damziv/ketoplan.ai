@@ -2,6 +2,9 @@ import { buffer } from 'micro';
 import { createClient } from '@supabase/supabase-js';
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
+console.log('📩 Incoming Stripe webhook request:', req.url);
+
+
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL,
   process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
