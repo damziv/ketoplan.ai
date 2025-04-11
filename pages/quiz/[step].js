@@ -205,3 +205,10 @@ export async function getStaticProps({ locale }) {
     },
   };
 }
+
+export function getStaticPaths() {
+  return {
+    paths: [],
+    fallback: 'blocking',
+  };
+}
