@@ -166,8 +166,8 @@ export default function SuccessPage() {
     if (animationsComplete && typeof window !== 'undefined' && window.fbq) {
       console.log('📈 Sending Purchase event to Facebook Pixel');
       window.fbq('track', 'Purchase', {
-        value: 5.99,
-        currency: 'USD',
+        value: 3.99,
+        currency: 'eur',
       });
     }
   }, [animationsComplete]);
