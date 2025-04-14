@@ -35,18 +35,6 @@
       {
         "question": "Do you have a budget preference for meal prep?",
         "options": ["Low", "Medium", "High"]
-      },
-      {
-        "question": "Do you snack frequently?",
-        "options": ["Yes", "No"]
-      },
-      {
-        "question": "What motivates you the most?",
-        "options": ["Family & Loved Ones", "Self-Improvement", "Health Goals", "Increased Energy", "None"]
-      },
-      {
-        "question": "What is your preferred cooking time?",
-        "options": ["<30 minutes", "30-60 minutes", ">60 minutes"]
       }
     ],
     "selectYourPreference": "Select your preference",

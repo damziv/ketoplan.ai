@@ -21,10 +21,7 @@ const questions = [
   { id: 6, multiple: false },
   { id: 7, multiple: true },
   { id: 8, multiple: false },
-  { id: 9, multiple: false },
-  { id: 10, multiple: false },
-  { id: 11, multiple: false },
-  { id: 12, multiple: false }
+  { id: 9, multiple: false }
 ];
 
 const foodTranslationMap = {

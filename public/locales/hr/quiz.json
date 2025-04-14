@@ -35,18 +35,6 @@
       {
         "question": "Imaš li budžet za pripremu obroka?",
         "options": ["Nizak", "Srednji", "Visok"]
-      },
-      {
-        "question": "Grickaš li često između obroka?",
-        "options": ["Da", "Ne"]
-      },
-      {
-        "question": "Što te najviše motivira?",
-        "options": ["Obitelj i voljene osobe", "Samo-poboljšanje", "Zdravstveni ciljevi", "Povećana energija", "Ništa"]
-      },
-      {
-        "question": "Koliko vremena želiš provoditi kuhajući?",
-        "options": ["<30 minuta", "30-60 minuta", ">60 minuta"]
       }
     ],
     "selectYourPreference": "Odaberi svoje preferencije",
