@@ -65,6 +65,12 @@ export default function EmailPage() {
       setError('');
       sessionStorage.setItem('email', email);
       await saveEmailToDatabase();
+
+    // ✅ Fire Facebook Pixel Lead event
+    if (typeof window !== 'undefined' && window.fbq) {
+      fbq('track', 'Lead');
+    }
+    
       router.push('/payment');
     }
   };

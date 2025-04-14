@@ -161,6 +161,18 @@ export default function SuccessPage() {
     return () => clearInterval(interval);
   }, [email]);
 
+    // ✅ Fire Facebook Pixel Lead event
+  useEffect(() => {
+    if (animationsComplete && typeof window !== 'undefined' && window.fbq) {
+      console.log('📈 Sending Purchase event to Facebook Pixel');
+      window.fbq('track', 'Purchase', {
+        value: 5.99,
+        currency: 'USD',
+      });
+    }
+  }, [animationsComplete]);
+  
+
   const downloadPDF = async () => {
     const input = document.getElementById("meal-plan-content");
     const canvas = await html2canvas(input, { scale: 2, useCORS: true });

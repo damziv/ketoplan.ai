@@ -79,6 +79,14 @@ export default function QuizStep() {
     } else {
       setSessionId(storedSessionId);
     }
+
+      // 🎯 Track StartQuiz only for step 1
+  if (step === '1') {
+    if (typeof window !== 'undefined' && window.fbq) {
+      window.fbq('trackCustom', 'StartQuiz');
+    }
+  }
+
   }, []);
 
   useEffect(() => {
