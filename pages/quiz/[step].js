@@ -70,21 +70,45 @@ export default function QuizStep() {
   const [sessionId, setSessionId] = useState('');
 
   useEffect(() => {
-    const storedSessionId = sessionStorage.getItem('SessionId');
-    if (!storedSessionId) {
-      createNewSession();
-    } else {
+    const storedSessionId = sessionStorage.getItem('sessionId');
+  
+    const loadSavedAnswers = async (id) => {
+      const { data, error } = await supabase
+        .from('sessions')
+        .select('quiz_answers')
+        .eq('id', id)
+        .single();
+  
+      if (error) {
+        console.error('❌ Failed to load saved answers:', error);
+      } else if (data?.quiz_answers) {
+        setAnswers(data.quiz_answers);
+      }
+    };
+  
+    const createNewSession = async () => {
+      const { data, error } = await supabase.from('sessions').insert({}).select('id').single();
+      if (error) {
+        console.error('❌ Error creating new session:', error);
+      } else {
+        sessionStorage.setItem('sessionId', data.id);
+        setSessionId(data.id);
+      }
+    };
+  
+    if (storedSessionId) {
       setSessionId(storedSessionId);
+      loadSavedAnswers(storedSessionId);
+    } else {
+      createNewSession();
     }
-
-      // 🎯 Track StartQuiz only for step 1
-  if (step === '1') {
-    if (typeof window !== 'undefined' && window.fbq) {
+  
+    // 🎯 Track StartQuiz only for step 1
+    if (step === '1' && typeof window !== 'undefined' && window.fbq) {
       window.fbq('trackCustom', 'StartQuiz');
     }
-  }
-
   }, []);
+  
 
   useEffect(() => {
     if (sessionId) {
