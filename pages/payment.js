@@ -152,16 +152,16 @@ useEffect(() => {
 
 {/* 🔥 Limited-Time Offer Timer + Price Display */}
 <div className="bg-yellow-100 border border-yellow-300 text-yellow-800 p-4 rounded-lg shadow-md text-center mt-8 max-w-md w-full">
-  <h2 className="text-xl font-semibold mb-2">🎁 Special Offer – 50% Off!</h2>
+  <h2 className="text-xl font-semibold mb-2">🎁 {t('discountTitle')}</h2>
   <p className="text-sm mb-2">
-    Get your personalized keto meal plan for only:
+  {t('discountSubtitle')}
   </p>
 
   <div className="text-2xl font-bold mb-1 text-green-700">
     €2.99 <span className="text-sm font-medium text-gray-500 line-through ml-2">€5.99</span>
   </div>
 
-  <p className="text-sm text-gray-700">Offer expires in:</p>
+  <p className="text-sm text-gray-700">{t('discountOffer')}</p>
   <div className="font-bold text-xl mt-1">
     {Math.floor(timeLeft / (1000 * 60 * 60))}h :{" "}
     {Math.floor((timeLeft / (1000 * 60)) % 60)}m :{" "}
