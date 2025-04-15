@@ -7,6 +7,9 @@ import { motion } from 'framer-motion';
 import { LineChart, Line, XAxis, YAxis, ResponsiveContainer } from 'recharts';
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import { Carousel } from 'react-responsive-carousel';
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+
 
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL,
@@ -54,13 +57,6 @@ export default function PaymentPage() {
     fetchPaymentIntent();
   }, [router]);
 
-  const weightData = [
-    { week: 'Now', weight: currentWeight },
-    { week: 'Week 1', weight: currentWeight - 1.5 },
-    { week: 'Week 2', weight: currentWeight - 3 },
-    { week: 'Week 3', weight: currentWeight - 5 },
-    { week: 'Week 4', weight: targetWeight },
-  ];
 
   const reviews = t('reviews', { returnObjects: true });
   const why = t('why', { returnObjects: true });
@@ -69,31 +65,33 @@ export default function PaymentPage() {
     <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100 p-5">
       <div className="fixed top-0 w-full bg-gray-800 py-4 text-center text-white font-bold text-2xl z-50">Smart Keto-Meal</div>
 
-      {/* Weight Chart */}
-      <motion.div
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-        className="bg-white shadow-lg rounded-2xl p-6 w-full max-w-md text-center mt-16"
-      >
-        <h2 className="text-2xl font-bold text-gray-800 mb-2">🏆 {t('title')}</h2>
-        <p className="text-gray-500 mb-4">{t('subtitle')}</p>
+  
 
-        <div className="h-44 w-full">
-          <ResponsiveContainer width="100%" height="100%">
-            <LineChart data={weightData}>
-              <XAxis dataKey="week" />
-              <YAxis domain={[targetWeight - 2, currentWeight + 2]} hide />
-              <Line type="monotone" dataKey="weight" stroke="#4CAF50" strokeWidth={3} dot={{ fill: "#4CAF50" }} />
-            </LineChart>
-          </ResponsiveContainer>
-        </div>
+{/* Image Courasel */}
+      <div className="max-w-md mx-auto mt-16">
+  <h2 className="text-2xl font-bold text-center mb-4 text-gray-800">🔥 {t('title')}</h2>
+  <Carousel 
+    showThumbs={false} 
+    autoPlay 
+    infiniteLoop 
+    interval={2000} 
+    showStatus={false}
+  >
+    <div>
+      <img src="/images/results/result1.jpg" alt="Before and After 1" />
+    </div>
+    <div>
+      <img src="/images/results/result2.jpg" alt="Before and After 2" />
+    </div>
+    <div>
+      <img src="/images/results/result3.jpg" alt="Before and After 3" />
+    </div>
+  </Carousel>
+</div>
 
-        <p className="text-sm text-gray-400 mt-2">{t('chartNote')}</p>
-      </motion.div>
 
       {/* Reviews */}
-      <div className="mt-8 w-full max-w-md">
+      <div className="mt-16 w-full max-w-md">
         <h3 className="text-lg font-bold text-center mb-4">{t('reviewsTitle')}</h3>
         <div className="flex flex-wrap gap-4 justify-center md:flex-nowrap">
           {reviews.map((review, index) => (
