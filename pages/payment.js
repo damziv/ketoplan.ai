@@ -61,6 +61,29 @@ export default function PaymentPage() {
   const reviews = t('reviews', { returnObjects: true });
   const why = t('why', { returnObjects: true });
 
+  const [timeLeft, setTimeLeft] = useState(0);
+
+// ⏳ Set countdown on mount
+useEffect(() => {
+  const savedExpiry = localStorage.getItem('countdown_expiry');
+  let expiryTime;
+
+  if (savedExpiry && parseInt(savedExpiry) > Date.now()) {
+    expiryTime = parseInt(savedExpiry);
+  } else {
+    expiryTime = Date.now() + 48 * 60 * 60 * 1000; // 48h
+    localStorage.setItem('countdown_expiry', expiryTime);
+  }
+
+  const interval = setInterval(() => {
+    const now = Date.now();
+    const remaining = Math.max(0, expiryTime - now);
+    setTimeLeft(remaining);
+  }, 1000);
+
+  return () => clearInterval(interval);
+}, []);
+
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100 p-5">
       <div className="fixed top-0 w-full bg-gray-800 py-4 text-center text-white font-bold text-2xl z-50">Smart Keto-Meal</div>
@@ -126,6 +149,25 @@ export default function PaymentPage() {
           ))}
         </ul>
       </div>
+
+{/* 🔥 Limited-Time Offer Timer + Price Display */}
+<div className="bg-yellow-100 border border-yellow-300 text-yellow-800 p-4 rounded-lg shadow-md text-center mt-8 max-w-md w-full">
+  <h2 className="text-xl font-semibold mb-2">🎁 Special Offer – 50% Off!</h2>
+  <p className="text-sm mb-2">
+    Get your personalized keto meal plan for only:
+  </p>
+
+  <div className="text-2xl font-bold mb-1 text-green-700">
+    €2.99 <span className="text-sm font-medium text-gray-500 line-through ml-2">€5.99</span>
+  </div>
+
+  <p className="text-sm text-gray-700">Offer expires in:</p>
+  <div className="font-bold text-xl mt-1">
+    {Math.floor(timeLeft / (1000 * 60 * 60))}h :{" "}
+    {Math.floor((timeLeft / (1000 * 60)) % 60)}m :{" "}
+    {Math.floor((timeLeft / 1000) % 60)}s
+  </div>
+</div>
 
       {/* Payment */}
       <motion.div
