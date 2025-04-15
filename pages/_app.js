@@ -36,7 +36,8 @@ function MyApp({ Component, pageProps }) {
           `,
         }}
       />
-      
+  
+
       {/* Optional noscript fallback */}
       <noscript>
         <img
@@ -47,8 +48,29 @@ function MyApp({ Component, pageProps }) {
         />
       </noscript>
 
+            {/* ✅ Google Analytics */}
+            <Script
+        strategy="afterInteractive"
+        src="https://www.googletagmanager.com/gtag/js?id=G-CYTN3T74B4"
+      />
+      <Script
+        id="google-analytics"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-CYTN3T74B4');
+          `,
+        }}
+      />
+
       <Component {...pageProps} />
     </>
+
+
+
   );
 }
 
