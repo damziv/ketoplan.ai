@@ -1,15 +1,15 @@
+// File: /pages/payment.js
+
 import { useRouter } from 'next/router';
 import { useState, useEffect } from 'react';
 import { createClient } from '@supabase/supabase-js';
 import { loadStripe } from '@stripe/stripe-js';
 import { Elements, PaymentElement, useStripe, useElements } from '@stripe/react-stripe-js';
 import { motion } from 'framer-motion';
-import { LineChart, Line, XAxis, YAxis, ResponsiveContainer } from 'recharts';
-import { useTranslation } from 'next-i18next';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { Carousel } from 'react-responsive-carousel';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-
+import { useTranslation } from 'next-i18next';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL,
@@ -23,11 +23,10 @@ export default function PaymentPage() {
   const { t } = useTranslation('payment');
   const [clientSecret, setClientSecret] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [currentWeight, setCurrentWeight] = useState(80);
-  const [targetWeight, setTargetWeight] = useState(72);
+  const [timeLeft, setTimeLeft] = useState(0);
 
   useEffect(() => {
-    const fetchPaymentIntent = async () => {
+    const fetchSubscriptionIntent = async () => {
       const email = sessionStorage.getItem('email');
       const sessionId = sessionStorage.getItem('sessionId');
 
@@ -37,81 +36,63 @@ export default function PaymentPage() {
       }
 
       try {
-        const response = await fetch('/api/create-payment-intent', {
+        const response = await fetch('/api/create-subscription', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ email, sessionId }),
         });
 
-        if (!response.ok) throw new Error('Failed to create payment intent');
+        if (!response.ok) throw new Error('Failed to create subscription');
 
         const { clientSecret } = await response.json();
         setClientSecret(clientSecret);
         setLoading(false);
       } catch (error) {
-        console.error('Failed to get clientSecret:', error);
+        console.error('❌ Failed to create subscription:', error);
         setLoading(false);
       }
     };
 
-    fetchPaymentIntent();
+    fetchSubscriptionIntent();
   }, [router]);
 
+  // ⏳ 48h Timer
+  useEffect(() => {
+    const savedExpiry = localStorage.getItem('countdown_expiry');
+    let expiryTime;
+
+    if (savedExpiry && parseInt(savedExpiry) > Date.now()) {
+      expiryTime = parseInt(savedExpiry);
+    } else {
+      expiryTime = Date.now() + 48 * 60 * 60 * 1000;
+      localStorage.setItem('countdown_expiry', expiryTime);
+    }
+
+    const interval = setInterval(() => {
+      const now = Date.now();
+      const remaining = Math.max(0, expiryTime - now);
+      setTimeLeft(remaining);
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, []);
 
   const reviews = t('reviews', { returnObjects: true });
   const why = t('why', { returnObjects: true });
-
-  const [timeLeft, setTimeLeft] = useState(0);
-
-// ⏳ Set countdown on mount
-useEffect(() => {
-  const savedExpiry = localStorage.getItem('countdown_expiry');
-  let expiryTime;
-
-  if (savedExpiry && parseInt(savedExpiry) > Date.now()) {
-    expiryTime = parseInt(savedExpiry);
-  } else {
-    expiryTime = Date.now() + 48 * 60 * 60 * 1000; // 48h
-    localStorage.setItem('countdown_expiry', expiryTime);
-  }
-
-  const interval = setInterval(() => {
-    const now = Date.now();
-    const remaining = Math.max(0, expiryTime - now);
-    setTimeLeft(remaining);
-  }, 1000);
-
-  return () => clearInterval(interval);
-}, []);
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100 p-5">
       <div className="fixed top-0 w-full bg-gray-800 py-4 text-center text-white font-bold text-2xl z-50">Smart Keto-Meal</div>
 
-  
-
-{/* Image Courasel */}
+      {/* Carousel */}
       <div className="max-w-md mx-auto mt-16">
-  <h2 className="text-2xl font-bold text-center mb-4 text-gray-800">🔥 {t('title')}</h2>
-  <Carousel 
-    showThumbs={false} 
-    autoPlay 
-    infiniteLoop 
-    interval={2000} 
-    showStatus={false}
-  >
-    <div>
-      <img src="/images/results/result1.jpg" alt="Before and After 1" />
-    </div>
-    <div>
-      <img src="/images/results/result2.jpg" alt="Before and After 2" />
-    </div>
-    <div>
-      <img src="/images/results/result3.jpg" alt="Before and After 3" />
-    </div>
-  </Carousel>
-</div>
-
+        <h2 className="text-2xl font-bold text-center mb-4 text-gray-800">🔥 {t('title')}</h2>
+        <Carousel showThumbs={false} autoPlay infiniteLoop interval={2000} showStatus={false}>
+          <div><img src="/images/results/result1.jpg" alt="Before and After 1" /></div>
+          <div><img src="/images/results/result2.jpg" alt="Before and After 2" /></div>
+          <div><img src="/images/results/result3.jpg" alt="Before and After 3" /></div>
+        </Carousel>
+      </div>
 
       {/* Reviews */}
       <div className="mt-16 w-full max-w-md">
@@ -150,26 +131,22 @@ useEffect(() => {
         </ul>
       </div>
 
-{/* 🔥 Limited-Time Offer Timer + Price Display */}
-<div className="bg-yellow-100 border border-yellow-300 text-yellow-800 p-4 rounded-lg shadow-md text-center mt-8 max-w-md w-full">
-  <h2 className="text-xl font-semibold mb-2">🎁 {t('discountTitle')}</h2>
-  <p className="text-sm mb-2">
-  {t('discountSubtitle')}
-  </p>
+      {/* Limited-Time Offer Timer */}
+      <div className="bg-yellow-100 border border-yellow-300 text-yellow-800 p-4 rounded-lg shadow-md text-center mt-8 max-w-md w-full">
+        <h2 className="text-xl font-semibold mb-2">🎁 {t('discountTitle')}</h2>
+        <p className="text-sm mb-2">{t('discountSubtitle')}</p>
+        <div className="text-2xl font-bold mb-1 text-green-700">
+          €2.99 <span className="text-sm font-medium text-gray-500 line-through ml-2">€5.99</span>
+        </div>
+        <p className="text-sm text-gray-700">{t('discountOffer')}</p>
+        <div className="font-bold text-xl mt-1">
+          {Math.floor(timeLeft / (1000 * 60 * 60))}h :{" "}
+          {Math.floor((timeLeft / (1000 * 60)) % 60)}m :{" "}
+          {Math.floor((timeLeft / 1000) % 60)}s
+        </div>
+      </div>
 
-  <div className="text-2xl font-bold mb-1 text-green-700">
-    €2.99 <span className="text-sm font-medium text-gray-500 line-through ml-2">€5.99</span>
-  </div>
-
-  <p className="text-sm text-gray-700">{t('discountOffer')}</p>
-  <div className="font-bold text-xl mt-1">
-    {Math.floor(timeLeft / (1000 * 60 * 60))}h :{" "}
-    {Math.floor((timeLeft / (1000 * 60)) % 60)}m :{" "}
-    {Math.floor((timeLeft / 1000) % 60)}s
-  </div>
-</div>
-
-      {/* Payment */}
+      {/* Payment Element */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -206,7 +183,9 @@ function CheckoutForm() {
 
     const { error } = await stripe.confirmPayment({
       elements,
-      confirmParams: { return_url: `${window.location.origin}/success` },
+      confirmParams: {
+        return_url: `${window.location.origin}/success`,
+      },
     });
 
     if (error) {
@@ -236,4 +215,3 @@ export async function getStaticProps({ locale }) {
     },
   };
 }
-

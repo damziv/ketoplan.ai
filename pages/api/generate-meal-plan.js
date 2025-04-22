@@ -1,23 +1,13 @@
-// File: /pages/api/generate-meal-plan.js
+import { createClient } from '@supabase/supabase-js';
 
 export const config = {
   runtime: 'edge',
 };
 
-const questionMap = {
-  "1": "What is your gender?",
-  "2": "How much variety do you want in your meal plan?",
-  "3": "Choose the meat you want to include",
-  "4": "Choose the vegetable you want to include",
-  "5": "Choose other products you want to include",
-  "6": "What is your activity level?",
-  "7": "Do you have any allergies?",
-  "8": "What is your primary goal?",
-  "9": "Do you have a budget preference for meal prep?",
-  "10": "Do you snack frequently?",
-  "11": "What is your preferred cooking time?",
-  "12": "What motivates you the most?"
-};
+const supabase = createClient(
+  process.env.NEXT_PUBLIC_SUPABASE_URL,
+  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+);
 
 const localePrompts = {
   en: "Respond in English.",
@@ -37,13 +27,52 @@ export default async function handler(req) {
     return new Response(JSON.stringify({ error: 'Missing email or quiz_answers' }), { status: 400 });
   }
 
-  const languageInstruction = localePrompts[locale] || localePrompts.en;
+  // 🔎 Fetch session
+  const { data: session, error } = await supabase
+    .from('sessions')
+    .select('id, is_subscriber, last_meal_plan_at')
+    .eq('email', email)
+    .eq('payment_status', true)
+    .order('created_at', { ascending: false })
+    .limit(1)
+    .single();
+
+  if (error || !session) {
+    return new Response(JSON.stringify({ error: 'No paid session found' }), { status: 404 });
+  }
+
+  const isSubscriber = session.is_subscriber;
+  const lastGenerated = session.last_meal_plan_at ? new Date(session.last_meal_plan_at) : null;
+  const now = new Date();
+
+  if (isSubscriber && lastGenerated) {
+    const daysSince = Math.floor((now - lastGenerated) / (1000 * 60 * 60 * 24));
+    if (daysSince < 30) {
+      return new Response(JSON.stringify({ error: `You can generate a new plan in ${30 - daysSince} days.` }), { status: 403 });
+    }
+  }
+
+  const questionMap = {
+    "1": "What is your gender?",
+    "2": "How much variety do you want in your meal plan?",
+    "3": "Choose the meat you want to include",
+    "4": "Choose the vegetable you want to include",
+    "5": "Choose other products you want to include",
+    "6": "What is your activity level?",
+    "7": "Do you have any allergies?",
+    "8": "What is your primary goal?",
+    "9": "Do you have a budget preference for meal prep?",
+    "10": "Do you snack frequently?",
+    "11": "What is your preferred cooking time?",
+    "12": "What motivates you the most?"
+  };
 
   const formattedData = Object.entries(questionMap).map(([id, question]) => ({
     question,
     answer: quiz_answers[id]?.join(", ") || "Not answered",
   }));
 
+  const languageInstruction = localePrompts[locale] || localePrompts.en;
   const encoder = new TextEncoder();
 
   const stream = new ReadableStream({
@@ -73,15 +102,11 @@ export default async function handler(req) {
     ...
   }
 }
-${languageInstruction}
-
 Use ONLY double quotes. Escape invalid characters. No trailing commas.`,
               },
               {
                 role: "user",
-                content: `${languageInstruction}
-                Create a 5-day personalized keto meal plan with full recipes based on:
-${JSON.stringify(formattedData)}`,
+                content: `Create a 5-day personalized keto meal plan with full recipes based on: ${JSON.stringify(formattedData)}`,
               },
             ],
           }),
@@ -106,7 +131,7 @@ ${JSON.stringify(formattedData)}`,
           buffer += chunk;
 
           const lines = buffer.split("\n");
-          buffer = lines.pop(); // handle partial
+          buffer = lines.pop();
 
           for (const line of lines) {
             if (line.startsWith("data: ")) {
@@ -119,6 +144,12 @@ ${JSON.stringify(formattedData)}`,
             }
           }
         }
+
+        // ✅ Update last_meal_plan_at
+        await supabase
+          .from('sessions')
+          .update({ last_meal_plan_at: now.toISOString() })
+          .eq('id', session.id);
 
         controller.close();
       } catch (err) {

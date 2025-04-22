@@ -1,7 +1,10 @@
+// File: /pages/api/stripe-webhook.js
+
 import { buffer } from 'micro';
 import { createClient } from '@supabase/supabase-js';
-const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
+import Stripe from 'stripe';
 
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL,
   process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
@@ -9,7 +12,7 @@ const supabase = createClient(
 
 export const config = {
   api: {
-    bodyParser: false, // Required for Stripe signature verification
+    bodyParser: false,
   },
 };
 
@@ -32,66 +35,90 @@ export default async function handler(req, res) {
       process.env.STRIPE_WEBHOOK_SECRET
     );
   } catch (err) {
-    console.error('❌ Webhook signature verification failed:', err.message);
+    console.error('❌ Signature verification failed:', err.message);
     return res.status(400).send(`Webhook Error: ${err.message}`);
   }
 
-  console.log('✅ Stripe webhook event received:', event.type);
+  console.log('✅ Stripe event received:', event.type);
 
-  if (event.type === 'payment_intent.succeeded') {
-    const paymentIntent = event.data.object;
-    const stripePaymentIntentId = paymentIntent.id;
-    const email = paymentIntent.metadata?.email;
-
-    if (!email) {
-      console.error('❌ Missing email metadata in Stripe payment intent');
-      return res.status(400).send('Missing email in metadata');
+  // ✅ Handle subscription success
+  if (event.type === 'invoice.payment_succeeded') {
+    const invoice = event.data.object;
+    const subscriptionId = invoice.subscription;
+    const email = invoice.customer_email || invoice.customer?.email;
+  
+    const sessionId = invoice.lines.data[0]?.metadata?.sessionId || invoice.metadata?.sessionId;
+  
+    console.log(`📦 Subscription succeeded for ${email} (sub: ${subscriptionId})`);
+  
+    if (!email || !sessionId || !subscriptionId) {
+      console.error('❌ Missing email, sessionId or subscriptionId in subscription metadata');
+      return res.status(400).send('Missing metadata');
     }
-
+  
     try {
-      console.log(`🔎 Searching for unpaid session for email: ${email}`);
-
-      const { data: latestSession, error: fetchError } = await supabase
-        .from('sessions')
-        .select('id, payment_status')
-        .eq('email', email)
-        .eq('payment_status', false)
-        .order('created_at', { ascending: false })
-        .limit(1)
-        .single();
-
-      if (fetchError) {
-        console.error('❌ Supabase fetch error:', fetchError);
-        return res.status(500).send('Database query failed');
-      }
-
-      if (!latestSession) {
-        console.error('⚠️ No unpaid session found for email:', email);
-        return res.status(404).send('Session not found');
-      }
-
-      console.log(`✅ Found session: ${latestSession.id}`);
-
+      // Fetch subscription details from Stripe
+      const subscription = await stripe.subscriptions.retrieve(subscriptionId);
+      const periodEnd = subscription.current_period_end;
+  
       const { error: updateError } = await supabase
         .from('sessions')
         .update({
           payment_status: true,
-          stripe_session_id: stripePaymentIntentId,
+          is_subscriber: true,
+          stripe_session_id: subscriptionId,
+          subscription_id: subscriptionId,
+          subscription_active_until: new Date(periodEnd * 1000).toISOString(),
         })
-        .eq('id', latestSession.id);
-
+        .eq('id', sessionId);
+  
       if (updateError) {
-        console.error('❌ Error updating payment status:', updateError);
-        return res.status(500).send('Failed to update session');
+        console.error('❌ Failed to update Supabase for subscription:', updateError);
+        return res.status(500).send('Supabase update failed');
+      }
+  
+      console.log(`✅ Supabase session ${sessionId} updated as subscribed`);
+      return res.status(200).send('Subscription updated');
+    } catch (err) {
+      console.error('❌ Webhook processing failed:', err.message);
+      return res.status(500).send('Internal error');
+    }
+  }
+  
+
+  // ✅ Handle fallback one-time payments
+  if (event.type === 'payment_intent.succeeded') {
+    const intent = event.data.object;
+    const email = intent.metadata?.email;
+    const sessionId = intent.metadata?.sessionId;
+
+    if (!email || !sessionId) {
+      console.error('❌ Missing email or sessionId in payment intent metadata');
+      return res.status(400).send('Missing metadata');
+    }
+
+    try {
+      const { error } = await supabase
+        .from('sessions')
+        .update({
+          payment_status: true,
+          stripe_session_id: intent.id,
+        })
+        .eq('id', sessionId);
+
+      if (error) {
+        console.error('❌ Failed to update Supabase for one-time payment:', error);
+        return res.status(500).send('Database update error');
       }
 
-      console.log(`✅ Session ${latestSession.id} updated successfully`);
-      return res.status(200).send('Session updated');
+      console.log(`✅ One-time payment updated session ${sessionId}`);
+      return res.status(200).send('Payment updated');
     } catch (err) {
-      console.error('❌ Exception in webhook handler:', err.message);
+      console.error('❌ Webhook failed:', err.message);
       return res.status(500).send('Internal error');
     }
   }
 
-  res.status(200).json({ received: true });
+  // 👋 Default fallback
+  return res.status(200).json({ received: true });
 }

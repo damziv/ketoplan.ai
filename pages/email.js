@@ -52,7 +52,12 @@ export default function EmailPage() {
   const saveEmailToDatabase = async () => {
     const sessionId = sessionStorage.getItem('sessionId');
     if (!sessionId) return;
-    await supabase.from('sessions').update({ email }).eq('id', sessionId);
+    
+    await supabase.from('sessions').update({
+      email,
+      age: parseInt(age),
+      country: router.locale || 'en'
+    }).eq('id', sessionId);
   };
 
   const handleNext = async () => {
@@ -66,19 +71,42 @@ export default function EmailPage() {
       sessionStorage.setItem('email', email);
       await saveEmailToDatabase();
 
-    // ✅ Fire Facebook Pixel Lead event
-    if (typeof window !== 'undefined' && window.fbq) {
-      fbq('track', 'Lead');
-    }
-    
-      router.push('/payment');
+      // ✅ Facebook Pixel Event
+      if (typeof window !== 'undefined' && window.fbq) {
+        fbq('track', 'Lead');
+      }
+
+      // ✅ Check subscription status before redirecting
+      const { data: subscriberData, error: subError } = await supabase
+        .from('sessions')
+        .select('is_subscriber, last_meal_plan_at')
+        .eq('email', email)
+        .order('created_at', { ascending: false })
+        .limit(1)
+        .single();
+
+      if (!subError && subscriberData?.is_subscriber) {
+        const lastGenerated = new Date(subscriberData.last_meal_plan_at);
+        const now = new Date();
+        const diffInMs = now - lastGenerated;
+        const diffInDays = diffInMs / (1000 * 60 * 60 * 24);
+
+        if (isNaN(diffInDays) || diffInDays >= 30) {
+          router.push('/success'); // ✅ Allow generation
+        } else {
+          alert('✅ You already received a plan this month. We’ll notify you when you can generate a new one.');
+          router.push('/'); // or redirect to dashboard/thank you
+        }
+      } else {
+        router.push('/payment'); // 💳 New user or not subscribed
+      }
     }
   };
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-50 p-6">
       <div className="fixed top-0 w-full bg-gray-800 py-4 text-center text-white font-bold text-2xl z-50">
-      Smart Keto-Meal
+        Smart Keto-Meal
       </div>
 
       <motion.div
@@ -99,7 +127,6 @@ export default function EmailPage() {
           onChange={(e) => setAge(e.target.value)}
           className="w-full border rounded-xl p-3 mb-4 focus:ring-2 focus:ring-blue-500 outline-none transition"
         />
-
         <input
           type="number"
           placeholder={t('fields.height')}
@@ -107,7 +134,6 @@ export default function EmailPage() {
           onChange={(e) => setHeight(e.target.value)}
           className="w-full border rounded-xl p-3 mb-4 focus:ring-2 focus:ring-blue-500 outline-none transition"
         />
-
         <input
           type="number"
           placeholder={t('fields.currentWeight')}
@@ -115,7 +141,6 @@ export default function EmailPage() {
           onChange={(e) => setCurrentWeight(e.target.value)}
           className="w-full border rounded-xl p-3 mb-4 focus:ring-2 focus:ring-blue-500 outline-none transition"
         />
-
         <input
           type="number"
           placeholder={t('fields.desiredWeight')}
@@ -123,7 +148,6 @@ export default function EmailPage() {
           onChange={(e) => setDesiredWeight(e.target.value)}
           className="w-full border rounded-xl p-3 mb-4 focus:ring-2 focus:ring-blue-500 outline-none transition"
         />
-
         <input
           type="email"
           placeholder={t('fields.email')}
@@ -149,11 +173,9 @@ export default function EmailPage() {
 }
 
 export async function getStaticProps({ locale }) {
-  console.log('📣 Detected locale:', locale); // <-- 👈 Add this line
   return {
     props: {
       ...(await serverSideTranslations(locale, ['email'])),
     },
   };
 }
-

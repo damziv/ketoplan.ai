@@ -7,171 +7,129 @@ import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 export default function SuccessPage() {
-  const { t } = useTranslation('success');
+  const { t } = useTranslation("success");
   const router = useRouter();
   const [mealPlan, setMealPlan] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const [email, setEmail] = useState("");
-  const [quizAnswers, setQuizAnswers] = useState(null);
+  const [allowed, setAllowed] = useState(true);
   const [progress, setProgress] = useState(0);
   const [animationsComplete, setAnimationsComplete] = useState(false);
-  const [streamingText, setStreamingText] = useState("");
 
-  const steps = t('steps', { returnObjects: true });
+  const steps = t("steps", { returnObjects: true });
 
   useEffect(() => {
-    let storedEmail = sessionStorage.getItem("email") || router.query.email;
-
-    if (!storedEmail) {
-      fetch("/api/fetch-latest-email")
-        .then((res) => res.json())
-        .then((data) => {
-          if (data.email) {
-            setEmail(data.email);
-            sessionStorage.setItem("email", data.email);
-          } else {
-            setError(t('error'));
-          }
-        })
-        .catch(() => setError(t('error')))
-        .finally(() => setLoading(false));
-    } else {
-      setEmail(storedEmail);
-    }
+    const storedEmail = sessionStorage.getItem("email") || router.query.email;
+    if (storedEmail) setEmail(storedEmail);
+    else setError(t("error"));
   }, [router, t]);
 
   useEffect(() => {
     if (!email) return;
 
-    const fetchSessionAndGenerate = async () => {
+    const fetchPlan = async () => {
       try {
-        const sessionRes = await fetch(`${window.location.origin}/api/get-latest-session`, {
+        const res = await fetch("/api/get-latest-session", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ email }),
         });
 
-        const sessionData = await sessionRes.json();
-        if (!sessionRes.ok || !sessionData.quiz_answers) {
-          throw new Error("No quiz data found for this session.");
+        const data = await res.json();
+        if (!res.ok) throw new Error(data.error || "Failed to get session");
+
+        const lastGenerated = data.last_meal_plan_at;
+        const isSubscriber = data.is_subscriber;
+
+        if (isSubscriber && lastGenerated) {
+          const last = new Date(lastGenerated);
+          const now = new Date();
+          const daysDiff = Math.floor((now - last) / (1000 * 60 * 60 * 24));
+
+          if (daysDiff < 30) {
+            setAllowed(false);
+            setError("⏳ You can generate a new plan in " + (30 - daysDiff) + " days.");
+            setLoading(false);
+            return;
+          }
         }
 
-        setQuizAnswers(sessionData.quiz_answers);
-
-        const { locale } = router; // ✅ Add this line at the top of the function or use directly
-
-        const response = await fetch("/api/generate-meal-plan", {
+        // Continue if allowed
+        const resp = await fetch("/api/generate-meal-plan", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ email, quiz_answers: sessionData.quiz_answers, locale }), // ✅ Add `locale`
+          body: JSON.stringify({ email, quiz_answers: data.quiz_answers, locale: router.locale }),
         });
 
-        if (!response.ok) {
-          const errorData = await response.text();
-          throw new Error(errorData || "Failed to generate meal plan");
-        }
+        if (!resp.ok || !resp.body) throw new Error("Plan generation failed");
 
-        const reader = response.body.getReader();
+        const reader = resp.body.getReader();
         const decoder = new TextDecoder("utf-8");
         let jsonBuffer = "";
-        let done = false;
         let streamFinished = false;
 
-        while (!done) {
-          const { value, done: doneReading } = await reader.read();
-          done = doneReading;
-          const chunkValue = decoder.decode(value, { stream: true });
-          const lines = chunkValue.split("\n");
-          for (let line of lines) {
+        while (true) {
+          const { done, value } = await reader.read();
+          if (done) break;
+
+          const chunk = decoder.decode(value);
+          const lines = chunk.split("\n");
+
+          for (const line of lines) {
             if (line.startsWith("data: ")) {
               const json = line.slice("data: ".length).trim();
               if (json === "[DONE]") {
                 streamFinished = true;
-                done = true;
-                break;
-              }
-              try {
+              } else {
                 const parsed = JSON.parse(json);
-                const token = parsed.choices?.[0]?.delta?.content || "";
-                jsonBuffer += token;
-                setStreamingText((prev) => prev + token);
-              } catch (err) {
-                console.warn("Could not parse chunk line:", line);
+                jsonBuffer += parsed.choices?.[0]?.delta?.content || "";
               }
             }
           }
         }
 
-        if (!streamFinished) {
-          throw new Error("Stream ended unexpectedly.");
-        }
+        if (!streamFinished) throw new Error("Stream ended unexpectedly");
 
-        let parsedMealPlan;
-        try {
-          parsedMealPlan = JSON.parse(jsonBuffer);
-        } catch (e) {
-          console.error("❌ Failed to parse streamed JSON:", e, jsonBuffer);
-          throw new Error("Received invalid JSON from stream.");
-        }
+        const parsed = JSON.parse(jsonBuffer);
+        const entries = Object.entries(parsed.mealPlan).map(([day, meals]) => ({
+          day,
+          ...meals,
+        }));
 
-        setStreamingText("");
+        setMealPlan({ meal_plan: entries });
 
-        let extractedPlan = [];
-        if (parsedMealPlan.mealPlan && typeof parsedMealPlan.mealPlan === "object") {
-          extractedPlan = Object.entries(parsedMealPlan.mealPlan).map(([key, value]) => ({
-            day: key,
-            ...value,
-          }));
-        } else {
-          throw new Error("Meal plan format is invalid or empty.");
-        }
+        // ✅ Save to DB
+        await fetch("/api/save-meal-plan", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email, meal_plan: entries }),
+        });
 
-        setMealPlan({ meal_plan: extractedPlan });
-
-        try {
-          const saveRes = await fetch("/api/save-meal-plan", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ email, meal_plan: extractedPlan }),
+        // ✅ Track FB event
+        if (typeof window !== "undefined" && window.fbq) {
+          window.fbq("track", "Purchase", {
+            value: 2.99,
+            currency: "EUR",
           });
-
-          if (!saveRes.ok) {
-            const text = await saveRes.text();
-            console.error("❌ Failed to save meal plan:", text);
-          }
-        } catch (e) {
-          console.error("❌ Exception during save-meal-plan request:", e);
         }
 
         setTimeout(() => setAnimationsComplete(true), 3000);
       } catch (err) {
-        setError(err.message);
+        console.error("❌", err);
+        setError(err.message || "Something went wrong");
       } finally {
         setLoading(false);
       }
     };
 
-    fetchSessionAndGenerate();
+    fetchPlan();
 
-    let interval = setInterval(() => {
+    const interval = setInterval(() => {
       setProgress((prev) => (prev < 100 ? prev + 25 : 100));
     }, 1000);
-
     return () => clearInterval(interval);
-  }, [email]);
-
-    // ✅ Fire Facebook Pixel Lead event
-  useEffect(() => {
-    if (animationsComplete && typeof window !== 'undefined' && window.fbq) {
-      console.log('📈 Sending Purchase event to Facebook Pixel');
-      window.fbq('track', 'Purchase', {
-        value: 3.99,
-        currency: 'eur',
-      });
-    }
-  }, [animationsComplete]);
-  
+  }, [email, router]);
 
   const downloadPDF = async () => {
     const input = document.getElementById("meal-plan-content");
@@ -194,38 +152,43 @@ export default function SuccessPage() {
       heightLeft -= pageHeight;
     }
 
-    pdf.save("Meal_Plan.pdf");
+    pdf.save("Keto-Meal-Plan.pdf");
   };
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100 p-5">
       <div className="bg-white p-6 rounded-lg shadow-md w-full max-w-3xl text-center">
-        <h2 className="text-2xl font-bold mb-4">{t('title')}</h2>
+        <h2 className="text-2xl font-bold mb-4">{t("title")}</h2>
 
-        {(!animationsComplete || loading) && (
-          <>
-            <p className="mb-4">{t('generating')}</p>
-            <p className="text-gray-600 text-sm mb-2">{t('warning')}</p>
-          </>
+        {error && (
+          <p className="text-red-500 text-lg font-semibold mb-4">{error}</p>
         )}
 
-        {loading && (
-          <div className="w-full text-left">
+        {!allowed && (
+          <button
+            className="mt-4 bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700"
+            onClick={() => router.push("/")}
+          >
+            {t("backHome")}
+          </button>
+        )}
+
+        {loading && !error && (
+          <div>
             {steps.map((step, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: progress >= (index + 1) * 25 ? 1 : 0.3, x: 0 }}
                 transition={{ duration: 1 }}
-                className="mb-4"
+                className="mb-4 text-left"
               >
                 <p className="font-medium text-gray-700 mb-1">{step}</p>
                 <div className="w-full h-2 bg-gray-200 rounded-full overflow-hidden">
                   <motion.div
                     className="h-full bg-green-500"
-                    initial={{ width: "0%" }}
                     animate={{ width: progress >= (index + 1) * 25 ? "100%" : "0%" }}
-                    transition={{ duration: 1.3 }}
+                    transition={{ duration: 1.2 }}
                   ></motion.div>
                 </div>
               </motion.div>
@@ -240,42 +203,32 @@ export default function SuccessPage() {
           </div>
         )}
 
-        {error && <p className="text-red-500">{t('error')}</p>}
-
-        {mealPlan && animationsComplete && Array.isArray(mealPlan.meal_plan) && (
+        {mealPlan && allowed && animationsComplete && (
           <>
-            <h3 className="text-lg font-semibold mt-4">{t('planTitle')}</h3>
-            <p className="text-gray-600 text-sm mb-2">{t('planEmailNote')}</p>
-            <p className="text-gray-600 text-sm mb-2">{t('planDownloadNote')}</p>
-
+            <h3 className="text-lg font-semibold mt-4">{t("planTitle")}</h3>
+            <p className="text-gray-600 text-sm">{t("planEmailNote")}</p>
             <button
               onClick={downloadPDF}
               className="mt-4 bg-green-600 text-white py-2 px-4 rounded-md hover:bg-green-700"
             >
-              {t('downloadBtn')}
+              {t("downloadBtn")}
             </button>
 
-            <div id="meal-plan-content" className="text-left bg-gray-100 p-4 rounded-md overflow-auto mt-2">
-              {mealPlan.meal_plan.map((day, index) => (
-                <div key={index} className="mb-6 p-4 bg-white rounded-lg shadow-md">
+            <div id="meal-plan-content" className="mt-4 bg-gray-100 p-4 rounded-md text-left">
+              {mealPlan.meal_plan.map((day, idx) => (
+                <div key={idx} className="mb-6 p-4 bg-white rounded-lg shadow-md">
                   <h3 className="text-lg font-bold text-green-600">📅 {day.day}</h3>
-                  {Object.entries(day).map(([mealType, meal], i) => {
+                  {Object.entries(day).map(([mealType, meal]) => {
                     if (mealType === "day") return null;
                     return (
-                      <div key={i} className="mt-4">
-                        <h4 className="text-md font-semibold text-gray-900">
-                          🍴 {meal?.name || "No meal available"}
-                        </h4>
-                        <p className="text-sm font-bold text-gray-700">{t('ingredients')}</p>
-                        <ul className="list-disc pl-5 text-sm text-gray-700">
-                          {meal?.ingredients?.length > 0
-                            ? meal.ingredients.map((ingredient, j) => <li key={j}>{ingredient}</li>)
-                            : <li>{t('noIngredients')}</li>}
+                      <div key={mealType} className="mt-4">
+                        <h4 className="font-semibold">{meal.name}</h4>
+                        <p className="text-sm font-bold">{t("ingredients")}</p>
+                        <ul className="list-disc pl-5 text-sm">
+                          {meal.ingredients?.map((i, j) => <li key={j}>{i}</li>)}
                         </ul>
-                        <p className="text-sm font-bold text-gray-700 mt-2">{t('instructions')}</p>
-                        <p className="text-sm text-gray-700">
-                          {meal?.instructions || t('noInstructions')}
-                        </p>
+                        <p className="text-sm font-bold mt-2">{t("instructions")}</p>
+                        <p className="text-sm">{meal.instructions}</p>
                       </div>
                     );
                   })}
@@ -284,29 +237,15 @@ export default function SuccessPage() {
             </div>
           </>
         )}
-
-        <button
-          className="mt-4 bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700"
-          onClick={() => router.push("/")}
-        >
-          {t('backHome')}
-        </button>
       </div>
     </div>
   );
 }
 
-if (typeof window !== 'undefined' && window.fbq) {
-  window.fbq('track', 'Purchase', {
-    value: 5.99,
-    currency: 'USD',
-  });
-}
-
 export async function getStaticProps({ locale }) {
   return {
     props: {
-      ...(await serverSideTranslations(locale, ['success'])),
+      ...(await serverSideTranslations(locale, ["success"])),
     },
   };
 }
