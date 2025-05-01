@@ -101,13 +101,13 @@ useEffect(() => {
     showStatus={false}
   >
     <div>
-      <img src="/images/results/result1.jpg" alt="Before and After 1" />
+      <img src="/images/results/result1.png" alt="Before and After 1" />
     </div>
     <div>
-      <img src="/images/results/result2.jpg" alt="Before and After 2" />
+      <img src="/images/results/result2.png" alt="Before and After 2" />
     </div>
     <div>
-      <img src="/images/results/result3.jpg" alt="Before and After 3" />
+      <img src="/images/results/result3.png" alt="Before and After 3" />
     </div>
   </Carousel>
 </div>
