@@ -88,9 +88,9 @@ export default function PaymentPage() {
       <div className="max-w-md mx-auto mt-16">
         <h2 className="text-2xl font-bold text-center mb-4 text-gray-800">🔥 {t('title')}</h2>
         <Carousel showThumbs={false} autoPlay infiniteLoop interval={2000} showStatus={false}>
-          <div><img src="/images/results/result1.jpg" alt="Before and After 1" /></div>
-          <div><img src="/images/results/result2.jpg" alt="Before and After 2" /></div>
-          <div><img src="/images/results/result3.jpg" alt="Before and After 3" /></div>
+          <div><img src="/images/results/result1.png" alt="Before and After 1" /></div>
+          <div><img src="/images/results/result2.png" alt="Before and After 2" /></div>
+          <div><img src="/images/results/result3.png" alt="Before and After 3" /></div>
         </Carousel>
       </div>
 
@@ -136,7 +136,7 @@ export default function PaymentPage() {
         <h2 className="text-xl font-semibold mb-2">🎁 {t('discountTitle')}</h2>
         <p className="text-sm mb-2">{t('discountSubtitle')}</p>
         <div className="text-2xl font-bold mb-1 text-green-700">
-          €2.99 <span className="text-sm font-medium text-gray-500 line-through ml-2">€5.99</span>
+          €5.99 <span className="text-sm font-medium text-gray-500 line-through ml-2">€11.99</span>
         </div>
         <p className="text-sm text-gray-700">{t('discountOffer')}</p>
         <div className="font-bold text-xl mt-1">

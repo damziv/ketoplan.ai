@@ -1,4 +1,3 @@
-// File: /pages/email.js
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { createClient } from '@supabase/supabase-js';
@@ -92,13 +91,13 @@ export default function EmailPage() {
         const diffInDays = diffInMs / (1000 * 60 * 60 * 24);
 
         if (isNaN(diffInDays) || diffInDays >= 30) {
-          router.push('/success'); // ✅ Allow generation
+          router.push('/success');
         } else {
           alert('✅ You already received a plan this month. We’ll notify you when you can generate a new one.');
-          router.push('/'); // or redirect to dashboard/thank you
+          router.push('/');
         }
       } else {
-        router.push('/payment'); // 💳 New user or not subscribed
+        router.push('/payment');
       }
     }
   };
@@ -115,6 +114,11 @@ export default function EmailPage() {
         transition={{ duration: 0.5 }}
         className="bg-white shadow-lg rounded-2xl p-8 w-full max-w-md text-center mt-16"
       >
+        {/* ✅ Progress Info */}
+        <p className="text-sm text-gray-500 mb-3">
+          Step 6 of 6 · Final step before your custom plan
+        </p>
+
         <h1 className="text-3xl font-bold text-gray-900 mb-2 flex justify-center items-center">
           🏁 {t('title')}
         </h1>
@@ -153,19 +157,31 @@ export default function EmailPage() {
           placeholder={t('fields.email')}
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          className="w-full border rounded-xl p-3 mb-4 focus:ring-2 focus:ring-blue-500 outline-none transition"
+          className="w-full border rounded-xl p-3 mb-2 focus:ring-2 focus:ring-blue-500 outline-none transition"
         />
 
-        {error && <p className="text-red-500 text-sm mb-4">{error}</p>}
+        {error && <p className="text-red-500 text-sm mb-2">{error}</p>}
+
+        {/* ✅ Privacy Assurance */}
+        <p className="text-sm text-gray-500 italic mb-2">
+          Your data is 100% private. We never share your email.
+        </p>
+
+        {/* ✅ Social Proof */}
+        <p className="text-sm text-gray-600 mb-4">
+          ✅ 8,000+ people have used Smart Keto-Meal to reach their goals.
+        </p>
 
         <motion.button
           whileTap={{ scale: 0.95 }}
           className={`w-full py-3 rounded-xl font-semibold transition-all 
-            ${email && age && height && currentWeight && desiredWeight ? 'bg-blue-600 hover:bg-blue-700 text-white' : 'bg-gray-300 text-gray-500 cursor-not-allowed'}`}
+            ${email && age && height && currentWeight && desiredWeight
+              ? 'bg-blue-600 hover:bg-blue-700 text-white'
+              : 'bg-gray-300 text-gray-500 cursor-not-allowed'}`}
           onClick={handleNext}
           disabled={!email || !age || !height || !currentWeight || !desiredWeight}
         >
-          {t('continue')} →
+          {t('continueAction', 'Generate My Plan')} →
         </motion.button>
       </motion.div>
     </div>
