@@ -6,31 +6,36 @@ import jsPDF from "jspdf";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
-export default function SuccessPage() {
+export default function SuccessRenewPage() {
   const { t } = useTranslation("success");
   const router = useRouter();
-  const [mealPlan, setMealPlan] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
   const [email, setEmail] = useState("");
-  const [allowed, setAllowed] = useState(true);
+  const [mealPlan, setMealPlan] = useState(null);
+  const [quizAnswers, setQuizAnswers] = useState(null);
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(true);
   const [progress, setProgress] = useState(0);
   const [animationsComplete, setAnimationsComplete] = useState(false);
+  const [allowed, setAllowed] = useState(false);
 
   const steps = t("steps", { returnObjects: true });
 
-  const isFromRenewal = router.query.fromRenewal === "true";
-
+  // Step 1: Get email
   useEffect(() => {
-    const storedEmail = sessionStorage.getItem("email") || router.query.email;
-    if (storedEmail) setEmail(storedEmail);
-    else setError(t("error"));
+    const stored = sessionStorage.getItem("email") || router.query.email;
+    if (!stored) {
+      setError(t("error"));
+      setLoading(false);
+    } else {
+      setEmail(stored);
+    }
   }, [router, t]);
 
+  // Step 2: Check last plan date
   useEffect(() => {
     if (!email) return;
 
-    const fetchPlan = async () => {
+    const checkEligibility = async () => {
       try {
         const res = await fetch("/api/get-latest-session", {
           method: "POST",
@@ -48,33 +53,42 @@ export default function SuccessPage() {
           const last = new Date(lastGenerated);
           const now = new Date();
           const daysDiff = Math.floor((now - last) / (1000 * 60 * 60 * 24));
-          
+
           if (daysDiff < 30) {
+            setError(`✅ You already generated your plan. Come back in ${30 - daysDiff} day(s).`);
             setAllowed(false);
-            const daysLeft = 30 - daysDiff;
-          
-            // Optional: Custom message if user came from renewal email
-            const message = router.query.fromRenewal
-              ? `✅ You already generated your meal plan this month. Please come back in ${daysLeft} day(s).`
-              : `⏳ You can generate a new plan in ${daysLeft} day(s).`;
-          
-            setError(message);
             setLoading(false);
             return;
           }
         }
 
+        setQuizAnswers(data.quiz_answers);
+        setAllowed(true);
+      } catch (err) {
+        setError(err.message);
+        setLoading(false);
+      }
+    };
+
+    checkEligibility();
+  }, [email]);
+
+  // Step 3: Generate plan
+  useEffect(() => {
+    if (!allowed || !quizAnswers) return;
+
+    const generatePlan = async () => {
+      try {
         const resp = await fetch("/api/generate-meal-plan", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ email, quiz_answers: data.quiz_answers, locale: router.locale }),
+          body: JSON.stringify({ email, quiz_answers: quizAnswers, locale: router.locale }),
         });
 
-        if (!resp.ok) {
+        if (!resp.ok || !resp.body) {
           const errData = await resp.json();
           throw new Error(errData.error || "Plan generation failed");
         }
-    
 
         const reader = resp.body.getReader();
         const decoder = new TextDecoder("utf-8");
@@ -91,15 +105,11 @@ export default function SuccessPage() {
           for (const line of lines) {
             if (line.startsWith("data: ")) {
               const json = line.slice("data: ".length).trim();
-              if (json === "[DONE]") {
-                streamFinished = true;
-              } else {
+              if (json === "[DONE]") streamFinished = true;
+              else {
                 const parsed = JSON.parse(json);
-
-                    // ✅ CLEAR the error as soon as we get valid data
-                   if (!parsed?.choices?.[0]?.delta?.content) continue;
-                   if (error) setError(""); // 🧼 Clear any previous error
-
+                if (!parsed?.choices?.[0]?.delta?.content) continue;
+                setError("");
                 jsonBuffer += parsed.choices?.[0]?.delta?.content || "";
               }
             }
@@ -116,36 +126,32 @@ export default function SuccessPage() {
 
         setMealPlan({ meal_plan: entries });
 
-        // Save to DB
         await fetch("/api/save-meal-plan", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ email, meal_plan: entries }),
         });
 
-        if (typeof window !== "undefined" && window.fbq) {
-          window.fbq("track", "Purchase", { value: 2.99, currency: "EUR" });
-        }
-
         setTimeout(() => {
           setAnimationsComplete(true);
-          setError(""); // ✅ clear error after success
         }, 3000);
       } catch (err) {
-        console.error("❌", err);
-        setError(err.message || "Something went wrong");
+        setError(err.message);
       } finally {
         setLoading(false);
       }
     };
 
-    fetchPlan();
+    generatePlan();
+  }, [allowed, quizAnswers, email, router]);
 
+  // Progress animation
+  useEffect(() => {
     const interval = setInterval(() => {
       setProgress((prev) => (prev < 100 ? prev + 25 : 100));
     }, 1000);
     return () => clearInterval(interval);
-  }, [email, router]);
+  }, []);
 
   const downloadPDF = async () => {
     const input = document.getElementById("meal-plan-content");
@@ -174,13 +180,9 @@ export default function SuccessPage() {
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100 p-5">
       <div className="bg-white p-6 rounded-lg shadow-md w-full max-w-3xl text-center">
-        <h2 className="text-2xl font-bold mb-4">
-          {isFromRenewal ? t("renewalTitle") : t("title")}
-        </h2>
+        <h2 className="text-2xl font-bold mb-4">{t("renewalTitle")}</h2>
 
-        {error && (
-          <p className="text-red-500 text-lg font-semibold mb-4">{error}</p>
-        )}
+        {error && <p className="text-red-500 text-lg font-semibold mb-4">{error}</p>}
 
         {!allowed && (
           <button
@@ -192,7 +194,7 @@ export default function SuccessPage() {
         )}
 
         {loading && !error && (
-          <div>
+          <>
             <p className="text-gray-800 text-lg font-semibold mb-1">{t("generating")}</p>
             <p className="text-sm text-gray-500 mb-4">{t("warning")}</p>
 
@@ -222,10 +224,10 @@ export default function SuccessPage() {
                 className="w-8 h-8 border-4 border-t-green-500 border-gray-300 rounded-full"
               />
             </div>
-          </div>
+          </>
         )}
 
-        {mealPlan && allowed && animationsComplete && (
+        {mealPlan && animationsComplete && (
           <>
             <h3 className="text-lg font-semibold mt-4">{t("planTitle")}</h3>
             <p className="text-gray-600 text-sm">{t("planEmailNote")}</p>

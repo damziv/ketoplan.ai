@@ -2,7 +2,7 @@
     "questions": [
       {
         "question": "What is your gender?",
-        "options": ["Male", "Female", "Other"]
+        "options": ["Male", "Female"]
       },
       {
         "question": "How much variety do you want in your meal plan?",

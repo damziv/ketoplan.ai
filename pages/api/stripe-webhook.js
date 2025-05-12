@@ -1,6 +1,8 @@
 import { buffer } from 'micro';
 import { createClient } from '@supabase/supabase-js';
-const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
+import Stripe from 'stripe';
+
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL,
@@ -9,7 +11,7 @@ const supabase = createClient(
 
 export const config = {
   api: {
-    bodyParser: false, // Required for Stripe signature verification
+    bodyParser: false,
   },
 };
 
@@ -32,66 +34,93 @@ export default async function handler(req, res) {
       process.env.STRIPE_WEBHOOK_SECRET
     );
   } catch (err) {
-    console.error('❌ Webhook signature verification failed:', err.message);
+    console.error('❌ Signature verification failed:', err.message);
     return res.status(400).send(`Webhook Error: ${err.message}`);
   }
 
-  console.log('✅ Stripe webhook event received:', event.type);
+  console.log(`✅ Stripe event received: ${event.type}`);
 
-  if (event.type === 'payment_intent.succeeded') {
-    const paymentIntent = event.data.object;
-    const stripePaymentIntentId = paymentIntent.id;
-    const email = paymentIntent.metadata?.email;
+  // ✅ Handle subscription payments
+  if (event.type === 'invoice.payment_succeeded') {
+    const invoice = event.data.object;
+    const subscriptionId = invoice.subscription;
+    const email = invoice.customer_email || invoice.customer?.email;
+    const sessionId = invoice.lines.data[0]?.metadata?.sessionId || invoice.metadata?.sessionId;
 
-    if (!email) {
-      console.error('❌ Missing email metadata in Stripe payment intent');
-      return res.status(400).send('Missing email in metadata');
+    if (!email || !subscriptionId) {
+      console.error('❌ Missing email or subscriptionId in invoice');
+      return res.status(400).send('Missing data');
     }
 
     try {
-      console.log(`🔎 Searching for unpaid session for email: ${email}`);
+      const subscription = await stripe.subscriptions.retrieve(subscriptionId);
+      const periodEnd = subscription.current_period_end;
 
-      const { data: latestSession, error: fetchError } = await supabase
-        .from('sessions')
-        .select('id, payment_status')
-        .eq('email', email)
-        .eq('payment_status', false)
-        .order('created_at', { ascending: false })
-        .limit(1)
-        .single();
-
-      if (fetchError) {
-        console.error('❌ Supabase fetch error:', fetchError);
-        return res.status(500).send('Database query failed');
-      }
-
-      if (!latestSession) {
-        console.error('⚠️ No unpaid session found for email:', email);
-        return res.status(404).send('Session not found');
-      }
-
-      console.log(`✅ Found session: ${latestSession.id}`);
-
-      const { error: updateError } = await supabase
+      // ✅ Always update subscription fields
+      await supabase
         .from('sessions')
         .update({
           payment_status: true,
-          stripe_session_id: stripePaymentIntentId,
+          is_subscriber: true,
+          stripe_session_id: subscriptionId,
+          subscription_id: subscriptionId,
+          subscription_active_until: new Date(periodEnd * 1000).toISOString(),
         })
-        .eq('id', latestSession.id);
+        .eq('id', sessionId);
 
-      if (updateError) {
-        console.error('❌ Error updating payment status:', updateError);
-        return res.status(500).send('Failed to update session');
+      console.log(`✅ Supabase session ${sessionId} updated`);
+
+      // ✅ Check if it's a renewal (not first invoice)
+      const isRenewal = invoice.billing_reason === 'subscription_cycle';
+      if (isRenewal) {
+        console.log(`📧 Sending renewal email to ${email}`);
+
+        const baseUrl = process.env.NEXT_PUBLIC_URL || 'https://yourdomain.com';
+        const renewLink = `${baseUrl}/success?email=${encodeURIComponent(email)}&fromRenewal=true`;
+
+        await fetch(`${baseUrl}/api/send-renewal-email`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email, link: renewLink }),
+        });
+
+        console.log('📨 Renewal email sent!');
       }
 
-      console.log(`✅ Session ${latestSession.id} updated successfully`);
-      return res.status(200).send('Session updated');
+      return res.status(200).send('Subscription processed');
     } catch (err) {
-      console.error('❌ Exception in webhook handler:', err.message);
+      console.error('❌ Error processing invoice:', err.message);
+      return res.status(500).send('Internal server error');
+    }
+  }
+
+  // ✅ Handle one-time payment fallback
+  if (event.type === 'payment_intent.succeeded') {
+    const intent = event.data.object;
+    const email = intent.metadata?.email;
+    const sessionId = intent.metadata?.sessionId;
+
+    if (!email || !sessionId) {
+      console.error('❌ Missing metadata in one-time payment');
+      return res.status(400).send('Missing metadata');
+    }
+
+    try {
+      await supabase
+        .from('sessions')
+        .update({
+          payment_status: true,
+          stripe_session_id: intent.id,
+        })
+        .eq('id', sessionId);
+
+      console.log(`✅ One-time payment updated session ${sessionId}`);
+      return res.status(200).send('One-time payment updated');
+    } catch (err) {
+      console.error('❌ Webhook error:', err.message);
       return res.status(500).send('Internal error');
     }
   }
 
-  res.status(200).json({ received: true });
+  return res.status(200).json({ received: true });
 }

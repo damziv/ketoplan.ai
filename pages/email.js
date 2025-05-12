@@ -1,4 +1,3 @@
-// File: /pages/email.js
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { createClient } from '@supabase/supabase-js';
@@ -52,7 +51,12 @@ export default function EmailPage() {
   const saveEmailToDatabase = async () => {
     const sessionId = sessionStorage.getItem('sessionId');
     if (!sessionId) return;
-    await supabase.from('sessions').update({ email }).eq('id', sessionId);
+    
+    await supabase.from('sessions').update({
+      email,
+      age: parseInt(age),
+      country: router.locale || 'en'
+    }).eq('id', sessionId);
   };
 
   const handleNext = async () => {
@@ -66,19 +70,42 @@ export default function EmailPage() {
       sessionStorage.setItem('email', email);
       await saveEmailToDatabase();
 
-    // ✅ Fire Facebook Pixel Lead event
-    if (typeof window !== 'undefined' && window.fbq) {
-      fbq('track', 'Lead');
-    }
-    
-      router.push('/payment');
+      // ✅ Facebook Pixel Event
+      if (typeof window !== 'undefined' && window.fbq) {
+        fbq('track', 'Lead');
+      }
+
+      // ✅ Check subscription status before redirecting
+      const { data: subscriberData, error: subError } = await supabase
+        .from('sessions')
+        .select('is_subscriber, last_meal_plan_at')
+        .eq('email', email)
+        .order('created_at', { ascending: false })
+        .limit(1)
+        .single();
+
+      if (!subError && subscriberData?.is_subscriber) {
+        const lastGenerated = new Date(subscriberData.last_meal_plan_at);
+        const now = new Date();
+        const diffInMs = now - lastGenerated;
+        const diffInDays = diffInMs / (1000 * 60 * 60 * 24);
+
+        if (isNaN(diffInDays) || diffInDays >= 30) {
+          router.push('/success');
+        } else {
+          alert('✅ You already received a plan this month. We’ll notify you when you can generate a new one.');
+          router.push('/');
+        }
+      } else {
+        router.push('/payment');
+      }
     }
   };
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-50 p-6">
       <div className="fixed top-0 w-full bg-gray-800 py-4 text-center text-white font-bold text-2xl z-50">
-      Smart Keto-Meal
+        Smart Keto-Meal
       </div>
 
       <motion.div
@@ -87,6 +114,11 @@ export default function EmailPage() {
         transition={{ duration: 0.5 }}
         className="bg-white shadow-lg rounded-2xl p-8 w-full max-w-md text-center mt-16"
       >
+        {/* ✅ Progress Info */}
+        <p className="text-sm text-gray-500 mb-3">
+          Step 6 of 6 · Final step before your custom plan
+        </p>
+
         <h1 className="text-3xl font-bold text-gray-900 mb-2 flex justify-center items-center">
           🏁 {t('title')}
         </h1>
@@ -99,7 +131,6 @@ export default function EmailPage() {
           onChange={(e) => setAge(e.target.value)}
           className="w-full border rounded-xl p-3 mb-4 focus:ring-2 focus:ring-blue-500 outline-none transition"
         />
-
         <input
           type="number"
           placeholder={t('fields.height')}
@@ -107,7 +138,6 @@ export default function EmailPage() {
           onChange={(e) => setHeight(e.target.value)}
           className="w-full border rounded-xl p-3 mb-4 focus:ring-2 focus:ring-blue-500 outline-none transition"
         />
-
         <input
           type="number"
           placeholder={t('fields.currentWeight')}
@@ -115,7 +145,6 @@ export default function EmailPage() {
           onChange={(e) => setCurrentWeight(e.target.value)}
           className="w-full border rounded-xl p-3 mb-4 focus:ring-2 focus:ring-blue-500 outline-none transition"
         />
-
         <input
           type="number"
           placeholder={t('fields.desiredWeight')}
@@ -123,25 +152,36 @@ export default function EmailPage() {
           onChange={(e) => setDesiredWeight(e.target.value)}
           className="w-full border rounded-xl p-3 mb-4 focus:ring-2 focus:ring-blue-500 outline-none transition"
         />
-
         <input
           type="email"
           placeholder={t('fields.email')}
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          className="w-full border rounded-xl p-3 mb-4 focus:ring-2 focus:ring-blue-500 outline-none transition"
+          className="w-full border rounded-xl p-3 mb-2 focus:ring-2 focus:ring-blue-500 outline-none transition"
         />
 
-        {error && <p className="text-red-500 text-sm mb-4">{error}</p>}
+        {error && <p className="text-red-500 text-sm mb-2">{error}</p>}
+
+        {/* ✅ Privacy Assurance */}
+        <p className="text-sm text-gray-500 italic mb-2">
+          Your data is 100% private. We never share your email.
+        </p>
+
+        {/* ✅ Social Proof */}
+        <p className="text-sm text-gray-600 mb-4">
+          ✅ 8,000+ people have used Smart Keto-Meal to reach their goals.
+        </p>
 
         <motion.button
           whileTap={{ scale: 0.95 }}
           className={`w-full py-3 rounded-xl font-semibold transition-all 
-            ${email && age && height && currentWeight && desiredWeight ? 'bg-blue-600 hover:bg-blue-700 text-white' : 'bg-gray-300 text-gray-500 cursor-not-allowed'}`}
+            ${email && age && height && currentWeight && desiredWeight
+              ? 'bg-blue-600 hover:bg-blue-700 text-white'
+              : 'bg-gray-300 text-gray-500 cursor-not-allowed'}`}
           onClick={handleNext}
           disabled={!email || !age || !height || !currentWeight || !desiredWeight}
         >
-          {t('continue')} →
+          {t('continueAction', 'Generate My Plan')} →
         </motion.button>
       </motion.div>
     </div>
@@ -149,11 +189,9 @@ export default function EmailPage() {
 }
 
 export async function getStaticProps({ locale }) {
-  console.log('📣 Detected locale:', locale); // <-- 👈 Add this line
   return {
     props: {
       ...(await serverSideTranslations(locale, ['email'])),
     },
   };
 }
-

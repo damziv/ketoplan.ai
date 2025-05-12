@@ -214,17 +214,27 @@ export default function QuizStep() {
           })}
         </div>
 
-        {questionMeta.multiple && (
-          <div className="flex justify-between w-full mt-5">
-            <button className="bg-gray-500 text-white py-3 px-6 rounded-md hover:bg-gray-600" onClick={handleBack}>
-              {t('back')}
-            </button>
-            <button className="bg-green-500 text-white py-3 px-6 rounded-md hover:bg-green-600" onClick={handleNext}>
-              {t('next')}
-            </button>
-          </div>
-        )}
       </div>
+      {/* Fixed navigation buttons */}
+{questionMeta.multiple && (
+  <div className="fixed bottom-0 left-0 w-full bg-white px-4 py-3 border-t z-50 shadow-md">
+    <div className="max-w-md mx-auto flex justify-between">
+      <button
+        className="bg-gray-500 text-white py-3 px-6 rounded-md hover:bg-gray-600"
+        onClick={handleBack}
+      >
+        {t('back')}
+      </button>
+      <button
+        className="bg-green-500 text-white py-3 px-6 rounded-md hover:bg-green-600"
+        onClick={handleNext}
+      >
+        {t('next')}
+      </button>
+    </div>
+  </div>
+)}
+
     </div>
   );
 }
