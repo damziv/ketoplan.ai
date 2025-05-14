@@ -1,7 +1,7 @@
 module.exports = {
     i18n: {
       defaultLocale: 'en',
-      locales: ['en', 'hr', 'de'],
+      locales: ['en', 'hr', 'de',],
       domains: [
         {
           domain: 'keto-meal.com',

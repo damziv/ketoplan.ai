@@ -48,7 +48,7 @@ const foodTranslationMap = {
   "kohl": "cabbage", "zucchini": "zucchini", "spargel": "asparagus", "aubergine": "eggplant",
   "eier": "eggs", "käse": "cheese", "butter": "butter", "tofu": "tofu",
   "garnelen": "shrimp", "chia": "chia",
-  "keines": "none", "keine": "none"
+  "keines": "none", "keine": "none",
 };
 
 
