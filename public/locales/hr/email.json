@@ -1,17 +1,20 @@
 {
-    "title": "Još samo par koraka!",
-    "subtitle": "Samo još nekoliko podataka i tvoj plan prehrane bit će spreman.",
-    "fields": {
-      "age": "Godine",
-      "height": "Visina (cm)",
-      "currentWeight": "Trenutna težina (kg)",
-      "desiredWeight": "Željena težina (kg)",
-      "email": "Tvoja e-mail adresa"
-    },
-    "error": {
-      "fillAll": "Molimo ispuni sva polja kako bi nastavio.",
-      "invalidEmail": "Unesi ispravnu e-mail adresu."
-    },
-    "continue": "Nastavi"
-  }
-  
+  "title": "Još samo par koraka",
+  "subtitle": "Još samo nekoliko detalja i vaš personalizirani plan obroka bit će spreman!",
+  "fields": {
+    "age": "Godine",
+    "height": "Visina (cm)",
+    "currentWeight": "Trenutna težina (kg)",
+    "desiredWeight": "Željena težina (kg)",
+    "email": "Email adresa"
+  },
+  "error": {
+    "fillAll": "Ispunite sva polja za nastavak.",
+    "invalidEmail": "Unesite valjanu adresu e-pošte."
+  },
+  "continue": "Nastavi ->",
+  "stepInfo": "Super! · Zadnji korak prije vašeg prilagođenog plana",
+  "privacy": "Vaši podaci su 100% privatni. Nikada ne dijelimo vašu e-poštu.",
+  "socialProof": "✅ Više od 8000 korisnika je poboljšalo svoje zdravlje prehranom",
+  "fallbackButton": "Generiraj plan"
+}
