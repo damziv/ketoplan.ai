@@ -257,7 +257,7 @@ export default function QuizStep() {
 export async function getStaticPaths() {
   const steps = Array.from({ length: 12 }, (_, i) => i + 1);
 
-  const paths = ['en', 'hr'].flatMap((locale) =>
+  const paths = ['en', 'hr', 'de', 'fr', 'pl'].flatMap((locale) =>
     steps.map((step) => ({
       params: { step: step.toString() },
       locale,
