@@ -51,7 +51,7 @@ export default function EmailPage() {
   const saveEmailToDatabase = async () => {
     const sessionId = sessionStorage.getItem('sessionId');
     if (!sessionId) return;
-    
+
     await supabase.from('sessions').update({
       email,
       age: parseInt(age),
@@ -70,12 +70,12 @@ export default function EmailPage() {
       sessionStorage.setItem('email', email);
       await saveEmailToDatabase();
 
-      // ✅ Facebook Pixel Event
+      // Facebook Pixel Event
       if (typeof window !== 'undefined' && window.fbq) {
         fbq('track', 'Lead');
       }
 
-      // ✅ Check subscription status before redirecting
+      // Check subscription status before redirecting
       const { data: subscriberData, error: subError } = await supabase
         .from('sessions')
         .select('is_subscriber, last_meal_plan_at')
@@ -114,9 +114,9 @@ export default function EmailPage() {
         transition={{ duration: 0.5 }}
         className="bg-white shadow-lg rounded-2xl p-8 w-full max-w-md text-center mt-16"
       >
-        {/* ✅ Progress Info */}
+        {/* Step Info */}
         <p className="text-sm text-gray-500 mb-3">
-          Step 6 of 6 · Final step before your custom plan
+          {t('stepInfo')}
         </p>
 
         <h1 className="text-3xl font-bold text-gray-900 mb-2 flex justify-center items-center">
@@ -162,14 +162,12 @@ export default function EmailPage() {
 
         {error && <p className="text-red-500 text-sm mb-2">{error}</p>}
 
-        {/* ✅ Privacy Assurance */}
         <p className="text-sm text-gray-500 italic mb-2">
-          Your data is 100% private. We never share your email.
+          {t('privacy')}
         </p>
 
-        {/* ✅ Social Proof */}
         <p className="text-sm text-gray-600 mb-4">
-          ✅ 8,000+ people have used Smart Keto-Meal to reach their goals.
+          {t('socialProof')}
         </p>
 
         <motion.button
@@ -181,7 +179,7 @@ export default function EmailPage() {
           onClick={handleNext}
           disabled={!email || !age || !height || !currentWeight || !desiredWeight}
         >
-          {t('continueAction', 'Generate My Plan')} →
+          {t('continue', 'Generate My Plan')} →
         </motion.button>
       </motion.div>
     </div>
