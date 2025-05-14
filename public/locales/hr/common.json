@@ -1,16 +1,40 @@
 {
-    "hero": {
-      "titleLine1": "Izgubi kilograme ",
-      "titleLine2": "U samo nekoliko dana",
-      "description": "Otkrij personalizirani plan prehrane prilagođen tvojim željama i načinu života.",
-      "cta": "Započni kviz",
-      "disclaimer": "Klikom na 'Započni kviz' prihvaćaš naše Uvjete korištenja."
-    },
-    "footer": {
-      "privacy": "Pravila privatnosti",
-      "terms": "Uvjeti korištenja",
-      "cookies": "Pravila o kolačićima",
-      "refunds": "Pravila o povratu"
-    }
+  "hero": {
+    "titleLine1": "Start Losing Weight",
+    "titleLine2": "Within Days",
+    "description": "Discover personalized meal plans tailored to your preferences and lifestyle.",
+    "cta": "Start Quiz",
+    "disclaimer": "By pressing 'Start Quiz', you are confirming your acceptance of our Terms.",
+    "trusted": "Trusted by <strong>10,000+</strong> keto enthusiasts",
+    "quick": "✓ Takes less than 2 minutes",
+    "personalized": "✓ Personalized based on your preferences",
+    "noSignup": "✓ No signup required to start",
+    "rating": "Based on 1,200+ reviews"
+  },
+  "reviews": {
+    "title": "What Our Users Say",
+    "list": [
+      "Best meal plan ever! ⭐⭐⭐⭐⭐",
+      "Lost 5kg in 4 weeks! ⭐⭐⭐⭐⭐",
+      "So easy to follow! ⭐⭐⭐⭐⭐"
+    ]
+  },
+  "carousel": {
+    "title": "🔥 Real Keto Results"
+  },
+  "whyUs": {
+    "title": "Why Choose AI Keto Meal Recipe App?",
+    "points": [
+      "One-time payment – no hidden fees!",
+      "Personalized keto recipes generated from your answers!",
+      "Effortless meal planning for a healthier lifestyle!"
+    ]
+  },
+  "footer": {
+    "privacy": "Privacy Policy",
+    "terms": "Terms",
+    "cookies": "Cookie Policy",
+    "refunds": "Refund Policy",
+    "rights": "All rights reserved."
   }
-  
+}
