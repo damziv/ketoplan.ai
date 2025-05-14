@@ -25,17 +25,32 @@ const questions = [
 ];
 
 const foodTranslationMap = {
-  "chicken": "chicken", "pork": "pork", "beef": "beef", "bacon": "bacon", "salmon": "salmon", "tuna": "tuna", "lamb": "lamb",
-  "broccoli": "broccoli", "spinach": "spinach", "lettuce": "lettuce", "cauliflower": "cauliflower", "cabbage": "cabbage",
-  "zucchini": "zucchini", "asparagus": "asparagus", "eggplant": "eggplant", "eggs": "eggs", "cheese": "cheese",
-  "butter": "butter", "tofu": "tofu", "shrimp": "shrimp", "chia": "chia",
-  "nothing": "none", "none": "none",
-  "piletina": "chicken", "svinjetina": "pork", "govedina": "beef", "slanina": "bacon", "losos": "salmon", "tuna": "tuna", "janjetina": "lamb",
-  "brokula": "broccoli", "špinat": "spinach", "zelena salata": "lettuce", "cvjetača": "cauliflower", "kupus": "cabbage",
-  "tikvica": "zucchini", "šparoge": "asparagus", "patlidžan": "eggplant", "jaja": "eggs", "sir": "cheese",
-  "maslac": "butter", "tofu": "tofu", "škampi": "shrimp", "chia": "chia",
-  "ništa": "none", "niti jedno": "none"
+  // English
+  "chicken": "chicken", "pork": "pork", "beef": "beef", "bacon": "bacon",
+  "salmon": "salmon", "tuna": "tuna", "lamb": "lamb",
+  "broccoli": "broccoli", "spinach": "spinach", "lettuce": "lettuce", "cauliflower": "cauliflower",
+  "cabbage": "cabbage", "zucchini": "zucchini", "asparagus": "asparagus", "eggplant": "eggplant",
+  "eggs": "eggs", "cheese": "cheese", "butter": "butter", "tofu": "tofu",
+  "shrimp": "shrimp", "chia": "chia", "none": "none", "nothing": "none",
+
+  // Croatian
+  "piletina": "chicken", "svinjetina": "pork", "govedina": "beef", "slanina": "bacon",
+  "losos": "salmon", "tuna": "tuna", "janjetina": "lamb",
+  "brokula": "broccoli", "špinat": "spinach", "zelena salata": "lettuce", "cvjetača": "cauliflower",
+  "kupus": "cabbage", "tikvica": "zucchini", "šparoge": "asparagus", "patlidžan": "eggplant",
+  "jaja": "eggs", "sir": "cheese", "maslac": "butter", "tofu": "tofu", "škampi": "shrimp", "chia": "chia",
+  "ništa": "none", "niti jedno": "none",
+
+  // German
+  "hähnchen": "chicken", "schwein": "pork", "rind": "beef", "speck": "bacon",
+  "lachs": "salmon", "thunfisch": "tuna", "lamm": "lamb",
+  "brokkoli": "broccoli", "spinat": "spinach", "kopfsalat": "lettuce", "blumenkohl": "cauliflower",
+  "kohl": "cabbage", "zucchini": "zucchini", "spargel": "asparagus", "aubergine": "eggplant",
+  "eier": "eggs", "käse": "cheese", "butter": "butter", "tofu": "tofu",
+  "garnelen": "shrimp", "chia": "chia",
+  "keines": "none", "keine": "none"
 };
+
 
 const getFoodImage = (option) => {
   const normalizedOption = option.toLowerCase();
