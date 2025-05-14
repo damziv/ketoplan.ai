@@ -1,43 +1,43 @@
 {
   "questions": [
     {
-      "question": "Was ist dein Geschlecht?",
-      "options": ["Männlich", "Weiblich"]
+      "question": "What is your gender?",
+      "options": ["Male", "Female"]
     },
     {
-      "question": "Wie viel Abwechslung möchtest du in deinem Ernährungsplan?",
-      "options": ["Viel", "Mittel", "Wenig"]
+      "question": "How much variety do you want in your meal plan?",
+      "options": ["High", "Moderate", "Low"]
     },
     {
-      "question": "Wähle das Fleisch, das du einbeziehen möchtest",
-      "options": ["Hähnchen", "Schwein", "Rind", "Speck", "Lachs", "Thunfisch", "Lamm", "Keines"]
+      "question": "Choose the meat you want to include",
+      "options": ["Chicken", "Pork", "Beef", "Bacon", "Salmon", "Tuna", "Lamb", "None"]
     },
     {
-      "question": "Wähle das Gemüse, das du einbeziehen möchtest",
-      "options": ["Brokkoli", "Spinat", "Kopfsalat", "Blumenkohl", "Kohl", "Zucchini", "Spargel", "Aubergine", "Keines"]
+      "question": "Choose the vegetable you want to include",
+      "options": ["Broccoli", "Spinach", "Lettuce", "Cauliflower", "Cabbage", "Zucchini", "Asparagus", "Eggplant", "None"]
     },
     {
-      "question": "Wähle weitere Produkte, die du einbeziehen möchtest",
-      "options": ["Eier", "Käse", "Butter", "Tofu", "Garnelen", "Chia", "Keines"]
+      "question": "Choose other products you want to include",
+      "options": ["Eggs", "Cheese", "Butter", "Tofu", "Shrimp", "Chia", "None"]
     },
     {
-      "question": "Wie aktiv bist du im Alltag?",
-      "options": ["Wenig aktiv", "Mäßig aktiv", "Sehr aktiv"]
+      "question": "What is your activity level?",
+      "options": ["Sedentary", "Moderately Active", "Very Active"]
     },
     {
-      "question": "Hast du irgendwelche Allergien?",
-      "options": ["Nüsse", "Milchprodukte", "Soja", "Keine"]
+      "question": "Do you have any allergies?",
+      "options": ["Nuts", "Dairy", "Soy", "None"]
     },
     {
-      "question": "Was ist dein Hauptziel?",
-      "options": ["Gewichtsreduktion", "Gewicht halten", "Muskeln aufbauen"]
+      "question": "What is your primary goal?",
+      "options": ["Weight Loss", "Maintain Weight", "Gain Muscle"]
     },
     {
-      "question": "Hast du ein Budget für die Essensplanung?",
-      "options": ["Gering", "Mittel", "Hoch"]
+      "question": "Do you have a budget preference for meal prep?",
+      "options": ["Low", "Medium", "High"]
     }
   ],
-  "selectYourPreference": "Wähle deine Präferenz",
-  "next": "Weiter",
-  "back": "Zurück"
+  "selectYourPreference": "Select your preference",
+  "next": "Next",
+  "back": "Back"
 }
