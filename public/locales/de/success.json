@@ -1,0 +1,24 @@
+{
+  "title": "Zahlung erfolgreich 🎉",
+  "renewalTitle": "Dein neuer Plan wird erstellt... 🎉",
+  "generating": "Dein individueller Ernährungsplan wird erstellt. Bitte habe einen Moment Geduld...",
+  "warning": "Dieser Vorgang kann bis zu 1 Minute dauern – verlasse die Seite nicht!",
+  "steps": [
+    "Demografisches Profil",
+    "Gesundheitliche Angaben",
+    "Nährstoffbedarf wird berechnet",
+    "Aktivität & Gewohnheiten",
+    "Ernährungsplan wird finalisiert"
+  ],
+  "planTitle": "Dein personalisierter Ernährungsplan mit Rezepten 📖",
+  "planEmailNote": "Dein Plan wurde per E-Mail verschickt! Prüfe auch den SPAM-Ordner.",
+  "planDownloadNote": "Wir empfehlen, den Plan herunterzuladen – manche Provider blockieren E-Mails.",
+  "downloadBtn": "📥 PDF herunterladen",
+  "ingredients": "Zutaten:",
+  "instructions": "Zubereitung:",
+  "noIngredients": "Keine Zutaten verfügbar",
+  "noInstructions": "Keine Anweisungen verfügbar",
+  "backHome": "Zurück zur Startseite",
+  "error": "Beim Erstellen deines Ernährungsplans ist ein Fehler aufgetreten.",
+  "day": "Tag {{day}}"
+}

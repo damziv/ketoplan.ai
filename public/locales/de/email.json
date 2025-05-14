@@ -1,0 +1,20 @@
+{
+  "title": "Wir personalisieren deinen Plan",
+  "subtitle": "Nur noch ein paar Angaben – und dein persönlicher Ernährungsplan ist fertig!",
+  "fields": {
+    "age": "Alter",
+    "height": "Größe (cm)",
+    "currentWeight": "Aktuelles Gewicht (kg)",
+    "desiredWeight": "Wunschgewicht (kg)",
+    "email": "Deine E-Mail-Adresse"
+  },
+  "error": {
+    "fillAll": "Bitte fülle alle Felder aus, um fortzufahren.",
+    "invalidEmail": "Bitte gib eine gültige E-Mail-Adresse ein."
+  },
+  "continue": "Weiter",
+  "stepInfo": "Schritt 6 von 6 · Letzter Schritt zu deinem individuellen Plan",
+  "privacy": "Deine Daten sind 100 % privat. Wir geben deine E-Mail niemals weiter.",
+  "socialProof": "✅ Mehr als 8.000 Nutzer haben ihre Ernährung mit uns verbessert",
+  "fallbackButton": "Meinen Plan erstellen"
+}
