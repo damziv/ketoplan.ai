@@ -7,17 +7,8 @@ import { motion } from 'framer-motion';
 export default function Home() {
   const { t } = useTranslation('common');
 
-  const reviews = [
-    "Best meal plan ever! ⭐⭐⭐⭐⭐",
-    "Lost 5kg in 4 weeks! ⭐⭐⭐⭐⭐",
-    "So easy to follow! ⭐⭐⭐⭐⭐"
-  ];
-
-  const why = [
-    "One-time payment – no hidden fees!",
-    "Personalized keto recipes generated from your answers!",
-    "Effortless meal planning for a healthier lifestyle!"
-  ];
+  const reviews = t('reviews.list', { returnObjects: true });
+  const why = t('whyUs.points', { returnObjects: true });
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -32,7 +23,6 @@ export default function Home() {
               className="w-full h-full object-cover"
             />
           </picture>
-          {/* Overlay for visibility */}
           <div className="absolute inset-0 bg-white bg-opacity-60"></div>
         </div>
 
@@ -46,15 +36,16 @@ export default function Home() {
           </p>
 
           {/* Trusted by */}
-          <p className="text-gray-700 text-sm font-medium mb-2">
-            Trusted by <strong>10,000+</strong> keto enthusiasts
-          </p>
+          <p
+            className="text-gray-700 text-sm font-medium mb-2"
+            dangerouslySetInnerHTML={{ __html: t('hero.trusted') }}
+          />
 
           {/* Bullet Benefits */}
           <ul className="text-left text-sm text-gray-700 mb-4 space-y-1">
-            <li>✓ Takes less than 2 minutes</li>
-            <li>✓ Personalized based on your preferences</li>
-            <li>✓ No signup required to start</li>
+            <li>{t('hero.quick')}</li>
+            <li>{t('hero.personalized')}</li>
+            <li>{t('hero.noSignup')}</li>
           </ul>
 
           {/* CTA Button */}
@@ -67,7 +58,7 @@ export default function Home() {
 
           {/* Star Rating */}
           <div className="flex justify-center items-center text-yellow-500 text-xl mt-3 mb-2">
-            ★★★★★ <span className="ml-2 text-sm text-gray-600">Based on 1,200+ reviews</span>
+            ★★★★★ <span className="ml-2 text-sm text-gray-600">{t('hero.rating')}</span>
           </div>
 
           {/* Disclaimer */}
@@ -81,7 +72,7 @@ export default function Home() {
       <section className="bg-green-50 text-gray-800 px-6 md:px-0 py-16">
         {/* Carousel Section */}
         <div className="max-w-md mx-auto mt-4">
-          <h2 className="text-2xl font-bold text-center mb-4 text-gray-800">🔥 Real Keto Results</h2>
+          <h2 className="text-2xl font-bold text-center mb-4 text-gray-800">{t('carousel.title')}</h2>
           <Carousel
             showThumbs={false}
             autoPlay
@@ -97,7 +88,7 @@ export default function Home() {
 
         {/* Reviews */}
         <div className="mt-16 w-full max-w-md mx-auto">
-          <h3 className="text-lg font-bold text-center mb-4">What Our Users Say</h3>
+          <h3 className="text-lg font-bold text-center mb-4">{t('reviews.title')}</h3>
           <div className="flex flex-wrap gap-4 justify-center md:flex-nowrap">
             {reviews.map((review, index) => (
               <motion.div
@@ -116,7 +107,7 @@ export default function Home() {
         {/* Why Us */}
         <div className="mt-8 w-full max-w-md mx-auto bg-white p-6 rounded-lg shadow-lg">
           <h3 className="text-2xl font-bold text-center mb-6 text-gray-800">
-            Why Choose AI Keto Meal Recipe App?
+            {t('whyUs.title')}
           </h3>
           <ul className="space-y-4">
             {why.map((text, index) => (
@@ -138,7 +129,7 @@ export default function Home() {
       {/* Footer */}
       <footer className="w-full bg-gray-900 text-gray-300 text-sm text-center py-6">
         <div className="container mx-auto flex flex-col md:flex-row items-center justify-center gap-4">
-          <p className="text-gray-400">© {new Date().getFullYear()} keto-meal.com All rights reserved.</p>
+          <p className="text-gray-400">© {new Date().getFullYear()} keto-meal.com {t('footer.rights')}</p>
           <div className="flex space-x-4">
             <a href="/privacy-policy" className="hover:text-white transition">{t('footer.privacy')}</a>
             <a href="/terms" className="hover:text-white transition">{t('footer.terms')}</a>
