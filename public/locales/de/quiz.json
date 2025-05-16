@@ -1,8 +1,8 @@
 {
   "questions": [
     {
-      "question": "Was ist dein Geschlecht?",
-      "options": ["Männlich", "Weiblich"]
+      "question": "Was ist dein Hauptziel?",
+      "options": ["Gewichtsreduktion", "Gewicht halten", "Muskeln aufbauen"]
     },
     {
       "question": "Wie viel Abwechslung möchtest du in deinem Ernährungsplan?",
@@ -29,12 +29,12 @@
       "options": ["Nüsse", "Milchprodukte", "Soja", "Keine"]
     },
     {
-      "question": "Was ist dein Hauptziel?",
-      "options": ["Gewichtsreduktion", "Gewicht halten", "Muskeln aufbauen"]
-    },
-    {
       "question": "Hast du ein Budget für die Essensplanung?",
       "options": ["Gering", "Mittel", "Hoch"]
+    },
+    {
+      "question": "Was ist dein Geschlecht?",
+      "options": ["Männlich", "Weiblich"]
     }
   ],
   "selectYourPreference": "Wähle deine Präferenz",

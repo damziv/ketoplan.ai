@@ -1,8 +1,8 @@
 {
     "questions": [
       {
-        "question": "What is your gender?",
-        "options": ["Male", "Female"]
+        "question": "What is your primary goal?",
+        "options": ["Weight Loss", "Maintain Weight", "Gain Muscle"]
       },
       {
         "question": "How much variety do you want in your meal plan?",
@@ -29,12 +29,13 @@
         "options": ["Nuts", "Dairy", "Soy", "None"]
       },
       {
-        "question": "What is your primary goal?",
-        "options": ["Weight Loss", "Maintain Weight", "Gain Muscle"]
-      },
-      {
         "question": "Do you have a budget preference for meal prep?",
         "options": ["Low", "Medium", "High"]
+      },
+      {
+
+        "question": "What is your gender?",
+        "options": ["Male", "Female"]
       }
     ],
     "selectYourPreference": "Select your preference",

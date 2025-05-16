@@ -15,7 +15,7 @@ export default function PrivacyPolicy() {
             The **Data Controller** responsible for processing your personal data under this policy is:
           </p>
           <p className="text-gray-900 font-bold mt-2">keto-meal.com</p>
-          <p className="text-gray-900">📍 Address: [Your Company Address]</p>
+          <p className="text-gray-900">📍 Address: Oreskovicava 1A, Croatia</p>
           <p className="text-gray-900">📩 Email: support@keto-meal.com</p>
   
           {/* ✅ 2. What Personal Data We Collect */}
@@ -101,7 +101,7 @@ export default function PrivacyPolicy() {
             To exercise your rights or for privacy concerns, please contact us:
           </p>
           <p className="text-gray-900 font-bold mt-2">📩 Email: support@keto-meal.com</p>
-          <p className="text-gray-900 font-bold">📍 Address: [Your Company Address]</p>
+          <p className="text-gray-900 font-bold">📍 Address: Oreskovicava 1A, Croatia</p>
   
           {/* ✅ Back Button */}
           <button

@@ -30,7 +30,6 @@ export default function TermsPage() {
         <h2 className="text-xl font-semibold text-gray-800 mt-6">4. Account and Payment</h2>
         <ul className="list-disc pl-5 text-gray-700">
           <li>You agree to provide accurate information when signing up.</li>
-          <li>All payments are **one-time fees**, as clearly stated before checkout.</li>
           <li>We process payments securely via **Stripe**, and we do not store payment details.</li>
         </ul>
 
@@ -56,7 +55,7 @@ export default function TermsPage() {
 
         <h2 className="text-xl font-semibold text-gray-800 mt-6">8. Liability & Disclaimer</h2>
         <p className="text-gray-700">
-          AImealPrep is provided "as is". We do not guarantee that meal plans will suit every individual’s dietary needs. 
+          keto-meal.com is provided "as is". We do not guarantee that meal plans will suit every individual’s dietary needs. 
           We are not responsible for any health outcomes resulting from meal plans.
         </p>
 
