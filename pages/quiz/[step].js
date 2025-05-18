@@ -232,22 +232,33 @@ export default function QuizStep() {
       </div>
       {/* Fixed navigation buttons */}
 {questionMeta.multiple && (
-  <div className="fsticky bottom-0 left-0 w-full bg-white px-4 py-3 border-t z-50 shadow-md">
-   <div className="max-w-md mx-auto flex justify-between">
-      <button
-        className="bg-gray-500 text-white py-3 px-6 rounded-md hover:bg-gray-600"
-        onClick={handleBack}
-      >
-        {t('back')}
-      </button>
-      <button
-        className="bg-green-500 text-white py-3 px-6 rounded-md hover:bg-green-600"
-        onClick={handleNext}
-      >
-        {t('next')}
-      </button>
-    </div>
-  </div>
+ <div
+ className="w-full bg-white px-4 py-3 border-t z-50 shadow-md"
+ style={{
+   position: 'fixed',
+   bottom: 0,
+   left: 0,
+   right: 0,
+   paddingBottom: 'env(safe-area-inset-bottom)',
+   zIndex: 9999,
+ }}
+>
+ <div className="max-w-md mx-auto flex justify-between">
+   <button
+     className="bg-gray-500 text-white py-3 px-6 rounded-md hover:bg-gray-600"
+     onClick={handleBack}
+   >
+     {t('back')}
+   </button>
+   <button
+     className="bg-green-500 text-white py-3 px-6 rounded-md hover:bg-green-600"
+     onClick={handleNext}
+   >
+     {t('next')}
+   </button>
+ </div>
+</div>
+
 )}
 
     </div>
