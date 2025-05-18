@@ -232,7 +232,7 @@ export default function QuizStep() {
       </div>
       {/* Fixed navigation buttons */}
 {questionMeta.multiple && (
-  <div className="fixed bottom-0 left-0 w-full bg-white px-4 py-3 border-t z-50 shadow-md md:sticky">
+  <div className="fsticky bottom-0 left-0 w-full bg-white px-4 py-3 border-t z-50 shadow-md">
    <div className="max-w-md mx-auto flex justify-between">
       <button
         className="bg-gray-500 text-white py-3 px-6 rounded-md hover:bg-gray-600"
