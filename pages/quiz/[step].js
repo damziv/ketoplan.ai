@@ -231,35 +231,39 @@ export default function QuizStep() {
 
       </div>
       {/* Fixed navigation buttons */}
+{/* Sticky navigation buttons - compatible with Facebook iOS browser */}
 {questionMeta.multiple && (
- <div
- className="w-full bg-white px-4 py-3 border-t z-50 shadow-md"
- style={{
-   position: 'fixed',
-   bottom: 0,
-   left: 0,
-   right: 0,
-   paddingBottom: 'env(safe-area-inset-bottom)',
-   zIndex: 9999,
- }}
->
- <div className="max-w-md mx-auto flex justify-between">
-   <button
-     className="bg-gray-500 text-white py-3 px-6 rounded-md hover:bg-gray-600"
-     onClick={handleBack}
-   >
-     {t('back')}
-   </button>
-   <button
-     className="bg-green-500 text-white py-3 px-6 rounded-md hover:bg-green-600"
-     onClick={handleNext}
-   >
-     {t('next')}
-   </button>
- </div>
-</div>
-
+  <div
+    style={{
+      position: 'sticky',
+      bottom: 0,
+      zIndex: 50,
+      backgroundColor: 'white',
+      paddingTop: '1rem',
+      paddingBottom: 'calc(env(safe-area-inset-bottom, 0px) + 1rem)',
+      paddingLeft: '1rem',
+      paddingRight: '1rem',
+      borderTop: '1px solid #e5e7eb',
+      boxShadow: '0 -2px 6px rgba(0, 0, 0, 0.05)',
+    }}
+  >
+    <div className="max-w-md mx-auto flex justify-between">
+      <button
+        className="bg-gray-500 text-white py-3 px-6 rounded-md hover:bg-gray-600"
+        onClick={handleBack}
+      >
+        {t('back')}
+      </button>
+      <button
+        className="bg-green-500 text-white py-3 px-6 rounded-md hover:bg-green-600"
+        onClick={handleNext}
+      >
+        {t('next')}
+      </button>
+    </div>
+  </div>
 )}
+
 
     </div>
   );
