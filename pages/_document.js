@@ -13,6 +13,8 @@ export default function Document() {
         <meta property="og:title" content="AI Keto Meal Plan" />
         <meta property="og:image" content="/favicon.png" />
         <meta property="og:description" content="Get your personalized 5-day keto meal plan with full recipes and PDF download." />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
       </Head>
 {/* ✅ DigitalQA Meta Pixel Script */}
 <Script
