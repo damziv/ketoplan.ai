@@ -81,7 +81,7 @@ export default function PaymentPage() {
   const why = t('why', { returnObjects: true });
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100 p-5">
+    <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100 p-5 pb-36">
       <div className="fixed top-0 w-full bg-gray-800 py-4 text-center text-white font-bold text-2xl z-50">
         Keto AI App
       </div>
@@ -153,7 +153,7 @@ export default function PaymentPage() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className="bg-white p-6 rounded-lg shadow-md w-full max-w-md text-center mt-6"
+        className="bg-white p-6 rounded-lg shadow-md w-full max-w-md text-center mt-10"
       >
         <h2 className="text-2xl font-bold mb-2">{t('paymentTitle')}</h2>
         <p className="mb-4">{t('paymentSubtitle')}</p>
