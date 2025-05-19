@@ -23,23 +23,18 @@ const questions = [
 ];
 
 const foodTranslationMap = {
-  // English
   "chicken": "chicken", "pork": "pork", "beef": "beef", "bacon": "bacon",
   "salmon": "salmon", "tuna": "tuna", "lamb": "lamb",
   "broccoli": "broccoli", "spinach": "spinach", "lettuce": "lettuce", "cauliflower": "cauliflower",
   "cabbage": "cabbage", "zucchini": "zucchini", "asparagus": "asparagus", "eggplant": "eggplant",
   "eggs": "eggs", "cheese": "cheese", "butter": "butter", "tofu": "tofu",
   "shrimp": "shrimp", "chia": "chia", "none": "none", "nothing": "none",
-
-  // Croatian
   "piletina": "chicken", "svinjetina": "pork", "govedina": "beef", "slanina": "bacon",
   "losos": "salmon", "tuna": "tuna", "janjetina": "lamb",
   "brokula": "broccoli", "špinat": "spinach", "zelena salata": "lettuce", "cvjetača": "cauliflower",
   "kupus": "cabbage", "tikvica": "zucchini", "šparoge": "asparagus", "patlidžan": "eggplant",
   "jaja": "eggs", "sir": "cheese", "maslac": "butter", "tofu": "tofu", "škampi": "shrimp", "chia": "chia",
   "ništa": "none", "niti jedno": "none",
-
-  // German
   "hähnchen": "chicken", "schwein": "pork", "rind": "beef", "speck": "bacon",
   "lachs": "salmon", "thunfisch": "tuna", "lamm": "lamb",
   "brokkoli": "broccoli", "spinat": "spinach", "kopfsalat": "lettuce", "blumenkohl": "cauliflower",
@@ -65,27 +60,6 @@ export default function QuizStep() {
 
   const [answers, setAnswers] = useState({});
   const [sessionId, setSessionId] = useState('');
-  const [viewportHeight, setViewportHeight] = useState(null);
-
-  useEffect(() => {
-    const updateHeight = () => {
-      if (typeof window !== 'undefined' && window.visualViewport) {
-        setViewportHeight(window.visualViewport.height);
-      }
-    };
-
-    updateHeight();
-
-    if (window.visualViewport) {
-      window.visualViewport.addEventListener('resize', updateHeight);
-    }
-
-    return () => {
-      if (window.visualViewport) {
-        window.visualViewport.removeEventListener('resize', updateHeight);
-      }
-    };
-  }, []);
 
   useEffect(() => {
     const storedSessionId = sessionStorage.getItem('sessionId');
@@ -189,7 +163,7 @@ export default function QuizStep() {
   }
 
   return (
-    <div className="relative min-h-screen flex flex-col items-center justify-center text-white px-6 md:px-0 pb-28">
+    <div className="relative min-h-screen flex flex-col items-center justify-center text-white px-6 md:px-0 pb-36">
       <div className="fixed top-0 w-full bg-gray-800 py-4 text-center text-white font-bold text-2xl z-50">Smart Keto-Meal</div>
       <div className="fixed top-14 w-full z-50">
         <ProgressBar currentStep={stepIndex + 1} totalSteps={questions.length} />
@@ -223,15 +197,7 @@ export default function QuizStep() {
       </div>
 
       {questions[stepIndex].multiple && (
-        <div
-          className="w-full bg-white px-4 py-3 border-t shadow-md z-30"
-          style={{
-            position: 'fixed',
-            bottom: 0,
-            left: 0,
-            paddingBottom: 'env(safe-area-inset-bottom)',
-          }}
-        >
+        <div className="fixed bottom-0 left-0 w-full bg-white px-4 py-3 border-t shadow-lg z-50">
           <div className="max-w-md mx-auto flex justify-between">
             <button
               className="bg-gray-500 text-white py-3 px-6 rounded-md hover:bg-gray-600"
