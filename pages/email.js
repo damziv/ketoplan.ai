@@ -103,7 +103,7 @@ export default function EmailPage() {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-50 p-6">
+    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-50 p-6 pb-36">
       <div className="fixed top-0 w-full bg-gray-800 py-4 text-center text-white font-bold text-2xl z-50">
         Keto AI App
       </div>
@@ -112,7 +112,7 @@ export default function EmailPage() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className="bg-white shadow-lg rounded-2xl p-8 w-full max-w-md text-center mt-16"
+        className="bg-white shadow-lg rounded-2xl p-8 w-full max-w-md text-center mt-24"
       >
         {/* Step Info */}
         <p className="text-sm text-gray-500 mb-3">
