@@ -5,7 +5,7 @@
     "description": "Take the quiz and create a menu tailored to your desires and lifestyle.",
     "cta": "Start Quiz",
     "disclaimer": "By pressing 'Start Quiz', you are confirming your acceptance of our Terms.",
-    "trusted": "Trusted by <strong>10,000+</strong> keto enthusiasts",
+    "trusted": "Trusted by <strong>10,000+</strong> enthusiasts",
     "quick": "✓ Takes less than 2 minutes",
     "personalized": "✓ Most afforable AI meal plan",
     "noSignup": "✓ No signup required to start",
@@ -20,13 +20,13 @@
     ]
   },
   "carousel": {
-    "title": "🔥 Real Keto Results"
+    "title": "🔥 Real Results"
   },
   "whyUs": {
-    "title": "Why Choose our Keto Meal Recipe App?",
+    "title": "Why Choose our Diet Meal Recipe App?",
     "points": [
       "Secure payment – no hidden fees!",
-      "Personalized keto recipes generated from your answers!",
+      "Personalized healthy recipes generated from your answers!",
       "Effortless meal planning for a healthier lifestyle!"
     ]
   },

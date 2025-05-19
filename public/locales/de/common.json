@@ -5,7 +5,7 @@
       "description": "Mache das Quiz und erhalte einen Speiseplan, der perfekt zu deinem Lebensstil passt.",
       "cta": "Quiz starten",
       "disclaimer": "Mit dem Klick auf „Quiz starten“ akzeptierst du unsere AGB.",
-      "trusted": "Vertraut von <strong>10.000+</strong> Keto-Fans",
+      "trusted": "Vertraut von <strong>10.000+</strong> Fans",
       "quick": "✓ In weniger als 2 Minuten",
       "personalized": "✓ Der günstigste KI-Ernährungsplan",
       "noSignup": "✓ Kein Account notwendig",
@@ -20,13 +20,13 @@
       ]
     },
     "carousel": {
-      "title": "🔥 Echte Keto-Ergebnisse"
+      "title": "🔥 Echte Ergebnisse"
     },
     "whyUs": {
-      "title": "Warum unsere Keto-Rezepte-App wählen?",
+      "title": "Warum Sie sich für unsere Diät-Rezept-App entscheiden sollten?",
       "points": [
         "Sichere Zahlung – keine versteckten Kosten!",
-        "Personalisierte Keto-Rezepte basierend auf deinen Angaben!",
+        "Aus Ihren Antworten werden personalisierte gesunde Rezepte generiert!",
         "Mühelose Planung für ein gesünderes Leben!"
       ]
     },

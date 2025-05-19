@@ -9,12 +9,14 @@
   "whyTitle": "Warum diese Rezepte-App wählen?",
   "why": [
     "Keine versteckten Kosten – jederzeit kündbar!",
-    "Personalisierte Keto-Rezepte basierend auf deinen Angaben!",
+    "Personalisierte, gesunde Rezepte basierend auf deinen Daten!",
     "Mühelose Essensplanung für ein gesünderes Leben!"
   ],
-  "discountTitle": "Sonderangebot – 50 % Rabatt!",
-  "discountSubtitle": "Sichere dir deinen persönlichen Keto-Plan für nur:",
+  "discountTitle": "Sonderangebot – Am beliebtesten!!",
+  "discountSubtitle": "Holen Sie sich Ihre persönliche Diät für nur:",
   "discountOffer": "Angebot endet in:",
+  "discountWeek": "pro Woche",
+  "discountMonth": "€11.99 pro Monat",
   "paymentTitle": "Sichere Zahlung",
   "paymentSubtitle": "Verliere Gewicht – Hol dir jetzt deinen Ernährungsplan.",
   "price": "NUTZE DIE AKTION JETZT",
