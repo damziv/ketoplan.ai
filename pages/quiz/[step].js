@@ -231,13 +231,13 @@ export default function QuizStep() {
 
       </div>
       {/* Fixed navigation buttons */}
-{/* Sticky navigation buttons - compatible with Facebook iOS browser */}
 {questionMeta.multiple && (
   <div
     style={{
-      position: 'sticky',
+      position: 'fixed',
       bottom: 0,
-      zIndex: 50,
+      left:0,
+      zIndex: 3,
       backgroundColor: 'white',
       paddingTop: '1rem',
       paddingBottom: 'calc(env(safe-area-inset-bottom, 0px) + 1rem)',
@@ -247,7 +247,7 @@ export default function QuizStep() {
       boxShadow: '0 -2px 6px rgba(0, 0, 0, 0.05)',
     }}
   >
-    <div className="max-w-md mx-auto flex justify-between">
+   <div className="max-w-md mx-auto flex justify-between">
       <button
         className="bg-gray-500 text-white py-3 px-6 rounded-md hover:bg-gray-600"
         onClick={handleBack}
@@ -263,7 +263,6 @@ export default function QuizStep() {
     </div>
   </div>
 )}
-
 
     </div>
   );
