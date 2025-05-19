@@ -164,7 +164,7 @@ export default function QuizStep() {
 
   return (
     <div className="relative min-h-screen flex flex-col items-center justify-center text-white px-6 md:px-0 pb-36">
-      <div className="fixed bottom-0 w-full bg-gray-800 py-4 text-center text-white font-bold text-2xl z-50">Smart Keto-Meal</div>
+      <div className="fixed top-0 w-full bg-gray-800 py-4 text-center text-white font-bold text-2xl z-50">Smart Keto-Meal</div>
       <div className="fixed top-14 w-full z-50">
         <ProgressBar currentStep={stepIndex + 1} totalSteps={questions.length} />
       </div>
@@ -197,7 +197,7 @@ export default function QuizStep() {
       </div>
 
       {questions[stepIndex].multiple && (
-        <div className="fixed bottom-0 left-0 w-full bg-white px-4 py-3 border-t shadow-lg z-50">
+        <div className="sticky bottom-0 left-0 w-full bg-white px-4 py-3 border-t shadow-md z-30">
           <div className="max-w-md mx-auto flex justify-between">
             <button
               className="bg-gray-500 text-white py-3 px-6 rounded-md hover:bg-gray-600"
