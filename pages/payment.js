@@ -150,36 +150,36 @@ export default function PaymentPage() {
 
 {/* Recipe Carousel */}
 <div className="bg-white p-6 rounded-lg shadow-md w-full max-w-md text-left mt-10">
-  <h3 className="text-2xl font-bold text-gray-800 mb-4">🍽️ Example Keto Recipes</h3>
+  <h3 className="text-2xl font-bold text-gray-800 mb-4">🍽️ {t('recipeHead')}</h3>
   <Carousel showThumbs={false} infiniteLoop autoPlay interval={4000} showStatus={false}>
     {/* Recipe 1 */}
     <div className="text-left">
       <img src="/images/recipes/cheesy-bacon-ranch.png" alt="Cheesy Bacon Ranch Chicken" className="rounded-lg mb-2" />
-      <h4 className="text-lg font-semibold text-green-700">Cheesy Bacon Ranch Chicken</h4>
+      <h4 className="text-lg font-semibold text-green-700">{t('recipeTitle1')}</h4>
       <ul className="list-disc list-inside text-gray-700 text-sm mb-2 space-y-1">
-        <li>Chicken breasts, ranch, cheese, bacon</li>
+        <li>{t('recipeIngredients1')}</li>
       </ul>
-      <p className="text-sm text-gray-600">Sear chicken, top with creamy cheese & bacon, then bake. Easy & delicious!</p>
+      <p className="text-sm text-gray-600">{t('recipeInstructions1')}</p>
     </div>
 
     {/* Recipe 2 */}
     <div className="text-left">
       <img src="/images/recipes/keto-lasagna.png" alt="Keto Zucchini Lasagna" className="rounded-lg mb-2" />
-      <h4 className="text-lg font-semibold text-green-700">Keto Zucchini Lasagna</h4>
+      <h4 className="text-lg font-semibold text-green-700">{t('recipeTitle2')}</h4>
       <ul className="list-disc list-inside text-gray-700 text-sm mb-2 space-y-1">
-        <li>Zucchini, ground beef, ricotta, mozzarella</li>
+        <li>{t('recipeIngredients2')}</li>
       </ul>
-      <p className="text-sm text-gray-600">Layer zucchini slices with meat sauce & cheese, then bake to golden perfection.</p>
+      <p className="text-sm text-gray-600">{t('recipeInstructions2')}</p>
     </div>
 
     {/* Recipe 3 */}
     <div className="text-left">
       <img src="/images/recipes/egg-avocado.jpg" alt="Avocado Egg Bowl" className="rounded-lg mb-2" />
-      <h4 className="text-lg font-semibold text-green-700">Avocado Egg Bowl</h4>
+      <h4 className="text-lg font-semibold text-green-700">{t('recipeTitle3')}</h4>
       <ul className="list-disc list-inside text-gray-700 text-sm mb-2 space-y-1">
-        <li>Avocado, boiled eggs, olive oil, herbs</li>
+        <li>{t('recipeIngredients3')}</li>
       </ul>
-      <p className="text-sm text-gray-600">Mash avocado, top with sliced eggs & drizzle of olive oil. Fast & satisfying!</p>
+      <p className="text-sm text-gray-600">{t('recipeInstructions3')}</p>
     </div>
   </Carousel>
 </div>

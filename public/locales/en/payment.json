@@ -15,11 +15,23 @@
     "discountTitle": "Special offer – Most Popular!!",
     "discountSubtitle": "Get your personalized diet for only:",
     "discountOffer": "Offer expires in:",
+    "discountWeek": "per Week",
+    "discountMonth": "€11.99 per month",
     "paymentTitle": "Secure Payment",
     "paymentSubtitle": "Loose weight - Get a diet plan now.",
     "price": "TAKE ADVANTAGE OF THE PROMOTION",
     "loadingPayment": "Loading payment...",
     "payNow": "Pay Now",
-    "processing": "Processing..."
+    "processing": "Processing...",
+    "recipeHead": "Example Keto Recipes",
+    "recipeTitle1": "Cheesy Bacon Ranch Chicken",
+    "recipeIngredients1": "Chicken breasts, ranch, cheese, bacon",
+    "recipeInstructions1": "Sear chicken, top with creamy cheese & bacon, then bake. Easy & delicious!",
+    "recipeTitle2": "Keto Zucchini Lasagna",
+    "recipeIngredients2": "Zucchini, ground beef, ricotta, mozzarella",
+    "recipeInstructions2": "Layer zucchini slices with meat sauce & cheese, then bake to golden perfection.",
+    "recipeTitle3": "Avocado Egg Bowl",
+    "recipeIngredients3": "Avocado, boiled eggs, olive oil, herbs",
+    "recipeInstructions3": "Mash avocado, top with sliced eggs & drizzle of olive oil. Fast & satisfying!"
   }
   
