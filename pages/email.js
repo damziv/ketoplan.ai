@@ -125,6 +125,14 @@ export default function EmailPage() {
         <p className="text-gray-600 mb-5">{t('subtitle')}</p>
 
         <input
+          type="email"
+          placeholder={t('fields.email')}
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          className="w-full border rounded-xl p-3 mb-2 focus:ring-2 focus:ring-blue-500 outline-none transition"
+        />
+        
+        <input
           type="number"
           placeholder={t('fields.age')}
           value={age}
@@ -152,13 +160,7 @@ export default function EmailPage() {
           onChange={(e) => setDesiredWeight(e.target.value)}
           className="w-full border rounded-xl p-3 mb-4 focus:ring-2 focus:ring-blue-500 outline-none transition"
         />
-        <input
-          type="email"
-          placeholder={t('fields.email')}
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          className="w-full border rounded-xl p-3 mb-2 focus:ring-2 focus:ring-blue-500 outline-none transition"
-        />
+
 
         {error && <p className="text-red-500 text-sm mb-2">{error}</p>}
 
