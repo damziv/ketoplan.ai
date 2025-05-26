@@ -148,6 +148,43 @@ export default function PaymentPage() {
         </div>
       </div>
 
+{/* Recipe Carousel */}
+<div className="bg-white p-6 rounded-lg shadow-md w-full max-w-md text-left mt-10">
+  <h3 className="text-2xl font-bold text-gray-800 mb-4">🍽️ Example Keto Recipes</h3>
+  <Carousel showThumbs={false} infiniteLoop autoPlay interval={4000} showStatus={false}>
+    {/* Recipe 1 */}
+    <div className="text-left">
+      <img src="/images/recipes/cheesy-bacon-ranch.png" alt="Cheesy Bacon Ranch Chicken" className="rounded-lg mb-2" />
+      <h4 className="text-lg font-semibold text-green-700">Cheesy Bacon Ranch Chicken</h4>
+      <ul className="list-disc list-inside text-gray-700 text-sm mb-2 space-y-1">
+        <li>Chicken breasts, ranch, cheese, bacon</li>
+      </ul>
+      <p className="text-sm text-gray-600">Sear chicken, top with creamy cheese & bacon, then bake. Easy & delicious!</p>
+    </div>
+
+    {/* Recipe 2 */}
+    <div className="text-left">
+      <img src="/images/recipes/keto-lasagna.png" alt="Keto Zucchini Lasagna" className="rounded-lg mb-2" />
+      <h4 className="text-lg font-semibold text-green-700">Keto Zucchini Lasagna</h4>
+      <ul className="list-disc list-inside text-gray-700 text-sm mb-2 space-y-1">
+        <li>Zucchini, ground beef, ricotta, mozzarella</li>
+      </ul>
+      <p className="text-sm text-gray-600">Layer zucchini slices with meat sauce & cheese, then bake to golden perfection.</p>
+    </div>
+
+    {/* Recipe 3 */}
+    <div className="text-left">
+      <img src="/images/recipes/egg-avocado.jpg" alt="Avocado Egg Bowl" className="rounded-lg mb-2" />
+      <h4 className="text-lg font-semibold text-green-700">Avocado Egg Bowl</h4>
+      <ul className="list-disc list-inside text-gray-700 text-sm mb-2 space-y-1">
+        <li>Avocado, boiled eggs, olive oil, herbs</li>
+      </ul>
+      <p className="text-sm text-gray-600">Mash avocado, top with sliced eggs & drizzle of olive oil. Fast & satisfying!</p>
+    </div>
+  </Carousel>
+</div>
+
+
       {/* Payment Element */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
