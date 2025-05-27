@@ -142,8 +142,7 @@ export default function PaymentPage() {
         </div>
         <p className="text-sm text-gray-700">{t('discountOffer')}</p>
         <div className="font-bold text-xl mt-1">
-          {Math.floor(timeLeft / (1000 * 60 * 60))}h :{" "}
-          {Math.floor((timeLeft / (1000 * 60)) % 60)}m :{" "}
+          {Math.floor((timeLeft / (1000 * 60)) % 60)}m :{' '}
           {Math.floor((timeLeft / 1000) % 60)}s
         </div>
       </div>
@@ -184,6 +183,13 @@ export default function PaymentPage() {
   </Carousel>
 </div>
 
+  {/* Warum nur €1.49? */}
+  <div className="mt-4 w-full max-w-md text-sm text-gray-700 bg-white border border-gray-200 p-4 rounded-md shadow-sm">
+  <h4 className="font-semibold text-gray-900 mb-2">❓ Warum kostet es nur €1.49 pro Woche?</h4>
+  <p className="mb-1">Gute Frage! Der Preis ist ein zeitlich begrenztes Sonderangebot.</p>
+  <p className="mb-1">Wir können ihn so niedrig halten, weil alles digital ist – keine Versand- oder Lagerkosten.</p>
+  <p>Und: Wir hoffen, dass dir der Plan so gut gefällt, dass du ihn weiterempfiehlst. 💚</p>
+  </div>
 
       {/* Payment Element */}
       <motion.div
@@ -236,6 +242,9 @@ function CheckoutForm() {
   return (
     <form onSubmit={handleSubmit} className="flex flex-col space-y-4">
       <PaymentElement />
+      <p className="text-sm text-gray-600 text-center">
+       Du kannst jederzeit kündigen – kein Risiko.
+      </p>
       <button
         type="submit"
         disabled={!stripe || loading}
