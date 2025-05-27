@@ -30,7 +30,7 @@ export default async function handler(req, res) {
     // 🧾 Create subscription
     const subscription = await stripe.subscriptions.create({
       customer: customer.id,
-      items: [{ price: 'price_1RGcXUDUMmfKdrwU0lZx4SlL' }], // replace with your actual price_id
+      items: [{ price: 'price_1RGaewDUMmfKdrwUI7KLLjGs' }], // replace with your actual price_id
       payment_behavior: 'default_incomplete',
       expand: ['latest_invoice.payment_intent'],
       metadata: { email, sessionId },
