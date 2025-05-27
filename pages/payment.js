@@ -64,7 +64,7 @@ export default function PaymentPage() {
     if (savedExpiry && parseInt(savedExpiry) > Date.now()) {
       expiryTime = parseInt(savedExpiry);
     } else {
-      expiryTime = Date.now() + 48 * 60 * 60 * 1000;
+      expiryTime = Date.now() + 5 * 60 * 1000;
       localStorage.setItem('countdown_expiry', expiryTime);
     }
 
