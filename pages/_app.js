@@ -14,33 +14,44 @@ function MyApp({ Component, pageProps }) {
         <meta property="og:title" content="AI Keto Meal Plan" />
         <meta property="og:image" content="/favicon.png" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-
       </Head>
 
-      {/* ✅ DigitalQA Meta Pixel Script */}
+      {/* ✅ Hotjar Tracking */}
       <Script
-        id="fb-pixel"
+        id="hotjar"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: `(function(h,o,t,j,a,r){
+              h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+              h._hjSettings={hjid:6418023,hjsv:6};
+              a=o.getElementsByTagName('head')[0];
+              r=o.createElement('script');r.async=1;
+              r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+              a.appendChild(r);
+          })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');`,
+        }}
+      />
+
+      {/* ✅ Facebook Pixel 1 */}
+      <Script
+        id="fb-pixel-1"
         strategy="afterInteractive"
         dangerouslySetInnerHTML={{
           __html: `
-
-          !function(f,b,e,v,n,t,s)
-          {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-          n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-          if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-          n.queue=[];t=b.createElement(e);t.async=!0;
-          t.src=v;s=b.getElementsByTagName(e)[0];
-          s.parentNode.insertBefore(t,s)}(window, document,'script',
-          'https://connect.facebook.net/en_US/fbevents.js');
-          fbq('init', '1142296627565768');
-          fbq('track', 'PageView');
-          
+            !function(f,b,e,v,n,t,s)
+            {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+            n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+            if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+            n.queue=[];t=b.createElement(e);t.async=!0;
+            t.src=v;s=b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t,s)}(window, document,'script',
+            'https://connect.facebook.net/en_US/fbevents.js');
+            fbq('init', '1142296627565768');
+            fbq('track', 'PageView');
           `,
         }}
       />
-  
 
-      {/* Optional noscript fallback */}
       <noscript>
         <img
           height="1"
@@ -50,30 +61,26 @@ function MyApp({ Component, pageProps }) {
         />
       </noscript>
 
-      {/* ✅ Vericon EMUS Meta Pixel Script */}
+      {/* ✅ Facebook Pixel 2 */}
       <Script
-        id="fb-pixel"
+        id="fb-pixel-2"
         strategy="afterInteractive"
         dangerouslySetInnerHTML={{
           __html: `
-
-          !function(f,b,e,v,n,t,s)
-          {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-          n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-          if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-          n.queue=[];t=b.createElement(e);t.async=!0;
-          t.src=v;s=b.getElementsByTagName(e)[0];
-          s.parentNode.insertBefore(t,s)}(window, document,'script',
-          'https://connect.facebook.net/en_US/fbevents.js');
-          fbq('init', '9290041274439815');
-          fbq('track', 'PageView');
-          
+            !function(f,b,e,v,n,t,s)
+            {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+            n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+            if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+            n.queue=[];t=b.createElement(e);t.async=!0;
+            t.src=v;s=b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t,s)}(window, document,'script',
+            'https://connect.facebook.net/en_US/fbevents.js');
+            fbq('init', '9290041274439815');
+            fbq('track', 'PageView');
           `,
         }}
       />
-  
 
-      {/* Optional noscript fallback */}
       <noscript>
         <img
           height="1"
@@ -83,8 +90,8 @@ function MyApp({ Component, pageProps }) {
         />
       </noscript>
 
-            {/* ✅ Google Analytics */}
-            <Script
+      {/* ✅ Google Analytics */}
+      <Script
         strategy="afterInteractive"
         src="https://www.googletagmanager.com/gtag/js?id=G-CYTN3T74B4"
       />
@@ -103,9 +110,6 @@ function MyApp({ Component, pageProps }) {
 
       <Component {...pageProps} />
     </>
-
-
-
   );
 }
 
