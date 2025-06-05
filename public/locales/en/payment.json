@@ -1,37 +1,63 @@
+
 {
-    "title": "Join thousands who have already started their transformation!",
-    "reviewsTitle": "What Our Customers Are Saying:",
-    "reviews": [
-      "Best meal plan ever! ⭐⭐⭐⭐⭐",
-      "Lost 5kg in 4 weeks! ⭐⭐⭐⭐⭐",
-      "So easy to follow! ⭐⭐⭐⭐⭐"
-    ],
-    "whyTitle": "Why Choose This Recipe App?",
-    "why": [
-      "No hidden charges – cancel anytime!",
-      "Personalized healthy recipes generated from your answers!",
-      "Effortless meal planning for a healthier lifestyle!"
-    ],
-    "discountTitle": "Special offer – Most Popular!!",
-    "discountSubtitle": "Get your personalized diet for only:",
-    "discountOffer": "Offer expires in:",
-    "discountWeek": "per Week",
-    "discountMonth": "€11.99 per month",
-    "paymentTitle": "Secure Payment",
-    "paymentSubtitle": "Loose weight - Get a diet plan now.",
-    "price": "TAKE ADVANTAGE OF THE PROMOTION",
-    "loadingPayment": "Loading payment...",
-    "payNow": "Pay Now",
-    "processing": "Processing...",
-    "recipeHead": "Example Keto Recipes",
-    "recipeTitle1": "Cheesy Bacon Ranch Chicken",
-    "recipeIngredients1": "Chicken breasts, ranch, cheese, bacon",
-    "recipeInstructions1": "Sear chicken, top with creamy cheese & bacon, then bake. Easy & delicious!",
-    "recipeTitle2": "Keto Zucchini Lasagna",
-    "recipeIngredients2": "Zucchini, ground beef, ricotta, mozzarella",
-    "recipeInstructions2": "Layer zucchini slices with meat sauce & cheese, then bake to golden perfection.",
-    "recipeTitle3": "Avocado Egg Bowl",
-    "recipeIngredients3": "Avocado, boiled eggs, olive oil, herbs",
-    "recipeInstructions3": "Mash avocado, top with sliced eggs & drizzle of olive oil. Fast & satisfying!"
-  }
-  
+  "title": "Join thousands embracing natural health!",
+  "whatTitle": "What You'll Get",
+  "what": [
+    "10-page PDF with 7 natural recipes tailored to your quiz answers",
+    "5 weekly recipes to boost energy and digestion",
+    "3 monthly tips for hormonal balance and wellness",
+    "Personalized supplement recommendations (e.g., magnesium, omega-3)"
+  ],
+  "whatNote": "Tailored for all diets, including vegetarian or vegan preferences.",
+  "getNowButton": "Start Your Plan Now",
+  "reviewsTitle": "What Our Customers Are Saying",
+  "reviews": [
+    {
+      "text": "My energy is up, and bloating is gone!",
+      "author": "Anna, 42, Germany ⭐⭐⭐⭐⭐"
+    },
+    {
+      "text": "Love the natural recipes and tips!",
+      "author": "Nermin, 48, Austria ⭐⭐⭐⭐⭐"
+    },
+    {
+      "text": "So easy to follow, I feel great!",
+      "author": "Ioana, 29, Romania ⭐⭐⭐⭐⭐"
+    }
+  ],
+  "whyTitle": "Why Choose Smart Food Secrets?",
+  "why": [
+    "Science-backed by certified nutritionists",
+    "No hidden charges – cancel anytime!",
+    "Personalized natural recipes and supplements",
+    "Effortless healing with nature’s best ingredients"
+  ],
+  "discountTitle": "Special Offer – Save 50%!",
+  "discountSubtitle": "Your personalized health plan for only:",
+  "discountOffer": "Offer expires in:",
+  "discountWeek": "per Week",
+  "discountMonth": "€11.99/month",
+  "discountBonus": "Bonus: Free 7-day natural grocery list!",
+  "getDiscountButton": "Claim Your Discount",
+  "paymentTitle": "Secure Payment",
+  "paymentSubtitle": "Heal your body with natural foods and supplements.",
+  "price": "Start Your Journey Now",
+  "loadingPayment": "Loading payment...",
+  "payNow": "Pay Now",
+  "processing": "Processing...",
+  "paymentNote": "30-Day Money-Back Guarantee • Cancel Anytime • GDPR-compliant",
+  "faqTitle": "Why only €1.49/week?",
+  "faqText1": "It’s a limited-time digital offer to make natural health accessible.",
+  "faqText2": "We keep costs low with no shipping or storage fees.",
+  "faqText3": "We hope you’ll love your plan and share it with others! 💚",
+  "recipeHead": "Example Natural Recipes",
+  "recipeTitle1": "Quinoa Veggie Salad",
+  "recipeIngredients1": "Quinoa, spinach, cucumber, olive oil, lemon",
+  "recipeInstructions1": "Toss cooked quinoa with fresh veggies, olive oil, and lemon for a refreshing meal.",
+  "recipeTitle2": "Veggie Stir-Fry with Tofu",
+  "recipeIngredients2": "Tofu, broccoli, zucchini, soy sauce, ginger",
+  "recipeInstructions2": "Stir-fry tofu and veggies with ginger and soy sauce for a quick, healthy dish.",
+  "recipeTitle3": "Salmon Wellness Bowl",
+  "recipeIngredients3": "Salmon, chia seeds, lettuce, avocado",
+  "recipeInstructions3": "Top grilled salmon with chia and greens for an energy-boosting bowl."
+}
