@@ -47,6 +47,7 @@ export default function Home() {
             <li>{t('hero.personalized')}</li>
             <li>{t('hero.noSignup')}</li>
             <li>{t('hero.onlyPrice')}</li>
+            <li>{t('hero.moneyBack')}</li>
           </ul>
 
           {/* CTA Button */}

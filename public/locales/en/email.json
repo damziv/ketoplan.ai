@@ -1,20 +1,25 @@
 {
-  "title": "Personalizing Your Plan",
-  "subtitle": "Just a few more details and your personalized meal plan will be ready!",
+  "title": "Almost there...",
+  "subtitle": "Discover the best foods, habits, and supplements for your age and needs.",
   "fields": {
-    "age": "Age",
-    "height": "Height (cm)",
-    "currentWeight": "Current Weight (kg)",
-    "desiredWeight": "Desired Weight (kg)",
+    "age": "Your age",
     "email": "Your email address"
   },
   "error": {
-    "fillAll": "Please fill in all fields to continue.",
+    "fillAll": "Age and email help us tailor your plan.",
     "invalidEmail": "Enter a valid email address."
   },
-  "continue": "Continue",
-  "stepInfo": "Great job! · Final step before your custom plan",
-  "privacy": "Your data is 100% private. We never share your email.",
-  "socialProof": "✅ More than 8,000 users have improved their healthy diet",
-  "fallbackButton": "Generate My Plan"
+  "continue": "Generate My Guide",
+  "stepInfo": "You're almost there! Let’s finalize your profile.",
+  "privacy": "Your data stays 100% private — we never share your email.",
+  "socialProof": "✅ Over 8,000 people have already improved their energy, digestion, and focus.",
+  "fallbackButton": "Generate My Guide",
+  "whyUs": {
+    "title": " Science-based · No spam ever",
+    "points": [
+      "Foods that match your body’s needs",
+      "Natural ways to improve energy & digestion",
+      "Key vitamins & minerals based on your input"
+    ]
+  }
 }

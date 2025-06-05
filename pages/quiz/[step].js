@@ -13,13 +13,14 @@ const supabase = createClient(
 const questions = [
   { id: 1, multiple: false },
   { id: 2, multiple: false },
-  { id: 3, multiple: true },
+  { id: 3, multiple: false },
   { id: 4, multiple: true },
   { id: 5, multiple: true },
-  { id: 6, multiple: false },
-  { id: 7, multiple: true },
+  { id: 6, multiple: true },
+  { id: 7, multiple: false },
   { id: 8, multiple: false },
-  { id: 9, multiple: false }
+  { id: 9, multiple: false },
+  { id: 10, multiple: false }
 ];
 
 const foodTranslationMap = {
@@ -112,20 +113,31 @@ export default function QuizStep() {
     if (error) console.error('Error saving answers:', error);
   };
 
-  const handleAnswer = (selected) => {
+  const handleAnswer = async (selected) => {
     const currentAnswers = answers[step] || [];
     let updatedAnswers;
-
+  
     if (questions[stepIndex].multiple) {
       updatedAnswers = currentAnswers.includes(selected)
         ? currentAnswers.filter((a) => a !== selected)
         : [...currentAnswers, selected];
+      setAnswers({ ...answers, [step]: updatedAnswers });
     } else {
       updatedAnswers = [selected];
-      handleNext();
+      const newAnswers = { ...answers, [step]: updatedAnswers };
+      setAnswers(newAnswers);
+  
+      await supabase
+        .from('sessions')
+        .update({ quiz_answers: newAnswers })
+        .eq('id', sessionId);
+  
+      if (stepIndex < questions.length - 1) {
+        router.push(`/quiz/${stepIndex + 2}`);
+      } else {
+        router.push('/email');
+      }
     }
-
-    setAnswers({ ...answers, [step]: updatedAnswers });
   };
 
   const handleNext = async () => {
@@ -164,7 +176,7 @@ export default function QuizStep() {
 
   return (
     <div className="relative min-h-screen flex flex-col items-center justify-center text-white px-6 md:px-0 pb-36 overflow-visible">
-      <div className="fixed top-0 w-full bg-gray-800 py-4 text-center text-white font-bold text-2xl z-50">Smart Keto-Meal</div>
+      <div className="fixed top-0 w-full bg-gray-800 py-4 text-center text-white font-bold text-2xl z-50">Smart Food</div>
       <div className="fixed top-14 w-full z-50">
         <ProgressBar currentStep={stepIndex + 1} totalSteps={questions.length} />
       </div>

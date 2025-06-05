@@ -4,7 +4,7 @@ module.exports = {
       locales: ['en', 'hr', 'de',],
       domains: [
         {
-          domain: 'keto-meal.com',
+          domain: 'localhost',
           defaultLocale: 'en',
         },
         {

@@ -1,41 +1,45 @@
 {
     "questions": [
       {
-        "question": "What is your primary goal?",
-        "options": ["Weight Loss", "Maintain Weight", "Gain Muscle"]
+        "question": "What is your main health goal?",
+        "options": ["Boost energy and focus", "Strengthen immunity and digestion", "Lose excess weight naturally", "Reduce stress-related fatigue"]
       },
       {
-        "question": "How much variety do you want in your meal plan?",
-        "options": ["High", "Moderate", "Low"]
+        "question": "How many meals do you eat per day?",
+        "options": ["1 meal per day", "2 meals per day", "3 meal per day", "More then 3 meals per day"]
       },
       {
-        "question": "Choose the meat you want to include",
+
+        "question": "What is your gender?",
+        "options": ["Male", "Female"]
+      },
+      {
+        "question": "Choose the meat you eat often",
         "options": ["Chicken", "Pork", "Beef", "Bacon", "Salmon", "Tuna", "Lamb", "None"]
       },
       {
-        "question": "Choose the vegetable you want to include",
+        "question": "Choose the vegetables you eat often",
         "options": ["Broccoli", "Spinach", "Lettuce", "Cauliflower", "Cabbage", "Zucchini", "Asparagus", "Eggplant", "None"]
       },
       {
-        "question": "Choose other products you want to include",
+        "question": "Choose other products you eat often",
         "options": ["Eggs", "Cheese", "Butter", "Tofu", "Shrimp", "Chia", "None"]
       },
       {
-        "question": "What is your activity level?",
-        "options": ["Sedentary", "Moderately Active", "Very Active"]
+        "question": "How would you describe your current energy levels?",
+        "options": ["I feel tired most of the time", "I get energy crashes in the afternoon", "My energy is okay, but could be better"]
+      },
+      {
+        "question": "Do you experience stress or mood changes?",
+        "options": ["High stress or anxiety", "Mood swings or irritability", "Low mood or fatigue", "None, I feel balanced"]
       },
       {
         "question": "Do you have any allergies?",
         "options": ["Nuts", "Dairy", "Soy", "None"]
       },
       {
-        "question": "Do you have a budget preference for meal prep?",
-        "options": ["Low", "Medium", "High"]
-      },
-      {
-
-        "question": "What is your gender?",
-        "options": ["Male", "Female"]
+        "question": "How do you usually feel after eating?",
+        "options": ["Bloated after carbs", "Sleepy or low energy", "Satisfied and clear-headed", "I don’t pay much attention"]
       }
     ],
     "selectYourPreference": "Select your preference",

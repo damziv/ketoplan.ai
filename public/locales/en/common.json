@@ -1,34 +1,35 @@
 {
   "hero": {
-    "titleLine1": "Healthy diet",
-    "titleLine2": "Healthy life",
-    "description": "Take the quiz and create a menu tailored to your desires and lifestyle.",
-    "cta": "Start Quiz",
-    "disclaimer": "By pressing 'Start Quiz', you are confirming your acceptance of our Terms.",
-    "trusted": "Trusted by <strong>10,000+</strong> enthusiasts",
-    "quick": "✓ Takes less than 2 minutes",
-    "personalized": "✓ Most afforable AI meal plan",
-    "noSignup": "✓ No signup required to start",
-    "onlyPrice": "✓ Only 5,99 €/Monat",
+    "titleLine1": "Ancient wellness",
+    "titleLine2": "for modern life",
+    "description": "Take our 2-minute quiz to get a personalized new recipes and tips every month on email",
+    "cta": "Start Your Wellness Quiz",
+    "disclaimer": "Start your quiz with our friendly Terms!",
+    "trusted": "Our plans are developed with insights from both traditional and science-backed wellness strategies.",
+    "quick": "✓ PDF book created from your quiz answers",
+    "personalized": "✓ Weekly guide with natural ingredients",
+    "noSignup": "✓ Monthly tips for energy and body balance",
+    "onlyPrice": "✓ Only 5,99 €/Month, cancel anytime",
+    "moneyBack": "✓ 30-Day Money-Back Guarantee",
     "rating": "Based on 1,200+ reviews"
   },
   "reviews": {
     "title": "What Our Users Say",
     "list": [
-      "Best meal plan ever! ⭐⭐⭐⭐⭐",
-      "Lost 5kg in 4 weeks! ⭐⭐⭐⭐⭐",
-      "So easy to follow! ⭐⭐⭐⭐⭐"
+      "After 2 weeks, I feel more energized and less bloated. The natural tips really work! — Maria, 52, Austria ⭐⭐⭐⭐⭐",
+      "I sleep better and feel lighter every morning. This plan changed my daily routine. - Elena, 45, Germany ⭐⭐⭐⭐⭐",
+      "Simple advice, all natural, and real results. My energy levels are back! - Ivana, 57, Poland ⭐⭐⭐⭐⭐"
     ]
   },
   "carousel": {
-    "title": "🔥 Real Results"
+    "title": "🌿 Natural Transformations"
   },
   "whyUs": {
-    "title": "Why Choose our Diet Meal Recipe App?",
+    "title": "Why Choose Our Natural Health App?",
     "points": [
-      "Secure payment – no hidden fees!",
-      "Personalized healthy recipes generated from your answers!",
-      "Effortless meal planning for a healthier lifestyle!"
+      "Supports energy, digestion & hormone balance ",
+      "Designed for women & men over 40",
+      "Tradition food & supplement guidance "
     ]
   },
   "footer": {

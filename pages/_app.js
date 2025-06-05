@@ -7,11 +7,11 @@ function MyApp({ Component, pageProps }) {
   return (
     <>
       <Head>
-        <title>AI Keto Meal Plan</title>
+        <title>Smart Food Secrets</title>
         <link rel="icon" href="/favicon.png" />
         <meta name="theme-color" content="#ffffff" />
-        <meta name="description" content="Your personalized Keto Meal Plan App" />
-        <meta property="og:title" content="AI Keto Meal Plan" />
+        <meta name="description" content="Your personalized heatlh meal plan App" />
+        <meta property="og:title" content="SmartMeal Plan" />
         <meta property="og:image" content="/favicon.png" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
       </Head>

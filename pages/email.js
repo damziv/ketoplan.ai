@@ -15,11 +15,10 @@ export default function EmailPage() {
   const [email, setEmail] = useState('');
   const [sessionId, setSessionId] = useState('');
   const [age, setAge] = useState('');
-  const [height, setHeight] = useState('');
-  const [currentWeight, setCurrentWeight] = useState('');
-  const [desiredWeight, setDesiredWeight] = useState('');
   const [error, setError] = useState('');
   const router = useRouter();
+
+  const why = t('whyUs.points', { returnObjects: true });
 
   useEffect(() => {
     const savedEmail = sessionStorage.getItem('email');
@@ -61,7 +60,7 @@ export default function EmailPage() {
 
   const handleNext = async () => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!email || !age || !height || !currentWeight || !desiredWeight) {
+    if (!email || !age) {
       setError(t('error.fillAll'));
     } else if (!emailRegex.test(email)) {
       setError(t('error.invalidEmail'));
@@ -105,14 +104,51 @@ export default function EmailPage() {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-50 p-6 pb-36">
       <div className="fixed top-0 w-full bg-gray-800 py-4 text-center text-white font-bold text-2xl z-50">
-        Keto AI App
+        Smart Food
       </div>
+
+        {/* Why Us */}
+        <div className="mt-24 w-full max-w-md mx-auto bg-white p-6 rounded-lg shadow-lg">
+          <h3 className="text-xl font-bold text-center mb-6 text-gray-800">
+          🔒 {t('whyUs.title')}
+          </h3>
+          <ul className="space-y-4">
+            {why.map((text, index) => (
+              <motion.li
+                key={index}
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.3 }}
+                className="flex items-start space-x-3 p-3 bg-green-100 rounded-md hover:bg-green-200 transition-colors"
+              >
+                <span className="text-green-600 text-xl font-bold">✓</span>
+                <span className="text-gray-700 text-lg">{text}</span>
+              </motion.li>
+            ))}
+          </ul>
+        </div>
+
+        {/* Preview & What You Get Section */}
+        <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+        className="w-full max-w-md mt-6"
+        >
+
+        {/* Testimonial */}
+        <div className="bg-white p-3 rounded-md shadow text-sm text-gray-700 italic">
+          “After 2 weeks, I feel more energized and less bloated. The natural tips really work!”
+          <span className="block mt-1 text-right font-medium text-gray-600">— Maria, 52, Austria</span>
+        </div>
+      </motion.div>
+
 
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className="bg-white shadow-lg rounded-2xl p-8 w-full max-w-md text-center mt-24"
+        className="bg-white shadow-lg rounded-2xl p-8 w-full max-w-md text-center mt-8"
       >
         {/* Step Info */}
         <p className="text-sm text-gray-500 mb-3">
@@ -139,29 +175,6 @@ export default function EmailPage() {
           onChange={(e) => setAge(e.target.value)}
           className="w-full border rounded-xl p-3 mb-4 focus:ring-2 focus:ring-blue-500 outline-none transition"
         />
-        <input
-          type="number"
-          placeholder={t('fields.height')}
-          value={height}
-          onChange={(e) => setHeight(e.target.value)}
-          className="w-full border rounded-xl p-3 mb-4 focus:ring-2 focus:ring-blue-500 outline-none transition"
-        />
-        <input
-          type="number"
-          placeholder={t('fields.currentWeight')}
-          value={currentWeight}
-          onChange={(e) => setCurrentWeight(e.target.value)}
-          className="w-full border rounded-xl p-3 mb-4 focus:ring-2 focus:ring-blue-500 outline-none transition"
-        />
-        <input
-          type="number"
-          placeholder={t('fields.desiredWeight')}
-          value={desiredWeight}
-          onChange={(e) => setDesiredWeight(e.target.value)}
-          className="w-full border rounded-xl p-3 mb-4 focus:ring-2 focus:ring-blue-500 outline-none transition"
-        />
-
-
         {error && <p className="text-red-500 text-sm mb-2">{error}</p>}
 
         <p className="text-sm text-gray-500 italic mb-2">
@@ -175,15 +188,28 @@ export default function EmailPage() {
         <motion.button
           whileTap={{ scale: 0.95 }}
           className={`w-full py-3 rounded-xl font-semibold transition-all 
-            ${email && age && height && currentWeight && desiredWeight
+            ${email && age
               ? 'bg-blue-600 hover:bg-blue-700 text-white'
               : 'bg-gray-300 text-gray-500 cursor-not-allowed'}`}
           onClick={handleNext}
-          disabled={!email || !age || !height || !currentWeight || !desiredWeight}
+          disabled={!email || !age}
         >
           {t('continue', 'Generate My Plan')} →
         </motion.button>
+
+        {/* What You’ll Get */}
+        <div className="bg-green-50 p-4 rounded-xl shadow mb-4">
+          <h3 className="text-md font-semibold text-gray-800 mb-2">What you’ll get:</h3>
+          <ul className="list-disc pl-5 text-gray-700 text-sm space-y-1">
+            <li>A personalized 10-page PDF based on your quiz</li>
+            <li>Natural food & supplement tips tailored to you</li>
+            <li>New tips and recipe updates every month</li>
+          </ul>
+        </div>
+
+
       </motion.div>
+      
     </div>
   );
 }

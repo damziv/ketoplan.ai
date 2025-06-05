@@ -34,7 +34,7 @@ export default function RefundPolicy() {
           <li>❌ The service did not match the description on our website.</li>
         </ul>
         <p className="text-gray-700 mt-2">
-          If you qualify for a refund under these conditions, please **contact us within 7 days** of purchase.
+          If you qualify for a refund under these conditions, please **contact us within 30 days** of purchase.
         </p>
 
         <h2 className="text-xl font-semibold text-gray-800 mt-6">4. How to Request a Refund</h2>
