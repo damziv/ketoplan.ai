@@ -118,15 +118,16 @@ export default function PaymentPage() {
        <div className="bg-white p-6 rounded-lg shadow-md w-full max-w-md text-left mt-10">
         <h3 className="text-2xl font-bold text-gray-800 mb-4">🍽️ {t('recipeHead')}</h3>
         <Carousel showThumbs={false} infiniteLoop autoPlay interval={4000} showStatus={false}>
-          <div className="text-left">
-            <img src="/images/avatars/maria.jpg" alt={t('recipeTitle1')} className="rounded-lg mb-2" />
-            <h4 className="text-lg font-semibold text-green-700">{t('recipeTitle1')}</h4>
-            <ul className="list-disc list-inside text-gray-700 text-sm mb-2 space-y-1">
-              <li>{t('recipeIngredients1')}</li>
-            </ul>
-            <p className="text-sm text-gray-600">{t('recipeInstructions1')}</p>
-          </div>
-
+        <div className="text-left">
+  <div className="flex items-center gap-2 mb-2">
+    <img src="/images/avatars/maria.jpg" alt="Maria" className="w-5 h-5 rounded-full" />
+    <h4 className="text-sm font-semibold text-gray-800">{t('recipeTitle1')}</h4>
+  </div>
+  <ul className="list-disc list-inside text-gray-700 text-sm mb-2 space-y-1">
+    <li>{t('recipeIngredients1')}</li>
+  </ul>
+  <p className="text-sm text-gray-600">{t('recipeInstructions1')}</p>
+</div>
 
         <div className="text-left">
           <div className="flex items-center gap-2 mb-2">
@@ -139,14 +140,16 @@ export default function PaymentPage() {
             <p className="text-sm text-gray-600">{t('recipeInstructions1')}</p>
         </div>
 
-          <div className="text-left">
-            <img src="/images/avatars/nermin.jpg" alt={t('recipeTitle3')} className="rounded-lg mb-2" />
-            <h4 className="text-lg font-semibold text-green-700">{t('recipeTitle3')}</h4>
-            <ul className="list-disc list-inside text-gray-700 text-sm mb-2 space-y-1">
-              <li>{t('recipeIngredients3')}</li>
-            </ul>
-            <p className="text-sm text-gray-600">{t('recipeInstructions3')}</p>
-          </div>
+            <div className="text-left">
+      <div className="flex items-center gap-2 mb-2">
+        <img src="/images/avatars/maria.jpg" alt="Maria" className="w-5 h-5 rounded-full" />
+        <h4 className="text-sm font-semibold text-gray-800">{t('recipeTitle1')}</h4>
+      </div>
+      <ul className="list-disc list-inside text-gray-700 text-sm mb-2 space-y-1">
+        <li>{t('recipeIngredients1')}</li>
+      </ul>
+      <p className="text-sm text-gray-600">{t('recipeInstructions1')}</p>
+    </div>
         </Carousel>
       </div>
 
