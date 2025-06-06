@@ -120,7 +120,7 @@ export default function PaymentPage() {
         <Carousel showThumbs={false} infiniteLoop autoPlay interval={4000} showStatus={false}>
         <div className="text-left">
   <div className="flex items-center gap-2 mb-2">
-    <img src="/images/avatars/maria.jpg" alt="Maria" className="w-5 h-5 rounded-full" />
+    <img src="/images/avatars/maria.jpg" alt="Maria" className="w-5 h-5 rounded-full object-cover" style={{ width: '20px', height: '20px' }} />
     <h4 className="text-sm font-semibold text-gray-800">{t('recipeTitle1')}</h4>
   </div>
   <ul className="list-disc list-inside text-gray-700 text-sm mb-2 space-y-1">
@@ -131,7 +131,7 @@ export default function PaymentPage() {
 
         <div className="text-left">
           <div className="flex items-center gap-2 mb-2">
-            <img src="/images/avatars/maria.jpg" alt="Maria" className="w-5 h-5 rounded-full" />
+            <img src="/images/avatars/maria.jpg" alt="Maria" className="w-5 h-5 rounded-full object-cover" style={{ width: '20px', height: '20px' }} />
             <h4 className="text-sm font-semibold text-gray-800">{t('recipeTitle1')}</h4>
           </div>
             <ul className="list-disc list-inside text-gray-700 text-sm mb-2 space-y-1">
@@ -142,7 +142,7 @@ export default function PaymentPage() {
 
             <div className="text-left">
       <div className="flex items-center gap-2 mb-2">
-        <img src="/images/avatars/maria.jpg" alt="Maria" className="w-5 h-5 rounded-full" />
+        <img src="/images/avatars/maria.jpg" alt="Maria" className="w-5 h-5 rounded-full object-cover" style={{ width: '20px', height: '20px' }} />
         <h4 className="text-sm font-semibold text-gray-800">{t('recipeTitle1')}</h4>
       </div>
       <ul className="list-disc list-inside text-gray-700 text-sm mb-2 space-y-1">
