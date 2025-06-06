@@ -135,7 +135,7 @@ export default function QuizStep() {
       if (stepIndex < questions.length - 1) {
         router.push(`/quiz/${stepIndex + 2}`);
       } else {
-        router.push('/email');
+        router.push('/preview');
       }
     }
   };
@@ -145,7 +145,7 @@ export default function QuizStep() {
     if (stepIndex < questions.length - 1) {
       router.push(`/quiz/${stepIndex + 2}`);
     } else {
-      router.push('/email');
+      router.push('/preview');
     }
   };
 

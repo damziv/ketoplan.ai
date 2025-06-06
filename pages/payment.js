@@ -169,7 +169,7 @@ export default function PaymentPage() {
         </button>
       </div>
 
-      {/* Recipe Carousel */}
+      {/* Reviews Carousel */}
       <div className="bg-white p-6 rounded-lg shadow-md w-full max-w-md text-left mt-10">
         <h3 className="text-2xl font-bold text-gray-800 mb-4">🍽️ {t('recipeHead')}</h3>
         <Carousel showThumbs={false} infiniteLoop autoPlay interval={4000} showStatus={false}>
@@ -200,7 +200,7 @@ export default function PaymentPage() {
         </Carousel>
       </div>
 
-      
+
       {/* FAQ: Why €1.49/week? */}
       <div className="mt-4 w-full max-w-md text-sm text-gray-700 bg-white border border-gray-200 p-4 rounded-md shadow-sm">
         <h4 className="font-semibold text-gray-900 mb-2">{t('faqTitle')}</h4>
