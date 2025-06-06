@@ -56,7 +56,7 @@ export default function PreviewPage() {
             <p className="text-sm text-gray-600">{t('recipeInstructions1')}</p>
           </div>
           <div className="text-left">
-            <img src="/images/preview/chicory-coffee.png" alt={t('recipeTitle2')} className="rounded-lg mb-2" />
+            <img src="/images/preview/gotu-kola.jpg" alt={t('recipeTitle2')} className="rounded-lg mb-2" />
             <h4 className="text-lg font-semibold text-green-700">{t('recipeTitle2')}</h4>
             <ul className="list-disc list-inside text-gray-700 text-sm mb-2 space-y-1">
               <li>{t('recipeIngredients2')}</li>
