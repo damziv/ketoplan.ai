@@ -37,6 +37,7 @@
       "options": ["Männlich", "Weiblich"]
     }
   ],
+  "topTitle": "Quiz - Traditional health",
   "selectYourPreference": "Wähle deine Präferenz",
   "next": "Weiter",
   "back": "Zurück"

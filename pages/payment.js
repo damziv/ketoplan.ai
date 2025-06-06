@@ -87,7 +87,7 @@ export default function PaymentPage() {
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100 p-5 pb-36">
       <div className="fixed top-0 w-full bg-gray-800 py-4 text-center text-white font-bold text-2xl z-50">
-        Smart Food Secrets
+      {t('topTitle')}
       </div>
 
       {/* What You'll Get */}

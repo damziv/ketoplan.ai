@@ -37,7 +37,7 @@ export default function PreviewPage() {
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100 p-5 pb-36">
       <div className="fixed top-0 w-full bg-gray-800 py-4 text-center text-white font-bold text-2xl z-50">
-        Smart Food Secrets
+      {t('topTitle')}
       </div>
 
       <div className="mt-16 w-full max-w-md mx-auto bg-white p-6 rounded-lg shadow-lg">

@@ -42,6 +42,7 @@
         "options": ["Bloated after carbs", "Sleepy or low energy", "Satisfied and clear-headed", "I don’t pay much attention"]
       }
     ],
+    "topTitle": "Quiz - Traditional health",
     "selectYourPreference": "Select your preference",
     "next": "Next",
     "back": "Back"

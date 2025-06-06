@@ -176,7 +176,7 @@ export default function QuizStep() {
 
   return (
     <div className="relative min-h-screen flex flex-col items-center justify-center text-white px-6 md:px-0 pb-36 overflow-visible">
-      <div className="fixed top-0 w-full bg-gray-800 py-4 text-center text-white font-bold text-2xl z-50">Smart Food</div>
+      <div className="fixed top-0 w-full bg-gray-800 py-4 text-center text-white font-bold text-2xl z-50">{t('topTitle')}</div>
       <div className="fixed top-14 w-full z-50">
         <ProgressBar currentStep={stepIndex + 1} totalSteps={questions.length} />
       </div>
