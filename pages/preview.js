@@ -72,6 +72,13 @@ export default function PreviewPage() {
             <p className="text-sm text-gray-600">{t('recipeInstructions3')}</p>
           </div>
         </Carousel>
+        <button
+          onClick={handleContinue}
+          className="w-full py-3 rounded-xl bg-green-600 text-white font-semibold hover:bg-green-700 transition"
+          aria-label="Continue to your quiz results"
+        >
+          {t('continueButton')}
+        </button>
       </div>
 
         {/* Mineral Tip */}
