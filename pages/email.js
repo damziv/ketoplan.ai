@@ -107,27 +107,6 @@ export default function EmailPage() {
         Smart Food
       </div>
 
-        {/* Why Us */}
-        <div className="mt-24 w-full max-w-md mx-auto bg-white p-6 rounded-lg shadow-lg">
-          <h3 className="text-xl font-bold text-center mb-6 text-gray-800">
-          🔒 {t('whyUs.title')}
-          </h3>
-          <ul className="space-y-4">
-            {why.map((text, index) => (
-              <motion.li
-                key={index}
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.3 }}
-                className="flex items-start space-x-3 p-3 bg-green-100 rounded-md hover:bg-green-200 transition-colors"
-              >
-                <span className="text-green-600 text-xl font-bold">✓</span>
-                <span className="text-gray-700 text-lg">{text}</span>
-              </motion.li>
-            ))}
-          </ul>
-        </div>
-
         {/* Preview & What You Get Section */}
         <motion.div
         initial={{ opacity: 0, y: 20 }}
@@ -209,6 +188,27 @@ export default function EmailPage() {
 
 
       </motion.div>
+
+              {/* Why Us */}
+              <div className="mt-24 w-full max-w-md mx-auto bg-white p-6 rounded-lg shadow-lg">
+          <h3 className="text-xl font-bold text-center mb-6 text-gray-800">
+          🔒 {t('whyUs.title')}
+          </h3>
+          <ul className="space-y-4">
+            {why.map((text, index) => (
+              <motion.li
+                key={index}
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.3 }}
+                className="flex items-start space-x-3 p-3 bg-green-100 rounded-md hover:bg-green-200 transition-colors"
+              >
+                <span className="text-green-600 text-xl font-bold">✓</span>
+                <span className="text-gray-700 text-lg">{text}</span>
+              </motion.li>
+            ))}
+          </ul>
+        </div>
       
     </div>
   );
