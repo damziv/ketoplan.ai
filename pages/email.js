@@ -116,7 +116,7 @@ export default function EmailPage() {
         >
 
         {/* Testimonial */}
-        <div className="bg-white p-3 rounded-md shadow text-sm text-gray-700 italic">
+        <div className="bg-white p-3 rounded-md shadow text-sm text-gray-700 italic mt-24">
           “After 2 weeks, I feel more energized and less bloated. The natural tips really work!”
           <span className="block mt-1 text-right font-medium text-gray-600">— Maria, 52, Austria</span>
         </div>
@@ -190,7 +190,7 @@ export default function EmailPage() {
       </motion.div>
 
               {/* Why Us */}
-              <div className="mt-24 w-full max-w-md mx-auto bg-white p-6 rounded-lg shadow-lg">
+              <div className="mt-6 w-full max-w-md mx-auto bg-white p-6 rounded-lg shadow-lg">
           <h3 className="text-xl font-bold text-center mb-6 text-gray-800">
           🔒 {t('whyUs.title')}
           </h3>

@@ -126,14 +126,19 @@ export default function PaymentPage() {
             </ul>
             <p className="text-sm text-gray-600">{t('recipeInstructions1')}</p>
           </div>
-          <div className="text-left">
-            <img src="/images/avatars/anna.jpg" alt={t('recipeTitle2')} className="rounded-lg mb-2" />
-            <h4 className="text-lg font-semibold text-green-700">{t('recipeTitle2')}</h4>
-            <ul className="list-disc list-inside text-gray-700 text-sm mb-2 space-y-1">
-              <li>{t('recipeIngredients2')}</li>
-            </ul>
-            <p className="text-sm text-gray-600">{t('recipeInstructions2')}</p>
+
+
+        <div className="text-left">
+          <div className="flex items-center gap-2 mb-2">
+            <img src="/images/avatars/maria.jpg" alt="Maria" className="w-5 h-5 rounded-full" />
+            <h4 className="text-sm font-semibold text-gray-800">{t('recipeTitle1')}</h4>
           </div>
+            <ul className="list-disc list-inside text-gray-700 text-sm mb-2 space-y-1">
+               <li>{t('recipeIngredients1')}</li>
+            </ul>
+            <p className="text-sm text-gray-600">{t('recipeInstructions1')}</p>
+        </div>
+
           <div className="text-left">
             <img src="/images/avatars/nermin.jpg" alt={t('recipeTitle3')} className="rounded-lg mb-2" />
             <h4 className="text-lg font-semibold text-green-700">{t('recipeTitle3')}</h4>
