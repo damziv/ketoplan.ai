@@ -114,36 +114,35 @@ export default function PaymentPage() {
         </button>
       </div>
 
-      {/* Testimonials */}
-      <div className="mt-8 w-full max-w-md">
-        <h3 className="text-lg font-bold text-center mb-4">{t('reviewsTitle')}</h3>
-        <div className="flex flex-wrap gap-4 justify-center md:flex-nowrap">
-          {reviews.map((review, index) => (
-            <div
-              key={index}
-              className="bg-white p-4 rounded-lg shadow-md w-full md:w-1/3 text-center"
-            >
-              <p className="text-gray-700 text-base">{review.text}</p>
-              <p className="text-sm text-gray-600 mt-1">{review.author}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* Why Us */}
-      <div className="mt-8 w-full max-w-md mx-auto bg-white p-6 rounded-lg shadow-lg">
-        <h3 className="text-2xl font-bold text-center mb-6 text-gray-800">{t('whyTitle')}</h3>
-        <ul className="space-y-4">
-          {why.map((text, index) => (
-            <li
-              key={index}
-              className="flex items-start space-x-3 p-3 bg-green-50 rounded-md hover:bg-green-100 transition-colors"
-            >
-              <span className="text-green-600 text-xl font-bold">✓</span>
-              <span className="text-gray-700 text-base">{text}</span>
-            </li>
-          ))}
-        </ul>
+       {/* Reviews Carousel */}
+       <div className="bg-white p-6 rounded-lg shadow-md w-full max-w-md text-left mt-10">
+        <h3 className="text-2xl font-bold text-gray-800 mb-4">🍽️ {t('recipeHead')}</h3>
+        <Carousel showThumbs={false} infiniteLoop autoPlay interval={4000} showStatus={false}>
+          <div className="text-left">
+            <img src="/images/avatars/maria.jpg" alt={t('recipeTitle1')} className="rounded-lg mb-2" />
+            <h4 className="text-lg font-semibold text-green-700">{t('recipeTitle1')}</h4>
+            <ul className="list-disc list-inside text-gray-700 text-sm mb-2 space-y-1">
+              <li>{t('recipeIngredients1')}</li>
+            </ul>
+            <p className="text-sm text-gray-600">{t('recipeInstructions1')}</p>
+          </div>
+          <div className="text-left">
+            <img src="/images/avatars/anna.jpg" alt={t('recipeTitle2')} className="rounded-lg mb-2" />
+            <h4 className="text-lg font-semibold text-green-700">{t('recipeTitle2')}</h4>
+            <ul className="list-disc list-inside text-gray-700 text-sm mb-2 space-y-1">
+              <li>{t('recipeIngredients2')}</li>
+            </ul>
+            <p className="text-sm text-gray-600">{t('recipeInstructions2')}</p>
+          </div>
+          <div className="text-left">
+            <img src="/images/avatars/nermin.jpg" alt={t('recipeTitle3')} className="rounded-lg mb-2" />
+            <h4 className="text-lg font-semibold text-green-700">{t('recipeTitle3')}</h4>
+            <ul className="list-disc list-inside text-gray-700 text-sm mb-2 space-y-1">
+              <li>{t('recipeIngredients3')}</li>
+            </ul>
+            <p className="text-sm text-gray-600">{t('recipeInstructions3')}</p>
+          </div>
+        </Carousel>
       </div>
 
       {/* Limited-Time Offer Timer */}
@@ -169,38 +168,6 @@ export default function PaymentPage() {
         </button>
       </div>
 
-      {/* Reviews Carousel */}
-      <div className="bg-white p-6 rounded-lg shadow-md w-full max-w-md text-left mt-10">
-        <h3 className="text-2xl font-bold text-gray-800 mb-4">🍽️ {t('recipeHead')}</h3>
-        <Carousel showThumbs={false} infiniteLoop autoPlay interval={4000} showStatus={false}>
-          <div className="text-left">
-            <img src="/images/recipes/quinoa-salad.jpg" alt={t('recipeTitle1')} className="rounded-lg mb-2" />
-            <h4 className="text-lg font-semibold text-green-700">{t('recipeTitle1')}</h4>
-            <ul className="list-disc list-inside text-gray-700 text-sm mb-2 space-y-1">
-              <li>{t('recipeIngredients1')}</li>
-            </ul>
-            <p className="text-sm text-gray-600">{t('recipeInstructions1')}</p>
-          </div>
-          <div className="text-left">
-            <img src="/images/recipes/veggie-stir-fry.jpg" alt={t('recipeTitle2')} className="rounded-lg mb-2" />
-            <h4 className="text-lg font-semibold text-green-700">{t('recipeTitle2')}</h4>
-            <ul className="list-disc list-inside text-gray-700 text-sm mb-2 space-y-1">
-              <li>{t('recipeIngredients2')}</li>
-            </ul>
-            <p className="text-sm text-gray-600">{t('recipeInstructions2')}</p>
-          </div>
-          <div className="text-left">
-            <img src="/images/recipes/salmon-bowl.jpg" alt={t('recipeTitle3')} className="rounded-lg mb-2" />
-            <h4 className="text-lg font-semibold text-green-700">{t('recipeTitle3')}</h4>
-            <ul className="list-disc list-inside text-gray-700 text-sm mb-2 space-y-1">
-              <li>{t('recipeIngredients3')}</li>
-            </ul>
-            <p className="text-sm text-gray-600">{t('recipeInstructions3')}</p>
-          </div>
-        </Carousel>
-      </div>
-
-
       {/* FAQ: Why €1.49/week? */}
       <div className="mt-4 w-full max-w-md text-sm text-gray-700 bg-white border border-gray-200 p-4 rounded-md shadow-sm">
         <h4 className="font-semibold text-gray-900 mb-2">{t('faqTitle')}</h4>
@@ -223,6 +190,23 @@ export default function PaymentPage() {
           </Elements>
         )}
       </div>
+
+      {/* Why Us */}
+      <div className="mt-8 w-full max-w-md mx-auto bg-white p-6 rounded-lg shadow-lg">
+        <h3 className="text-2xl font-bold text-center mb-6 text-gray-800">{t('whyTitle')}</h3>
+        <ul className="space-y-4">
+          {why.map((text, index) => (
+            <li
+              key={index}
+              className="flex items-start space-x-3 p-3 bg-green-50 rounded-md hover:bg-green-100 transition-colors"
+            >
+              <span className="text-green-600 text-xl font-bold">✓</span>
+              <span className="text-gray-700 text-base">{text}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+
     </div>
   );
 }
