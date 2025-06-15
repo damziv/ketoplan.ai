@@ -117,7 +117,7 @@ export default function EmailPage() {
 
         {/* Testimonial */}
         <div className="bg-white p-3 rounded-md shadow text-sm text-gray-700 italic mt-24">
-          “After 2 weeks, I feel more energized and less bloated. The natural tips really work!”
+        "{t('testimonial')}“
           <span className="block mt-1 text-right font-medium text-gray-600">— Maria, 52, Austria</span>
         </div>
       </motion.div>
@@ -178,11 +178,11 @@ export default function EmailPage() {
 
         {/* What You’ll Get */}
         <div className="bg-green-50 p-4 rounded-xl shadow mb-4">
-          <h3 className="text-md font-semibold text-gray-800 mb-2">What you’ll get:</h3>
+          <h3 className="text-md font-semibold text-gray-800 mb-2">{t('whatYouGetTitle')}</h3>
           <ul className="list-disc pl-5 text-gray-700 text-sm space-y-1">
-            <li>A personalized 10-page PDF based on your quiz</li>
-            <li>Natural food & supplement tips tailored to you</li>
-            <li>New tips and recipe updates every month</li>
+            <li>{t('whatYouGet1')}</li>
+            <li>{t('whatYouGet2')}</li>
+            <li>{t('whatYouGet3')}</li>
           </ul>
         </div>
 

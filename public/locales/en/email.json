@@ -2,6 +2,7 @@
   "topTitle": "Email - Traditional health",
   "title": "Almost there...",
   "subtitle": "Discover the best foods, habits, and supplements for your age and needs.",
+  "testimonial": "After 2 weeks, I feel more energized and less bloated. The natural tips really work!",
   "fields": {
     "age": "Your age",
     "email": "Your email address"
@@ -10,6 +11,10 @@
     "fillAll": "Age and email help us tailor your plan.",
     "invalidEmail": "Enter a valid email address."
   },
+  "whatYouGetTitle":"What you’ll get:",
+  "whatYouGet1": "A personalized PDF book based on your quiz",
+  "whatYouGet2": "Natural food & supplement tips tailored to you<",
+  "whatYouGet3": "New tips and recipe updates every month",
   "continue": "Generate My Guide",
   "stepInfo": "You're almost there! Let’s finalize your profile.",
   "privacy": "Your data stays 100% private — we never share your email.",

@@ -40,7 +40,7 @@
   "discountMonth": "€11.99/month",
   "discountBonus": "Bonus: Free 7-day natural grocery list!",
   "getDiscountButton": "Claim Your Discount",
-  "paymentTitle": "Secure Payment",
+  "paymentTitle": "Stripe Payment",
   "paymentSubtitle": "Heal your body with natural foods and supplements.",
   "price": "Start Your Journey Now",
   "loadingPayment": "Loading payment...",
