@@ -1,42 +1,42 @@
 {
-    "hero": {
-      "titleLine1": "Gesunde Ernährung",
-      "titleLine2": "Gesundes Leben",
-      "description": "Mache das Quiz und erhalte einen Speiseplan, der perfekt zu deinem Lebensstil passt.",
-      "cta": "Quiz starten",
-      "disclaimer": "Mit dem Klick auf „Quiz starten“ akzeptierst du unsere AGB.",
-      "trusted": "Vertraut von <strong>10.000+</strong> Fans",
-      "quick": "✓ In weniger als 2 Minuten",
-      "personalized": "✓ Der günstigste KI-Ernährungsplan",
-      "noSignup": "✓ Kein Account notwendig",
-      "onlyPrice": "✓ Ab nur 5,99 €/Monat",
-      "rating": "Basierend auf über 1.200 Bewertungen"
-    },
-    "reviews": {
-      "title": "Was unsere Nutzer sagen",
-      "list": [
-        "Bester Ernährungsplan überhaupt! ⭐⭐⭐⭐⭐",
-        "5 kg in 4 Wochen abgenommen! ⭐⭐⭐⭐⭐",
-        "Super einfach umzusetzen! ⭐⭐⭐⭐⭐"
-      ]
-    },
-    "carousel": {
-      "title": "🔥 Echte Ergebnisse"
-    },
-    "whyUs": {
-      "title": "Warum Sie sich für unsere Diät-Rezept-App entscheiden sollten?",
-      "points": [
-        "Sichere Zahlung – keine versteckten Kosten!",
-        "Aus Ihren Antworten werden personalisierte gesunde Rezepte generiert!",
-        "Mühelose Planung für ein gesünderes Leben!"
-      ]
-    },
-    "footer": {
-      "privacy": "Datenschutzrichtlinie",
-      "terms": "AGB",
-      "cookies": "Cookie-Richtlinie",
-      "refunds": "Rückerstattungsrichtlinie",
-      "rights": "Alle Rechte vorbehalten."
-    }
+  "hero": {
+    "titleLine1": "Von der Natur",
+    "titleLine2": "Für ein gesundes Leben",
+    "description": "Machen Sie unser 2-minütiges Quiz und erhalten Sie jeden Monat per E-Mail einen persönlichen Gesundheitsratgeber und Tipps",
+    "cta": "Starten Sie Ihr Wellness-Quiz",
+    "disclaimer": "Beginnen Sie Ihr Quiz mit unseren freundlichen Nutzungsbedingungen!",
+    "trusted": "Unsere Pläne basieren auf Erkenntnissen aus traditionellen und wissenschaftlich fundierten Wellness-Strategien.",
+    "quick": "✓ PDF-Buch, erstellt aus Ihren Quiz-Antworten",
+    "personalized": "✓ Wöchentlicher Ratgeber mit natürlichen Inhaltsstoffen",
+    "noSignup": "✓ Monatliche Tipps für Energie und Körperbalance",
+    "onlyPrice": "✓ Nur 5,99 €/Monat, Sonderangebot",
+    "moneyBack": "✓ 30-tägige Geld-zurück-Garantie, jederzeit kündbar",
+    "rating": "Basierend auf über 1.200 Bewertungen"
+  },
+  "reviews": {
+    "title": "Was unsere Benutzer sagen",
+    "list": [
+      "Nach zwei Wochen fühle ich mich energiegeladener und weniger aufgebläht. Die natürlichen Tipps wirken wirklich! – Maria, 52, Österreich ⭐⭐⭐⭐⭐",
+      "Ich schlafe besser und fühle mich jeden Morgen leichter. Dieser Plan hat meinen Alltag verändert.“ – Elena, 45, Deutschland ⭐⭐⭐⭐⭐",
+      "Einfache Tipps, ganz natürlich und echte Ergebnisse. Meine Energie ist zurück! – Ivana, 57, Polen ⭐⭐⭐⭐⭐"
+    ]
+  },
+  "carousel": {
+    "title": "🌿 Natürliche Transformationen"
+  },
+  "whyUs": {
+    "title": "Warum Sie sich für unsere App für natürliche Gesundheit entscheiden sollten?",
+    "points": [
+      "Unterstützt Energie, Verdauung und Hormonhaushalt",
+      "Entwickelt für Frauen und Männer über 40",
+      "Traditionelle Lebensmittel- und Nahrungsergänzungsmittelberatung"
+    ]
+  },
+  "footer": {
+    "privacy": "Privacy Policy",
+    "terms": "Terms",
+    "cookies": "Cookie Policy",
+    "refunds": "Refund Policy",
+    "rights": "All rights reserved."
   }
-  
+}

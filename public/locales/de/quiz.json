@@ -1,43 +1,47 @@
 {
   "questions": [
     {
-      "question": "Was ist dein Hauptziel?",
-      "options": ["Gewichtsreduktion", "Gewicht halten", "Muskeln aufbauen"]
+      "question": "Was ist Ihr wichtigstes Gesundheitsziel?",
+      "Optionen": ["Energie und Konzentration steigern", "Immunität und Verdauung stärken", "Übergewicht natürlich verlieren", "Stressbedingte Müdigkeit reduzieren"]
     },
     {
-      "question": "Wie viel Abwechslung möchtest du in deinem Ernährungsplan?",
-      "options": ["Viel", "Mittel", "Wenig"]
+      "question": "Wie viele Mahlzeiten essen Sie pro Tag?",
+      "options": ["1 Mahlzeit pro Tag", "2 Mahlzeiten pro Tag", "3 Mahlzeiten pro Tag", "Mehr als 3 Mahlzeiten pro Tag"]
     },
     {
-      "question": "Wähle das Fleisch, das du einbeziehen möchtest",
-      "options": ["Hähnchen", "Schwein", "Rind", "Speck", "Lachs", "Thunfisch", "Lamm", "Keines"]
+      "question": "Welches Geschlecht hast du?",
+      "options": ["Männlich", "Weiblich"]
     },
     {
-      "question": "Wähle das Gemüse, das du einbeziehen möchtest",
-      "options": ["Brokkoli", "Spinat", "Kopfsalat", "Blumenkohl", "Kohl", "Zucchini", "Spargel", "Aubergine", "Keines"]
+      "question": "Wählen Sie das Fleisch, das Sie häufig essen",
+      "options": ["Huhn", "Schwein", "Rind", "Speck", "Lachs", "Thunfisch", "Lamm", "Keine"]
     },
     {
-      "question": "Wähle weitere Produkte, die du einbeziehen möchtest",
-      "options": ["Eier", "Käse", "Butter", "Tofu", "Garnelen", "Chia", "Keines"]
+      "question": "Wählen Sie das Gemüse, das Sie oft essen",
+      "options": ["Brokkoli", "Spinat", "Salat", "Blumenkohl", "Kohl", "Zucchini", "Spargel", "Aubergine", "Keine"]
     },
     {
-      "question": "Wie aktiv bist du im Alltag?",
-      "options": ["Wenig aktiv", "Mäßig aktiv", "Sehr aktiv"]
+      "question": "Wählen Sie andere Produkte, die Sie häufig essen",
+      "options": ["Eier", "Käse", "Butter", "Tofu", "Garnelen", "Chia", "Keine"]
     },
     {
-      "question": "Hast du irgendwelche Allergien?",
+      "question": "Wie würden Sie Ihr aktuelles Energieniveau beschreiben?",
+      "options": ["Ich fühle mich die meiste Zeit müde", "Nachmittags habe ich Energieeinbrüche", "Meine Energie ist okay, könnte aber besser sein"]
+    },
+    {
+      "question": "Leiden Sie unter Stress oder Stimmungsschwankungen?",
+      "options": ["Hoher Stress oder Angst", "Stimmungsschwankungen oder Reizbarkeit", "Niedergeschlagene Stimmung oder Müdigkeit", "Keine, ich fühle mich ausgeglichen"]
+    },
+    {
+      "question": "Haben Sie Allergien?",
       "options": ["Nüsse", "Milchprodukte", "Soja", "Keine"]
     },
     {
-      "question": "Hast du ein Budget für die Essensplanung?",
-      "options": ["Gering", "Mittel", "Hoch"]
-    },
-    {
-      "question": "Was ist dein Geschlecht?",
-      "options": ["Männlich", "Weiblich"]
+      "question": "Wie fühlen Sie sich normalerweise nach dem Essen?",
+      "options": ["Aufgebläht nach Kohlenhydraten", "Müde oder energielos", "Zufrieden und klar im Kopf", "Ich achte nicht besonders darauf"]
     }
   ],
-  "topTitle": "Quiz - Traditional health",
+  "topTitle": "Quiz - Traditionelle Gesundheit",
   "selectYourPreference": "Wähle deine Präferenz",
   "next": "Weiter",
   "back": "Zurück"

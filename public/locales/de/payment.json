@@ -1,36 +1,64 @@
+
 {
-  "title": "Schließe dich Tausenden an, die bereits ihre Transformation gestartet haben!",
-  "reviewsTitle": "Das sagen unsere Kunden:",
+  "topTitle": "Geheimnis - Traditionelle Gesundheit",
+  "title": "Schließen Sie sich Tausenden an, die sich für natürliche Gesundheit einsetzen!",
+  "whatTitle": "Was Sie bekommen",
+  "what": [
+    "10-seitiges PDF mit 7 natürlichen Rezepten, zugeschnitten auf Ihre Quiz-Antworten",
+    "5 wöchentliche Rezepte zur Steigerung von Energie und Verdauung",
+    "3 Monatstipps für Hormonhaushalt und Wohlbefinden",
+    "Personalisierte Nahrungsergänzungsmittel-Empfehlungen (z. B. Magnesium, Omega-3)"
+  ],
+  "whatNote": "Maßgeschneidert für alle Ernährungsweisen, einschließlich vegetarischer oder veganer Vorlieben.",
+  "getNowButton": "Starten Sie jetzt Ihren Plan",
+  "reviewsTitle": "Was unsere Kunden sagen",
   "reviews": [
-    "Bester Ernährungsplan überhaupt! ⭐⭐⭐⭐⭐",
-    "5 kg in 4 Wochen abgenommen! ⭐⭐⭐⭐⭐",
-    "Super einfach umzusetzen! ⭐⭐⭐⭐⭐"
+    {
+      "text": "Ich habe mehr Energie und das Blähgefühl ist verschwunden!",
+      "author": "Anna, 42, Deutschland ⭐⭐⭐⭐⭐"
+    },
+    {
+      "text": "Ich liebe die natürlichen Rezepte und Tipps!",
+      "author": "Nermin, 48, Austria ⭐⭐⭐⭐⭐"
+    },
+    {
+      "text": "So einfach zu befolgen, ich fühle mich großartig!",
+      "author": "Ioana, 29, Romania ⭐⭐⭐⭐⭐"
+    }
   ],
-  "whyTitle": "Warum diese Rezepte-App wählen?",
+  "whyTitle": "Warum Smart Food Secrets wählen?",
   "why": [
+    "Wissenschaftlich fundiert durch zertifizierte Ernährungswissenschaftler",
     "Keine versteckten Kosten – jederzeit kündbar!",
-    "Personalisierte, gesunde Rezepte basierend auf deinen Daten!",
-    "Mühelose Essensplanung für ein gesünderes Leben!"
+    "Personalisierte natürliche Rezepte und Nahrungsergänzungsmittel",
+    "Mühelose Heilung mit den besten Zutaten der Natur"
   ],
-  "discountTitle": "Sonderangebot – Am beliebtesten!!",
-  "discountSubtitle": "Holen Sie sich Ihre persönliche Diät für nur:",
-  "discountOffer": "Angebot endet in:",
+  "discountTitle": "Sonderangebot – Sparen Sie 50 %!",
+  "discountSubtitle": "Ihr persönlicher Gesundheitsplan für nur:",
+  "discountOffer": "Angebot läuft ab in:",
   "discountWeek": "pro Woche",
-  "discountMonth": "€11.99 pro Monat",
-  "paymentTitle": "Sichere Zahlung",
-  "paymentSubtitle": "✓ 5-Tage Keto-Plan + ✓ Rezepte + ✓ PDF zum Download",
-  "price": "NUTZE DIE AKTION JETZT",
+  "discountMonth": "11,99 €/Monat",
+  "discountBonus": "Bonus: Kostenlose 7-Tage-Lebensmittelliste mit Bio-Lebensmitteln!",
+  "getDiscountButton": "Fordern Sie Ihren Rabatt an",
+  "paymentTitle": "Stripe-Zahlung",
+  "paymentSubtitle": "Heilen Sie Ihren Körper mit natürlichen Lebensmitteln und Nahrungsergänzungsmitteln.",
+  "price": "Beginnen Sie Ihre Reise jetzt",
   "loadingPayment": "Zahlung wird geladen...",
-  "payNow": "Jetzt starten",
-  "processing": "Wird verarbeitet...",
-  "recipeHead": "Ernährungsplan zum abnehmen",
-  "recipeTitle1": "Hähnchen mit Käse und Speck",
-  "recipeIngredients1": "Hähnchenbrust, Ranch, Käse, Speck",
-  "recipeInstructions1": "Hähnchen anbraten, mit cremigem Käse und Speck belegen und backen. Einfach und lecker!",
-  "recipeTitle2": "Zucchini Lasagna",
-  "recipeIngredients2": "Zucchini, Rinderhackfleisch, Ricotta, Mozzarella",
-  "recipeInstructions2": "Die Zucchinischeiben mit Fleischsauce und Käse belegen und anschließend goldbraun backen.",
-  "recipeTitle3": "Avocado-Eierschale",
-  "recipeIngredients3": "Avocado, gekochte Eier, Olivenöl, Kräuter",
-  "recipeInstructions3": "Zwei hart- oder weichgekochte Eier in Scheiben schneiden und auf die Avocadohälften legen. Mit einem Esslöffel hochwertigem nativem Olivenöl extra beträufeln, für gesunde Fette und Geschmack. Für extra Biss und Abwechslung halbierte Kirschtomaten, knusprige Speckwürfel oder eine Scheibe Prosciutto hinzufügen."
+  "payNow": "Jetzt bezahlen",
+  "processing": "Verarbeitung...",
+  "paymentNote": "30-Tage-Geld-zurück-Garantie • Jederzeit kündbar • DSGVO-konform",
+  "faqTitle": "Warum nur 5,99€?",
+  "faqText1": "Es handelt sich um ein zeitlich begrenztes digitales Angebot, um natürliche Gesundheit zugänglich zu machen.",
+  "faqText2": "Wir halten die Kosten niedrig, da keine Versand- oder Lagergebühren anfallen.",
+  "faqText3": "Wir hoffen, dass Ihnen Ihr Plan gefällt und Sie ihn mit anderen teilen! 💚",
+  "recipeHead": "Unsere zufriedenen Kunden",
+  "recipeTitle1": "Maria, 52, Polen",
+  "recipeIngredients1": " Ich habe mehr Energie und das Blähgefühl ist verschwunden!",
+  "recipeInstructions1": "Hilft mir bei meiner täglichen Essensplanung. Es ist benutzerfreundlich und leicht zu lesen. Nichts Ausgefallenes und Direktes.",
+  "recipeTitle2": "Nermin, 48, Austria",
+  "recipeIngredients2": " So einfach zu befolgen, ich fühle mich großartig!",
+  "recipeInstructions2": "Das Programm ist meiner Meinung nach gut konzipiert und hat bei mir gut funktioniert. Ich habe in einer Woche 3 kg abgenommen. Auch das Lernen neuer Rezepte",
+  "recipeTitle3": "Anna, 61, Deutschland",
+  "recipeIngredients3": "Ich liebe die natürlichen Rezepte und Ergänzungstipps!",
+  "recipeInstructions3": "Ich gebe zu, ich war anfangs skeptisch, aber das ist mit Abstand die effektivste und günstigste Gesundheitsanleitung, die ich je gefunden habe. Danke."
 }

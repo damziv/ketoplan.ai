@@ -1,21 +1,31 @@
 {
-  "title": "Wir personalisieren deinen Plan",
-  "subtitle": "Nur noch ein paar Angaben – und dein persönlicher Ernährungsplan ist fertig!",
-  "testimonial": "After 2 weeks, I feel more energized and less bloated. The natural tips really work!",
+  "topTitle": "Email - Traditional health",
+  "title": "Almost there...",
+  "subtitle": "Discover the best foods, habits, and supplements for your age and needs.",
+  "testimonial": "Nach 2 Wochen fühle ich mich energiegeladener und weniger aufgebläht. Die natürlichen Tipps funktionieren wirklich!",
   "fields": {
-    "age": "Alter",
-    "height": "Größe (cm)",
-    "currentWeight": "Aktuelles Gewicht (kg)",
-    "desiredWeight": "Wunschgewicht (kg)",
-    "email": "Deine E-Mail-Adresse"
+    "age": "Ihr Alter",
+    "email": "Ihre E-Mail-Adresse"
   },
   "error": {
-    "fillAll": "Bitte fülle alle Felder aus, um fortzufahren.",
-    "invalidEmail": "Bitte gib eine gültige E-Mail-Adresse ein."
+    "fillAll": "Alter und E-Mail-Adresse helfen uns, Ihren Plan anzupassen.",
+    "invalidEmail": "Geben Sie eine gültige E-Mail-Adresse ein."
   },
-  "continue": "Weiter",
-  "stepInfo": "tolle Arbeit! · Letzter Schritt zu deinem individuellen Plan",
-  "privacy": "Deine Daten sind 100 % privat. Wir geben deine E-Mail niemals weiter.",
-  "socialProof": "✅ Mehr als 8.000 Nutzer haben ihre Ernährung mit uns verbessert",
-  "fallbackButton": "Meinen Plan erstellen"
+  "whatYouGetTitle":"Was Sie bekommen:",
+  "whatYouGet1": "Ein personalisiertes PDF-Buch basierend auf Ihrem Quiz",
+  "whatYouGet2": "Auf Sie zugeschnittene Tipps zu Naturkost und Nahrungsergänzungsmitteln",
+  "whatYouGet3": "Jeden Monat neue Tipps und Rezept-Updates",
+  "continue": "Meinen Leitfaden erstellen",
+  "stepInfo": "Fast geschafft! Jetzt können wir Ihr Profil fertigstellen.",
+  "privacy": "Ihre Daten bleiben 100 % privat – wir geben Ihre E-Mail-Adresse niemals weiter.",
+  "socialProof": "✅ Über 8.000 Menschen haben bereits eine Verbesserung ihrer Energie, Verdauung und Konzentration verzeichnet.",
+  "fallbackButton": "Meinen Leitfaden erstellen",
+  "whyUs": {
+    "title": "Wissenschaftlich fundiert · Kein Spam",
+    "points": [
+      "Lebensmittel, die den Bedürfnissen Ihres Körpers entsprechen",
+      "Natürliche Wege zur Verbesserung von Energie und Verdauung",
+      "Wichtige Vitamine und Mineralien basierend auf Ihren Angaben"
+    ]
+  }
 }

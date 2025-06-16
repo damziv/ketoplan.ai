@@ -158,7 +158,7 @@ export default function PaymentPage() {
         <h2 className="text-xl font-semibold mb-2">🎁 {t('discountTitle')}</h2>
         <p className="text-sm mb-2">{t('discountSubtitle')}</p>
         <div className="text-2xl font-bold mb-1 text-green-700">
-          €1.49 <span className="text-sm font-medium text-gray-500 ml-2">{t('discountWeek')}</span>
+          €5.99 <span className="text-sm font-medium text-gray-500 ml-2">{t('discountWeek')}</span>
           <span className="text-sm font-medium text-gray-500 line-through ml-2">{t('discountMonth')}</span>
         </div>
         <p className="text-sm text-gray-700">{t('discountOffer')}</p>
