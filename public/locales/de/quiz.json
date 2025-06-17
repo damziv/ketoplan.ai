@@ -2,7 +2,7 @@
   "questions": [
     {
       "question": "Was ist Ihr wichtigstes Gesundheitsziel?",
-      "Optionen": ["Energie und Konzentration steigern", "Immunität und Verdauung stärken", "Übergewicht natürlich verlieren", "Stressbedingte Müdigkeit reduzieren"]
+      "options": ["Energie und Konzentration steigern", "Immunität und Verdauung stärken", "Übergewicht natürlich verlieren", "Stressbedingte Müdigkeit reduzieren"]
     },
     {
       "question": "Wie viele Mahlzeiten essen Sie pro Tag?",
