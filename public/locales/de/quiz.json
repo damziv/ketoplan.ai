@@ -14,11 +14,11 @@
     },
     {
       "question": "Wählen Sie das Fleisch, das Sie häufig essen",
-      "options": ["Huhn", "Schwein", "Rind", "Speck", "Lachs", "Thunfisch", "Lamm", "Keine"]
+      "options": ["Hähnchen", "Schwein", "Rind", "Speck", "Lachs", "Thunfisch", "Lamm", "Keine"]
     },
     {
       "question": "Wählen Sie das Gemüse, das Sie oft essen",
-      "options": ["Brokkoli", "Spinat", "Salat", "Blumenkohl", "Kohl", "Zucchini", "Spargel", "Aubergine", "Keine"]
+      "options": ["Brokkoli", "Spinat", "Kopfsalat", "Blumenkohl", "Kohl", "Zucchini", "Spargel", "Aubergine", "Keine"]
     },
     {
       "question": "Wählen Sie andere Produkte, die Sie häufig essen",
