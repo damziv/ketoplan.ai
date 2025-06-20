@@ -105,13 +105,13 @@ export default function PaymentPage() {
           ))}
         </ul>
         <p className="text-sm text-gray-600 mt-4 text-center">{t('whatNote')}</p>
-        <button
+        {  /* <button
           className="w-full mt-4 py-3 rounded-xl bg-green-500 text-white font-semibold hover:bg-green-600 transition"
           onClick={scrollToPayment}
           aria-label="Start your personalized health plan now"
         >
           {t('getNowButton')}
-        </button>
+        </button> */ }
       </div>
 
        {/* Reviews Carousel */}
