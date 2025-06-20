@@ -251,7 +251,7 @@ function CheckoutForm() {
         <img src="/images/visa.png" alt="Visa" className="h-6" />
         <img src="/images/mastercard.png" alt="Mastercard" className="h-6" />
         <img src="/images/paypal.png" alt="PayPal" className="h-6" />
-        <img src="/images/ssl.png" alt="SSL Secure" className="h-6" />
+        <img src="/images/ssl.jpeg" alt="SSL Secure" className="h-6" />
       </div>
       <p className="text-sm text-gray-600 text-center">{t('paymentNote')}</p>
       <button
