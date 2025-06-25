@@ -169,7 +169,7 @@ export default function EmailPage() {
           className={`w-full py-3 rounded-xl font-semibold transition-all 
             ${email && age
               ? 'bg-blue-600 hover:bg-blue-700 text-white'
-              : 'bg-gray-300 text-gray-500 cursor-not-allowed'}`}
+              : 'bg-blue-600 text-white cursor-not-allowed'}`}
           onClick={handleNext}
           disabled={!email || !age}
         >
