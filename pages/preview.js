@@ -6,7 +6,6 @@ import { useEffect } from 'react';
 import { createClient } from '@supabase/supabase-js';
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import Image from 'next/image';
 import { Carousel } from 'react-responsive-carousel';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 
@@ -48,15 +47,7 @@ export default function PreviewPage() {
  <div className="mt-16 w-full max-w-md mx-auto bg-white p-6 rounded-lg shadow-lg">
         <h3 className="text-2xl font-bold text-center mb-6 text-gray-800">{t('whatTitle')}</h3>
         <ul className="space-y-4">
-          {t('what', { returnObjects: true }).map((text, index) => (
-            <li
-              key={index}
-              className="flex items-start space-x-3 p-3 bg-green-50 rounded-md hover:bg-green-100 transition-colors"
-            >
-              <span className="text-green-600 text-xl font-bold">✓</span>
-              <span className="text-gray-700 text-base">{text}</span>
-            </li>
-          ))}
+  
         </ul>
         <p className="text-sm text-gray-600 mt-4 text-center">{t('whatNote')}</p>
 
