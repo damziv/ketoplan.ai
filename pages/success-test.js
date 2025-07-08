@@ -9,7 +9,7 @@ export default function WellnessSuccessPage() {
   const router = useRouter();
 
   useEffect(() => {
-    // Optional: any tracking here
+    // Optional: tracking or effects
   }, []);
 
   return (
@@ -19,41 +19,33 @@ export default function WellnessSuccessPage() {
           🎯 Personalized Wellness Guidance
         </h2>
 
-        <p className="mb-4">
-          ✅ <strong>Issues spotted:</strong>
-          <ul className="list-disc pl-6 mt-2">
-            <li>Blood sugar swings due to low fiber and high animal fat.</li>
-            <li>Limited vegetable variety means low micronutrient range.</li>
-            <li>Heavy meals = sleepy digestion + afternoon crashes.</li>
-            <li>Possible lack of healthy Omega-3 fats for brain + mood.</li>
-          </ul>
-        </p>
+        <p className="mb-2">✅ <strong>Issues spotted:</strong></p>
+        <ul className="list-disc pl-6 mb-4">
+          <li>Blood sugar swings due to low fiber and high animal fat.</li>
+          <li>Limited vegetable variety means low micronutrient range.</li>
+          <li>Heavy meals = sleepy digestion + afternoon crashes.</li>
+          <li>Possible lack of healthy Omega-3 fats for brain + mood.</li>
+        </ul>
 
-        <p className="mb-4">
-          ✅ <strong>Key fixes:</strong>
-          <ul className="list-disc pl-6 mt-2">
-            <li>Add more colorful veggies: spinach, peppers, carrots, broccoli.</li>
-            <li>Include slow carbs: quinoa, oats, brown rice, beans.</li>
-            <li>Use healthy fats daily: nuts, seeds, avocado, olive oil.</li>
-            <li>Drink 1.5–2L water daily. Swap some coffee for green tea.</li>
-            <li>Try adaptogens (Ashwagandha, Rhodiola) for stress (optional).</li>
-          </ul>
-        </p>
+        <p className="mb-2">✅ <strong>Key fixes:</strong></p>
+        <ul className="list-disc pl-6 mb-4">
+          <li>Add more colorful veggies: spinach, peppers, carrots, broccoli.</li>
+          <li>Include slow carbs: quinoa, oats, brown rice, beans.</li>
+          <li>Use healthy fats daily: nuts, seeds, avocado, olive oil.</li>
+          <li>Drink 1.5–2L water daily. Swap some coffee for green tea.</li>
+          <li>Try adaptogens (Ashwagandha, Rhodiola) for stress (optional).</li>
+        </ul>
 
-        <p className="mb-4">
-          ✅ <strong>Easy daily checklist:</strong>
-          <ul className="list-disc pl-6 mt-2">
-            <li><strong>Breakfast:</strong> Eggs + greens + avocado.</li>
-            <li><strong>Lunch:</strong> Lean meat or fish + lots of veggies + whole grains.</li>
-            <li><strong>Snack:</strong> Nuts or berries to keep blood sugar stable.</li>
-            <li><strong>Dinner:</strong> Light — veggies + fish or legumes.</li>
-            <li>Get fresh air + short walk after meals if possible.</li>
-          </ul>
-        </p>
+        <p className="mb-2">✅ <strong>Easy daily checklist:</strong></p>
+        <ul className="list-disc pl-6 mb-4">
+          <li><strong>Breakfast:</strong> Eggs + greens + avocado.</li>
+          <li><strong>Lunch:</strong> Lean meat or fish + lots of veggies + whole grains.</li>
+          <li><strong>Snack:</strong> Nuts or berries to keep blood sugar stable.</li>
+          <li><strong>Dinner:</strong> Light — veggies + fish or legumes.</li>
+          <li>Get fresh air + short walk after meals if possible.</li>
+        </ul>
 
-        <p className="mb-4">
-          ✅ <strong>Focus + mood:</strong> Stay hydrated, get daylight, breathe deeply, sleep well, and keep dinners lighter.
-        </p>
+        <p className="mb-4">✅ <strong>Focus + mood:</strong> Stay hydrated, get daylight, breathe deeply, sleep well, and keep dinners lighter.</p>
 
         <button
           className="mt-4 bg-green-600 text-white py-2 px-4 rounded-md hover:bg-green-700"
