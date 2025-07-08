@@ -35,6 +35,9 @@ export default function PreviewPage() {
     }
   }, [progress, router]);
 
+  // Dynamic label text
+  const progressLabel = progress < 50 ? 'Analyzing your profile' : 'Generating your plan';
+
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100 p-5 pb-36">
       <div className="fixed top-0 w-full bg-gray-800 py-4 text-center text-white font-bold text-2xl z-50">
@@ -71,7 +74,7 @@ export default function PreviewPage() {
         {/* Analyzer Progress */}
         <div className="mb-4 pb-2 text-left font-normal">
           <div className="mb-1 flex items-center justify-between gap-3">
-            <div>Analyzing your profile</div>
+            <div>{progressLabel}</div>
             <div className="flex items-center gap-2 tabular-nums">
               <svg className="animate-spin h-4 w-4 text-rose-500" viewBox="25 25 50 50">
                 <circle
