@@ -29,6 +29,7 @@ export default function PreviewPage() {
     checkSession();
   }, [router]);
 
+
   const handleContinue = () => {
     window.fbq('trackCustom', 'ClickPreviewContinue');
     router.push('/email');
@@ -43,35 +44,23 @@ export default function PreviewPage() {
       <div className="mt-16 w-full max-w-md mx-auto bg-white p-6 rounded-lg shadow-lg">
         <h2 className="text-md font-bold text-center mb-2 text-gray-800">{t('title')}</h2>
         
-        {/* Recipes Carousel */}
-      <div className="bg-white p-6 rounded-lg shadow-md w-full max-w-md text-left mb-6">
-        <h3 className="text-2xl font-bold text-gray-800 mb-4">🍽️ {t('recipeHead')}</h3>
-        <Carousel showThumbs={false} infiniteLoop autoPlay interval={4000} showStatus={false}>
-          <div className="text-left">
-            <img src="/images/preview/kale-bunch.jpg" alt={t('recipeTitle1')} className="rounded-lg mb-2" />
-            <h4 className="text-lg font-semibold text-green-700">{t('recipeTitle1')}</h4>
-            <ul className="list-disc list-inside text-gray-700 text-sm mb-2 space-y-1">
-              <li>{t('recipeIngredients1')}</li>
-            </ul>
-            <p className="text-sm text-gray-600">{t('recipeInstructions1')}</p>
-          </div>
-          <div className="text-left">
-            <img src="/images/preview/gotu-kola.jpg" alt={t('recipeTitle2')} className="rounded-lg mb-2" />
-            <h4 className="text-lg font-semibold text-green-700">{t('recipeTitle2')}</h4>
-            <ul className="list-disc list-inside text-gray-700 text-sm mb-2 space-y-1">
-              <li>{t('recipeIngredients2')}</li>
-            </ul>
-            <p className="text-sm text-gray-600">{t('recipeInstructions2')}</p>
-          </div>
-          <div className="text-left">
-            <img src="/images/preview/beef-liver.jpg" alt={t('recipeTitle3')} className="rounded-lg mb-2" />
-            <h4 className="text-lg font-semibold text-green-700">{t('recipeTitle3')}</h4>
-            <ul className="list-disc list-inside text-gray-700 text-sm mb-2 space-y-1">
-              <li>{t('recipeIngredients3')}</li>
-            </ul>
-            <p className="text-sm text-gray-600">{t('recipeInstructions3')}</p>
-          </div>
-        </Carousel>
+ {/* What You'll Get */}
+ <div className="mt-16 w-full max-w-md mx-auto bg-white p-6 rounded-lg shadow-lg">
+        <h3 className="text-2xl font-bold text-center mb-6 text-gray-800">{t('whatTitle')}</h3>
+        <ul className="space-y-4">
+          {t('what', { returnObjects: true }).map((text, index) => (
+            <li
+              key={index}
+              className="flex items-start space-x-3 p-3 bg-green-50 rounded-md hover:bg-green-100 transition-colors"
+            >
+              <span className="text-green-600 text-xl font-bold">✓</span>
+              <span className="text-gray-700 text-base">{text}</span>
+            </li>
+          ))}
+        </ul>
+        <p className="text-sm text-gray-600 mt-4 text-center">{t('whatNote')}</p>
+
+
         <button
           onClick={handleContinue}
           className="w-full py-3 rounded-xl bg-green-600 text-white font-semibold hover:bg-green-700 transition"
