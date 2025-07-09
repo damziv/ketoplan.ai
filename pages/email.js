@@ -192,22 +192,23 @@ export default function EmailPage() {
           
         </h1>
         <p className="text-gray-600 mb-5">{t('subtitle')}</p>
+        <div className="bg-blue-50 border border-blue-200 rounded-xl p-4 mb-4">
+          <input
+            type="email"
+            placeholder={t('fields.email')}
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            className="w-full border rounded-xl p-3 mb-2 focus:ring-2 focus:ring-blue-500 outline-none transition"
+          />
 
-        <input
-          type="email"
-          placeholder={t('fields.email')}
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          className="w-full border rounded-xl p-3 mb-2 focus:ring-2 focus:ring-blue-500 outline-none transition"
-        />
-
-        <input
-          type="number"
-          placeholder={t('fields.age')}
-          value={age}
-          onChange={(e) => setAge(e.target.value)}
-          className="w-full border rounded-xl p-3 mb-4 focus:ring-2 focus:ring-blue-500 outline-none transition"
-        />
+          <input
+            type="number"
+            placeholder={t('fields.age')}
+            value={age}
+            onChange={(e) => setAge(e.target.value)}
+            className="w-full border rounded-xl p-3 mb-4 focus:ring-2 focus:ring-blue-500 outline-none transition"
+          />
+        </div>
         {error && <p className="text-red-500 text-sm mb-2">{error}</p>}
 
         <p className="text-sm text-gray-500 italic mb-2">{t('privacy')}</p>
