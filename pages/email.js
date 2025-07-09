@@ -177,7 +177,7 @@ export default function EmailPage() {
             ))}
           </div>
           <p className="italic text-gray-600 text-center">
-          {stepInfo}
+          {t('stepInfo')}
           </p>
         </motion.div>
       )}
@@ -187,8 +187,7 @@ export default function EmailPage() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
         className="bg-white shadow-lg rounded-2xl p-8 w-full max-w-md text-center"
-      >
-        <p className="text-sm text-gray-500 mb-3">{t('stepInfo')}</p>
+        >
         <h1 className="text-3xl font-bold text-gray-900 mb-2 flex justify-center items-center">
           
         </h1>
