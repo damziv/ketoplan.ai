@@ -50,7 +50,7 @@ export default function Home() {
           {/* CTA Button */}
           <button
             onClick={() => (window.location.href = '/quiz/1')}
-            className="bg-green-500 hover:bg-green-600 text-white text-lg font-bold py-4 px-8 rounded-xl shadow-xl transition-transform transform hover:scale-105"
+            className="bg-green-500 hover:bg-green-600 text-white text-lg font-bold py-4 px-8 rounded-xl shadow-xl transition-transform transform hover:scale-105 mt-3 mb-2"
           >
             {t('hero.cta')}
           </button>
