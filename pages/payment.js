@@ -85,7 +85,7 @@ export default function PaymentPage() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100 p-5 mt-24">
+    <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100 p-5">
       <div className="fixed top-0 w-full bg-gray-800 py-4 text-center text-white font-bold text-2xl z-50">
       {t('topTitle')}
       </div>
@@ -115,7 +115,7 @@ export default function PaymentPage() {
       </div> */ }
 
        {/* Reviews Carousel */}
-       <div className="bg-white p-6 rounded-lg shadow-md w-full max-w-md text-left mt-10 pb-36">
+       <div className="bg-white p-6 rounded-lg shadow-md w-full max-w-md text-left mt-24">
         <h3 className="text-2xl font-bold text-gray-800 mb-4">🍽️ {t('recipeHead')}</h3>
         <Carousel showThumbs={false} infiniteLoop autoPlay interval={4000} showStatus={false}>
         <div className="text-left">
