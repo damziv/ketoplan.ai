@@ -160,7 +160,7 @@ export default function EmailPage() {
           className="bg-white shadow-lg rounded-2xl p-6 w-full max-w-md mt-24 mb-8 text-left"
         >
           <h2 className="text-xl font-bold mb-2 text-center">
-            🎯 {t('title')} Snapshot
+            🎯 {t('title')}
           </h2>
           <p className="text-center text-gray-600 mb-4">
             You’re <strong>{typeName}</strong>.
@@ -177,7 +177,7 @@ export default function EmailPage() {
             ))}
           </div>
           <p className="italic text-gray-600 text-center">
-            Unlock your full plan with recipes, food swaps & daily tips.
+          {stepInfo}
           </p>
         </motion.div>
       )}
@@ -190,7 +190,7 @@ export default function EmailPage() {
       >
         <p className="text-sm text-gray-500 mb-3">{t('stepInfo')}</p>
         <h1 className="text-3xl font-bold text-gray-900 mb-2 flex justify-center items-center">
-          🏁 {t('title')}
+          
         </h1>
         <p className="text-gray-600 mb-5">{t('subtitle')}</p>
 
