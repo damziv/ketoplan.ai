@@ -23,34 +23,55 @@ export default function EmailPage() {
   const why = t('whyUs.points', { returnObjects: true });
 
   useEffect(() => {
-    const savedEmail = sessionStorage.getItem('email');
-    const storedSessionId = sessionStorage.getItem('sessionId');
-    if (savedEmail) setEmail(savedEmail);
-    if (storedSessionId) {
-      setSessionId(storedSessionId);
-    } else if (savedEmail) {
-      fetchSessionIdFromSupabase(savedEmail);
-    }
-
-    const quizAnswers = JSON.parse(sessionStorage.getItem('quizAnswers'));
-    if (!quizAnswers) return;
-
-    const types = t('types', { returnObjects: true });
-
-    const matchTypeKey = () => {
-      if (quizAnswers['1']?.includes('Boost energy and focus')) {
-        return 'energySeeker';
+    const run = async () => {
+      const savedEmail = sessionStorage.getItem('email');
+      const storedSessionId = sessionStorage.getItem('sessionId');
+      if (savedEmail) setEmail(savedEmail);
+      if (storedSessionId) {
+        setSessionId(storedSessionId);
+      } else if (savedEmail) {
+        await fetchSessionIdFromSupabase(savedEmail);
       }
-      if (quizAnswers['1']?.includes('Strengthen immunity and digestion"')) {
-        return 'gutHealer';
+
+      // ✅ Try sessionStorage first
+      let quizAnswers = JSON.parse(sessionStorage.getItem('quizAnswers'));
+
+      // ✅ Fallback: fetch from Supabase
+      if (!quizAnswers && storedSessionId) {
+        const { data, error } = await supabase
+          .from('sessions')
+          .select('quiz_answers')
+          .eq('id', storedSessionId)
+          .single();
+
+        if (!error && data?.quiz_answers) {
+          quizAnswers = data.quiz_answers;
+          sessionStorage.setItem('quizAnswers', JSON.stringify(quizAnswers));
+        }
       }
-      return 'balancedType';
+
+      if (!quizAnswers) return;
+
+      const types = t('types', { returnObjects: true });
+
+      const matchTypeKey = () => {
+        const goal = quizAnswers['1']?.[0]?.toLowerCase() || '';
+        if (goal.includes('immunity') || goal.includes('digestion')) {
+          return 'gutHealer';
+        }
+        if (goal.includes('energy') || goal.includes('focus')) {
+          return 'energySeeker';
+        }
+        return 'balancedType';
+      };
+
+      const typeKey = matchTypeKey();
+      const matched = types[typeKey] || {};
+      setTypeName(matched.name || '');
+      setInsights(matched.insights || []);
     };
 
-    const typeKey = matchTypeKey();
-    const matched = types[typeKey] || {};
-    setTypeName(matched.name || '');
-    setInsights(matched.insights || []);
+    run();
   }, []);
 
   const fetchSessionIdFromSupabase = async (email) => {
@@ -72,11 +93,14 @@ export default function EmailPage() {
     const sessionId = sessionStorage.getItem('sessionId');
     if (!sessionId) return;
 
-    await supabase.from('sessions').update({
-      email,
-      age: parseInt(age),
-      country: router.locale || 'en'
-    }).eq('id', sessionId);
+    await supabase
+      .from('sessions')
+      .update({
+        email,
+        age: parseInt(age),
+        country: router.locale || 'en',
+      })
+      .eq('id', sessionId);
   };
 
   const handleNext = async () => {
@@ -111,7 +135,9 @@ export default function EmailPage() {
         if (isNaN(diffInDays) || diffInDays >= 30) {
           router.push('/success');
         } else {
-          alert('✅ You already received a plan this month. We’ll notify you when you can generate a new one.');
+          alert(
+            '✅ You already received a plan this month. We’ll notify you when you can generate a new one.'
+          );
           router.push('/');
         }
       } else {
@@ -162,9 +188,7 @@ export default function EmailPage() {
         transition={{ duration: 0.5 }}
         className="bg-white shadow-lg rounded-2xl p-8 w-full max-w-md text-center"
       >
-        <p className="text-sm text-gray-500 mb-3">
-          {t('stepInfo')}
-        </p>
+        <p className="text-sm text-gray-500 mb-3">{t('stepInfo')}</p>
         <h1 className="text-3xl font-bold text-gray-900 mb-2 flex justify-center items-center">
           🏁 {t('title')}
         </h1>
@@ -187,19 +211,16 @@ export default function EmailPage() {
         />
         {error && <p className="text-red-500 text-sm mb-2">{error}</p>}
 
-        <p className="text-sm text-gray-500 italic mb-2">
-          {t('privacy')}
-        </p>
-        <p className="text-sm text-gray-600 mb-4">
-          {t('socialProof')}
-        </p>
+        <p className="text-sm text-gray-500 italic mb-2">{t('privacy')}</p>
+        <p className="text-sm text-gray-600 mb-4">{t('socialProof')}</p>
 
         <motion.button
           whileTap={{ scale: 0.95 }}
-          className={`w-full py-3 rounded-xl font-semibold transition-all 
-            ${email && age
+          className={`w-full py-3 rounded-xl font-semibold transition-all ${
+            email && age
               ? 'bg-blue-600 hover:bg-blue-700 text-white'
-              : 'bg-blue-600 text-white cursor-not-allowed'}`}
+              : 'bg-blue-600 text-white cursor-not-allowed'
+          }`}
           onClick={handleNext}
           disabled={!email || !age}
         >
@@ -207,7 +228,9 @@ export default function EmailPage() {
         </motion.button>
 
         <div className="bg-green-50 p-4 rounded-xl shadow mb-4 mt-4">
-          <h3 className="text-md font-semibold text-gray-800 mb-2">{t('whatYouGetTitle')}</h3>
+          <h3 className="text-md font-semibold text-gray-800 mb-2">
+            {t('whatYouGetTitle')}
+          </h3>
           <ul className="list-disc pl-5 text-gray-700 text-sm space-y-1">
             <li>{t('whatYouGet1')}</li>
             <li>{t('whatYouGet2')}</li>
