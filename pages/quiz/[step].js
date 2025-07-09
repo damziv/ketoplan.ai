@@ -135,6 +135,7 @@ export default function QuizStep() {
       if (stepIndex < questions.length - 1) {
         router.push(`/quiz/${stepIndex + 2}`);
       } else {
+        sessionStorage.setItem('quizAnswers', JSON.stringify(newAnswers));
         router.push('/preview');
       }
     }
