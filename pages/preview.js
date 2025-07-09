@@ -59,14 +59,14 @@ export default function PreviewPage() {
                 <stop offset="1" stopColor="#00C27C" />
               </linearGradient>
             </defs>
-            <text fill="#F2556F" fontSize="16" fontWeight="bold" x="10" y="22">Now</text>
+            <text fill="#F2556F" fontSize="16" fontWeight="bold" x="10" y="22">{t('yChart1')}</text>
             <text fill="#FF974D" fontSize="16" fontWeight="bold" x="92" y="46"></text>
-            <text fill="#FEC226" fontSize="16" fontWeight="bold" x="204" y="101">Target</text>
+            <text fill="#FEC226" fontSize="16" fontWeight="bold" x="204" y="101">{t('yChart2')}</text>
             <text fill="#fff" fontSize="16" fontWeight="bold" textAnchor="middle" x="302" y="75">Goal</text>
             <text fill="#fff" fontSize="16" fontWeight="bold" textAnchor="middle" x="302" y="94">65 kg</text>
-            <text fill="#999999" fontSize="14" x="2" y="186">Now</text>
+            <text fill="#999999" fontSize="14" x="2" y="186">{t('xChart1')}</text>
             <text fill="#999999" fontSize="14" x="100" y="186"></text>
-            <text fill="#999999" fontSize="14" x="212" y="186">1 month</text>
+            <text fill="#999999" fontSize="14" x="212" y="186">{t('xChart2')}</text>
             <text fill="#999999" fontSize="14" x="313" y="186"></text>
           </svg>
         </div>

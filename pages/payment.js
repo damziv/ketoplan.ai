@@ -91,7 +91,7 @@ export default function PaymentPage() {
       </div>
 
       {/* What You'll Get */}
-      <div className="mt-16 w-full max-w-md mx-auto bg-white p-6 rounded-lg shadow-lg">
+      {  /*   <div className="mt-16 w-full max-w-md mx-auto bg-white p-6 rounded-lg shadow-lg">
         <h3 className="text-2xl font-bold text-center mb-6 text-gray-800">{t('whatTitle')}</h3>
         <ul className="space-y-4">
           {t('what', { returnObjects: true }).map((text, index) => (
@@ -104,15 +104,15 @@ export default function PaymentPage() {
             </li>
           ))}
         </ul>
-        <p className="text-sm text-gray-600 mt-4 text-center">{t('whatNote')}</p>
-        {  /* <button
+        <p className="text-sm text-gray-600 mt-4 text-center">{t('whatNote')}</p> 
+        <button
           className="w-full mt-4 py-3 rounded-xl bg-green-500 text-white font-semibold hover:bg-green-600 transition"
           onClick={scrollToPayment}
           aria-label="Start your personalized health plan now"
         >
           {t('getNowButton')}
-        </button> */ }
-      </div>
+        </button> 
+      </div> */ }
 
        {/* Reviews Carousel */}
        <div className="bg-white p-6 rounded-lg shadow-md w-full max-w-md text-left mt-10">
