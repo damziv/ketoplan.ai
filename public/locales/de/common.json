@@ -1,16 +1,13 @@
 {
   "hero": {
-    "titleLine1": "Von der Natur",
-    "titleLine2": "Für ein gesundes Leben",
-    "description": "Machen Sie unser 2-minütiges Quiz und erhalten Sie jeden Monat per E-Mail einen persönlichen Gesundheitsratgeber und Tipps",
+    "titleLine1": "NaturalFix",
+    "titleLine2": "",
+    "description": "Ihr Leitfaden für ein gesundes Leben",
     "cta": "Starten Sie Ihr Wellness-Quiz",
     "disclaimer": "Beginnen Sie Ihr Quiz mit unseren freundlichen Nutzungsbedingungen!",
     "trusted": "Unsere Pläne basieren auf Erkenntnissen aus traditionellen und wissenschaftlich fundierten Wellness-Strategien.",
-    "quick": "✓ PDF-Buch, erstellt aus Ihren Quiz-Antworten",
     "personalized": "✓ Wöchentlicher Ratgeber mit natürlichen Inhaltsstoffen",
     "noSignup": "✓ Monatliche Tipps für Energie und Körperbalance",
-    "onlyPrice": "✓ Sonderangebot für die nächsten 100 Personen",
-    "moneyBack": "✓ 30-tägige Geld-zurück-Garantie, jederzeit kündbar",
     "rating": "Basierend auf über 1.200 Bewertungen"
   },
   "reviews": {
