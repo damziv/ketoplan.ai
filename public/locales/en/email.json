@@ -1,7 +1,7 @@
 {
   "topTitle": "Email - Traditional health",
   "title": "Your health profile",
-  "subtitle": "Discover the best foods, habits, and supplements for your age and needs.",
+  "subtitle":  "Unlock your full plan with recipes, food swaps & daily tips.",
   "testimonial": "After 2 weeks, I feel more energized and less bloated. The natural tips really work!",
   "fields": {
     "age": "Your age",
@@ -16,7 +16,7 @@
   "whatYouGet2": "Natural food & supplement tips tailored to you",
   "whatYouGet3": "New tips and recipe updates every month",
   "continue": "Generate My Guide",
-  "stepInfo": "Unlock your full plan with recipes, food swaps & daily tips.",
+  "stepInfo": "Discover the best foods, habits, and supplements for your age and needs.",
   "privacy": "Your data stays 100% private — we never share your email.",
   "socialProof": "✅ Over 8,000 people have already improved their energy, digestion, and focus.",
   "fallbackButton": "Generate My Guide",
