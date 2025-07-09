@@ -163,7 +163,7 @@ export default function EmailPage() {
             🎯 {t('title')}
           </h2>
           <p className="text-center text-gray-600 mb-4">
-            You’re <strong>{typeName}</strong>.
+            <strong>{typeName}</strong>.
           </p>
           <div className="space-y-3 mb-4">
             {insights.map((item, idx) => (
