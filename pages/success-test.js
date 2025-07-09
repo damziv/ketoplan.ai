@@ -13,71 +13,37 @@ export default function WellnessEmailPageTeaser() {
   const [email, setEmail] = useState("");
 
   useEffect(() => {
-    // ✅ MOCKED quiz answers
+    // ✅ Real visitor answers — as if pulled from DB/session
     const quizAnswers = {
-      mood: "High stress or anxiety",
-      energy: "I get energy crashes in the afternoon",
-      meals: "2 meals per day",
-      vegetables: ["Broccoli", "Spinach"],
-      meat: ["Chicken", "Salmon"],
-      afterEating: "Sleepy or low energy"
+      "1": ["Energie und Konzentration steigern"], // Boost energy & focus
+      "2": ["3 Mahlzeiten pro Tag"],               // 3 meals per day
+      "3": ["Weiblich"],                           // Female
+      "4": ["Hähnchen"],                           // Chicken
+      "5": ["Spinat", "Kopfsalat"],                // Spinach, Lettuce
+      "6": ["Eier", "Butter"],                     // Eggs, Butter
+      "7": ["Ich fühle mich die meiste Zeit müde"],// Tired most of the time
+      "8": ["Niedergeschlagene Stimmung oder Müdigkeit"], // Low mood or fatigue
+      "9": ["Keine"],                              // No allergies
+      "10": ["Müde oder energielos"]               // Sleepy or low energy
     };
 
-    // ✅ MOCKED type mapping
-    const types = [
-      {
-        typeName: "The Stress Snacker",
-        conditions: {
-          mood: ["High stress or anxiety", "Mood swings or irritability"],
-          energy: ["I get energy crashes in the afternoon"],
-          meals: ["1 meal per day", "2 meals per day"]
-        },
-        insights: [
-          "You often snack to cope with stress — your plan shows calming, satisfying swaps.",
-          "Your 2-meal pattern may cause energy dips — we’ll guide you to spread meals for steady focus.",
-          "You love healthy proteins like chicken & salmon — your plan will use these for balanced mood & digestion."
-        ]
-      }
-    ];
+    // ✅ Simple manual match for this scenario
+    const type = {
+      typeName: "The Energy Seeker",
+      insights: [
+        "Your goal is to boost energy & focus — your plan rebuilds steady fuel for mind & mood.",
+        "You eat 3 meals daily with chicken, eggs & greens — perfect base for balanced energy, but timing & pairing matter.",
+        "Feeling tired & low mood shows your meals may spike & drop your energy — your plan balances this naturally.",
+        "Get step-by-step recipes, food swaps & daily tips to feel steady energy, clear mind & lifted mood — without cutting your favorites."
+      ]
+    };
 
-    let matchedType = null;
-
-    for (const type of types) {
-      let matches = true;
-      for (const key in type.conditions) {
-        const expected = type.conditions[key];
-        const answer = quizAnswers[key];
-        if (Array.isArray(answer)) {
-          if (!answer.some(a => expected.includes(a))) {
-            matches = false;
-          }
-        } else {
-          if (!expected.includes(answer)) {
-            matches = false;
-          }
-        }
-      }
-      if (matches) {
-        matchedType = type;
-        break;
-      }
-    }
-
-    if (matchedType) {
-      setTypeName(matchedType.typeName);
-      setInsights(matchedType.insights);
-    } else {
-      setTypeName("The Balanced Eater");
-      setInsights([
-        "Your habits are mostly balanced — your plan fine-tunes meals for more steady energy.",
-        "You’ll get simple recipes and smart swaps you’ll actually enjoy.",
-        "Subtle tweaks can boost mood, digestion & focus naturally."
-      ]);
-    }
+    setTypeName(type.typeName);
+    setInsights(type.insights);
   }, []);
 
   const handleSubmit = () => {
-    // TODO: Save age/email, fire Pixel Lead, etc.
+    // 🔑 Here you’d save to DB + fire Pixel event
     router.push("/payment");
   };
 
@@ -89,26 +55,25 @@ export default function WellnessEmailPageTeaser() {
         <h2 className="text-2xl font-bold mb-2 text-center">
           🎯 Your Personalized Health Snapshot
         </h2>
-        <p className="text-center text-gray-600 mb-4">
+        <p className="text-center text-gray-600 mb-6">
           Based on your answers, you’re <strong>{typeName}</strong>.
         </p>
 
-        {/* Insights */}
+        {/* Premium Insights */}
         <div className="grid gap-4 mb-6">
-            {insights.map((item, idx) => (
-             <div
-                key={idx}
-                className="bg-green-50 border border-green-100 p-4 rounded-lg shadow-sm flex items-start" >
-                <div className="text-green-600 text-xl mr-3">✅</div>
-                <p className="text-gray-700">
-                {item}
-                </p>
+          {insights.map((item, idx) => (
+            <div
+              key={idx}
+              className="bg-green-50 border border-green-100 p-4 rounded-lg shadow-sm flex items-start"
+            >
+              <div className="text-green-600 text-xl mr-3">✅</div>
+              <p className="text-gray-700">{item}</p>
             </div>
-        ))}
+          ))}
         </div>
 
         <p className="italic text-gray-700 mb-6">
-          🔍 Next: Unlock your full AI plan with daily recipes, food swaps & a step-by-step roadmap to your goal.
+          🔍 Next: Unlock your full AI plan with daily recipes, food swaps & a clear step-by-step roadmap to feel your best.
         </p>
 
         {/* Form */}
