@@ -11,7 +11,7 @@
     "fillAll": "Age and email help us tailor your plan.",
     "invalidEmail": "Enter a valid email address."
   },
-  "whatYouGetTitle":"What you’ll get:",
+  "whatYouGetTitle": "What you’ll get:",
   "whatYouGet1": "A personalized PDF book based on your quiz",
   "whatYouGet2": "Natural food & supplement tips tailored to you",
   "whatYouGet3": "New tips and recipe updates every month",
@@ -27,5 +27,33 @@
       "Natural ways to improve energy & digestion",
       "Key vitamins & minerals based on your input"
     ]
+  },
+  "types": {
+    "energySeeker": {
+      "name": "The Energy Seeker",
+      "insights": [
+        "Your goal is to boost energy and focus — your plan rebuilds steady fuel for mind and mood.",
+        "You eat 3 meals daily with protein, eggs and greens — great base for balanced energy, but timing & pairing matter.",
+        "Feeling tired or low shows your meals may spike & drop your energy — your plan balances this naturally.",
+        "Get easy recipes, food swaps & daily tips to feel steady energy, clear mind & lifted mood — without cutting your favorites."
+      ]
+    },
+    "gutHealer": {
+      "name": "The Gut Healer",
+      "insights": [
+        "Your focus is gut health and digestion — your plan boosts fiber and supports your microbiome.",
+        "Your answers show foods that help balance bloating and discomfort naturally.",
+        "Simple daily swaps help calm your gut and improve nutrient absorption.",
+        "Get gut-friendly recipes, easy prep tips & the best foods to restore digestive balance."
+      ]
+    },
+    "balancedType": {
+      "name": "Balanced Type",
+      "insights": [
+        "Your answers show a balanced base — great starting point!",
+        "Your plan fine-tunes meal timing, food pairing and daily habits for steady energy & gut health.",
+        "No radical changes — just practical steps to feel your best naturally."
+      ]
+    }
   }
 }

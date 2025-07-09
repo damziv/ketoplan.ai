@@ -16,6 +16,8 @@ export default function EmailPage() {
   const [sessionId, setSessionId] = useState('');
   const [age, setAge] = useState('');
   const [error, setError] = useState('');
+  const [typeName, setTypeName] = useState('');
+  const [insights, setInsights] = useState([]);
   const router = useRouter();
 
   const why = t('whyUs.points', { returnObjects: true });
@@ -23,13 +25,32 @@ export default function EmailPage() {
   useEffect(() => {
     const savedEmail = sessionStorage.getItem('email');
     const storedSessionId = sessionStorage.getItem('sessionId');
-
     if (savedEmail) setEmail(savedEmail);
     if (storedSessionId) {
       setSessionId(storedSessionId);
     } else if (savedEmail) {
       fetchSessionIdFromSupabase(savedEmail);
     }
+
+    const quizAnswers = JSON.parse(sessionStorage.getItem('quizAnswers'));
+    if (!quizAnswers) return;
+
+    const types = t('types', { returnObjects: true });
+
+    const matchTypeKey = () => {
+      if (quizAnswers['1']?.includes('Energie und Konzentration steigern')) {
+        return 'energySeeker';
+      }
+      if (quizAnswers['1']?.includes('Verdauung verbessern')) {
+        return 'gutHealer';
+      }
+      return 'balancedType';
+    };
+
+    const typeKey = matchTypeKey();
+    const matched = types[typeKey] || {};
+    setTypeName(matched.name || '');
+    setInsights(matched.insights || []);
   }, []);
 
   const fetchSessionIdFromSupabase = async (email) => {
@@ -69,12 +90,10 @@ export default function EmailPage() {
       sessionStorage.setItem('email', email);
       await saveEmailToDatabase();
 
-      // Facebook Pixel Event
       if (typeof window !== 'undefined' && window.fbq) {
         fbq('track', 'Lead');
       }
 
-      // Check subscription status before redirecting
       const { data: subscriberData, error: subError } = await supabase
         .from('sessions')
         .select('is_subscriber, last_meal_plan_at')
@@ -104,36 +123,48 @@ export default function EmailPage() {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-50 p-6 pb-36">
       <div className="fixed top-0 w-full bg-gray-800 py-4 text-center text-white font-bold text-2xl z-50">
-      {t('topTitle')}
+        {t('topTitle')}
       </div>
 
-        {/* Preview & What You Get Section */}
+      {typeName && insights.length > 0 && (
         <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-        className="w-full max-w-md mt-6"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="bg-white shadow-lg rounded-2xl p-6 w-full max-w-md mt-24 mb-8 text-left"
         >
-
-        {/* Testimonial */}
-        <div className="bg-white p-3 rounded-md shadow text-sm text-gray-700 italic mt-24">
-        "{t('testimonial')}“
-          <span className="block mt-1 text-right font-medium text-gray-600">— Maria, 52, Austria</span>
-        </div>
-      </motion.div>
-
+          <h2 className="text-xl font-bold mb-2 text-center">
+            🎯 {t('title')} Snapshot
+          </h2>
+          <p className="text-center text-gray-600 mb-4">
+            You’re <strong>{typeName}</strong>.
+          </p>
+          <div className="space-y-3 mb-4">
+            {insights.map((item, idx) => (
+              <div
+                key={idx}
+                className="flex items-start bg-green-50 border border-green-100 p-3 rounded-lg shadow-sm"
+              >
+                <div className="text-green-600 text-lg mr-3">✅</div>
+                <p className="text-gray-700 text-sm">{item}</p>
+              </div>
+            ))}
+          </div>
+          <p className="italic text-gray-600 text-center">
+            Unlock your full plan with recipes, food swaps & daily tips.
+          </p>
+        </motion.div>
+      )}
 
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className="bg-white shadow-lg rounded-2xl p-8 w-full max-w-md text-center mt-8"
+        className="bg-white shadow-lg rounded-2xl p-8 w-full max-w-md text-center"
       >
-        {/* Step Info */}
         <p className="text-sm text-gray-500 mb-3">
           {t('stepInfo')}
         </p>
-
         <h1 className="text-3xl font-bold text-gray-900 mb-2 flex justify-center items-center">
           🏁 {t('title')}
         </h1>
@@ -146,7 +177,7 @@ export default function EmailPage() {
           onChange={(e) => setEmail(e.target.value)}
           className="w-full border rounded-xl p-3 mb-2 focus:ring-2 focus:ring-blue-500 outline-none transition"
         />
-        
+
         <input
           type="number"
           placeholder={t('fields.age')}
@@ -159,7 +190,6 @@ export default function EmailPage() {
         <p className="text-sm text-gray-500 italic mb-2">
           {t('privacy')}
         </p>
-
         <p className="text-sm text-gray-600 mb-4">
           {t('socialProof')}
         </p>
@@ -173,11 +203,10 @@ export default function EmailPage() {
           onClick={handleNext}
           disabled={!email || !age}
         >
-          {t('continue', 'Generate My Plan')} →
+          {t('continue', 'Generate My Guide')} →
         </motion.button>
 
-        {/* What You’ll Get */}
-        <div className="bg-green-50 p-4 rounded-xl shadow mb-4">
+        <div className="bg-green-50 p-4 rounded-xl shadow mb-4 mt-4">
           <h3 className="text-md font-semibold text-gray-800 mb-2">{t('whatYouGetTitle')}</h3>
           <ul className="list-disc pl-5 text-gray-700 text-sm space-y-1">
             <li>{t('whatYouGet1')}</li>
@@ -185,31 +214,27 @@ export default function EmailPage() {
             <li>{t('whatYouGet3')}</li>
           </ul>
         </div>
-
-
       </motion.div>
 
-              {/* Why Us */}
-              <div className="mt-6 w-full max-w-md mx-auto bg-white p-6 rounded-lg shadow-lg">
-          <h3 className="text-xl font-bold text-center mb-6 text-gray-800">
+      <div className="mt-6 w-full max-w-md mx-auto bg-white p-6 rounded-lg shadow-lg">
+        <h3 className="text-xl font-bold text-center mb-6 text-gray-800">
           🔒 {t('whyUs.title')}
-          </h3>
-          <ul className="space-y-4">
-            {why.map((text, index) => (
-              <motion.li
-                key={index}
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.3 }}
-                className="flex items-start space-x-3 p-3 bg-green-100 rounded-md hover:bg-green-200 transition-colors"
-              >
-                <span className="text-green-600 text-xl font-bold">✓</span>
-                <span className="text-gray-700 text-lg">{text}</span>
-              </motion.li>
-            ))}
-          </ul>
-        </div>
-      
+        </h3>
+        <ul className="space-y-4">
+          {why.map((text, index) => (
+            <motion.li
+              key={index}
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.3 }}
+              className="flex items-start space-x-3 p-3 bg-green-100 rounded-md hover:bg-green-200 transition-colors"
+            >
+              <span className="text-green-600 text-xl font-bold">✓</span>
+              <span className="text-gray-700 text-lg">{text}</span>
+            </motion.li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 }
