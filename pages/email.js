@@ -38,10 +38,10 @@ export default function EmailPage() {
     const types = t('types', { returnObjects: true });
 
     const matchTypeKey = () => {
-      if (quizAnswers['1']?.includes('Energie und Konzentration steigern')) {
+      if (quizAnswers['1']?.includes('Boost energy and focus')) {
         return 'energySeeker';
       }
-      if (quizAnswers['1']?.includes('Verdauung verbessern')) {
+      if (quizAnswers['1']?.includes('Strengthen immunity and digestion"')) {
         return 'gutHealer';
       }
       return 'balancedType';
