@@ -115,7 +115,7 @@ export default function PaymentPage() {
       </div> */ }
 
        {/* Reviews Carousel */}
-       <div className="bg-white p-6 rounded-lg shadow-md w-full max-w-md text-left mt-10">
+       <div className="bg-white p-6 rounded-lg shadow-md w-full max-w-md text-left mt-10 pb-36">
         <h3 className="text-2xl font-bold text-gray-800 mb-4">🍽️ {t('recipeHead')}</h3>
         <Carousel showThumbs={false} infiniteLoop autoPlay interval={4000} showStatus={false}>
         <div className="text-left">
