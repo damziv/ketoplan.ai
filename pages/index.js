@@ -42,7 +42,7 @@ export default function Home() {
           />
 
           {/* Bullet Benefits */}
-          <ul className="text-left text-sm text-gray-700 mb-4 space-y-1">
+          <ul className="relative z-10 text-gray-800 text-sm font-bold py-4 px-8 rounded-xl bg-[rgba(255,255,255,0.8)] shadow-md">
             <li>{t('hero.personalized')}</li>
             <li>{t('hero.noSignup')}</li>
           </ul>
