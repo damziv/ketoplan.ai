@@ -30,7 +30,7 @@
   },
   "types": {
     "energySeeker": {
-      "name": "Der Energiesucher",
+      "name": "Du bist Der Energiesucher",
       "insights": [
         "Ihr Ziel besteht darin, Energie und Konzentration zu steigern – Geist und Stimmung wieder mit Energie zu versorgen.",
         "Sie essen täglich drei Mahlzeiten mit Proteinen, Eiern und Gemüse – eine großartige Grundlage für ausgewogene Energie, aber Zeitpunkt und Kombination sind wichtig.",
@@ -39,7 +39,7 @@
       ]
     },
     "gutHealer": {
-      "name": "Der Darmheiler",
+      "name": "Du bist Der Darmheiler",
       "insights": [
         "Ihr Fokus liegt auf Darmgesundheit und Verdauung – Ihr Plan fördert Ballaststoffe und unterstützt Ihr Mikrobiom.",
         "Ihre Antworten zeigen Lebensmittel, die Blähungen und Unwohlsein auf natürliche Weise ausgleichen.",
@@ -48,7 +48,7 @@
       ]
     },
     "balancedType": {
-      "name": "Ausgewogener Typ",
+      "name": "Du bist Ausgewogener Typ",
       "insights": [
         "Ihre Antworten bilden eine ausgewogene Grundlage – eine hervorragende Ausgangsbasis!",
         "Ihr Plan optimiert Mahlzeitenzeiten, Speisenkombinationen und tägliche Gewohnheiten für stabile Energie und eine gesunde Darmflora.",
