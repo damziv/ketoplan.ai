@@ -43,11 +43,8 @@ export default function Home() {
 
           {/* Bullet Benefits */}
           <ul className="text-left text-sm text-gray-700 mb-4 space-y-1">
-            <li>{t('hero.quick')}</li>
             <li>{t('hero.personalized')}</li>
             <li>{t('hero.noSignup')}</li>
-            <li>{t('hero.onlyPrice')}</li>
-            <li>{t('hero.moneyBack')}</li>
           </ul>
 
           {/* CTA Button */}
