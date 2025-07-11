@@ -244,8 +244,70 @@ function CheckoutForm() {
     }
   };
 
+  useEffect(() => {
+    const loadPayPalScript = () => {
+      if (document.getElementById('paypal-sdk')) return;
+  
+      const script = document.createElement('script');
+      script.id = 'paypal-sdk';
+      script.src = `https://www.paypal.com/sdk/js?client-id=${process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID}&vault=true&intent=subscription&currency=EUR`;
+      script.async = true;
+      script.onload = renderPayPalButton;
+      document.body.appendChild(script);
+    };
+  
+    const renderPayPalButton = () => {
+      const email = sessionStorage.getItem('email');
+      const sessionId = sessionStorage.getItem('sessionId');
+  
+      if (!email || !sessionId || !window.paypal || !process.env.NEXT_PUBLIC_PAYPAL_PLAN_ID) return;
+  
+      window.paypal.Buttons({
+        style: {
+          shape: 'pill',
+          color: 'gold',
+          layout: 'vertical',
+          label: 'subscribe'
+        },
+        createSubscription: function (data, actions) {
+          return actions.subscription.create({
+            plan_id: process.env.NEXT_PUBLIC_PAYPAL_PLAN_ID
+          });
+        },
+        onApprove: async function (data, actions) {
+          const subscriptionID = data.subscriptionID;
+  
+          const res = await fetch('/api/paypal-subscription-success', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email, sessionId, subscriptionID }),
+          });
+  
+          if (res.ok) {
+            window.location.href = '/success';
+          } else {
+            alert('Something went wrong. Please try again.');
+          }
+        },
+        onError: (err) => {
+          console.error('❌ PayPal error:', err);
+          alert('Something went wrong with PayPal');
+        }
+      }).render('#paypal-subscription-button');
+    };
+  
+    loadPayPalScript();
+  }, []);
+  
+
   return (
     <form onSubmit={handleSubmit} className="flex flex-col space-y-4">
+    {/* 🟡 PayPal Option First */}
+    <div className="mb-4">
+      <div id="paypal-subscription-button" className="flex justify-center mb-2" />
+      <p className="text-gray-600 text-sm text-center mt-2">— or pay with card —</p>
+    </div>
+    
       <PaymentElement />
       <div className="flex justify-center space-x-2 mt-2">
         <img src="/images/visa.png" alt="Visa" className="h-6" />
@@ -261,14 +323,7 @@ function CheckoutForm() {
       >
         {loading ? t('processing') : t('payNow')}
       </button>
-      {/*
-      <button
-        type="button"
-        className="bg-blue-500 text-white py-3 px-6 rounded-md hover:bg-blue-600 transition"
-        onClick={() => alert('Redirect to PayPal')} // Replace with actual PayPal integration
-      >
-        Pay with PayPal
-      </button> */}
+
     </form>
   );
 }
