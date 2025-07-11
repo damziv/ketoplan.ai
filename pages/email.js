@@ -14,7 +14,7 @@ export default function EmailPage() {
   const { t } = useTranslation('email');
   const [email, setEmail] = useState('');
   const [sessionId, setSessionId] = useState('');
-  const [age, setAge] = useState('');
+  // const [age, setAge] = useState('');
   const [error, setError] = useState('');
   const [typeName, setTypeName] = useState('');
   const [insights, setInsights] = useState([]);
@@ -33,10 +33,8 @@ export default function EmailPage() {
         await fetchSessionIdFromSupabase(savedEmail);
       }
 
-      // ✅ Try sessionStorage first
       let quizAnswers = JSON.parse(sessionStorage.getItem('quizAnswers'));
 
-      // ✅ Fallback: fetch from Supabase
       if (!quizAnswers && storedSessionId) {
         const { data, error } = await supabase
           .from('sessions')
@@ -97,7 +95,7 @@ export default function EmailPage() {
       .from('sessions')
       .update({
         email,
-        age: parseInt(age),
+        // age: parseInt(age),
         country: router.locale || 'en',
       })
       .eq('id', sessionId);
@@ -105,7 +103,7 @@ export default function EmailPage() {
 
   const handleNext = async () => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!email || !age) {
+    if (!email) {
       setError(t('error.fillAll'));
     } else if (!emailRegex.test(email)) {
       setError(t('error.invalidEmail'));
@@ -177,7 +175,7 @@ export default function EmailPage() {
             ))}
           </div>
           <p className="italic text-gray-600 text-center">
-          {t('stepInfo')}
+            {t('stepInfo')}
           </p>
         </motion.div>
       )}
@@ -187,10 +185,8 @@ export default function EmailPage() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
         className="bg-white shadow-lg rounded-2xl p-8 w-full max-w-md text-center"
-        >
-        <h1 className="text-3xl font-bold text-gray-900 mb-2 flex justify-center items-center">
-          
-        </h1>
+      >
+        <h1 className="text-3xl font-bold text-gray-900 mb-2 flex justify-center items-center"></h1>
         <p className="text-gray-600 mb-5">{t('subtitle')}</p>
         <div className="bg-blue-50 border border-blue-200 rounded-xl p-4 mb-4">
           <input
@@ -201,13 +197,13 @@ export default function EmailPage() {
             className="w-full border rounded-xl p-3 mb-2 focus:ring-2 focus:ring-blue-500 outline-none transition"
           />
 
-          <input
+          {/* <input
             type="number"
             placeholder={t('fields.age')}
             value={age}
             onChange={(e) => setAge(e.target.value)}
             className="w-full border rounded-xl p-3 mb-4 focus:ring-2 focus:ring-blue-500 outline-none transition"
-          />
+          /> */}
         </div>
         {error && <p className="text-red-500 text-sm mb-2">{error}</p>}
 
@@ -217,12 +213,12 @@ export default function EmailPage() {
         <motion.button
           whileTap={{ scale: 0.95 }}
           className={`w-full py-3 rounded-xl font-semibold transition-all ${
-            email && age
+            email
               ? 'bg-blue-600 hover:bg-blue-700 text-white'
               : 'bg-blue-600 text-white cursor-not-allowed'
           }`}
           onClick={handleNext}
-          disabled={!email || !age}
+          disabled={!email}
         >
           {t('continue', 'Generate My Guide')} →
         </motion.button>
