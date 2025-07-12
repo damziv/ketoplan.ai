@@ -53,6 +53,7 @@ export default function EmailPage() {
       const types = t('types', { returnObjects: true });
 
       const matchTypeKey = () => {
+        const goal = quizAnswers['1']?.[0]?.toLowerCase() || '';
         if (goal.includes('energie') || goal.includes('konzentration') || goal.includes('energy') || goal.includes('focus')) {
           return 'energySeeker';
         }
