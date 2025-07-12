@@ -17,7 +17,7 @@ export default function Home() {
 <section className="relative min-h-screen flex flex-col justify-center items-center text-white px-6 md:px-0">
   <div className="absolute inset-0">
     <picture>
-      <source srcSet="/images/keto-bg-desktop.png" media="(min-width: 768px)" />
+      <source srcSet="/images/old_keto-bg-desktop.png" media="(min-width: 768px)" />
       <img
         src="/images/keto-bg-mobile.png"
         alt="Avocados Background"
