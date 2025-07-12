@@ -55,6 +55,25 @@
         "89 % der Nutzer mit einem sehr ähnlichen Profil haben ihre Gewichtsziele innerhalb der geplanten Zeitspanne erreicht.",
         "Ihre Antworten bilden eine ausgewogene Grundlage – eine hervorragende Ausgangsbasis!"
       ]
+    },
+    "fatBurner": {
+      "name": "Du bist Der Fettverbrenner",
+      "insights": [
+        "Ihr Ziel ist es, überschüssiges Gewicht auf natürliche Weise zu verlieren.",
+        "Ihre Antworten zeigen, dass Ihr Körper bereit ist, mit dem richtigen Plan Fett zu verbrennen.",
+        "Sie profitieren am meisten von einfachen, sättigenden Mahlzeiten mit wenig Zucker.",
+        "Ihr Plan nutzt traditionelle Methoden, um den Stoffwechsel anzukurbeln und Fett zu reduzieren."
+      ]
+    },
+    "stressReducer": {
+      "name": "Du bist Der Stressabbauer",
+      "insights": [
+        "Ihre Antworten zeigen Anzeichen von stressbedingter Müdigkeit.",
+        "Ihr Plan enthält natürliche Techniken zur Förderung von Ruhe und besserem Schlaf.",
+        "Bestimmte Lebensmittel können helfen, Stimmungsschwankungen zu stabilisieren.",
+        "Sie erhalten einfache tägliche Routinen zur Reduktion von Stress und zur Förderung von mentaler Ausgeglichenheit."
+      ]
     }
+    
   }
 }

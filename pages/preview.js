@@ -100,7 +100,7 @@ export default function PreviewPage() {
         </div>
 
         {/* Mineral Tips */}
-        <Carousel showThumbs={false} infiniteLoop autoPlay interval={4000} showStatus={false}>
+        <Carousel showThumbs={false} infiniteLoop autoPlay interval={5000} showStatus={false}>
           <div className="bg-green-50 p-4 rounded-md mb-6">
             <h3 className="text-lg font-semibold text-green-700 mb-2">{t('tipTitle1')}</h3>
             <p className="text-gray-700 text-base">{t('tipText1')}</p>

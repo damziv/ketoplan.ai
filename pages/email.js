@@ -53,12 +53,17 @@ export default function EmailPage() {
       const types = t('types', { returnObjects: true });
 
       const matchTypeKey = () => {
-        const goal = quizAnswers['1']?.[0]?.toLowerCase() || '';
-        if (goal.includes('immunity') || goal.includes('digestion')) {
+        if (goal.includes('energie') || goal.includes('konzentration') || goal.includes('energy') || goal.includes('focus')) {
+          return 'energySeeker';
+        }
+        if (goal.includes('immunität') || goal.includes('verdauung') || goal.includes('immunity') || goal.includes('digestion')) {
           return 'gutHealer';
         }
-        if (goal.includes('energy') || goal.includes('focus')) {
-          return 'energySeeker';
+        if (goal.includes('übergewicht') || goal.includes('weight') || goal.includes('aktiv') || goal.includes('active')) {
+          return 'fatBurner';
+        }
+        if (goal.includes('fatigue') || goal.includes('müdigkeit') || goal.includes('müde') || goal.includes('tired')) {
+          return 'stressReducer';
         }
         return 'balancedType';
       };

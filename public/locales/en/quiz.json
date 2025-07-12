@@ -10,8 +10,8 @@
       },
       {
 
-        "question": "What is your gender?",
-        "options": ["Male", "Female"]
+        "question": "How would you describe your current lifestyle?",
+        "options": ["Active", "Balanced", "Stressed", "Lazy"]
       },
       {
         "question": "Choose the meat you eat often",

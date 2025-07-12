@@ -54,6 +54,24 @@
         "Your plan fine-tunes meal timing, food pairing and daily habits for steady energy & gut health.",
         "No radical changes — just practical steps to feel your best naturally."
       ]
+    },
+    "fatBurner": {
+      "name": "You are The Fat Burner",
+      "insights": [
+      "Your goal is to lose excess weight naturally.",
+      "Your answers show that your body is ready to burn fat with the right plan.",
+      "You benefit most from simple, filling meals with little sugar.",
+      "Your plan uses traditional methods to boost metabolism and reduce fat."
+      ]
+    },
+    "stressReducer": {
+      "name": "You are The Stress Reducer",
+      "insights": [
+      "Your answers show signs of stress-related fatigue.",
+      "Your plan includes natural techniques to promote calm and better sleep.",
+      "Certain foods can help stabilize mood swings.",
+      "You'll receive simple daily routines to reduce stress and promote mental balance."
+      ]
     }
   }
 }

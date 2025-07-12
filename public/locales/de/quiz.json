@@ -9,8 +9,8 @@
       "options": ["1 Mahlzeit pro Tag", "2 Mahlzeiten pro Tag", "3 Mahlzeiten pro Tag", "Mehr als 3 Mahlzeiten pro Tag"]
     },
     {
-      "question": "Welches Geschlecht hast du?",
-      "options": ["Männlich", "Weiblich"]
+      "question": "Wie würdest du deinen aktuellen Lebensstil beschreiben?",
+      "options": ["Aktiv", "Ausgeglichen", "Gestresst", "Träge"]
     },
     {
       "question": "Wählen Sie das Fleisch, das Sie häufig essen",
