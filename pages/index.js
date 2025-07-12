@@ -40,7 +40,7 @@ export default function Home() {
         onClick={() => (window.location.href = '/quiz/1')}
         className="flex flex-col items-center bg-white border border-green-600 text-green-700 hover:bg-green-50 p-4 rounded-xl shadow-lg w-36 transition-transform transform hover:scale-105"
       >
-        <img src="/images/female.png" alt="Female" className="w-20 h-28 object-contain mb-2" />
+        <img src="/images/female.png" alt="Female" className="w-30 h-34 object-contain mb-2" />
         <span className="font-bold">{t('gender.female')}</span>
       </button>
 
@@ -48,7 +48,7 @@ export default function Home() {
         onClick={() => (window.location.href = '/quiz/1')}
         className="flex flex-col items-center bg-white border border-green-600 text-green-700 hover:bg-green-50 p-4 rounded-xl shadow-lg w-36 transition-transform transform hover:scale-105"
       >
-        <img src="/images/male.png" alt="Male" className="w-20 h-28 object-contain mb-2" />
+        <img src="/images/male.png" alt="Male" className="w-30 h-34 object-contain mb-2" />
         <span className="font-bold">{t('gender.male')}</span>
       </button>
     </div>
