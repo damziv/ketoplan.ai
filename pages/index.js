@@ -34,7 +34,7 @@ export default function Home() {
     <p className="text-black text-lg md:text-xl font-medium mb-6">
       {t('hero.description')}
     </p>
-    <p className="text-black text-lg md:text-xl font-medium mb-6">
+    <p className="text-green-600 text-lg md:text-xl font-medium mb-6">
       {t('hero.description2')}
     </p>
 

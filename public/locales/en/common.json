@@ -2,7 +2,8 @@
   "hero": {
     "titleLine1": "From nature",
     "titleLine2": "to healthy life",
-    "description": "We’ll personalize your health strategy – start with your gender:",
+    "description": "We’ll personalize your health strategy",
+    "description2": "Select your gender:",
     "cta": "Start Your Wellness Quiz",
     "disclaimer": "Start your quiz with our friendly Terms!",
     "trusted": "Our plans are developed with insights from both traditional and science-backed wellness strategies.",
