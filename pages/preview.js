@@ -36,7 +36,7 @@ export default function PreviewPage() {
   }, [progress, router]);
 
   // Dynamic label text
-  const progressLabel = progress < 50 ? 'Analyzing your profile' : 'Generating your plan';
+  const progressLabel = progress < 50 ? t('progress.analyzing') : t('progress.generating');
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100 p-5 pb-36">

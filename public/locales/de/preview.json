@@ -24,6 +24,10 @@
   "yChart1": "Jetzt",
   "yChart2": "Ziel",
   "xChart1": "Jetzt",
-  "xChart2": "1 Monat"
+  "xChart2": "1 Monat",
+  "progress": {
+    "analyzing": "Analyzing your profile",
+    "generating": "Generating your plan"
+  }
 
 }
