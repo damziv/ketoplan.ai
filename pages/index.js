@@ -107,6 +107,17 @@ export default function Home() {
           </div>
         </div>
 
+
+        {/* ADDITIONAL CTA BUTTON AFTER REVIEWS */}
+        <div className="flex justify-center mt-12">
+          <button
+            onClick={() => (window.location.href = '/quiz/1')}
+            className="bg-green-500 hover:bg-green-600 text-white text-lg font-bold py-4 px-8 rounded-xl shadow-xl transition-transform transform hover:scale-105"
+          >
+            {t('hero.cta')}
+          </button>
+        </div>
+
         {/* Why Us */}
         <div className="mt-8 w-full max-w-md mx-auto bg-white p-6 rounded-lg shadow-lg">
           <h3 className="text-2xl font-bold text-center mb-6 text-gray-800">
