@@ -28,7 +28,7 @@ export default function Home() {
   </div>
 
   <div className="relative z-10 flex flex-col items-center text-center w-full max-w-2xl">
-    <h1 className="text-black text-4xl md:text-5xl font-extrabold leading-tight mb-4">
+    <h1 className="text-black text-4xl md:text-5xl font-extrabold leading-tight mb-6">
       {t('hero.titleLine1')} <span className="text-green-600">{t('hero.titleLine2')}</span>
     </h1>
     <p className="text-black text-lg md:text-xl font-medium mb-6">
