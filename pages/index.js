@@ -34,6 +34,9 @@ export default function Home() {
     <p className="text-black text-lg md:text-xl font-medium mb-6">
       {t('hero.description')}
     </p>
+    <p className="text-black text-lg md:text-xl font-medium mb-6">
+      {t('hero.description2')}
+    </p>
 
     <div className="flex gap-6 justify-center mb-6">
       <button
