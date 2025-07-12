@@ -8,11 +8,11 @@ function MyApp({ Component, pageProps }) {
     <>
       <Head>
         <title>Smart Food Secrets</title>
-        <link rel="icon" href="/favicon.png" />
+        <link rel="icon" href="/favicon.jpg" />
         <meta name="theme-color" content="#ffffff" />
         <meta name="description" content="Your personalized heatlh meal plan App" />
-        <meta property="og:title" content="SmartMeal Plan" />
-        <meta property="og:image" content="/favicon.png" />
+        <meta property="og:title" content="NaturalFix" />
+        <meta property="og:image" content="/favicon.jpg" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
       </Head>
 

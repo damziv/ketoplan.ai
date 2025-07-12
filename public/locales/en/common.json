@@ -2,7 +2,7 @@
   "hero": {
     "titleLine1": "From nature",
     "titleLine2": "to healthy life",
-    "description": "Take our 2-minute quiz to get a personalized health guide and tips every month on email",
+    "description": "We’ll personalize your health strategy – start with your gender:",
     "cta": "Start Your Wellness Quiz",
     "disclaimer": "Start your quiz with our friendly Terms!",
     "trusted": "Our plans are developed with insights from both traditional and science-backed wellness strategies.",
@@ -12,6 +12,10 @@
     "onlyPrice": "✓ Only 5,99 €/Month, special offer",
     "moneyBack": "✓ 30-Day Money-Back Guarantee, cancel anytime",
     "rating": "Based on 1,200+ reviews"
+  },
+  "gender": {
+    "female": "Weiblich",
+    "male": "Männlich"
   },
   "reviews": {
     "title": "What Our Users Say",

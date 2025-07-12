@@ -13,59 +13,63 @@ export default function Home() {
   return (
     <div className="flex flex-col min-h-screen">
       {/* HERO SECTION */}
-      <section className="relative min-h-screen flex flex-col justify-center text-white">
-        <div className="absolute inset-0">
-          <picture>
-            <source srcSet="/images/keto-bg-desktop.png" media="(min-width: 768px)" />
-            <img
-              src="/images/keto-bg-mobile.png"
-              alt="Avocados Background"
-              className="w-full h-full object-cover"
-            />
-          </picture>
-          <div className="absolute inset-0 bg-white bg-opacity-60"></div>
-        </div>
+     
+<section className="relative min-h-screen flex flex-col justify-center items-center text-white px-6 md:px-0">
+  <div className="absolute inset-0">
+    <picture>
+      <source srcSet="/images/keto-bg-desktop.png" media="(min-width: 768px)" />
+      <img
+        src="/images/keto-bg-mobile.png"
+        alt="Avocados Background"
+        className="w-full h-full object-cover"
+      />
+    </picture>
+    <div className="absolute inset-0 bg-white bg-opacity-60"></div>
+  </div>
 
-        <div className="relative z-10 flex flex-col items-center text-center px-6 md:px-0">
-          <h1 className="text-black text-5xl md:text-6xl font-extrabold leading-tight mb-4">
-            {t('hero.titleLine1')} <br />
-            {t('hero.titleLine2')}
-          </h1>
-          <p className="text-black text-lg md:text-xl font-medium mb-4 max-w-xl mx-auto">
-            {t('hero.description')}
-          </p>
+  <div className="relative z-10 flex flex-col items-center text-center w-full max-w-2xl">
+    <h1 className="text-black text-4xl md:text-5xl font-extrabold leading-tight mb-4">
+      {t('hero.titleLine1')} <span className="text-green-600">{t('hero.titleLine2')}</span>
+    </h1>
+    <p className="text-black text-lg md:text-xl font-medium mb-6">
+      {t('hero.description')}
+    </p>
 
-          {/* Trusted by */}
-          <p
-            className="text-gray-700 text-sm font-medium mb-2"
-            dangerouslySetInnerHTML={{ __html: t('hero.trusted') }}
-          />
+    <div className="flex gap-6 justify-center mb-6">
+      <button
+        onClick={() => (window.location.href = '/quiz/1')}
+        className="flex flex-col items-center bg-white border border-green-600 text-green-700 hover:bg-green-50 p-4 rounded-xl shadow-lg w-36 transition-transform transform hover:scale-105"
+      >
+        <img src="/images/female.webp" alt="Female" className="w-20 h-28 object-contain mb-2" />
+        <span className="font-bold">{t('gender.female')}</span>
+      </button>
 
-          {/* Bullet Benefits */}
-          <ul className="relative z-10 text-gray-800 text-sm font-bold py-4 px-8 rounded-xl bg-[rgba(255,255,255,0.8)] shadow-md">
-            <li>{t('hero.personalized')}</li>
-            <li>{t('hero.noSignup')}</li>
-          </ul>
+      <button
+        onClick={() => (window.location.href = '/quiz/1')}
+        className="flex flex-col items-center bg-white border border-green-600 text-green-700 hover:bg-green-50 p-4 rounded-xl shadow-lg w-36 transition-transform transform hover:scale-105"
+      >
+        <img src="/images/male.webp" alt="Male" className="w-20 h-28 object-contain mb-2" />
+        <span className="font-bold">{t('gender.male')}</span>
+      </button>
+    </div>
 
-          {/* CTA Button */}
-          <button
-            onClick={() => (window.location.href = '/quiz/1')}
-            className="bg-green-500 hover:bg-green-600 text-white text-lg font-bold py-4 px-8 rounded-xl shadow-xl transition-transform transform hover:scale-105 mt-3 mb-2"
-          >
-            {t('hero.cta')}
-          </button>
+    <p className="text-gray-700 text-sm font-medium mb-3" dangerouslySetInnerHTML={{ __html: t('hero.trusted') }} />
 
-          {/* Star Rating */}
-          <div className="flex justify-center items-center text-yellow-500 text-xl mt-3 mb-2">
-            ★★★★★ <span className="ml-2 text-sm text-gray-600">{t('hero.rating')}</span>
-          </div>
+    <ul className="text-gray-800 text-sm font-bold py-4 px-8 rounded-xl bg-[rgba(255,255,255,0.8)] shadow-md">
+      <li>{t('hero.personalized')}</li>
+      <li>{t('hero.noSignup')}</li>
+    </ul>
 
-          {/* Disclaimer */}
-          <p className="relative z-10 text-gray-800 text-sm font-bold py-4 px-8 rounded-xl bg-[rgba(255,255,255,0.8)] shadow-md">
-            {t('hero.disclaimer')}
-          </p>
-        </div>
-      </section>
+    <div className="flex justify-center items-center text-yellow-500 text-xl mt-3 mb-2">
+      ★★★★★ <span className="ml-2 text-sm text-gray-600">{t('hero.rating')}</span>
+    </div>
+
+    <p className="text-gray-800 text-sm font-bold py-4 px-8 rounded-xl bg-[rgba(255,255,255,0.8)] shadow-md">
+      {t('hero.disclaimer')}
+    </p>
+  </div>
+</section>
+
 
       {/* CONTENT SECTION BELOW HERO */}
       <section className="bg-green-50 text-gray-800 px-6 md:px-0 py-16">

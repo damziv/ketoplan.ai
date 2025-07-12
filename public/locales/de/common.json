@@ -10,6 +10,10 @@
     "noSignup": "✓ Monatliche Tipps für Energie und Körperbalance",
     "rating": "Basierend auf über 1.200 Bewertungen"
   },
+  "gender": {
+    "female": "Female",
+    "male": "Male"
+  },
   "reviews": {
     "title": "Was unsere Benutzer sagen",
     "list": [
@@ -22,9 +26,9 @@
     "title": "🌿 Natürliche Transformationen"
   },
   "whyUs": {
-    "title": "Warum Sie sich für unsere App für natürliche Gesundheit entscheiden sollten?",
+    "title": "Warum solltest du mit dem Quiz beginnen?",
     "points": [
-      "Unterstützt Energie, Verdauung und Hormonhaushalt",
+      "Energie, Verdauung und Hormonhaushalt",
       "Entwickelt für Frauen und Männer über 40",
       "Tradition & Wissenschaft"
     ]
