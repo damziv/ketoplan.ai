@@ -1,7 +1,7 @@
 {
   "hero": {
-    "titleLine1": "Von der Natur",
-    "titleLine2": "zum gesunden Leben",
+    "titleLine1": "From nature",
+    "titleLine2": "to healthy life",
     "description": "We’ll personalize your health strategy – start with your gender:",
     "cta": "Start Your Wellness Quiz",
     "disclaimer": "Start your quiz with our friendly Terms!",
@@ -14,8 +14,8 @@
     "rating": "Based on 1,200+ reviews"
   },
   "gender": {
-    "female": "Weiblich",
-    "male": "Männlich"
+    "female": "Female",
+    "male": "Male"
   },
   "reviews": {
     "title": "What Our Users Say",

@@ -1,8 +1,8 @@
 {
   "hero": {
-    "titleLine1": "NaturalFix",
-    "titleLine2": "",
-    "description": "Ihr Leitfaden für ein gesundes Leben",
+    "titleLine1": "Von der Natur",
+    "titleLine2": "zum gesunden Leben",
+    "description": "Wir personalisieren Ihre Gesundheitsstrategie – beginnend mit Ihrem Geschlecht:",
     "cta": "Starten Sie Ihr Wellness-Quiz",
     "disclaimer": "Beginnen Sie Ihr Quiz mit unseren freundlichen Nutzungsbedingungen!",
     "trusted": "Unsere Pläne basieren auf Erkenntnissen aus traditionellen und wissenschaftlich fundierten Wellness-Strategien.",
@@ -11,8 +11,8 @@
     "rating": "Basierend auf über 1.200 Bewertungen"
   },
   "gender": {
-    "female": "Female",
-    "male": "Male"
+    "female": "Weiblich",
+    "male": "Männlich"
   },
   "reviews": {
     "title": "Was unsere Benutzer sagen",
