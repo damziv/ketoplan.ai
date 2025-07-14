@@ -47,7 +47,7 @@
   "payNow": "Pay Now",
   "processing": "Processing...",
   "paymentNote": "30-Day Money-Back Guarantee • Cancel Anytime • GDPR-compliant",
-  "faqTitle": "Why only €1.49/week?",
+  "faqTitle": "Why only €5,99/week?",
   "faqText1": "It’s a limited-time digital offer to make natural health accessible.",
   "faqText2": "We keep costs low with no shipping or storage fees.",
   "faqText3": "We hope you’ll love your plan and share it with others! 💚",
@@ -60,5 +60,7 @@
   "recipeInstructions2": "The program is well-designed in my opinion and worked well for me. I have lost 3 kg in a week. Learning new recipes too",
   "recipeTitle3": "Anna, 61, Germany",
   "recipeIngredients3": "Love the natural recipes and supplement tips!",
-  "recipeInstructions3": "I'll admit, I was skeptical at first, but this is by far the most effective and best-priced health instructions I've ever found. Thank you."
+  "recipeInstructions3": "I'll admit, I was skeptical at first, but this is by far the most effective and best-priced health instructions I've ever found. Thank you.",
+  "cardOption":"— or pay by card —"
 }
+

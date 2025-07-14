@@ -24,7 +24,7 @@ export default async function handler(req, res) {
 
     // ✅ Create a Payment Intent
     const paymentIntent = await stripe.paymentIntents.create({
-      amount: 299, // $2.99 USD (change if needed)
+      amount: 599, // $2.99 USD (change if needed)
       currency: 'eur',
       payment_method_types: ['card'],
       metadata: { email, sessionId },

@@ -158,7 +158,7 @@ export default function PaymentPage() {
         <h2 className="text-xl font-semibold mb-2">🎁 {t('discountTitle')}</h2>
         <p className="text-sm mb-2">{t('discountSubtitle')}</p>
         <div className="text-2xl font-bold mb-1 text-green-700">
-          €2.99 <span className="text-sm font-medium text-gray-500 ml-2">{t('discountWeek')}</span>
+          €5.99 <span className="text-sm font-medium text-gray-500 ml-2">{t('discountWeek')}</span>
           <span className="text-sm font-medium text-gray-500 line-through ml-2">{t('discountMonth')}</span>
         </div>
         <p className="text-sm text-gray-700">{t('discountOffer')}</p>
@@ -305,7 +305,7 @@ function CheckoutForm() {
     {/* 🟡 PayPal Option First */}
     <div className="mb-4">
       <div id="paypal-subscription-button" className="flex justify-center mb-2" />
-      <p className="text-gray-600 text-sm text-center mt-2">— or pay with card —</p>
+      <p className="text-gray-600 text-sm text-center mt-2">{t('cardOption')}</p>
     </div>
     
       <PaymentElement />
