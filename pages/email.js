@@ -198,6 +198,8 @@ export default function EmailPage() {
           <input
             type="email"
             placeholder={t('fields.email')}
+            autoComplete="email"
+            inputMode="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             className="w-full border rounded-xl p-3 mb-2 focus:ring-2 focus:ring-blue-500 outline-none transition"
