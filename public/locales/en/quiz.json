@@ -22,8 +22,8 @@
         "options": ["Broccoli", "Spinach", "Lettuce", "Cauliflower", "Cabbage", "Zucchini", "Asparagus", "Eggplant", "None"]
       },
       {
-        "question": "Choose other products you eat often",
-        "options": ["Eggs", "Cheese", "Butter", "Tofu", "Shrimp", "Chia", "None"]
+        "question": "When was the last time you were satisfied with your body weight?",
+        "options": ["Less than a year ago", "1 - 3 years ago", "More than 3 years ago", "Never"]
       },
       {
         "question": "How would you describe your current energy levels?",
@@ -47,12 +47,20 @@
     "next": "Next",
     "back": "Back",
     "trustBlock1": {
-      "title": "See What Other Women 45+ Are Saying",
-      "body": "Thousands of women over 45 have already transformed their health using our system. You're in the right place!"
+      "title": "What is NaturalFix?",
+      "body1": "NaturalFix is your personal guide to restoring balance, energy, and vitality through proven natural strategies. We focus on supporting women over 40 with easy-to-follow plans built around healing foods, natural supplements, and holistic routines.",
+      "body2": "Our personalized wellness plans are based on your lifestyle, mood, and health goals — combining nature-backed nutrition, daily habits, and hormone-friendly tips to help you feel your best without extreme diets or medications.",
+      "benefitsTitle": "What You’ll Gain with NaturalFix:",
+      "benefit_1": "More consistent energy and focus throughout the day",
+      "benefit_2": "Improved digestion and reduced bloating using food-based solutions",
+      "benefit_3": "Better mood balance and reduced stress-related fatigue",
+      "benefit_4": "Gentle weight loss through supportive lifestyle changes",
+      "benefit_5": "Natural support for hormonal health after 40",
+      "linkText": "Click here to explore the research behind NaturalFix methods"
     },
     "preEmailWarmup": {
-      "title": "Just One More Step...",
-      "body": "We’ll now tailor your final recommendations. This helps us give you the most accurate results."
+      "title": "You are going to do great!",
+      "subtitle": "We have already helped more then 8000 people to feel and live better! Let’s achieve your dream body as well!"
     },
     "beforeFinalPush": {
       "title": "Stay With Us!",

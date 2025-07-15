@@ -21,8 +21,8 @@
       "options": ["Brokkoli", "Spinat", "Kopfsalat", "Blumenkohl", "Kohl", "Zucchini", "Spargel", "Aubergine", "Keine"]
     },
     {
-      "question": "Wählen Sie andere Produkte, die Sie häufig essen",
-      "options": ["Eier", "Käse", "Butter", "Tofu", "Garnelen", "Chia", "Keine"]
+      "question": "Wann waren Sie das letzte Mal mit Ihrem Körpergewicht zufrieden?",
+      "options": ["Vor weniger als einem Jahr", "Käse", "Vor 1–3 Jahren", "Vor mehr als 3 Jahren", "Nie"]
     },
     {
       "question": "Wie würden Sie Ihr aktuelles Energieniveau beschreiben?",
@@ -41,6 +41,26 @@
       "options": ["Aufgebläht nach Kohlenhydraten", "Müde oder energielos", "Zufrieden und klar im Kopf", "Ich achte nicht besonders darauf"]
     }
   ],
+  "trustBlock1": {
+    "title": "What is NaturalFix?",
+    "body1": "NaturalFix is your personal guide to restoring balance, energy, and vitality through proven natural strategies. We focus on supporting women over 40 with easy-to-follow plans built around healing foods, natural supplements, and holistic routines.",
+    "body2": "Our personalized wellness plans are based on your lifestyle, mood, and health goals — combining nature-backed nutrition, daily habits, and hormone-friendly tips to help you feel your best without extreme diets or medications.",
+    "benefitsTitle": "What You’ll Gain with NaturalFix:",
+    "benefit_1": "More consistent energy and focus throughout the day",
+    "benefit_2": "Improved digestion and reduced bloating using food-based solutions",
+    "benefit_3": "Better mood balance and reduced stress-related fatigue",
+    "benefit_4": "Gentle weight loss through supportive lifestyle changes",
+    "benefit_5": "Natural support for hormonal health after 40",
+    "linkText": "Click here to explore the research behind NaturalFix methods"
+  },
+  "preEmailWarmup": {
+    "title": "You are going to do great!",
+    "subtitle": "We have already helped more then 8000 people to feel and live better! Let’s achieve your dream body as well!"
+  },
+  "beforeFinalPush": {
+    "title": "Stay With Us!",
+    "body": "You’re almost done. Just a few more seconds and you’ll get your personalized result."
+  },
   "topTitle": "Quiz - Traditionelle Gesundheit",
   "selectYourPreference": "Wähle deine Präferenz",
   "next": "Weiter",

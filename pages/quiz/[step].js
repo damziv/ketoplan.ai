@@ -10,17 +10,20 @@ const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
 );
 
-const questions = [
-  { id: 1, multiple: false },
-  { id: 2, multiple: false },
-  { id: 3, multiple: false },
-  { id: 4, multiple: true },
-  { id: 5, multiple: true },
-  { id: 6, multiple: true },
-  { id: 7, multiple: false },
-  { id: 8, multiple: false },
-  { id: 9, multiple: false },
-  { id: 10, multiple: false }
+const steps = [
+  { id: 1, type: 'question', multiple: false },
+  { id: 2, type: 'question', multiple: false },
+  { id: 3, type: 'question', multiple: false },
+  { id: 4, type: 'info1', contentKey: 'trustBlock1' },
+  { id: 5, type: 'question', multiple: true },
+  { id: 6, type: 'question', multiple: true },
+  { id: 7, type: 'question', multiple: false },
+  { id: 8, type: 'info2', contentKey: 'preEmailWarmup' },
+  { id: 9, type: 'question', multiple: false },
+  { id: 10, type: 'question', multiple: false },
+  { id: 11, type: 'question', multiple: false },
+  { id: 12, type: 'info3', contentKey: 'beforeFinalPush' },
+  { id: 13, type: 'question', multiple: false }
 ];
 
 const foodTranslationMap = {
@@ -58,6 +61,7 @@ export default function QuizStep() {
   const router = useRouter();
   const { step } = router.query;
   const stepIndex = parseInt(step) - 1;
+  const currentStep = steps[stepIndex];
 
   const [answers, setAnswers] = useState({});
   const [sessionId, setSessionId] = useState('');
@@ -66,24 +70,15 @@ export default function QuizStep() {
     const storedSessionId = sessionStorage.getItem('sessionId');
 
     const loadSavedAnswers = async (id) => {
-      const { data, error } = await supabase
-        .from('sessions')
-        .select('quiz_answers')
-        .eq('id', id)
-        .single();
-
-      if (error) {
-        console.error('❌ Failed to load saved answers:', error);
-      } else if (data?.quiz_answers) {
-        setAnswers(data.quiz_answers);
-      }
+      const { data, error } = await supabase.from('sessions').select('quiz_answers').eq('id', id).single();
+      if (error) console.error('❌ Failed to load saved answers:', error);
+      else if (data?.quiz_answers) setAnswers(data.quiz_answers);
     };
 
     const createNewSession = async () => {
       const { data, error } = await supabase.from('sessions').insert({}).select('id').single();
-      if (error) {
-        console.error('❌ Error creating new session:', error);
-      } else {
+      if (error) console.error('❌ Error creating new session:', error);
+      else {
         sessionStorage.setItem('sessionId', data.id);
         setSessionId(data.id);
       }
@@ -102,9 +97,7 @@ export default function QuizStep() {
   }, []);
 
   useEffect(() => {
-    if (sessionId) {
-      sessionStorage.setItem('sessionId', sessionId);
-    }
+    if (sessionId) sessionStorage.setItem('sessionId', sessionId);
   }, [sessionId]);
 
   const saveAnswersToDatabase = async () => {
@@ -116,8 +109,8 @@ export default function QuizStep() {
   const handleAnswer = async (selected) => {
     const currentAnswers = answers[step] || [];
     let updatedAnswers;
-  
-    if (questions[stepIndex].multiple) {
+
+    if (currentStep.multiple) {
       updatedAnswers = currentAnswers.includes(selected)
         ? currentAnswers.filter((a) => a !== selected)
         : [...currentAnswers, selected];
@@ -126,15 +119,10 @@ export default function QuizStep() {
       updatedAnswers = [selected];
       const newAnswers = { ...answers, [step]: updatedAnswers };
       setAnswers(newAnswers);
-  
-      await supabase
-        .from('sessions')
-        .update({ quiz_answers: newAnswers })
-        .eq('id', sessionId);
-  
-      if (stepIndex < questions.length - 1) {
-        router.push(`/quiz/${stepIndex + 2}`);
-      } else {
+      await supabase.from('sessions').update({ quiz_answers: newAnswers }).eq('id', sessionId);
+
+      if (stepIndex < steps.length - 1) router.push(`/quiz/${stepIndex + 2}`);
+      else {
         sessionStorage.setItem('quizAnswers', JSON.stringify(newAnswers));
         router.push('/preview');
       }
@@ -143,43 +131,179 @@ export default function QuizStep() {
 
   const handleNext = async () => {
     await saveAnswersToDatabase();
-    if (stepIndex < questions.length - 1) {
-      router.push(`/quiz/${stepIndex + 2}`);
-    } else {
-      router.push('/preview');
-    }
+    if (stepIndex < steps.length - 1) router.push(`/quiz/${stepIndex + 2}`);
+    else router.push('/preview');
   };
 
   const handleBack = () => {
-    if (stepIndex > 0) {
-      router.push(`/quiz/${stepIndex}`);
-    }
+    if (stepIndex > 0) router.push(`/quiz/${stepIndex}`);
   };
 
-  const questionsArray = t('questions', { returnObjects: true }) || [];
-  const question = questionsArray[stepIndex];
+  if (isNaN(stepIndex) || stepIndex < 0 || stepIndex >= steps.length) {
+    return <div className="min-h-screen flex items-center justify-center bg-red-100 text-red-700 font-semibold text-center px-4">⚠️ Invalid step index.</div>;
+  }
 
-  if (isNaN(stepIndex) || stepIndex < 0 || stepIndex >= questions.length) {
+  {/* INFO1 SECTION */}
+  {/* INFO1 SECTION*/}
+  if (currentStep.type === 'info1') {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-red-100 text-red-700 font-semibold text-center px-4">
-        ⚠️ Invalid step index. Please restart the quiz.
+      <div className="min-h-screen flex flex-col items-center justify-between px-4 pt-24 pb-36 relative bg-white text-gray-800">
+        {/* Main Content */}
+        <div className="max-w-2xl w-full mt-20 space-y-6 text-left">
+          <img src="/images/logo.jpg" alt="logo" className="w-32 mx-auto" />
+  
+          <h2 className="text-3xl font-bold">{t(`${currentStep.contentKey}.title`)}</h2>
+          <p className="text-md">{t(`${currentStep.contentKey}.body1`)}</p>
+          <p className="text-md">{t(`${currentStep.contentKey}.body2`)}</p>
+  
+          <h3 className="text-xl font-semibold mt-6">{t(`${currentStep.contentKey}.benefitsTitle`)}</h3>
+          <ul className="space-y-2">
+            {[1, 2, 3, 4, 5].map((i) => (
+              <li key={i} className="flex items-start gap-3">
+                <svg width="18" height="18" viewBox="0 0 18 18" className="mt-1">
+                  <circle cx="9" cy="9" r="9" fill="#03CEA4" />
+                  <path
+                    fillRule="evenodd"
+                    clipRule="evenodd"
+                    d="M14.6913 5.69324L7.06342 13.3211L3.93555 10.1932L5.12879 9L7.06342 10.9346L13.498 4.5L14.6913 5.69324Z"
+                    fill="white"
+                  />
+                </svg>
+                <span>{t(`${currentStep.contentKey}.benefit_${i}`)}</span>
+              </li>
+            ))}
+          </ul>
+  
+          <div className="text-center mt-4">
+            <a
+              className="text-blue-600 underline text-sm"
+              href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5959807/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {t(`${currentStep.contentKey}.linkText`)}
+            </a>
+          </div>
+        </div>
+  
+        {/* Fixed Bottom Button */}
+        <div className="fixed bottom-0 left-0 w-full bg-white px-4 py-4 border-t shadow z-50">
+          <div className="max-w-md mx-auto">
+            <button
+              className="bg-green-500 w-full text-white py-3 rounded-md hover:bg-green-600"
+              onClick={handleNext}
+            >
+              {t('next')}
+            </button>
+          </div>
+        </div>
       </div>
     );
   }
-
-  if (!question || !question.options || !Array.isArray(question.options)) {
+  
+  {/* INFO2 SECTION */}
+  {/* INFO2 SECTION*/}
+  if (currentStep.type === 'info2') {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-red-100 text-red-700 font-semibold text-center px-4">
-        ⚠️ Error: Missing or invalid translation for this question. Please check quiz.json.
+      <div className="min-h-screen flex flex-col items-center text-center px-6 pb-24 pt-20 bg-white">
+        <div className="w-full max-w-md mt-10 mb-6">
+          <picture>
+            <source
+              type="image/webp"
+              srcSet="/images/naturalfix-womangroup.jpg"
+              sizes="100vw"
+            />
+            <img
+              src="/images/naturalfix-womangroup.jpg"
+              alt="Transformation"
+              className="w-full h-auto object-contain rounded-lg shadow-xl"
+            />
+          </picture>
+        </div>
+  
+        <h2 className="text-3xl font-bold text-green-700 mb-4">
+          {t(`${currentStep.contentKey}.title`)} {/* e.g., "You are going to do great!" */}
+        </h2>
+  
+        <p className="text-gray-800 text-base mb-6 max-w-md">
+          {t(`${currentStep.contentKey}.subtitle`)} {/* e.g., "We have already helped 529,332 people..." */}
+        </p>
+  
+        <button
+          className="bg-green-500 text-white py-3 px-6 rounded-md hover:bg-green-600 shadow-md"
+          onClick={handleNext}
+        >
+          {t('next')}
+        </button>
       </div>
     );
+  }
+  
+  {/* INFO3 SECTION */}
+  {/* INFO3 SECTION*/}
+ if (currentStep.type === 'info3') {
+  return (
+    <div className="min-h-screen flex flex-col items-center justify-center text-center px-6 pb-24 pt-20 bg-white">
+      <div className="mt-32 w-full max-w-4xl px-4">
+        <h2 className="text-3xl font-bold text-center text-green-700 mb-8">
+          You're already much closer to achieving balance & vitality!
+        </h2>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+          <div className="text-left space-y-4">
+            <p className="text-gray-800 text-base">
+              Hormonal balance is crucial for overall health and well-being, impacting various bodily functions and influencing physical, emotional, and cognitive states.
+            </p>
+            <p className="text-gray-800 text-base">
+              Hormones regulate metabolism, sleep, mood, and more. When out of balance, they can cause fatigue, weight changes, mood swings, and even long-term health risks. Let us help you restore that balance naturally.
+            </p>
+          </div>
+
+          <div className="w-full">
+            <picture>
+              <source
+                type="image/webp"
+                srcSet="/images/naturalfix-before-after.png"
+              />
+              <img
+                src="/images/naturalfix-before-after.png"
+                alt="Before and After"
+                className="w-full h-auto rounded-lg shadow-md"
+              />
+            </picture>
+          </div>
+        </div>
+
+        <div className="text-center mt-10">
+          <button
+            className="bg-green-500 text-white py-3 px-8 rounded-md hover:bg-green-600 text-lg font-semibold shadow-lg"
+            onClick={handleNext}
+          >
+            {t('next')}
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+
+  const questionsArray = t('questions', { returnObjects: true }) || [];
+  const questionIndex = steps.slice(0, stepIndex + 1).filter(s => s.type === 'question').length - 1;
+  const question = questionsArray[questionIndex];
+
+  if (!question || !question.options || !Array.isArray(question.options)) {
+    return <div className="min-h-screen flex items-center justify-center bg-red-100 text-red-700 font-semibold text-center px-4">⚠️ Invalid question config.</div>;
   }
 
   return (
     <div className="relative min-h-screen flex flex-col items-center justify-center text-white px-6 md:px-0 pb-36 overflow-visible">
       <div className="fixed top-0 w-full bg-gray-800 py-4 text-center text-white font-bold text-2xl z-50">{t('topTitle')}</div>
       <div className="fixed top-14 w-full z-50">
-        <ProgressBar currentStep={stepIndex + 1} totalSteps={questions.length} />
+        <ProgressBar
+          currentStep={steps.slice(0, stepIndex + 1).filter(s => s.type === 'question').length}
+          totalSteps={steps.filter(s => s.type === 'question').length}
+        />
       </div>
 
       <div className="bg-white bg-opacity-10 backdrop-blur-md p-6 rounded-lg shadow-md w-full max-w-md text-center mt-24">
@@ -199,9 +323,7 @@ export default function QuizStep() {
                 }`}
                 onClick={() => handleAnswer(option)}
               >
-                {foodImage && (
-                  <img src={foodImage} alt={option} className="h-8 w-8 mr-4" />
-                )}
+                {foodImage && <img src={foodImage} alt={option} className="h-8 w-8 mr-4" />}
                 {option}
               </button>
             );
@@ -209,21 +331,11 @@ export default function QuizStep() {
         </div>
       </div>
 
-      {questions[stepIndex].multiple && (
+      {currentStep.multiple && (
         <div className="sticky bottom-0 overflow-visible left-0 w-full bg-white px-4 py-3 border-t shadow-md z-1000">
           <div className="max-w-md mx-auto flex justify-between">
-            <button
-              className="bg-gray-500 text-white py-3 px-6 rounded-md hover:bg-gray-600"
-              onClick={handleBack}
-            >
-              {t('back')}
-            </button>
-            <button
-              className="bg-green-500 text-white py-3 px-6 rounded-md hover:bg-green-600"
-              onClick={handleNext}
-            >
-              {t('next')}
-            </button>
+            <button className="bg-gray-500 text-white py-3 px-6 rounded-md hover:bg-gray-600" onClick={handleBack}>{t('back')}</button>
+            <button className="bg-green-500 text-white py-3 px-6 rounded-md hover:bg-green-600" onClick={handleNext}>{t('next')}</button>
           </div>
         </div>
       )}
@@ -232,19 +344,12 @@ export default function QuizStep() {
 }
 
 export async function getStaticPaths() {
-  const steps = Array.from({ length: 12 }, (_, i) => i + 1);
-
+  const stepsCount = 13;
+  const steps = Array.from({ length: stepsCount }, (_, i) => i + 1);
   const paths = ['en', 'hr', 'de'].flatMap((locale) =>
-    steps.map((step) => ({
-      params: { step: step.toString() },
-      locale,
-    }))
+    steps.map((step) => ({ params: { step: step.toString() }, locale }))
   );
-
-  return {
-    paths,
-    fallback: 'blocking',
-  };
+  return { paths, fallback: 'blocking' };
 }
 
 export async function getStaticProps({ locale }) {
