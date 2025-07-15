@@ -246,16 +246,16 @@ export default function QuizStep() {
     <div className="min-h-screen flex flex-col items-center justify-center text-center px-6 pb-24 pt-20 bg-white">
       <div className="mt-32 w-full max-w-4xl px-4">
         <h2 className="text-3xl font-bold text-center text-green-700 mb-8">
-          You're already much closer to achieving balance & vitality!
+        {t(`${currentStep.contentKey}.title`)}
         </h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
           <div className="text-left space-y-4">
             <p className="text-gray-800 text-base">
-              Hormonal balance is crucial for overall health and well-being, impacting various bodily functions and influencing physical, emotional, and cognitive states.
+            {t(`${currentStep.contentKey}.bodyText1`)}
             </p>
             <p className="text-gray-800 text-base">
-              Hormones regulate metabolism, sleep, mood, and more. When out of balance, they can cause fatigue, weight changes, mood swings, and even long-term health risks. Let us help you restore that balance naturally.
+            {t(`${currentStep.contentKey}.bodyText2`)}
             </p>
           </div>
 

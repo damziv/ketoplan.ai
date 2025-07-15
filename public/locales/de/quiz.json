@@ -22,7 +22,7 @@
     },
     {
       "question": "Wann waren Sie das letzte Mal mit Ihrem Körpergewicht zufrieden?",
-      "options": ["Vor weniger als einem Jahr", "Käse", "Vor 1–3 Jahren", "Vor mehr als 3 Jahren", "Nie"]
+      "options": ["Vor weniger als einem Jahr", "Vor 1–3 Jahren", "Vor mehr als 3 Jahren", "Nie"]
     },
     {
       "question": "Wie würden Sie Ihr aktuelles Energieniveau beschreiben?",
@@ -42,20 +42,20 @@
     }
   ],
   "trustBlock1": {
-    "title": "What is NaturalFix?",
-    "body1": "NaturalFix is your personal guide to restoring balance, energy, and vitality through proven natural strategies. We focus on supporting women over 40 with easy-to-follow plans built around healing foods, natural supplements, and holistic routines.",
-    "body2": "Our personalized wellness plans are based on your lifestyle, mood, and health goals — combining nature-backed nutrition, daily habits, and hormone-friendly tips to help you feel your best without extreme diets or medications.",
-    "benefitsTitle": "What You’ll Gain with NaturalFix:",
-    "benefit_1": "More consistent energy and focus throughout the day",
-    "benefit_2": "Improved digestion and reduced bloating using food-based solutions",
-    "benefit_3": "Better mood balance and reduced stress-related fatigue",
-    "benefit_4": "Gentle weight loss through supportive lifestyle changes",
-    "benefit_5": "Natural support for hormonal health after 40",
-    "linkText": "Click here to explore the research behind NaturalFix methods"
+    "title": "Was ist NaturalFix?",
+    "body1": "NaturalFix ist Ihr persönlicher Leitfaden zur Wiederherstellung von Gleichgewicht, Energie und Vitalität durch bewährte natürliche Strategien. Wir unterstützen Frauen über 40 mit leicht verständlichen Plänen, die auf gesunden Lebensmitteln, natürlichen Nahrungsergänzungsmitteln und ganzheitlichen Routinen basieren.",
+    "body2": "Unsere personalisierten Wellnesspläne basieren auf Ihrem Lebensstil, Ihrer Stimmung und Ihren Gesundheitszielen. Sie kombinieren naturnahe Ernährung, tägliche Gewohnheiten und hormonfreundliche Tipps, damit Sie sich ohne extreme Diäten oder Medikamente optimal fühlen.",
+    "benefitsTitle": "Was Sie mit NaturalFix gewinnen:",
+    "benefit_1": "Mehr Energie und Konzentration den ganzen Tag über",
+    "benefit_2": "Verbesserte Verdauung und weniger Blähungen durch lebensmittelbasierte Lösungen",
+    "benefit_3": "Gesündere Stimmung und weniger stressbedingte Müdigkeit",
+    "benefit_4": "Sanfte Gewichtsabnahme durch unterstützende Lebensstiländerungen",
+    "benefit_5": "Natürliche Unterstützung für die hormonelle Gesundheit nach 40",
+    "linkText": "Klicken Sie hier, um mehr über die Forschung zu den NaturalFix-Methoden zu erfahren"
   },
   "preEmailWarmup": {
-    "title": "You are going to do great!",
-    "subtitle": "We have already helped more then 8000 people to feel and live better! Let’s achieve your dream body as well!"
+    "title": "Du wirst es schaffen!",
+    "subtitle": "Wir haben bereits über 8000 Menschen geholfen, sich besser zu fühlen und besser zu leben! Lass uns auch deinen Traumkörper erreichen!"
   },
   "beforeFinalPush": {
     "title": "Stay With Us!",
