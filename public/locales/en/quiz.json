@@ -45,6 +45,18 @@
     "topTitle": "Quiz - Traditional health",
     "selectYourPreference": "Select your preference",
     "next": "Next",
-    "back": "Back"
+    "back": "Back",
+    "trustBlock1": {
+      "title": "See What Other Women 45+ Are Saying",
+      "body": "Thousands of women over 45 have already transformed their health using our system. You're in the right place!"
+    },
+    "preEmailWarmup": {
+      "title": "Just One More Step...",
+      "body": "We’ll now tailor your final recommendations. This helps us give you the most accurate results."
+    },
+    "beforeFinalPush": {
+      "title": "Stay With Us!",
+      "body": "You’re almost done. Just a few more seconds and you’ll get your personalized result."
+    }
   }
   
