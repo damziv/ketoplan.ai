@@ -147,9 +147,8 @@ export default function QuizStep() {
   {/* INFO1 SECTION*/}
   if (currentStep.type === 'info1') {
     return (
-      <div className="min-h-screen flex flex-col items-center justify-between px-4 pt-24 pb-36 relative bg-white text-gray-800">
-        {/* Main Content */}
-        <div className="max-w-2xl w-full mt-20 space-y-6 text-left">
+<div className="min-h-screen flex flex-col items-center justify-between px-4 pt-16 pb-36 relative bg-white text-gray-800">
+  <div className="max-w-2xl w-full mt-8 space-y-6 text-left">
           <img src="/images/logo.jpg" alt="logo" className="w-32 mx-auto" />
   
           <h2 className="text-3xl font-bold">{t(`${currentStep.contentKey}.title`)}</h2>
@@ -205,8 +204,8 @@ export default function QuizStep() {
   {/* INFO2 SECTION*/}
   if (currentStep.type === 'info2') {
     return (
-      <div className="min-h-screen flex flex-col items-center text-center px-6 pb-24 pt-20 bg-white">
-        <div className="w-full max-w-md mt-10 mb-6">
+<div className="min-h-screen flex flex-col items-center justify-between px-4 pt-16 pb-36 relative bg-white text-gray-800">
+  <div className="max-w-2xl w-full mt-8 space-y-6 text-left">
           <picture>
             <source
               type="image/webp"
@@ -243,8 +242,8 @@ export default function QuizStep() {
   {/* INFO3 SECTION*/}
  if (currentStep.type === 'info3') {
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center text-center px-6 pb-24 pt-20 bg-white">
-      <div className="mt-32 w-full max-w-4xl px-4">
+<div className="min-h-screen flex flex-col items-center justify-between px-4 pt-16 pb-36 relative bg-white text-gray-800">
+  <div className="max-w-2xl w-full mt-8 space-y-6 text-left">
         <h2 className="text-3xl font-bold text-center text-green-700 mb-8">
         {t(`${currentStep.contentKey}.title`)}
         </h2>
