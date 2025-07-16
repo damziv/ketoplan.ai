@@ -1,0 +1,70 @@
+{
+"types": {
+    "energySeeker": {
+      "name": "Du bist Der Energiesucher",
+      "insights": [
+        "Ihr Ziel besteht darin, Energie und Konzentration zu steigern – Geist und Stimmung wieder mit Energie zu versorgen.",
+        "Sie essen täglich drei Mahlzeiten mit Proteinen, Eiern und Gemüse – eine großartige Grundlage für ausgewogene Energie, aber Zeitpunkt und Kombination sind wichtig.",
+        "Wenn Sie sich müde oder niedergeschlagen fühlen, kann es sein, dass Ihre Mahlzeiten Ihre Energie in die Höhe treiben oder abfallen lassen – Ihr Plan gleicht dies auf natürliche Weise aus.",
+        "Holen Sie sich einfache Rezepte und tägliche Tipps für stetige Energie, einen klaren Geist und eine gehobene Stimmung"
+      ]
+    },
+    "gutHealer": {
+      "name": "Du bist Der Darmheiler",
+      "insights": [
+        "Ihr Fokus liegt auf Darmgesundheit und Verdauung – Ihr Plan fördert Ballaststoffe und unterstützt Ihr Mikrobiom.",
+        "Ihre Antworten zeigen Lebensmittel, die Blähungen und Unwohlsein auf natürliche Weise ausgleichen.",
+        "Einfache tägliche Änderungen helfen, Ihren Darm zu beruhigen und die Nährstoffaufnahme zu verbessern.",
+        "Erhalten Sie darmfreundliche Rezepte, einfache Zubereitungstipps und die besten Lebensmittel für eine ausgeglichene Verdauung."
+      ]
+    },
+    "balancedType": {
+      "name": "Du bist Ausgewogener Typ",
+      "insights": [
+        "Du bist besser aufgestellt als 89 % der anderen.",
+        "Anhand deiner Antworten kannst du mit unserem Plan innerhalb der ersten zwei Wochen bis zu 5 kg abnehmen.",
+        "89 % der Nutzer mit einem sehr ähnlichen Profil haben ihre Gewichtsziele innerhalb der geplanten Zeitspanne erreicht.",
+        "Ihre Antworten bilden eine ausgewogene Grundlage – eine hervorragende Ausgangsbasis!"
+      ]
+    },
+    "fatBurner": {
+      "name": "Du bist Der Fettverbrenner",
+      "insights": [
+        "Ihr Ziel ist es, überschüssiges Gewicht auf natürliche Weise zu verlieren.",
+        "Ihre Antworten zeigen, dass Ihr Körper bereit ist, mit dem richtigen Plan Fett zu verbrennen.",
+        "Sie profitieren am meisten von einfachen, sättigenden Mahlzeiten mit wenig Zucker.",
+        "Ihr Plan nutzt traditionelle Methoden, um den Stoffwechsel anzukurbeln und Fett zu reduzieren."
+      ]
+    },
+    "stressReducer": {
+      "name": "Du bist Der Stressabbauer",
+      "insights": [
+        "Ihre Antworten zeigen Anzeichen von stressbedingter Müdigkeit.",
+        "Ihr Plan enthält natürliche Techniken zur Förderung von Ruhe und besserem Schlaf.",
+        "Bestimmte Lebensmittel können helfen, Stimmungsschwankungen zu stabilisieren.",
+        "Sie erhalten einfache tägliche Routinen zur Reduktion von Stress und zur Förderung von mentaler Ausgeglichenheit."
+      ]
+    }
+    },
+    "goalHeadline": "Achieve your goal with a easy and healthy guide tailored just for you",
+    "unlockButton": "Unlock Your Plan",
+    "priceNote": "💡 Most health apps charge €15–25/month — our mission is to make wellness affordable.",
+    "sectionTitle": "What you can achieve with your plan",
+    "socialProof": "8000+ women have already succeeded",
+    "benefits": [
+        "Naturally balance your hormones",
+        "Boost your mood and energy",
+        "Achieve lasting results without dieting stress"
+    ],
+    "peopleReached": {
+        "prefix": "We have helped",
+        "number": "8735",
+        "suffix": "people with bodies similar to yours to reach their weight loss goals."
+    },
+    "ctaHeadline": "We are here to make sure you reach your goal",
+    "priceAnchor": "💡 Most health apps charge €15–25/month – we keep it simple & affordable.",
+    "buttonCta": "Unlock Your Personalized Plan",
+    "guarantee": "💡 No risk: Cancel anytime. Full access after payment.",
+    "title": "Your personalized health profile",
+    "stepInfo": "Based on your answers, we created a plan tailored to your needs."
+}

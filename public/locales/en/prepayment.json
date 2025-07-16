@@ -1,0 +1,69 @@
+{
+    "types": {
+        "energySeeker": {
+          "name": "The Energy Seeker",
+          "insights": [
+            "Your goal is to boost energy and focus — your plan rebuilds steady fuel for mind and mood.",
+            "You eat 3 meals daily with protein, eggs and greens — great base for balanced energy, but timing & pairing matter.",
+            "Feeling tired or low shows your meals may spike & drop your energy — your plan balances this naturally.",
+            "Get easy recipes, food swaps & daily tips to feel steady energy, clear mind & lifted mood — without cutting your favorites."
+          ]
+        },
+        "gutHealer": {
+          "name": "The Gut Healer",
+          "insights": [
+            "Your focus is gut health and digestion — your plan boosts fiber and supports your microbiome.",
+            "Your answers show foods that help balance bloating and discomfort naturally.",
+            "Simple daily swaps help calm your gut and improve nutrient absorption.",
+            "Get gut-friendly recipes, easy prep tips & the best foods to restore digestive balance."
+          ]
+        },
+        "balancedType": {
+          "name": "Balanced Type",
+          "insights": [
+            "Your answers show a balanced base — great starting point!",
+            "Your plan fine-tunes meal timing, food pairing and daily habits for steady energy & gut health.",
+            "No radical changes — just practical steps to feel your best naturally."
+          ]
+        },
+        "fatBurner": {
+          "name": "You are The Fat Burner",
+          "insights": [
+          "Your goal is to lose excess weight naturally.",
+          "Your answers show that your body is ready to burn fat with the right plan.",
+          "You benefit most from simple, filling meals with little sugar.",
+          "Your plan uses traditional methods to boost metabolism and reduce fat."
+          ]
+        },
+        "stressReducer": {
+          "name": "You are The Stress Reducer",
+          "insights": [
+          "Your answers show signs of stress-related fatigue.",
+          "Your plan includes natural techniques to promote calm and better sleep.",
+          "Certain foods can help stabilize mood swings.",
+          "You'll receive simple daily routines to reduce stress and promote mental balance."
+          ]
+        }
+      },
+    "goalHeadline": "Achieve your goal with a easy and healthy guide tailored just for you",
+    "unlockButton": "Unlock Your Plan",
+    "priceNote": "💡 Most health apps charge €15–25/month — our mission is to make wellness affordable.",
+    "sectionTitle": "What you can achieve with your plan",
+    "socialProof": "8000+ women have already succeeded",
+    "benefits": [
+        "Naturally balance your hormones",
+        "Boost your mood and energy",
+        "Achieve lasting results without dieting stress"
+    ],
+    "peopleReached": {
+        "prefix": "We have helped",
+        "number": "8735",
+        "suffix": "people with bodies similar to yours to reach their weight loss goals."
+    },
+    "ctaHeadline": "We are here to make sure you reach your goal",
+    "priceAnchor": "💡 Most health apps charge €15–25/month – we keep it simple & affordable.",
+    "buttonCta": "Unlock Your Personalized Plan",
+    "guarantee": "💡 No risk: Cancel anytime. Full access after payment.",
+    "title": "Your personalized health profile",
+    "stepInfo": "Based on your answers, we created a plan tailored to your needs."
+    }
