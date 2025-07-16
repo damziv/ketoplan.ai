@@ -145,7 +145,7 @@ export default function EmailPage() {
           router.push('/');
         }
       } else {
-        router.push('/payment');
+        router.push('/pre-payment');
       }
     }
   };
