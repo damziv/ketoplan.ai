@@ -148,7 +148,7 @@ export default function QuizStep() {
   if (currentStep.type === 'info1') {
     return (
 <div className="min-h-screen flex flex-col items-center justify-between px-4 pt-16 pb-36 relative bg-white text-gray-800">
-  <div className="max-w-2xl w-full mt-8 space-y-6 text-left">
+  <div className="max-w-2xl w-full space-y-6 text-left">
           <img src="/images/logo.jpg" alt="logo" className="w-32 mx-auto" />
   
           <h2 className="text-3xl font-bold">{t(`${currentStep.contentKey}.title`)}</h2>
@@ -205,7 +205,7 @@ export default function QuizStep() {
   if (currentStep.type === 'info2') {
     return (
 <div className="min-h-screen flex flex-col items-center justify-between px-4 pt-16 pb-36 relative bg-white text-gray-800">
-  <div className="max-w-2xl w-full mt-8 space-y-6 text-left">
+  <div className="max-w-2xl w-full space-y-6 text-left">
           <picture>
             <source
               type="image/webp"
@@ -228,12 +228,16 @@ export default function QuizStep() {
           {t(`${currentStep.contentKey}.subtitle`)} {/* e.g., "We have already helped 529,332 people..." */}
         </p>
   
-        <button
-          className="bg-green-500 text-white py-3 px-6 rounded-md hover:bg-green-600 shadow-md"
-          onClick={handleNext}
-        >
-          {t('next')}
-        </button>
+        <div className="fixed bottom-0 left-0 w-full bg-white px-4 py-4 border-t shadow z-50">
+          <div className="max-w-md mx-auto">
+            <button
+              className="bg-green-500 w-full text-white py-3 rounded-md hover:bg-green-600"
+              onClick={handleNext}
+            >
+              {t('next')}
+            </button>
+          </div>
+        </div>
       </div>
     );
   }
@@ -243,7 +247,7 @@ export default function QuizStep() {
  if (currentStep.type === 'info3') {
   return (
 <div className="min-h-screen flex flex-col items-center justify-between px-4 pt-16 pb-36 relative bg-white text-gray-800">
-  <div className="max-w-2xl w-full mt-8 space-y-6 text-left">
+  <div className="max-w-2xl w-full space-y-6 text-left">
         <h2 className="text-3xl font-bold text-center text-green-700 mb-8">
         {t(`${currentStep.contentKey}.title`)}
         </h2>
@@ -273,13 +277,15 @@ export default function QuizStep() {
           </div>
         </div>
 
-        <div className="text-center mt-10">
-          <button
-            className="bg-green-500 text-white py-3 px-8 rounded-md hover:bg-green-600 text-lg font-semibold shadow-lg"
-            onClick={handleNext}
-          >
-            {t('next')}
-          </button>
+        <div className="fixed bottom-0 left-0 w-full bg-white px-4 py-4 border-t shadow z-50">
+          <div className="max-w-md mx-auto">
+            <button
+              className="bg-green-500 w-full text-white py-3 rounded-md hover:bg-green-600"
+              onClick={handleNext}
+            >
+              {t('next')}
+            </button>
+          </div>
         </div>
       </div>
     </div>
