@@ -151,119 +151,73 @@ export default function EmailPage() {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-50 p-6 pb-36">
-      <div className="fixed top-0 w-full bg-gray-800 py-4 text-center text-white font-bold text-2xl z-50">
-        {t('topTitle')}
-      </div>
-
-      {typeName && insights.length > 0 && (
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="bg-white shadow-lg rounded-2xl p-6 w-full max-w-md mt-24 mb-8 text-left"
-        >
-          <h2 className="text-xl font-bold mb-2 text-center">
-            🎯 {t('title')}
-          </h2>
-          <p className="text-center text-gray-600 mb-4">
-            <strong>{typeName}</strong>.
-          </p>
-          <div className="space-y-3 mb-4">
-            {insights.map((item, idx) => (
-              <div
-                key={idx}
-                className="flex items-start bg-green-50 border border-green-100 p-3 rounded-lg shadow-sm"
-              >
-                <div className="text-green-600 text-lg mr-3">✅</div>
-                <p className="text-gray-700 text-sm">{item}</p>
-              </div>
-            ))}
-          </div>
-          <p className="italic text-gray-600 text-center">
-            {t('stepInfo')}
-          </p>
-        </motion.div>
-      )}
-
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-        className="bg-white shadow-lg rounded-2xl p-8 w-full max-w-md text-center"
-      >
-        <h1 className="text-3xl font-bold text-gray-900 mb-2 flex justify-center items-center"></h1>
-        <p className="text-gray-600 mb-5">{t('subtitle')}</p>
-        <div className="bg-blue-50 border border-blue-200 rounded-xl p-4 mb-4">
+    <div className="bg-white min-h-screen flex flex-col items-center justify-between px-4 pt-24 pb-48 font-sans">
+      <div className="max-w-md w-full">
+        {/* Header */}
+        <h1 className="text-2xl font-semibold text-center text-gray-900 mb-4">
+          {t('topTitle')}
+        </h1>
+  
+        {/* Subtitle */}
+        <p className="text-center text-gray-600 text-sm mb-6">
+          {t('subtitle')}
+        </p>
+  
+        {/* Email Input */}
+        <div className="mb-4">
           <input
             type="email"
             placeholder={t('fields.email')}
-            autoComplete="email"
-            inputMode="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="w-full border rounded-xl p-3 mb-2 focus:ring-2 focus:ring-blue-500 outline-none transition"
+            className="w-full border border-gray-300 rounded-xl p-4 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
-
-          {/* <input
-            type="number"
-            placeholder={t('fields.age')}
-            value={age}
-            onChange={(e) => setAge(e.target.value)}
-            className="w-full border rounded-xl p-3 mb-4 focus:ring-2 focus:ring-blue-500 outline-none transition"
-          /> */}
+          {error && <p className="text-sm text-red-500 mt-1">{error}</p>}
         </div>
-        {error && <p className="text-red-500 text-sm mb-2">{error}</p>}
-
-        <p className="text-sm text-gray-500 italic mb-2">{t('privacy')}</p>
-        <p className="text-sm text-gray-600 mb-4">{t('socialProof')}</p>
-
-        <motion.button
-          whileTap={{ scale: 0.95 }}
-          className={`w-full py-3 rounded-xl font-semibold transition-all ${
-            email
-              ? 'bg-blue-600 hover:bg-blue-700 text-white'
-              : 'bg-blue-600 text-white cursor-not-allowed'
-          }`}
-          onClick={handleNext}
-          disabled={!email}
-        >
-          {t('continue', 'Generate My Guide')} →
-        </motion.button>
-
-        <div className="bg-green-50 p-4 rounded-xl shadow mb-4 mt-4">
-          <h3 className="text-md font-semibold text-gray-800 mb-2">
-            {t('whatYouGetTitle')}
-          </h3>
-          <ul className="list-disc pl-5 text-gray-700 text-sm space-y-1">
+  
+        {/* Security Notice */}
+        <div className="flex items-start bg-gray-50 border border-gray-200 rounded-lg p-3 mb-4">
+          <svg className="w-5 h-5 text-gray-500 mr-2 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
+              d="M12 11c0-1.657 1.343-3 3-3s3 1.343 3 3v2m-6 4h6a2 2 0 002-2v-2a6 6 0 10-12 0v2a2 2 0 002 2z" />
+          </svg>
+          <p className="text-sm text-gray-600">{t('privacy')}</p>
+        </div>
+  
+        {/* What You Get */}
+        <div className="bg-green-50 border border-green-100 rounded-xl p-4 mb-4">
+          <h3 className="text-md font-semibold text-gray-800 mb-2">{t('whatYouGetTitle')}</h3>
+          <ul className="list-disc pl-5 text-sm text-gray-700 space-y-1">
             <li>{t('whatYouGet1')}</li>
             <li>{t('whatYouGet2')}</li>
             <li>{t('whatYouGet3')}</li>
           </ul>
         </div>
-      </motion.div>
-
-      <div className="mt-6 w-full max-w-md mx-auto bg-white p-6 rounded-lg shadow-lg">
-        <h3 className="text-xl font-bold text-center mb-6 text-gray-800">
-          🔒 {t('whyUs.title')}
-        </h3>
-        <ul className="space-y-4">
-          {why.map((text, index) => (
-            <motion.li
-              key={index}
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.3 }}
-              className="flex items-start space-x-3 p-3 bg-green-100 rounded-md hover:bg-green-200 transition-colors"
-            >
-              <span className="text-green-600 text-xl font-bold">✓</span>
-              <span className="text-gray-700 text-lg">{text}</span>
-            </motion.li>
-          ))}
-        </ul>
+  
+        {/* Terms notice */}
+        <p className="text-xs text-center text-gray-400 mt-6">
+          {t('info.rules')}
+        </p>
+      </div>
+  
+      {/* Fixed CTA */}
+      <div className="fixed bottom-0 left-0 w-full bg-white p-4 border-t border-gray-200 shadow-lg">
+        <button
+          onClick={handleNext}
+          disabled={!email}
+          className={`w-full py-4 text-center rounded-xl font-bold transition-all text-sm ${
+            email
+              ? 'bg-blue-600 hover:bg-blue-700 text-white'
+              : 'bg-blue-300 text-white cursor-not-allowed'
+          }`}
+        >
+          {t('continue', 'Continue')} →
+        </button>
       </div>
     </div>
   );
+  
+  
 }
 
 export async function getStaticProps({ locale }) {
