@@ -46,25 +46,25 @@
       ]
     }
     },
-    "goalHeadline": "Achieve your goal with a easy and healthy guide tailored just for you",
-    "unlockButton": "Unlock Your Plan",
-    "priceNote": "💡 Most health apps charge €15–25/month — our mission is to make wellness affordable.",
-    "sectionTitle": "What you can achieve with your plan",
-    "socialProof": "8000+ women have already succeeded",
+    "goalHeadline": "Erreiche dein Ziel mit einem einfachen und gesunden Leitfaden, der genau auf dich zugeschnitten ist",
+    "unlockButton": "Entdecke deinen Plan",
+    "priceNote": "💡 Die meisten Gesundheits-Apps kosten 15–25 € pro Monat – unsere Mission ist es, Wellness erschwinglich zu machen.",
+    "sectionTitle": "Was du mit deinem Plan erreichen kannst",
+    "socialProof": "Über 8000 Frauen haben es bereits geschafft",
     "benefits": [
-        "Naturally balance your hormones",
-        "Boost your mood and energy",
-        "Achieve lasting results without dieting stress"
+        "Hormone natürlich ausbalancieren",
+        "Stimmung und Energie steigern",
+        "Nachhaltige Ergebnisse ohne Diätstress erzielen"
     ],
     "peopleReached": {
-        "prefix": "We have helped",
+        "prefix": "Wir haben geholfen",
         "number": "8735",
-        "suffix": "people with bodies similar to yours to reach their weight loss goals."
+        "suffix": "Menschen mit ähnlichem Körperbau wie Ihrem, ihre Abnehmziele zu erreichen."
     },
-    "ctaHeadline": "We are here to make sure you reach your goal",
-    "priceAnchor": "💡 Most health apps charge €15–25/month – we keep it simple & affordable.",
-    "buttonCta": "Unlock Your Personalized Plan",
-    "guarantee": "💡 No risk: Cancel anytime. Full access after payment.",
-    "title": "Your personalized health profile",
-    "stepInfo": "Based on your answers, we created a plan tailored to your needs."
+    "ctaHeadline": "Wir sorgen dafür, dass Sie Ihr Ziel erreichen",
+    "priceAnchor": "💡 Die meisten Gesundheits-Apps kosten 15–25 € pro Monat – wir machen es einfach und erschwinglich.",
+    "buttonCta": "Entsperren Sie Ihren persönlichen Plan",
+    "guarantee": "💡 Kein Risiko: Jederzeit kündbar. Voller Zugriff nach Zahlung.",
+    "title": "Ihr personalisiertes Gesundheitsprofil",
+    "stepInfo": "Basierend auf Ihren Antworten haben wir einen auf Ihre Bedürfnisse zugeschnittenen Plan erstellt."
 }
