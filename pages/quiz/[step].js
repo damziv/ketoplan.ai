@@ -209,11 +209,11 @@ export default function QuizStep() {
           <picture>
             <source
               type="image/webp"
-              srcSet="/images/naturalfix-womangroup.jpg"
+              srcSet="/images/naturalfix-womangroup.png"
               sizes="100vw"
             />
             <img
-              src="/images/naturalfix-womangroup.jpg"
+              src="/images/naturalfix-womangroup.png"
               alt="Transformation"
               className="w-full h-auto object-contain rounded-lg shadow-xl"
             />
