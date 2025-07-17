@@ -5,8 +5,8 @@
     "discountNumber": "50",
     "discountText": "discount!",
     "discountSubtext": "It's a one-time offer! Don't miss it!",
-    "visibleChangesFirst": "Visible changes after the first week",
-    "visibleChangesSecond": "",
+    "visibleChangesFirst": "Visible changes",
+    "visibleChangesSecond": "after the first week",
     "comparisonBefore": "Before",
     "comparisonAfter": "After",
     "comparisonItems": [
