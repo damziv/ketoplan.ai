@@ -8,7 +8,7 @@ export default function OfferPage() {
   const router = useRouter()
   const { t } = useTranslation('offer')
 
-  const [timeLeft, setTimeLeft] = useState(60 * 60) // 1 hour in seconds
+  const [timeLeft, setTimeLeft] = useState(15 * 60) // 1 hour in seconds
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -28,7 +28,7 @@ export default function OfferPage() {
       title: t('planTitles.oneTime'),
       price: '€5.99',
       originalPrice: '€17.99',
-      perDay: '5.99',
+      perDay: '€5.99',
       features: [t('planFeatures.personalPlan')],
       route: '/payment/one-time',
       isBest: false,
@@ -59,6 +59,7 @@ export default function OfferPage() {
 
   return (
     <div className="min-h-screen bg-gray-50 px-4 py-10">
+              {/* Fixed Countdown Timer with CTA */}
       <div className="fixed top-0 left-0 right-0 z-50 bg-red-100 border-b border-red-300 text-red-700 text-center py-3 flex flex-col md:flex-row items-center justify-center gap-4">
         <span>
           {t('countdownMessage', { time: formatTime(timeLeft) })}
@@ -77,19 +78,22 @@ export default function OfferPage() {
       </div>
 
       <div className="max-w-4xl mx-auto pt-24">
+         {/* Exit Intent / Offer Box */}
         <div className="bg-white rounded-xl shadow p-6 mb-8 text-center">
           <div className="mb-6">
             <img alt="Present box" className="mx-auto" src="/images/naturalfix-before-after.png" width="500" height="500" />
           </div>
           <h2 className="text-2xl font-bold mb-2">
-            {t('discountHeadline', { discount: '55%' })}
+            {t('discountHeadline')}{' '}<span className="text-red-600 font-extrabold">{t('discountNumber')}</span>{' '}{t('discountText')} 
           </h2>
           <p className="text-gray-700 text-sm">{t('discountSubtext')}</p>
         </div>
 
+        {/* Before & After Comparison */}
         <div className="bg-white rounded-xl shadow p-6 mb-10">
           <h2 className="text-2xl font-bold text-center mb-6">
-            {t('visibleChangesTitle')}
+            {t('visibleChangesFirst')} {' '}
+            <span className="text-green-600 font-bold">{t('visibleChangesSecond')}</span>
           </h2>
           <div className="overflow-x-auto">
             <table className="min-w-full text-sm border border-gray-200 rounded-xl overflow-hidden">
