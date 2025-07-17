@@ -115,6 +115,7 @@ export default function OfferPage() {
           </div>
         </div>
 
+{/* Pricing Table with Original Prices */}
         <div id="pricing" className="mt-12">
           <h1 className="text-4xl font-extrabold text-center text-gray-800 mb-4">
             {t('pricingHeadline')}
@@ -162,7 +163,7 @@ export default function OfferPage() {
             ))}
           </div>
         </div>
-
+        {/* What’s Included Section */}
         <div className="mt-16">
           <h3 className="text-xl font-bold text-center mb-2">{t('whatsIncludedTitle')}</h3>
           <p className="text-center text-gray-700 mb-4">{t('whatsIncludedSubtext')}</p>
@@ -179,6 +180,7 @@ export default function OfferPage() {
           </ul>
         </div>
 
+         {/* Testimonials with Avatars */}
         <div className="mt-16">
           <h2 className="text-2xl font-bold text-center mb-6">{t('testimonialsTitle')}</h2>
           <div className="grid md:grid-cols-3 gap-6">
@@ -194,6 +196,7 @@ export default function OfferPage() {
           </div>
         </div>
 
+  {/* FAQ Section */}
         <div className="mt-16">
           <h2 className="text-2xl font-bold text-center mb-6">{t('faqTitle')}</h2>
           <div className="space-y-4">
@@ -206,6 +209,7 @@ export default function OfferPage() {
           </div>
         </div>
 
+  {/* Trust Badge Section */}
         <div className="mt-16 text-center">
           <img src="/images/ssl.jpeg" alt="Secure Checkout" className="mx-auto h-12 mb-2" />
           <p className="text-sm text-gray-500">{t('trustBadgeNote')}</p>
