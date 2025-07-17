@@ -60,8 +60,13 @@
   "beforeFinalPush": {
     "title": "Sie sind Ihrem Gleichgewicht und Ihrer Vitalität schon viel näher!",
     "bodyText1": "Ein hormonelles Gleichgewicht ist entscheidend für die allgemeine Gesundheit und das Wohlbefinden. Es beeinflusst verschiedene Körperfunktionen und beeinflusst den physischen, emotionalen und kognitiven Zustand.",
-    "bodyText2": "Hormone regulieren Stoffwechsel, Schlaf, Stimmung und vieles mehr. Geraten sie aus dem Gleichgewicht, können sie Müdigkeit, Gewichtsveränderungen, Stimmungsschwankungen und sogar langfristige Gesundheitsrisiken verursachen. Wir helfen Ihnen, dieses Gleichgewicht auf natürliche Weise wiederherzustellen."
-},
+    "symptomsTitle": "Symptome eines Hormonungleichgewichts",
+    "symptom_1": "Gewichtsabnahme oder Gewichtszunahme",
+    "symptom_2": "Nachtschweiß, Hitzewallungen oder übermäßiges Schwitzen",
+    "symptom_3": "Angstzustände oder starker Stress",
+    "symptom_4": "Depression",
+    "symptom_5": "Vermindertes sexuelles Verlangen"
+    },
   "topTitle": "Quiz - Traditionelle Gesundheit",
   "selectYourPreference": "Wähle deine Präferenz",
   "next": "Weiter",
