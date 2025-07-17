@@ -244,54 +244,71 @@ export default function QuizStep() {
   
   {/* INFO3 SECTION */}
   {/* INFO3 SECTION*/}
- if (currentStep.type === 'info3') {
-  return (
-<div className="min-h-screen flex flex-col items-center justify-between px-4 pt-16 pb-36 relative bg-white text-gray-800">
-  <div className="max-w-2xl w-full space-y-6 text-left">
-        <h2 className="text-3xl font-bold text-center text-green-700 mb-8">
-        {t(`${currentStep.contentKey}.title`)}
-        </h2>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
-          <div className="text-left space-y-4">
-            <p className="text-gray-800 text-base">
-            {t(`${currentStep.contentKey}.bodyText1`)}
-            </p>
-            <p className="text-gray-800 text-base">
-            {t(`${currentStep.contentKey}.bodyText2`)}
-            </p>
+  if (currentStep.type === 'info3') {
+    return (
+      <div className="min-h-screen flex flex-col items-center justify-between px-4 pt-16 pb-36 relative bg-white text-gray-800">
+        <div className="max-w-2xl w-full space-y-6 text-left">
+          <h2 className="text-3xl font-bold text-center text-green-700 mb-8">
+            {t(`${currentStep.contentKey}.title`)}
+          </h2>
+  
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+            <div className="text-left space-y-4">
+              <p className="text-gray-800 text-base">
+                {t(`${currentStep.contentKey}.bodyText1`)}
+              </p>
+  
+              <h3 className="text-xl font-semibold mt-6">
+                {t(`${currentStep.contentKey}.symptomsTitle`)}
+              </h3>
+              <ul className="space-y-2">
+                {[1, 2, 3, 4, 5].map((i) => (
+                  <li key={i} className="flex items-start gap-3">
+                    <svg width="18" height="18" viewBox="0 0 18 18" className="mt-1">
+                      <circle cx="9" cy="9" r="9" fill="#03CEA4" />
+                      <path
+                        fillRule="evenodd"
+                        clipRule="evenodd"
+                        d="M14.6913 5.69324L7.06342 13.3211L3.93555 10.1932L5.12879 9L7.06342 10.9346L13.498 4.5L14.6913 5.69324Z"
+                        fill="white"
+                      />
+                    </svg>
+                    <span>{t(`${currentStep.contentKey}.symptom_${i}`)}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+  
+            <div className="w-full">
+              <picture>
+                <source
+                  type="image/webp"
+                  srcSet="/images/naturalfix-before-after.png"
+                />
+                <img
+                  src="/images/naturalfix-before-after.png"
+                  alt="Before and After"
+                  className="w-full h-auto rounded-lg shadow-md"
+                />
+              </picture>
+            </div>
           </div>
-
-          <div className="w-full">
-            <picture>
-              <source
-                type="image/webp"
-                srcSet="/images/naturalfix-before-after.png"
-              />
-              <img
-                src="/images/naturalfix-before-after.png"
-                alt="Before and After"
-                className="w-full h-auto rounded-lg shadow-md"
-              />
-            </picture>
-          </div>
-        </div>
-
-        <div className="fixed bottom-0 left-0 w-full bg-white px-4 py-4 border-t shadow z-50">
-          <div className="max-w-md mx-auto">
-            <button
-              className="bg-green-500 w-full text-white py-3 rounded-md hover:bg-green-600"
-              onClick={handleNext}
-            >
-              {t('next')}
-            </button>
+  
+          <div className="fixed bottom-0 left-0 w-full bg-white px-4 py-4 border-t shadow z-50">
+            <div className="max-w-md mx-auto">
+              <button
+                className="bg-green-500 w-full text-white py-3 rounded-md hover:bg-green-600"
+                onClick={handleNext}
+              >
+                {t('next')}
+              </button>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  );
-}
-
+    );
+  }
+  
 
   const questionsArray = t('questions', { returnObjects: true }) || [];
   const questionIndex = steps.slice(0, stepIndex + 1).filter(s => s.type === 'question').length - 1;

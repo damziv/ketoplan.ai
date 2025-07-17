@@ -58,9 +58,10 @@
     "subtitle": "Wir haben bereits über 8000 Menschen geholfen, sich besser zu fühlen und besser zu leben! Lass uns auch deinen Traumkörper erreichen!"
   },
   "beforeFinalPush": {
-    "title": "Bleiben Sie dran!",
-    "body": "Sie sind fast fertig. Nur noch wenige Sekunden und Sie erhalten Ihr personalisiertes Ergebnis."
-  },
+    "title": "Sie sind Ihrem Gleichgewicht und Ihrer Vitalität schon viel näher!",
+    "bodyText1": "Ein hormonelles Gleichgewicht ist entscheidend für die allgemeine Gesundheit und das Wohlbefinden. Es beeinflusst verschiedene Körperfunktionen und beeinflusst den physischen, emotionalen und kognitiven Zustand.",
+    "bodyText2": "Hormone regulieren Stoffwechsel, Schlaf, Stimmung und vieles mehr. Geraten sie aus dem Gleichgewicht, können sie Müdigkeit, Gewichtsveränderungen, Stimmungsschwankungen und sogar langfristige Gesundheitsrisiken verursachen. Wir helfen Ihnen, dieses Gleichgewicht auf natürliche Weise wiederherzustellen."
+},
   "topTitle": "Quiz - Traditionelle Gesundheit",
   "selectYourPreference": "Wähle deine Präferenz",
   "next": "Weiter",

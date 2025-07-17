@@ -63,8 +63,14 @@
       "subtitle": "We have already helped more then 8000 people to feel and live better! Let’s achieve your dream body as well!"
     },
     "beforeFinalPush": {
-      "title": "Sie sind Ihrem Gleichgewicht und Ihrer Vitalität schon viel näher!",
-      "bodyText1": "Ein hormonelles Gleichgewicht ist entscheidend für die allgemeine Gesundheit und das Wohlbefinden. Es beeinflusst verschiedene Körperfunktionen und beeinflusst den physischen, emotionalen und kognitiven Zustand.",
-      "bodyText2": "Hormone regulieren Stoffwechsel, Schlaf, Stimmung und vieles mehr. Geraten sie aus dem Gleichgewicht, können sie Müdigkeit, Gewichtsveränderungen, Stimmungsschwankungen und sogar langfristige Gesundheitsrisiken verursachen. Wir helfen Ihnen, dieses Gleichgewicht auf natürliche Weise wiederherzustellen."
-  }
+      "title": "You're already much closer to your balance and vitality!",
+      "bodyText1": "Hormonal balance is crucial for overall health and well-being. It influences various bodily functions and affects physical, emotional, and cognitive state.",
+      "bodyText2": "Hormones regulate metabolism, sleep, mood, and much more. When they become unbalanced, they can cause fatigue, weight changes, mood swings, and even long-term health risks. We help you restore this balance naturally.",
+      "symptomsTitle": "Symptoms of Hormone Imbalances:",
+      "symptom_1": "Weight loss or weight gain",
+      "symptom_2": "Night sweats, hot flashes, or excessive sweating",
+      "symptom_3": "Anxiety or intense stress",
+      "symptom_4": "Depression",
+      "symptom_5": "•Reduced sex drive"
+      }
 }
