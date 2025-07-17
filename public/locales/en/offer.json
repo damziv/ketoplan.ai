@@ -1,0 +1,88 @@
+{
+    "countdownMessage": "⏰ Hurry! Offer expires in {{time}}",
+    "getMyPlan": "Get My Plan",
+    "discountHeadline": "Get your {{discount}} discount!",
+    "discountSubtext": "It's a one-time offer! Don't miss it!",
+    "visibleChangesTitle": "Visible changes after the first week",
+    "comparisonBefore": "Before",
+    "comparisonAfter": "After",
+    "comparisonItems": [
+      {
+        "before": "Weight gain",
+        "after": "Fat burning & healthy weight loss"
+      },
+      {
+        "before": "Night sweats, or excessive sweating",
+        "after": "Balanced hormones and better sleep"
+      },
+      {
+        "before": "Anxiety or intense stress",
+        "after": "Improved mood and calmer mind"
+      },
+      {
+        "before": "Depression",
+        "after": "More energy and confidence"
+      },
+      {
+        "before": "Reduced sex drive",
+        "after": "Renewed libido and vitality"
+      }
+    ],
+    "pricingHeadline": "Claim the benefits today!",
+    "pricingSubtext": "Unlock your personalized program by selecting one of our flexible plan options below.",
+    "planTitles": {
+      "oneTime": "1-Time Plan",
+      "sixMonth": "6-Month Plan",
+      "twelveMonth": "⭐ 12-Month Plan"
+    },
+    "planFeatures": {
+      "personalPlan": "✅ Personal Plan",
+      "ebook": "✅ eBook",
+      "healthGuide": "✅ Health Guide"
+    },
+    "selectPlan": "Select Plan",
+    "whatsIncludedTitle": "What’s included?",
+    "whatsIncludedSubtext": "The perfect combination of tips and tricks for the fastest and lasting results",
+    "whatsIncludedItems": [
+      "Specifically health plan based on your lifestyle",
+      "Recipes and supplements to balance your body",
+      "Food, drinks and supplements guide",
+      "An abundance of insights and tricks",
+      "Support during your journey to ensure optimal results"
+    ],
+    "testimonialsTitle": "What Our Users Say",
+    "testimonials": [
+      {
+        "name": "Martina",
+        "age": "52",
+        "text": "“This plan helped me lose 10kg in 3 months! Simple and effective.”"
+      },
+      {
+        "name": "Anja",
+        "age": "45",
+        "text": "“I feel more energetic, my cravings are gone, and I love the recipes!”"
+      },
+      {
+        "name": "Sandra",
+        "age": "61",
+        "text": "“The 12-month plan was the best investment in my health I've made.”"
+      }
+    ],
+    "faqTitle": "Frequently Asked Questions",
+    "faqItems": [
+      {
+        "question": "Can I cancel anytime?",
+        "answer": "Yes, all plans come with a cancel-anytime guarantee. No hidden fees."
+      },
+      {
+        "question": "Do I need to follow diet strictly?",
+        "answer": "No! We adapt your plan to your preferences and flexibility."
+      },
+      {
+        "question": "What do I get after payment?",
+        "answer": "You'll receive a personalized 5-day plan, tips, and a bonus recipe book (depending on your plan)."
+      }
+    ],
+    "trustBadgeNote": "SSL Secured | 256-bit encryption | Safe Payment"
+  }
+  
