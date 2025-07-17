@@ -6,7 +6,7 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 export default function OfferPage() {
   const router = useRouter()
-  const { t } = useTranslation('email')
+  const { t } = useTranslation('offer')
 
   const [timeLeft, setTimeLeft] = useState(60 * 60) // 1 hour in seconds
 
