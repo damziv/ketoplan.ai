@@ -41,7 +41,7 @@
     "planFeatures": {
       "personalPlan": "✅ Personal Plan",
       "ebook": "✅ eBook",
-      "healthGuide": "✅ Health Guide"
+      "healthGuide": "✅ Weekly Health Guide"
     },
     "selectPlan": "Select Plan",
     "whatsIncludedTitle": "What’s included?",
@@ -56,12 +56,12 @@
     "testimonialsTitle": "What Our Users Say",
     "testimonials": [
       {
-        "name": "Martina",
+        "name": "Maria",
         "age": "52",
         "text": "“This plan helped me lose 10kg in 3 months! Simple and effective.”"
       },
       {
-        "name": "Anja",
+        "name": "Anna",
         "age": "45",
         "text": "“I feel more energetic, my cravings are gone, and I love the recipes!”"
       },
