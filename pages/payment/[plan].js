@@ -9,7 +9,10 @@ import { Elements, PaymentElement, useStripe, useElements } from '@stripe/react-
 import { Carousel } from 'react-responsive-carousel';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { useTranslation } from 'next-i18next';
+import fs from 'fs';
+import path from 'path';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+
 
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL,
@@ -237,6 +240,14 @@ function CheckoutForm() {
 }
 
 export async function getServerSideProps({ locale }) {
+  // 👇 Print which locale is being requested
+  console.log('🧭 Requested locale:', locale);
+
+  // 👇 Check if the translation file exists for the current locale
+  const filePath = path.resolve(`./public/locales/${locale}/payment.json`);
+  const fileExists = fs.existsSync(filePath);
+  console.log(`📄 Does ${filePath} exist?`, fileExists);
+
   return {
     props: {
       ...(await serverSideTranslations(locale, ['payment'])),
