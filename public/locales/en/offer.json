@@ -39,7 +39,8 @@
       "twelveMonth": "⭐ 12-Month Plan"
     },
     "planFeatures": {
-      "personalPlan": "✅ Personal Plan",
+      "personalPlan1time": "✅ Personal Plan",
+      "personalPlan": "✅ Personal Plan each month",
       "ebook": "✅ eBook",
       "healthGuide": "✅ Weekly Health Guide"
     },

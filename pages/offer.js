@@ -29,7 +29,7 @@ export default function OfferPage() {
       price: '€8.99',
       originalPrice: '€17.99',
       perDay: '€8.99',
-      features: [t('planFeatures.personalPlan')],
+      features: [t('planFeatures.personalPlan1time')],
       route: '/payment/one-time',
       isBest: false,
     },
