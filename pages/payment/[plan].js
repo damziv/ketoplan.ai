@@ -63,33 +63,7 @@ export default function PaymentPage() {
     }
   }, [plan]);
 
-  // ⏳ 15-minute Timer
-  useEffect(() => {
-    const savedExpiry = localStorage.getItem('countdown_expiry');
-    let expiryTime;
-
-    if (savedExpiry && parseInt(savedExpiry) > Date.now()) {
-      expiryTime = parseInt(savedExpiry);
-    } else {
-      expiryTime = Date.now() + 15 * 60 * 1000;
-      localStorage.setItem('countdown_expiry', expiryTime);
-    }
-
-    const interval = setInterval(() => {
-      const now = Date.now();
-      const remaining = Math.max(0, expiryTime - now);
-      setTimeLeft(remaining);
-    }, 1000);
-
-    return () => clearInterval(interval);
-  }, []);
-
-  const reviews = t('reviews', { returnObjects: true });
-  const why = t('why', { returnObjects: true });
-
-  const scrollToPayment = () => {
-    document.getElementById('payment').scrollIntoView({ behavior: 'smooth' });
-  };
+  
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100 p-5">
@@ -121,75 +95,6 @@ export default function PaymentPage() {
         </button> 
       </div> */ }
 
-       {/* Reviews Carousel */}
-       <div className="bg-white p-6 rounded-lg shadow-md w-full max-w-md text-left mt-24 pb-8">
-        <h3 className="text-2xl font-bold text-gray-800 mb-4">🍽️ {t('recipeHead')}</h3>
-        <Carousel showThumbs={false} infiniteLoop autoPlay interval={4000} showStatus={false}>
-        <div className="text-left">
-  <div className="flex items-center gap-2 mb-2">
-    <img src="/images/avatars/maria.jpg" alt="anna" className="w-5 h-5 rounded-full object-cover" style={{ width: '40px', height: '40px' }} />
-    <h4 className="text-sm font-semibold text-gray-800">{t('recipeTitle1')}</h4>
-  </div>
-  <ul className="list-disc list-inside text-gray-700 text-sm mb-2 space-y-1">
-    <li>{t('recipeIngredients1')}</li>
-  </ul>
-  <p className="text-sm text-gray-600">{t('recipeInstructions1')}</p>
-</div>
-
-        <div className="text-left">
-          <div className="flex items-center gap-2 mb-2">
-            <img src="/images/avatars/nermin.jpg" alt="Maria" className="w-5 h-5 rounded-full object-cover" style={{ width: '40px', height: '40px' }} />
-            <h4 className="text-sm font-semibold text-gray-800">{t('recipeTitle2')}</h4>
-          </div>
-            <ul className="list-disc list-inside text-gray-700 text-sm mb-2 space-y-1">
-               <li>{t('recipeIngredients2')}</li>
-            </ul>
-            <p className="text-sm text-gray-600">{t('recipeInstructions2')}</p>
-        </div>
-
-            <div className="text-left">
-      <div className="flex items-center gap-2 mb-2">
-        <img src="/images/avatars/maria.jpg" alt="Maria" className="w-5 h-5 rounded-full object-cover" style={{ width: '40px', height: '40px' }} />
-        <h4 className="text-sm font-semibold text-gray-800">{t('recipeTitle3')}</h4>
-      </div>
-      <ul className="list-disc list-inside text-gray-700 text-sm mb-2 space-y-1">
-        <li>{t('recipeIngredients3')}</li>
-      </ul>
-      <p className="text-sm text-gray-600">{t('recipeInstructions3')}</p>
-    </div>
-        </Carousel>
-      </div>
-
-      {/* Limited-Time Offer Timer */}
-      <div className="bg-yellow-100 border border-yellow-300 text-yellow-800 p-4 rounded-lg shadow-md text-center mt-8 max-w-md w-full">
-        <h2 className="text-xl font-semibold mb-2">🎁 {t('discountTitle')}</h2>
-        <p className="text-sm mb-2">{t('discountSubtitle')}</p>
-        <div className="text-2xl font-bold mb-1 text-green-700">
-          €5.99 <span className="text-sm font-medium text-gray-500 ml-2">{t('discountWeek')}</span>
-          <span className="text-sm font-medium text-gray-500 line-through ml-2">{t('discountMonth')}</span>
-        </div>
-        <p className="text-sm text-gray-700">{t('discountOffer')}</p>
-        <div className="font-bold text-xl mt-1">
-          {Math.floor((timeLeft / (1000 * 60)) % 60)}m :{' '}
-          {Math.floor((timeLeft / 1000) % 60)}s
-        </div>
-        <p className="text-sm text-green-700 mt-2">{t('discountBonus')}</p>
-        <button
-          className="w-full mt-4 py-3 rounded-xl bg-yellow-500 text-white font-semibold hover:bg-yellow-600 transition"
-          onClick={scrollToPayment}
-          aria-label="Claim your limited-time discount now"
-        >
-          {t('getDiscountButton')}
-        </button>
-      </div>
-
-      {/* FAQ: Why €1.49/week? */}
-      <div className="mt-4 w-full max-w-md text-sm text-gray-700 bg-white border border-gray-200 p-4 rounded-md shadow-sm">
-        <h4 className="font-semibold text-gray-900 mb-2">{t('faqTitle')}</h4>
-        <p className="mb-1">{t('faqText1')}</p>
-        <p className="mb-1">{t('faqText2')}</p>
-        <p>{t('faqText3')}</p>
-      </div>
 
       {/* Payment Element */}
       <div id="payment" className="bg-white p-6 rounded-lg shadow-md w-full max-w-md text-center mt-10">
@@ -204,22 +109,6 @@ export default function PaymentPage() {
             <CheckoutForm />
           </Elements>
         )}
-      </div>
-
-      {/* Why Us */}
-      <div className="mt-8 w-full max-w-md mx-auto bg-white p-6 rounded-lg shadow-lg">
-        <h3 className="text-2xl font-bold text-center mb-6 text-gray-800">{t('whyTitle')}</h3>
-        <ul className="space-y-4">
-          {why.map((text, index) => (
-            <li
-              key={index}
-              className="flex items-start space-x-3 p-3 bg-green-50 rounded-md hover:bg-green-100 transition-colors"
-            >
-              <span className="text-green-600 text-xl font-bold">✓</span>
-              <span className="text-gray-700 text-base">{text}</span>
-            </li>
-          ))}
-        </ul>
       </div>
 
     </div>
