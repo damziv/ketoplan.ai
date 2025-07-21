@@ -7,7 +7,7 @@ function MyApp({ Component, pageProps }) {
   return (
     <>
       <Head>
-        <title>Smart Food Secrets</title>
+        <title>NaturalFix</title>
         <link rel="icon" href="/favicon.jpg" />
         <meta name="theme-color" content="#ffffff" />
         <meta name="description" content="Your personalized heatlh meal plan App" />
