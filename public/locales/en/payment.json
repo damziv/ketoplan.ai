@@ -2,44 +2,8 @@
 {
   "topTitle": "Secret - Traditional health",
   "title": "Join thousands embracing natural health!",
-  "whatTitle": "What You'll Get",
-  "what": [
-    "10-page PDF with 7 natural recipes tailored to your quiz answers",
-    "5 weekly recipes to boost energy and digestion",
-    "3 monthly tips for hormonal balance and wellness",
-    "Personalized supplement recommendations (e.g., magnesium, omega-3)"
-  ],
   "whatNote": "Tailored for all diets, including vegetarian or vegan preferences.",
   "getNowButton": "Start Your Plan Now",
-  "reviewsTitle": "What Our Customers Are Saying",
-  "reviews": [
-    {
-      "text": "My energy is up, and bloating is gone!",
-      "author": "Anna, 42, Germany ⭐⭐⭐⭐⭐"
-    },
-    {
-      "text": "Love the natural recipes and tips!",
-      "author": "Nermin, 48, Austria ⭐⭐⭐⭐⭐"
-    },
-    {
-      "text": "So easy to follow, I feel great!",
-      "author": "Ioana, 29, Romania ⭐⭐⭐⭐⭐"
-    }
-  ],
-  "whyTitle": "Why Choose Smart Food Secrets?",
-  "why": [
-    "Science-backed by certified nutritionists",
-    "No hidden charges – cancel anytime!",
-    "Personalized natural recipes and supplements",
-    "Effortless healing with nature’s best ingredients"
-  ],
-  "discountTitle": "Special Offer – Save 50%!",
-  "discountSubtitle": "Your personalized health plan for only:",
-  "discountOffer": "Offer expires in:",
-  "discountWeek": "per Week",
-  "discountMonth": "€11.99/month",
-  "discountBonus": "Bonus: Free 7-day natural grocery list!",
-  "getDiscountButton": "Claim Your Discount",
   "paymentTitle": "Select a secure payment method",
   "paymentSubtitle": "Heal your body with natural foods and supplements.",
   "price": "Start Your Journey Now",
@@ -47,20 +11,6 @@
   "payNow": "Pay Now",
   "processing": "Processing...",
   "paymentNote": "30-Day Money-Back Guarantee • Cancel Anytime • GDPR-compliant",
-  "faqTitle": "Why only €5,99/week?",
-  "faqText1": "It’s a limited-time digital offer to make natural health accessible.",
-  "faqText2": "We keep costs low with no shipping or storage fees.",
-  "faqText3": "We hope you’ll love your plan and share it with others! 💚",
-  "recipeHead": "Our happy customers",
-  "recipeTitle1": "Maria, 52, Poland",
-  "recipeIngredients1": "- My energy is up, and bloating is gone!",
-  "recipeInstructions1": "Helping me with my day-to-day meal planning. It is user-friendly and easy to read. Nothing extra fancy and direct.",
-  "recipeTitle2": "Nermin, 48, Austria",
-  "recipeIngredients2": "- So easy to follow, I feel great!",
-  "recipeInstructions2": "The program is well-designed in my opinion and worked well for me. I have lost 3 kg in a week. Learning new recipes too",
-  "recipeTitle3": "Anna, 61, Germany",
-  "recipeIngredients3": "Love the natural recipes and supplement tips!",
-  "recipeInstructions3": "I'll admit, I was skeptical at first, but this is by far the most effective and best-priced health instructions I've ever found. Thank you.",
   "cardOption":"— or pay by card —"
 }
 
