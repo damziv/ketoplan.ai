@@ -9,13 +9,24 @@ const supabase = createClient(
 export default async function handler(req, res) {
   if (req.method !== 'POST') return res.status(405).json({ error: 'Only POST allowed' });
 
-  const { email, sessionId, subscriptionID } = req.body;
-  if (!email || !sessionId || !subscriptionID) {
+  const { email, sessionId, subscriptionID, plan } = req.body;
+  if (!email || !sessionId || !subscriptionID || !plan) {
     return res.status(400).json({ error: 'Missing fields' });
   }
 
   try {
-    const activeUntil = new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString();
+    // ⏳ Set duration based on plan
+    let durationDays = 30;
+    switch (plan) {
+      case '6-month':
+        durationDays = 180;
+        break;
+      case '12-month':
+        durationDays = 365;
+        break;
+    }
+
+    const activeUntil = new Date(Date.now() + durationDays * 24 * 60 * 60 * 1000).toISOString();
 
     const { error } = await supabase
       .from('sessions')
@@ -24,6 +35,7 @@ export default async function handler(req, res) {
         is_subscriber: true,
         subscription_id: subscriptionID,
         subscription_active_until: activeUntil,
+        selected_plan: plan,
       })
       .eq('id', sessionId);
 

@@ -1,4 +1,4 @@
-// File: /pages/api/create-subscription.js
+// /pages/api/create-subscription.js
 
 import { createClient } from '@supabase/supabase-js';
 import Stripe from 'stripe';
@@ -14,32 +14,50 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: 'Only POST requests allowed' });
   }
 
-  const { email, sessionId } = req.body;
+  const { email, sessionId, plan } = req.body;
 
-  if (!email || !sessionId) {
-    return res.status(400).json({ error: 'Missing email or sessionId' });
+  if (!email || !sessionId || !plan) {
+    return res.status(400).json({ error: 'Missing email, sessionId or plan' });
+  }
+
+  let priceId;
+  switch (plan) {
+    case 'one-time':
+      priceId = process.env.STRIPE_PRICE_ONE_TIME;
+      break;
+    case '6-month':
+      priceId = process.env.STRIPE_PRICE_6_MONTH;
+      break;
+    case '12-month':
+      priceId = process.env.STRIPE_PRICE_12_MONTH;
+      break;
+    default:
+      return res.status(400).json({ error: 'Invalid plan' });
   }
 
   try {
-    // 🔁 Reuse or create Stripe customer
+        // 🔁 Reuse or create Stripe customer
     const existingCustomers = await stripe.customers.list({ email, limit: 1 });
     const customer = existingCustomers.data.length > 0
       ? existingCustomers.data[0]
       : await stripe.customers.create({ email });
 
-    // 🧾 Create subscription
+        // 🧾 Create subscription
     const subscription = await stripe.subscriptions.create({
       customer: customer.id,
-      items: [{ price: 'price_1RGaewDUMmfKdrwUI7KLLjGs' }], // replace with your actual price_id
+      items: [{ price: priceId }],
       payment_behavior: 'default_incomplete',
       expand: ['latest_invoice.payment_intent'],
-      metadata: { email, sessionId },
+      metadata: { email, sessionId, plan },
     });
 
-    // 💾 Save to Supabase
+  // 💾 Save to Supabase
     await supabase
       .from('sessions')
-      .update({ stripe_session_id: subscription.id })
+      .update({
+        stripe_session_id: subscription.id,
+        selected_plan: plan,
+      })
       .eq('id', sessionId);
 
     res.status(200).json({

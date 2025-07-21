@@ -21,6 +21,7 @@ const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY);
 export default function PaymentPage() {
   const router = useRouter();
   const { t } = useTranslation('payment');
+  const { plan } = router.query;
   const [clientSecret, setClientSecret] = useState(null);
   const [loading, setLoading] = useState(true);
   const [timeLeft, setTimeLeft] = useState(0);
@@ -39,7 +40,7 @@ export default function PaymentPage() {
         const response = await fetch('/api/create-subscription', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ email, sessionId }),
+          body: JSON.stringify({ email, sessionId, plan }),
         });
 
         if (!response.ok) throw new Error('Failed to create subscription');
@@ -55,6 +56,12 @@ export default function PaymentPage() {
 
     fetchSubscriptionIntent();
   }, [router]);
+
+  useEffect(() => {
+  if (!['one-time', '6-month', '12-month'].includes(plan)) {
+    router.push('/offer'); // Redirect to safe page
+  }
+}, [plan]);
 
   // ⏳ 15-minute Timer
   useEffect(() => {
@@ -280,7 +287,7 @@ function CheckoutForm() {
           const res = await fetch('/api/paypal-subscription-success', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ email, sessionId, subscriptionID }),
+            body: JSON.stringify({ email, sessionId, subscriptionID, plan }),
           });
   
           if (res.ok) {

@@ -86,7 +86,7 @@ export default function PlanPreview() {
   {/* Price and CTA */}
   <div className="text-center pt-4 mt-8">
     <p className="text-xl font-semibold mb-3">{t('goalHeadline')}</p>
-    <Link href="/payment">
+    <Link href="/offer">
       <span className="inline-block bg-green-600 text-white px-6 py-3 rounded-full font-medium hover:bg-green-700 transition">
         {t('unlockButton')}
       </span>

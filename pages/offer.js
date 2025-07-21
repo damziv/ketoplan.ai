@@ -26,9 +26,9 @@ export default function OfferPage() {
   const pricingOptions = [
     {
       title: t('planTitles.oneTime'),
-      price: '€5.99',
+      price: '€8.99',
       originalPrice: '€17.99',
-      perDay: '€5.99',
+      perDay: '€8.99',
       features: [t('planFeatures.personalPlan')],
       route: '/payment/one-time',
       isBest: false,
