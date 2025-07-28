@@ -1,0 +1,47 @@
+{
+  "hero": {
+    "titleLine1": "Z natury",
+    "titleLine2": "Do zdrowego życia",
+    "description": "Spersonalizujemy Twoją strategię zdrowotną",
+    "description2": "Wybierz swoją płeć:",
+    "cta": "Rozpocznij quiz wellness",
+    "disclaimer": "Rozpocznij quiz z naszym przyjaznym regulaminem!",
+    "trusted": "Nasze plany są opracowywane w oparciu o wiedzę zarówno z tradycyjnych, jak i potwierdzonych naukowo strategii wellness.",
+    "quick": "✓ Książka PDF stworzona na podstawie Twoich odpowiedzi w quizie",
+    "personalized": "✓ Tygodniowy poradnik z naturalnymi składnikami",
+    "noSignup": "✓ Miesięczne porady dotyczące energii i równowagi ciała",
+    "onlyPrice": "✓ Tylko 5,99 €/miesiąc, oferta specjalna",
+    "moneyBack": "✓ 30-dniowa gwarancja zwrotu pieniędzy, anuluj w dowolnym momencie",
+    "rating": "Na podstawie Ponad 1200 recenzji"
+  },
+  "gender": {
+    "female": "Kobieta",
+    "male": "Mężczyzna"
+  },
+  "reviews": {
+    "title": "Co mówią nasi użytkownicy",
+    "list": [
+      "Po 2 tygodniach czuję się bardziej energiczna i mniej wzdęta. Te naturalne porady naprawdę działają! — Maria, 52 lata, Austria ⭐⭐⭐⭐⭐",
+      "Lepiej śpię i czuję się lżej każdego ranka. Ten plan zmienił moją codzienną rutynę. — Elena, 45 lat, Niemcy",
+      "Prosta rada, całkowicie naturalna i realne rezultaty. Mój poziom energii wrócił! — Ivana, 57 lat, Polska ⭐⭐⭐⭐⭐"
+    ]
+  },
+  "carousel": {
+    "title": "🌿 Naturalne transformacje"
+  },
+  "whyUs": {
+    "title": "Dlaczego warto wybrać naszą aplikację?",
+    "points": [
+      "Wspomaga energię, trawienie i równowagę hormonalną ",
+      "Zaprojektowane dla kobiet i mężczyzn",
+      "Tradycyjne wskazówki dotyczące żywności i suplementów"
+    ]
+  },
+  "footer": {
+    "privacy": "Polityka prywatności",
+    "terms": "Warunki",
+    "cookies": "Polityka plików cookie",
+    "refunds": "Polityka zwrotów",
+    "rights": "Wszelkie prawa zastrzeżone."
+  }
+}

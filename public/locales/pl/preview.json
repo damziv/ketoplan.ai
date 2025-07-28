@@ -1,0 +1,32 @@
+
+{
+  "topTitle": "Traditional secrets",
+  "title": "Studies show that nutrition is 80% of your health",
+  "tipTitle1": "What do you get",
+  "tipText1": "✔️ Individual heatlh plan, created especially for you, ✔️ Free bonus: Health & lifestyle guide, ✔️ Download immediately as a PDF – no waiting time",
+  "tipTitle2": "Magnesium for Relaxation",
+  "tipText2": "Magnesium promotes relaxation and better sleep, ideal for stress management. Find it in spinach, almonds, or supplements (Magnesium Glycinate)",
+  "tipTitle3": "Vitamin B6 for Mood",
+  "tipText3": "Vitamin B6 supports mood balance and energy production, perfect for stress relief. Find it in turkey, pork, or supplements. Enhances serotonin production",
+  "note": "Proceed to get guide tailored to your quiz answers!",
+  "continueButton": "Proceed ->",
+  "recipeHead": "Healthy tips from experts",
+  "recipeTitle1": "Dark leafy greens",
+  "recipeIngredients1": "Dark, leafy greens such as kale, spinach, and collard greens are nutrient dense and contain filling proteins, as well as nutrients and antioxidants.",
+  "recipeInstructions1": "Greens may be difficult to digest raw for some people, so breaking them down by cooking them with a bit of vinegar or lemon juice may help.",
+  "recipeTitle2": "Gotu-Kola Tea",
+  "recipeIngredients2": "Celebrated for its range of health benefits, from enhancing mental clarity to supporting skin health.",
+  "recipeInstructions2": "This small, green plant has fan-shaped leaves and is packed with beneficial nutrients such as vitamins A, B, C, and D, ",
+  "recipeTitle3": "Meat - Beef liver",
+  "recipeIngredients3": "Low carb, low sugar, high protein. Rich with B12, niacin, Vitamin B6 and folate",
+  "recipeInstructions3": "The nutrients in beef liver, including certain vitamins and minerals, aid in detoxification and metabolism, supporting overall health.",
+  "progress": {
+    "analyzing": "Analyzing your profile",
+    "generating": "Generating your plan"
+  },
+  "yChart1": "Now",
+  "yChart2": "Target",
+  "xChart1": "Now",
+  "xChart2": "1 Month"
+  
+}

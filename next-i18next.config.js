@@ -14,6 +14,10 @@ module.exports = {
         {
           domain: 'de.keto-meal.com',
           defaultLocale: 'de',
+        },        
+        {
+          domain: 'pl.keto-meal.com',
+          defaultLocale: 'pl',
         },
       ],
       localeDetection: false // ✅ Either `true` or `false`, no quotes!
