@@ -1,75 +1,74 @@
 {
-    "questions": [
-      {
-        "question": "What is your main health goal?",
-        "options": ["Boost energy and focus", "Strengthen immunity and digestion", "Lose excess weight naturally", "Reduce stress-related fatigue"]
-      },
-      {
-        "question": "How many meals do you eat per day?",
-        "options": ["1 meal per day", "2 meals per day", "3 meal per day", "More then 3 meals per day"]
-      },
-      {
-
-        "question": "How would you describe your current lifestyle?",
-        "options": ["Active", "Balanced", "Stressed", "Lazy"]
-      },
-      {
-        "question": "Choose the meat you eat often",
-        "options": ["Chicken", "Pork", "Beef", "Bacon", "Salmon", "Tuna", "Lamb", "None"]
-      },
-      {
-        "question": "Choose the vegetables you eat often",
-        "options": ["Broccoli", "Spinach", "Lettuce", "Cauliflower", "Cabbage", "Zucchini", "Asparagus", "Eggplant", "None"]
-      },
-      {
-        "question": "When was the last time you were satisfied with your body weight?",
-        "options": ["Less than a year ago", "1 - 3 years ago", "More than 3 years ago", "Never"]
-      },
-      {
-        "question": "How would you describe your current energy levels?",
-        "options": ["I feel tired most of the time", "I get energy crashes in the afternoon", "My energy is okay, but could be better"]
-      },
-      {
-        "question": "Do you experience stress or mood changes?",
-        "options": ["High stress or anxiety", "Mood swings or irritability", "Low mood or fatigue", "None, I feel balanced"]
-      },
-      {
-        "question": "Do you have any allergies?",
-        "options": ["Nuts", "Dairy", "Soy", "None"]
-      },
-      {
-        "question": "How do you usually feel after eating?",
-        "options": ["Bloated after carbs", "Sleepy or low energy", "Satisfied and clear-headed", "I don’t pay much attention"]
-      }
-    ],
-    "topTitle": "Quiz - Traditional health",
-    "selectYourPreference": "Select your preference",
-    "next": "Next",
-    "back": "Back",
-    "trustBlock1": {
-      "title": "What is NaturalFix?",
-      "body1": "NaturalFix is your personal guide to restoring balance, energy, and vitality through proven natural strategies. We focus on supporting women and men with easy-to-follow plans built around healing foods, natural supplements, and holistic routines.",
-      "body2": "Our personalized wellness plans are based on your lifestyle, mood, and health goals — combining nature-backed nutrition, daily habits, and hormone-friendly tips to help you feel your best without extreme diets or medications.",
-      "benefitsTitle": "What You’ll Gain with NaturalFix:",
-      "benefit_1": "More consistent energy and focus throughout the day",
-      "benefit_2": "Improved digestion and reduced bloating using food-based solutions",
-      "benefit_3": "Better mood balance and reduced stress-related fatigue",
-      "benefit_4": "Gentle weight loss through supportive lifestyle changes",
-      "benefit_5": "Natural support for hormonal health",
-      "linkText": "Click here to explore the research behind NaturalFix methods"
+  "questions": [
+    {
+      "question": "Jaki jest Twój główny cel zdrowotny?",
+      "options": ["Zwiększyć energię i koncentrację", "Wzmocnić odporność i trawienie", "Schudnąć w naturalny sposób", "Zredukować zmęczenie spowodowane stresem"]
     },
-    "preEmailWarmup": {
-      "title": "You are going to do great!",
-      "subtitle": "Our book have already helped more then 8000 people to feel and live better! Let’s achieve your dream body as well!"
+    {
+      "question": "Ile posiłków jesz dziennie?",
+      "options": ["1 posiłek dziennie", "2 posiłki dziennie", "3 posiłki dziennie", "Więcej niż 3 posiłki dziennie"]
     },
-    "beforeFinalPush": {
-      "title": "You're already much closer to your balance and vitality!",
-      "bodyText1": "Hormonal balance is crucial for overall health and well-being. It influences various bodily functions and affects physical, emotional, and cognitive state.",
-      "symptomsTitle": "Symptoms of Hormone Imbalances:",
-      "symptom_1": "Weight gain",
-      "symptom_2": "Night sweats, hot flashes, or excessive sweating",
-      "symptom_3": "Anxiety or intense stress",
-      "symptom_4": "Depression",
-      "symptom_5": "Reduced sex drive"
-      }
+    {
+      "question": "Jak opisałbyś swój obecny styl życia?",
+      "options": ["Aktywny", "Zrównoważony", "Zestresowany", "Leniwy"]
+    },
+    {
+      "question": "Wybierz mięso, które jesz najczęściej",
+      "options": ["Kurczak", "Wieprzowina", "Wołowina", "Boczek", "Łosoś", "Tuńczyk", "Jagnięcina", "Żadne"]
+    },
+    {
+      "question": "Wybierz warzywa, które jesz najczęściej",
+      "options": ["Brokuły", "Szpinak", "Sałata", "Kalafior", "Kapusta", "Cukinia", "Szparagi", "Bakłażan", "Żadne"]
+    },
+    {
+      "question": "Kiedy ostatnio byłeś zadowolony ze swojej wagi?",
+      "options": ["Mniej niż rok temu", "1 - 3 lata temu", "Ponad 3 lata temu", "Nigdy"]
+    },
+    {
+      "question": "Jak opisałbyś swój obecny poziom energii?",
+      "options": ["Czuję się zmęczony przez większość czasu", "Mam spadki energii po południu", "Mam w miarę energię, ale mogłoby być lepiej"]
+    },
+    {
+      "question": "Czy doświadczasz stresu lub zmian nastroju?",
+      "options": ["Wysoki stres lub lęk", "Huśtawki nastroju lub drażliwość", "Obniżony nastrój lub zmęczenie", "Nie, czuję się zrównoważony"]
+    },
+    {
+      "question": "Czy masz jakieś alergie?",
+      "options": ["Orzechy", "Nabiał", "Soja", "Nie"]
+    },
+    {
+      "question": "Jak zazwyczaj czujesz się po jedzeniu?",
+      "options": ["Wzdęcia po węglowodanach", "Senność lub brak energii", "Najedzony i skupiony", "Nie zwracam na to uwagi"]
+    }
+  ],
+  "topTitle": "Quiz – Tradycyjne zdrowie",
+  "selectYourPreference": "Wybierz swoją preferencję",
+  "next": "Dalej",
+  "back": "Wstecz",
+  "trustBlock1": {
+    "title": "Czym jest NaturalFix?",
+    "body1": "NaturalFix to Twój osobisty przewodnik po odzyskiwaniu równowagi, energii i witalności poprzez sprawdzone naturalne metody. Skupiamy się na wspieraniu kobiet i mężczyzn poprzez łatwe do wdrożenia plany oparte na leczniczej żywności, naturalnych suplementach i holistycznych nawykach.",
+    "body2": "Nasze spersonalizowane plany wellness opierają się na Twoim stylu życia, nastroju i celach zdrowotnych — łącząc odżywianie oparte na naturze, codzienne nawyki i wskazówki przyjazne hormonowi, aby pomóc Ci poczuć się lepiej bez ekstremalnych diet czy leków.",
+    "benefitsTitle": "Co zyskasz dzięki NaturalFix:",
+    "benefit_1": "Stabilniejsza energia i koncentracja przez cały dzień",
+    "benefit_2": "Lepsze trawienie i mniej wzdęć dzięki rozwiązaniom opartym na żywności",
+    "benefit_3": "Lepszy nastrój i mniejsze zmęczenie związane ze stresem",
+    "benefit_4": "Delikatna utrata wagi poprzez wspierające zmiany stylu życia",
+    "benefit_5": "Naturalne wsparcie dla zdrowia hormonalnego",
+    "linkText": "Kliknij tutaj, aby poznać badania stojące za metodami NaturalFix"
+  },
+  "preEmailWarmup": {
+    "title": "Poradzisz sobie świetnie!",
+    "subtitle": "Nasza książka pomogła już ponad 8000 osobom poczuć się i żyć lepiej! Teraz czas na Twoją wymarzoną sylwetkę!"
+  },
+  "beforeFinalPush": {
+    "title": "Jesteś już o krok bliżej równowagi i witalności!",
+    "bodyText1": "Równowaga hormonalna jest kluczowa dla ogólnego zdrowia i dobrego samopoczucia. Wpływa na różne funkcje organizmu oraz stan fizyczny, emocjonalny i umysłowy.",
+    "symptomsTitle": "Objawy zaburzeń hormonalnych:",
+    "symptom_1": "Przybieranie na wadze",
+    "symptom_2": "Nocne poty, uderzenia gorąca lub nadmierne pocenie się",
+    "symptom_3": "Lęk lub silny stres",
+    "symptom_4": "Depresja",
+    "symptom_5": "Obniżone libido"
+  }
 }
