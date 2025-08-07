@@ -1,69 +1,69 @@
 {
-    "types": {
-        "energySeeker": {
-          "name": "The Energy Seeker",
-          "insights": [
-            "Your goal is to boost energy and focus — your plan rebuilds steady fuel for mind and mood.",
-            "You eat 3 meals daily with protein, eggs and greens — great base for balanced energy, but timing & pairing matter.",
-            "Feeling tired or low shows your meals may spike & drop your energy — your plan balances this naturally.",
-            "Get easy recipes, food swaps & daily tips to feel steady energy, clear mind & lifted mood — without cutting your favorites."
-          ]
-        },
-        "gutHealer": {
-          "name": "The Gut Healer",
-          "insights": [
-            "Your focus is gut health and digestion — your plan boosts fiber and supports your microbiome.",
-            "Your answers show foods that help balance bloating and discomfort naturally.",
-            "Simple daily swaps help calm your gut and improve nutrient absorption.",
-            "Get gut-friendly recipes, easy prep tips & the best foods to restore digestive balance."
-          ]
-        },
-        "balancedType": {
-          "name": "Balanced Type",
-          "insights": [
-            "Your answers show a balanced base — great starting point!",
-            "Your plan fine-tunes meal timing, food pairing and daily habits for steady energy & gut health.",
-            "No radical changes — just practical steps to feel your best naturally."
-          ]
-        },
-        "fatBurner": {
-          "name": "You are The Fat Burner",
-          "insights": [
-          "Your goal is to lose excess weight naturally.",
-          "Your answers show that your body is ready to burn fat with the right plan.",
-          "You benefit most from simple, filling meals with little sugar.",
-          "Your plan uses traditional methods to boost metabolism and reduce fat."
-          ]
-        },
-        "stressReducer": {
-          "name": "You are The Stress Reducer",
-          "insights": [
-          "Your answers show signs of stress-related fatigue.",
-          "Your plan includes natural techniques to promote calm and better sleep.",
-          "Certain foods can help stabilize mood swings.",
-          "You'll receive simple daily routines to reduce stress and promote mental balance."
-          ]
-        }
-      },
-    "goalHeadline": "Achieve your goal with a easy and healthy guide tailored just for you",
-    "unlockButton": "Unlock Your Plan",
-    "priceNote": "💡 Most health apps charge €15–25/month — our mission is to make wellness affordable.",
-    "sectionTitle": "What you can achieve with your plan",
-    "socialProof": "8000+ women have already succeeded",
-    "benefits": [
-        "Naturally balance your hormones",
-        "Boost your mood and energy",
-        "Achieve lasting results without dieting stress"
-    ],
-    "peopleReached": {
-        "prefix": "We have helped",
-        "number": "8735",
-        "suffix": "people with lifestyle similar to yours to reach their weight loss goals."
+  "types": {
+    "energySeeker": {
+      "name": "Poszukiwacz energii",
+      "insights": [
+        "Twoim celem jest zwiększenie energii i koncentracji — Twój plan zapewnia stałe źródło energii dla umysłu i nastroju.",
+        "Jesz 3 posiłki dziennie z białkiem, jajkami i zielonymi warzywami — świetna baza dla zrównoważonej energii, ale czas i dobór składników mają znaczenie.",
+        "Uczucie zmęczenia lub osłabienia wskazuje, że posiłki mogą gwałtownie wzrosnąć lub spaść — Twój plan naturalnie to równoważy.",
+        "Znajdź proste przepisy, zamienniki produktów spożywczych i codzienne wskazówki, aby uzyskać stały poziom energii, jasny umysł i lepszy nastrój — bez rezygnowania z ulubionych potraw."
+]
     },
-    "ctaHeadline": "We are here to make sure you reach your goal",
-    "priceAnchor": "💡 Most health apps charge €15–25/month – we keep it simple & affordable.",
-    "buttonCta": "Unlock Your Personalized Plan",
-    "guarantee": "💡 No risk: Cancel anytime. Full access after payment.",
-    "title": "Your personalized health profile",
-    "stepInfo": "Based on your answers, we created a plan tailored to your needs."
+    "gutHealer": {
+      "name": "Uzdrowiciel jelit",
+      "insights": [
+        "Skupiasz się na zdrowiu jelit i trawieniu — Twój plan zwiększa ilość błonnika i wspiera Twój mikrobiom.",
+        "Twoje odpowiedzi wskazują produkty spożywcze, które naturalnie pomagają zrównoważyć wzdęcia i dyskomfort.",
+        "Proste, codzienne zamienniki pomagają uspokoić jelita i poprawić wchłanianie składników odżywczych.",
+        "Znajdź przepisy przyjazne jelitom, proste wskazówki dotyczące przygotowania i najlepsze produkty spożywcze, które przywrócą równowagę trawienną."
+              ]
+    },
+    "balancedType": {
+      "name": "Typ zrównoważony",
+      "insights": [
+        "Twoje odpowiedzi wskazują na zrównoważoną bazę — świetny punkt wyjścia!",
+        "Twój plan precyzyjnie dopasowuje czas posiłków, dobór produktów spożywczych i codzienne nawyki, zapewniając stały poziom energii i zdrowie jelit.",
+        "Żadnych radykalnych zmian — tylko praktyczne kroki, aby naturalnie czuć się najlepiej."
+      ]
+    },
+    "fatBurner": {
+      "name": "Jesteś spalaczem tłuszczu",
+      "insights": [
+        "Certain foods can help stabilize mood swings.",
+        "Twoje odpowiedzi wskazują, że Twój organizm jest gotowy na spalanie tłuszczu dzięki odpowiedniemu planowi.",
+        "Najwięcej korzyści przynoszą Ci proste, sycące posiłki z niewielką zawartością cukru.",
+        "Twój plan wykorzystuje tradycyjne metody przyspieszania metabolizmu i redukcji tkanki tłuszczowej."
+      ]
+    },
+    "stressReducer": {
+      "name": "Jesteś reduktorem stresu",
+      "insights": [
+        "Twoje odpowiedzi wskazują na oznaki zmęczenia związanego ze stresem.",
+        "Twój plan zawiera naturalne techniki sprzyjające wyciszeniu i lepszemu snu.",
+        "Niektóre produkty spożywcze mogą pomóc w stabilizacji wahań nastroju.",
+        "Otrzymasz proste codzienne rutyny, które pomogą Ci zmniejszyć stres i poprawić równowagę psychiczną."
+      ]
+    }
+  },
+      "goalHeadline": "Osiągnij swój cel dzięki prostemu i zdrowemu przewodnikowi dopasowanemu do Ciebie",
+      "unlockButton": "Odblokuj swój plan",
+      "priceNote": "💡 Większość aplikacji zdrowotnych kosztuje 15–25 euro miesięcznie — naszą misją jest uczynienie wellness przystępnym cenowo.",
+      "sectionTitle": "Co możesz osiągnąć dzięki swojemu planowi",
+      "socialProof": "Ponad 8000 kobiet już odniosło sukces",
+      "benefits": [
+            "Naturalnie zrównoważ hormony",
+            "Popraw nastrój i energię",
+            "Osiągnij trwałe rezultaty bez stresu związanego z dietą"
+      ],
+      "peopleReached": {
+        "prefix": "Pomogliśmy",
+        "number": "8735",
+        "suffix": "Osoby prowadzące podobny do Twojego styl życia osiągnęły swoje cele związane z utratą wagi."
+      },
+    "ctaHeadline": "Jesteśmy tu, aby pomóc Ci osiągnąć Twój cel",
+    "priceAnchor": "💡 Większość aplikacji zdrowotnych kosztuje 15–25 euro miesięcznie – my dbamy o prostotę i przystępną cenę.",
+    "buttonCta": "Odblokuj swój spersonalizowany plan",
+    "guarantee": "💡 Bez ryzyka: Anuluj w dowolnym momencie. Pełny dostęp po dokonaniu płatności.",
+    "title": "Twój spersonalizowany profil zdrowotny",
+    "stepInfo": "Na podstawie Twoich odpowiedzi stworzyliśmy plan dopasowany do Twoich potrzeb."
     }

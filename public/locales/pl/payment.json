@@ -1,16 +1,14 @@
-
 {
-  "topTitle": "Secret - Traditional health",
-  "title": "Join thousands embracing natural health!",
-  "whatNote": "Tailored for all diets, including vegetarian or vegan preferences.",
-  "getNowButton": "Start Your Plan Now",
-  "paymentTitle": "Select a secure payment method",
-  "paymentSubtitle": "Heal your body with natural foods and supplements.",
-  "price": "Start Your Journey Now",
-  "loadingPayment": "Loading payment...",
-  "payNow": "Pay Now",
-  "processing": "Processing...",
-  "paymentNote": "30-Day Money-Back Guarantee • Cancel Anytime • GDPR-compliant",
-  "cardOption":"— or pay by card —"
-}
-
+  "topTitle": "Secret - Tradycyjne zdrowie",
+  "title": "Dołącz do tysięcy osób, które wybierają naturalne zdrowie!",
+  "whatNote": "Dostosowane do wszystkich diet, w tym wegetariańskich i wegańskich.",
+  "getNowButton": "Rozpocznij swój plan już teraz",
+  "paymentTitle": "Wybierz bezpieczną metodę płatności",
+  "paymentSubtitle": "Ulecz swoje ciało naturalną żywnością i suplementami.",
+  "price": "Rozpocznij swoją podróż już teraz",
+  "loadingPayment": "Ładowanie płatności...",
+  "payNow": "Zapłać teraz",
+  "processing": "Przetwarzanie...",
+  "paymentNote": "30-dniowa gwarancja zwrotu pieniędzy • Możliwość anulowania w dowolnym momencie • Zgodność z RODO",
+  "cardOption": "— lub zapłać kartą —"
+  }

@@ -1,25 +1,24 @@
 {
-    "title": "Payment Successful 🎉",
-    "renewalTitle": "New plan is generating... 🎉",
-    "generating": "Your meal plan is being generated. Please wait...",
-    "warning": "Process can take 1 minute, do not leave this page!",
-    "steps": [
-      "Demographic Profile",
-      "Health and Medical Conditions",
-      "Calculating Nutrition Needs",
-      "Activity and Habits",
-      "Finalizing Your Meal Plan"
-    ],
-    "planTitle": "Your Personalized Meal Plan with Recipes 📖",
-    "planEmailNote": "Plan is sent to your email! Please check SPAM folder",
-    "planDownloadNote": "We recommend you to download the plan! Email can be blocked by provider",
-    "downloadBtn": "📥 Download PDF",
-    "ingredients": "Ingredients:",
-    "instructions": "Instructions:",
-    "noIngredients": "No ingredients available",
-    "noInstructions": "No instructions available",
-    "backHome": "Back to Home",
-    "error": "An error occurred while generating your meal plan.",
-    "day": "Day {{day}}"
+  "title": "Płatność pomyślna 🎉",
+  "renewalTitle": "Nowy plan jest generowany... 🎉",
+  "generating": "Twój plan posiłków jest generowany. Proszę czekać...",
+  "warning": "Proces może potrwać 1 minutę, nie opuszczaj tej strony!",
+  "steps": [
+  "Profil demograficzny",
+  "Stan zdrowia",
+  "Obliczanie zapotrzebowania żywieniowego",
+  "Aktywność i nawyki",
+  "Finalizowanie planu posiłków"
+  ],
+  "planTitle": "Twój spersonalizowany plan posiłków z przepisami 📖",
+  "planEmailNote": "Plan został wysłany na Twój adres e-mail! Sprawdź folder SPAM",
+  "planDownloadNote": "Zalecamy pobranie planu! Adres e-mail może być blokowany przez dostawcę",
+  "downloadBtn": "📥 Pobierz PDF",
+  "ingredients": "Składniki:",
+  "instructions": "Instrukcje:",
+  "noIngredients": "Brak dostępnych składników",
+  "noInstructions": "Brak dostępnych instrukcji",
+  "backHome": "Powrót do strony głównej",
+  "error": "Wystąpił błąd podczas generowania planu posiłków.",
+  "day": "Dzień {{day}}"
   }
- 
