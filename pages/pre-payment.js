@@ -164,7 +164,7 @@ export default function PlanPreview() {
           <div className="text-center pt-4">
           <p className="text-xl font-semibold mb-3">{t('ctaHeadline')}</p>
           <p className="text-sm text-gray-600 mb-4">{t('priceAnchor')}</p>
-          <Link href="/payment">
+          <Link href="/offer">
             <span className="inline-block bg-green-600 text-white px-6 py-3 rounded-full font-medium hover:bg-green-700 transition">
               {t('buttonCta')}
             </span>
