@@ -1,75 +1,74 @@
 {
   "questions": [
     {
-      "question": "What is your main health goal?",
-      "options": ["Boost energy and focus", "Strengthen immunity and digestion", "Lose excess weight naturally", "Reduce stress-related fatigue"]
+      "question": "Jaki jest Twój główny cel zdrowotny?",
+      "options": ["Zwiększenie energii i koncentracji", "Wzmocnienie odporności i trawienia", "Naturalna utrata nadmiernej wagi", "Zmniejszenie zmęczenia związanego ze stresem"]
     },
     {
-      "question": "How many meals do you eat per day?",
-      "options": ["1 meal per day", "2 meals per day", "3 meal per day", "More then 3 meals per day"]
+      "question": "Ile posiłków jesz dziennie?",
+      "options": ["1 posiłek dziennie", "2 posiłki dziennie", "3 posiłki dziennie", "Więcej niż 3 posiłki dziennie"]
     },
     {
-
-      "question": "How would you describe your current lifestyle?",
-      "options": ["Active", "Balanced", "Stressed", "Lazy"]
+      "question": "Jak opisałbyś swój obecny styl życia?",
+      "options": ["Aktywny", "Zrównoważony", "Stresujący", "Lenliwy"]
     },
     {
-      "question": "Choose the meat you eat often",
-      "options": ["Chicken", "Pork", "Beef", "Bacon", "Salmon", "Tuna", "Lamb", "None"]
+      "question": "Wybierz mięso, które jesz często",
+      "options": ["kurczak", "wieprzowina", "wołowina", "boczek", "łosoś", "tuńczyk", "jagnięcina", "żadne"]
     },
     {
-      "question": "Choose the vegetables you eat often",
-      "options": ["Broccoli", "Spinach", "Lettuce", "Cauliflower", "Cabbage", "Zucchini", "Asparagus", "Eggplant", "None"]
+      "question": "Wybierz warzywa, które jesz często",
+      "options": ["brokuły", "szpinak", "sałata", "kalafior", "kapusta", "cukinia", "szparagi", "bakłażan", "żadne"]
     },
     {
-      "question": "When was the last time you were satisfied with your body weight?",
-      "options": ["Less than a year ago", "1 - 3 years ago", "More than 3 years ago", "Never"]
+      "question": "Kiedy ostatni raz byłeś zadowolony ze swojej masy ciała?",
+      "options": ["Mniej niż rok temu", "1 - 3 lata temu", "Więcej niż 3 lata temu", "Nigdy"]
     },
     {
-      "question": "How would you describe your current energy levels?",
-      "options": ["I feel tired most of the time", "I get energy crashes in the afternoon", "My energy is okay, but could be better"]
+      "question": "Jak opisałbyś swoje obecne poziomy energii?",
+      "options": ["Czuję się zmęczony przez większość czasu", "Mam spadki energii po południu", "Moja energia jest w porządku, ale mogłaby być lepsza"]
     },
     {
-      "question": "Do you experience stress or mood changes?",
-      "options": ["High stress or anxiety", "Mood swings or irritability", "Low mood or fatigue", "None, I feel balanced"]
+      "question": "Czy doświadczasz stresu lub zmian nastroju?",
+      "options": ["Wysoki stres lub lęk", "Wahania nastroju lub drażliwość", "Niski nastrój lub zmęczenie", "Nie, czuję się zrównoważony"]
     },
     {
-      "question": "Do you have any allergies?",
-      "options": ["Nuts", "Dairy", "Soy", "None"]
+      "question": "Czy masz jakieś alergie?",
+      "options": ["Orzechy", "Nabiał", "Soja", "żadne"]
     },
     {
-      "question": "How do you usually feel after eating?",
-      "options": ["Bloated after carbs", "Sleepy or low energy", "Satisfied and clear-headed", "I don’t pay much attention"]
+      "question": "Jak zazwyczaj czujesz się po jedzeniu?",
+      "options": ["Wzdęty po węglowodanach", "Senny lub z niską energią", "Zadowolony i jasny umysłowo", "Nie zwracam na to uwagi"]
     }
   ],
-  "topTitle": "Quiz - Traditional health",
-  "selectYourPreference": "Select your preference",
-  "next": "Next",
-  "back": "Back",
+  "topTitle": "Quiz - Tradycyjne zdrowie",
+  "selectYourPreference": "Wybierz swoją preferencję",
+  "next": "Dalej",
+  "back": "Wstecz",
   "trustBlock1": {
-    "title": "What is NaturalFix?",
-    "body1": "NaturalFix is your personal guide to restoring balance, energy, and vitality through proven natural strategies. We focus on supporting women and men with easy-to-follow plans built around healing foods, natural supplements, and holistic routines.",
-    "body2": "Our personalized wellness plans are based on your lifestyle, mood, and health goals — combining nature-backed nutrition, daily habits, and hormone-friendly tips to help you feel your best without extreme diets or medications.",
-    "benefitsTitle": "What You’ll Gain with NaturalFix:",
-    "benefit_1": "More consistent energy and focus throughout the day",
-    "benefit_2": "Improved digestion and reduced bloating using food-based solutions",
-    "benefit_3": "Better mood balance and reduced stress-related fatigue",
-    "benefit_4": "Gentle weight loss through supportive lifestyle changes",
-    "benefit_5": "Natural support for hormonal health",
-    "linkText": "Click here to explore the research behind NaturalFix methods"
+    "title": "Czym jest NaturalFix?",
+    "body1": "NaturalFix to Twój osobisty przewodnik po przywróceniu równowagi, energii i witalności dzięki sprawdzonym naturalnym strategiom. Skupiamy się na wspieraniu kobiet i mężczyzn za pomocą łatwych do wykonania planów opartych na leczniczych pokarmach, naturalnych suplementach i holistycznych rutynach.",
+    "body2": "Nasze spersonalizowane plany wellness są oparte na Twoim stylu życia, nastroju i celach zdrowotnych — łącząc odżywianie wsparte naturą, codzienne nawyki i wskazówki przyjazne dla hormonów, aby pomóc Ci czuć się najlepiej bez ekstremalnych diet czy leków.",
+    "benefitsTitle": "Co zyskasz z NaturalFix:",
+    "benefit_1": "Bardziej stałą energię i koncentrację przez cały dzień",
+    "benefit_2": "Poprawione trawienie i zmniejszone wzdęcia dzięki rozwiązaniom opartym na jedzeniu",
+    "benefit_3": "Lepsza równowaga nastroju i zmniejszone zmęczenie związane ze stresem",
+    "benefit_4": "Delikatna utrata wagi poprzez wspierające zmiany stylu życia",
+    "benefit_5": "Naturalne wsparcie dla zdrowia hormonalnego",
+    "linkText": "Kliknij tutaj, aby poznać badania stojące za metodami NaturalFix"
   },
   "preEmailWarmup": {
-    "title": "You are going to do great!",
-    "subtitle": "Our book have already helped more then 8000 people to feel and live better! Let’s achieve your dream body as well!"
+    "title": "Poradzisz sobie świetnie!",
+    "subtitle": "Nasza książka pomogła już ponad 8000 osobom czuć się i żyć lepiej! Osiągnijmy również Twoje wymarzone ciało!"
   },
   "beforeFinalPush": {
-    "title": "You're already much closer to your balance and vitality!",
-    "bodyText1": "Hormonal balance is crucial for overall health and well-being. It influences various bodily functions and affects physical, emotional, and cognitive state.",
-    "symptomsTitle": "Symptoms of Hormone Imbalances:",
-    "symptom_1": "Weight gain",
-    "symptom_2": "Night sweats, hot flashes, or excessive sweating",
-    "symptom_3": "Anxiety or intense stress",
-    "symptom_4": "Depression",
-    "symptom_5": "Reduced sex drive"
-    }
+    "title": "Jesteś już znacznie bliżej swojej równowagi i witalności!",
+    "bodyText1": "Równowaga hormonalna jest kluczowa dla ogólnego zdrowia i dobrego samopoczucia. Wpływa na różne funkcje organizmu i wpływa na stan fizyczny, emocjonalny oraz poznawczy.",
+    "symptomsTitle": "Objawy zaburzeń równowagi hormonalnej:",
+    "symptom_1": "Przyrost wagi",
+    "symptom_2": "Nocne poty, uderzenia gorąca lub nadmierne pocenie się",
+    "symptom_3": "Lęk lub intensywny stres",
+    "symptom_4": "Depresja",
+    "symptom_5": "Obniżone libido"
+  }
 }

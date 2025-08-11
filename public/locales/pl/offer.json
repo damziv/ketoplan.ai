@@ -1,91 +1,91 @@
 {
-  "countdownMessage": "⏰ Hurry! Offer expires in {{time}}",
-  "getMyPlan": "Get My Plan",
-  "discountHeadline": "Get your",
+  "countdownMessage": "⏰ Pospiesz się! Oferta wygasa za {{time}}",
+  "getMyPlan": "Pobierz mój plan",
+  "discountHeadline": "Zdobądź",
   "discountNumber": "50%",
-  "discountText": "discount!",
-  "discountSubtext": "It's a one-time offer! Don't miss it!",
-  "visibleChangesFirst": "Visible changes",
-  "visibleChangesSecond": "after the first week",
-  "comparisonBefore": "Before",
-  "comparisonAfter": "After",
+  "discountText": "rabat!",
+  "discountSubtext": "To jednorazowa oferta! Nie przegap jej!",
+  "visibleChangesFirst": "Widoczne zmiany",
+  "visibleChangesSecond": "po pierwszym tygodniu",
+  "comparisonBefore": "Przed",
+  "comparisonAfter": "Po",
   "comparisonItems": [
     {
-      "before": "Weight gain",
-      "after": "Fat burning & healthy weight loss"
+      "before": "Przyrost wagi",
+      "after": "Spalanie tłuszczu i zdrowa utrata wagi"
     },
     {
-      "before": "Night sweats, or excessive sweating",
-      "after": "Balanced hormones and better sleep"
+      "before": "Nocne poty lub nadmierne pocenie się",
+      "after": "Zrównoważone hormony i lepszy sen"
     },
     {
-      "before": "Anxiety or intense stress",
-      "after": "Improved mood and calmer mind"
+      "before": "Lęk lub intensywny stres",
+      "after": "Lepszy nastrój i spokojniejszy umysł"
     },
     {
-      "before": "Depression",
-      "after": "More energy and confidence"
+      "before": "Depresja",
+      "after": "Więcej energii i pewności siebie"
     },
     {
-      "before": "Reduced sex drive",
-      "after": "Renewed libido and vitality"
+      "before": "Obniżone libido",
+      "after": "Odnowione libido i witalność"
     }
   ],
-  "pricingHeadline": "Claim the benefits today!",
-  "pricingSubtext": "Unlock your personalized program by selecting one of our flexible plan options below.",
+  "pricingHeadline": "Skorzystaj z korzyści już dziś!",
+  "pricingSubtext": "Odblokuj swój spersonalizowany program, wybierając jedną z naszych elastycznych opcji planu poniżej.",
   "planTitles": {
-    "oneTime": "1-Time Plan",
-    "sixMonth": "6-Month Plan",
-    "twelveMonth": "⭐ 12-Month Plan"
+    "oneTime": "Plan jednorazowy",
+    "sixMonth": "Plan 6-miesięczny",
+    "twelveMonth": "⭐ Plan 12-miesięczny"
   },
   "planFeatures": {
-    "personalPlan1time": "✅ Personal Plan",
-    "personalPlan": "✅ Personal Plan each month",
+    "personalPlan1time": "✅ Plan osobisty",
+    "personalPlan": "✅ Plan osobisty co miesiąc",
     "ebook": "✅ eBook",
-    "healthGuide": "✅ Weekly Health Guide"
+    "healthGuide": "✅ Tygodniowy przewodnik zdrowotny"
   },
-  "selectPlan": "Select Plan",
-  "whatsIncludedTitle": "What’s included?",
-  "whatsIncludedSubtext": "The perfect combination of tips and tricks for the fastest and lasting results",
+  "selectPlan": "Wybierz plan",
+  "whatsIncludedTitle": "Co zawiera?",
+  "whatsIncludedSubtext": "Idealna kombinacja porad i trików dla najszybszych i trwałych rezultatów",
   "whatsIncludedItems": [
-    "Specifically health plan based on your lifestyle",
-    "Recipes and supplements to balance your body",
-    "Food, drinks and supplements guide",
-    "An abundance of insights and tricks",
-    "Support during your journey to ensure optimal results"
+    "Specjalnie dostosowany plan zdrowotny do Twojego stylu życia",
+    "Przepisy i suplementy do zrównoważenia organizmu",
+    "Przewodnik po jedzeniu, napojach i suplementach",
+    "Obfitość wskazówek i trików",
+    "Wsparcie podczas Twojej podróży, aby zapewnić optymalne rezultaty"
   ],
-  "testimonialsTitle": "What Our Users Say",
+  "testimonialsTitle": "Co mówią nasi użytkownicy",
   "testimonials": [
     {
       "name": "Maria",
       "age": "52",
-      "text": "“This plan helped me lose 10kg in 3 months! Simple and effective.”"
+      "text": "“Ten plan pomógł mi schudnąć 10 kg w 3 miesiące! Prosty i skuteczny.”"
     },
     {
       "name": "Anna",
       "age": "45",
-      "text": "“I feel more energetic, my cravings are gone, and I love the recipes!”"
+      "text": "“Czuję się bardziej energiczna, moje zachcianki zniknęły, a przepisy uwielbiam!”"
     },
     {
       "name": "Sandra",
       "age": "61",
-      "text": "“The 12-month plan was the best investment in my health I've made.”"
+      "text": "“Plan 12-miesięczny był najlepszą inwestycją w moje zdrowie, jaką zrobiłam.”"
     }
   ],
-  "faqTitle": "Frequently Asked Questions",
+  "faqTitle": "Najczęściej zadawane pytania",
   "faqItems": [
     {
-      "question": "Can I cancel anytime?",
-      "answer": "Yes, all plans come with a cancel-anytime guarantee. No hidden fees."
+      "question": "Czy mogę anulować w dowolnym momencie?",
+      "answer": "Tak, wszystkie plany mają gwarancję anulowania w dowolnym momencie. Bez ukrytych opłat."
     },
     {
-      "question": "Do I need to follow diet strictly?",
-      "answer": "No! We adapt your plan to your preferences and flexibility."
+      "question": "Czy muszę ściśle przestrzegać diety?",
+      "answer": "Nie! Dopasowujemy Twój plan do Twoich preferencji i elastyczności."
     },
     {
-      "question": "What do I get after payment?",
-      "answer": "You'll receive a personalized 5-day plan, tips, and a bonus recipe book (depending on your plan)."
+      "question": "Co otrzymam po dokonaniu płatności?",
+      "answer": "Otrzymasz spersonalizowany 5-dniowy plan, porady i bonusową książkę z przepisami (w zależności od wybranego planu)."
     }
   ],
-  "trustBadgeNote": "SSL Secured | 256-bit encryption | Safe Payment"
+  "trustBadgeNote": "Zabezpieczone SSL | Szyfrowanie 256-bitowe | Bezpieczna płatność"
 }
