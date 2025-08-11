@@ -12,7 +12,7 @@
     "noSignup": "✓ Miesięczne porady dotyczące energii i równowagi ciała",
     "onlyPrice": "✓ Tylko 5,99 €/miesiąc, oferta specjalna",
     "moneyBack": "✓ 30-dniowa gwarancja zwrotu pieniędzy, anuluj w dowolnym momencie",
-    "rating": "Na podstawie Ponad 1200 recenzji"
+    "rating": "Na podstawie ponad 1200 recenzji"
   },
   "gender": {
     "female": "Kobieta",
@@ -23,7 +23,7 @@
     "list": [
       "Po 2 tygodniach czuję się bardziej energiczna i mniej wzdęta. Te naturalne porady naprawdę działają! — Maria, 52 lata, Austria ⭐⭐⭐⭐⭐",
       "Lepiej śpię i czuję się lżej każdego ranka. Ten plan zmienił moją codzienną rutynę. — Elena, 45 lat, Niemcy ⭐⭐⭐⭐⭐",
-      "Prosta rada, całkowicie naturalna i realne rezultaty. Mój poziom energii wrócił! — Ivana, 57 lat, Polska ⭐⭐⭐⭐⭐"
+      "Prosta rada, całkowicie naturalna i realne rezultaty. Mój poziom energii wrócił! — Iwona, 57 lat, Polska ⭐⭐⭐⭐⭐"
     ]
   },
   "carousel": {
@@ -32,7 +32,7 @@
   "whyUs": {
     "title": "Dlaczego warto wybrać naszą aplikację?",
     "points": [
-      "Wspomaga energię, trawienie i równowagę hormonalną ",
+      "Wspomaga energię, trawienie i równowagę hormonalną",
       "Zaprojektowane dla kobiet i mężczyzn",
       "Tradycyjne wskazówki dotyczące żywności i suplementów"
     ]

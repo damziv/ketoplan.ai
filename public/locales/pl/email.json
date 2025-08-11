@@ -4,39 +4,39 @@
   "subtitle": "Naprawdę dbamy o Twoje zdrowie — dlatego stworzyliśmy ten poradnik",
   "testimonial": "Po 2 tygodniach czuję się bardziej energiczna i mniej wzdęta. Te naturalne wskazówki naprawdę działają!",
   "fields": {
-  "age": "Twój wiek",
-  "email": "Twój adres e-mail"
+    "age": "Twój wiek",
+    "email": "Twój adres e-mail"
   },
   "error": {
     "fillAll": "Wiek i adres e-mail pomogą nam dostosować Twój plan.",
     "invalidEmail": "Podaj prawidłowy adres e-mail."
-    },
-    "whatYouGetTitle": "Co otrzymasz:",
-    "whatYouGet1": "Spersonalizowana książka PDF oparta na Twoim quizie",
-    "whatYouGet2": "Nowe porady dotyczące żywienia i suplementów dopasowane do Ciebie",
-    "whatYouGet3": "Nowe porady i aktualizacje przepisów co miesiąc",
-    "continue": "Wygeneruj mój poradnik",
-    "stepInfo": "Odkryj najlepsze produkty spożywcze, nawyki i suplementy dla Twojego wieku i potrzeb",
-    "privacy": "Twoje dane pozostają w 100% prywatne — nigdy nie udostępniamy Twojego adresu e-mail",
-    "socialProof": "✅ Ponad 8000 osób poprawiło już swoją energię, trawienie i koncentrację",
-    "fallbackButton": "Wygeneruj mój poradnik",
-    "whyUs": {
-      "title": " Oparte na nauce · Nigdy bez spamu",
-      "points": [
+  },
+  "whatYouGetTitle": "Co otrzymasz:",
+  "whatYouGet1": "Spersonalizowana książka PDF oparta na Twoim quizie",
+  "whatYouGet2": "Nowe porady dotyczące żywienia i suplementów dopasowane do Ciebie",
+  "whatYouGet3": "Nowe porady i aktualizacje przepisów co miesiąc",
+  "continue": "Wygeneruj mój poradnik",
+  "stepInfo": "Odkryj najlepsze produkty spożywcze, nawyki i suplementy dla Twojego wieku i potrzeb",
+  "privacy": "Twoje dane pozostają w 100% prywatne — nigdy nie udostępniamy Twojego adresu e-mail",
+  "socialProof": "✅ Ponad 8000 osób poprawiło już swoją energię, trawienie i koncentrację",
+  "fallbackButton": "Wygeneruj mój poradnik",
+  "whyUs": {
+    "title": "Oparte na nauce · Nigdy bez spamu",
+    "points": [
       "Żywność dopasowana do potrzeb Twojego organizmu",
       "Naturalne sposoby na poprawę energii i trawienia",
       "Kluczowe witaminy i minerały na podstawie Twoich danych"
-      ]
+    ]
   },
   "types": {
     "energySeeker": {
       "name": "Poszukiwacz energii",
       "insights": [
         "Twoim celem jest zwiększenie energii i koncentracji — Twój plan zapewnia stałe źródło energii dla umysłu i nastroju.",
-"Jesz 3 posiłki dziennie z białkiem, jajkami i zielonymi warzywami — świetna baza dla zrównoważonej energii, ale czas i dobór składników mają znaczenie.",
-"Uczucie zmęczenia lub osłabienia wskazuje, że posiłki mogą gwałtownie wzrosnąć lub spaść — Twój plan naturalnie to równoważy.",
-"Znajdź proste przepisy, zamienniki produktów spożywczych i codzienne wskazówki, aby uzyskać stały poziom energii, jasny umysł i lepszy nastrój — bez rezygnowania z ulubionych potraw."
-]
+        "Jesz 3 posiłki dziennie z białkiem, jajkami i zielonymi warzywami — świetna baza dla zrównoważonej energii, ale czas i dobór składników mają znaczenie.",
+        "Uczucie zmęczenia lub osłabienia wskazuje, że posiłki mogą gwałtownie wzrosnąć lub spaść — Twój plan naturalnie to równoważy.",
+        "Znajdź proste przepisy, zamienniki produktów spożywczych i codzienne wskazówki, aby uzyskać stały poziom energii, jasny umysł i lepszy nastrój — bez rezygnowania z ulubionych potraw."
+      ]
     },
     "gutHealer": {
       "name": "Uzdrowiciel jelit",
@@ -45,7 +45,7 @@
         "Twoje odpowiedzi wskazują produkty spożywcze, które naturalnie pomagają zrównoważyć wzdęcia i dyskomfort.",
         "Proste, codzienne zamienniki pomagają uspokoić jelita i poprawić wchłanianie składników odżywczych.",
         "Znajdź przepisy przyjazne jelitom, proste wskazówki dotyczące przygotowania i najlepsze produkty spożywcze, które przywrócą równowagę trawienną."
-              ]
+      ]
     },
     "balancedType": {
       "name": "Typ zrównoważony",
@@ -58,7 +58,7 @@
     "fatBurner": {
       "name": "Jesteś spalaczem tłuszczu",
       "insights": [
-        "Certain foods can help stabilize mood swings.",
+        "Niektóre produkty spożywcze mogą pomóc w stabilizacji wahań nastroju.",
         "Twoje odpowiedzi wskazują, że Twój organizm jest gotowy na spalanie tłuszczu dzięki odpowiedniemu planowi.",
         "Najwięcej korzyści przynoszą Ci proste, sycące posiłki z niewielką zawartością cukru.",
         "Twój plan wykorzystuje tradycyjne metody przyspieszania metabolizmu i redukcji tkanki tłuszczowej."

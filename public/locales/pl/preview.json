@@ -1,24 +1,24 @@
 {
-  "topTitle": "Tradycyjne sekrety",
+  "topTitle": "Tradycyjne metody zdrowia",
   "title": "Badania pokazują, że odżywianie stanowi 80% zdrowia",
   "tipTitle1": "Co otrzymasz",
   "tipText1": "✔️ Indywidualny plan zdrowotny, stworzony specjalnie dla Ciebie, ✔️ Darmowy bonus: Poradnik dotyczący zdrowia i stylu życia, ✔️ Pobierz natychmiast w formacie PDF – bez czekania",
   "tipTitle2": "Magnez na relaks",
-  "tipText2": "Magnez wspomaga relaks i lepszy sen, idealny do radzenia sobie ze stresem. Znajdziesz go w szpinaku, migdałach lub suplementach (glicynian magnezu)",
+  "tipText2": "Magnez wspomaga relaks i lepszy sen, idealny do radzenia sobie ze stresem. Znajdziesz go w szpinaku, migdałach lub suplementach magnezu.",
   "tipTitle3": "Witamina B6 na nastrój",
-  "tipText3": "Witamina B6 wspomaga równowagę nastroju i produkcję energii, idealna do łagodzenia stresu. Znajdziesz ją w indyku, wieprzowinie lub suplementach. Zwiększa produkcję serotoniny",
+  "tipText3": "Witamina B6 wspomaga równowagę nastroju i produkcję energii, idealna do łagodzenia stresu. Znajdziesz ją w indyku, wieprzowinie lub suplementach. Poprawia nastrój.",
   "note": "Przejdź do przewodnika dopasowanego do Twoich odpowiedzi w quizie!",
   "continueButton": "Kontynuuj ->",
   "recipeHead": "Zdrowe porady od ekspertów",
   "recipeTitle1": "Ciemnozielone warzywa liściaste",
-  "recipeIngredients1": "Ciemnozielone warzywa liściaste, takie jak jarmuż, szpinak i kapusta włoska, są bogate w składniki odżywcze i zawierają sycące białka, a także składniki odżywcze i przeciwutleniacze.",
+  "recipeIngredients1": "Ciemnozielone warzywa liściaste, takie jak jarmuż, szpinak i boćwina, są bogate w składniki odżywcze, białka i przeciwutleniacze.",
   "recipeInstructions1": "Niektórym osobom warzywa liściaste mogą być trudne do strawienia na surowo, dlatego rozdrobnienie ich poprzez gotowanie z odrobiną octu lub soku z cytryny może pomóc.",
-  "recipeTitle2": "Herbata Gotu-Kola",
-  "recipeIngredients2": "Ceniony za szereg korzyści zdrowotnych, od poprawy jasności umysłu po wsparcie zdrowia skóry.",
-  "recipeInstructions2": "Ta mała, zielona roślina ma wachlarzowate liście i jest pełna korzystne składniki odżywcze, takie jak witaminy A, B, C i D",
+  "recipeTitle2": "Herbata z pokrzywy",
+  "recipeIngredients2": "Ceniona za korzyści zdrowotne, od poprawy jasności umysłu po wsparcie zdrowia skóry.",
+  "recipeInstructions2": "Ta zielona roślina jest pełna korzystnych składników odżywczych, takich jak witaminy A, B, C i D.",
   "recipeTitle3": "Mięso - Wątróbka wołowa",
-  "recipeIngredients3": "Niska zawartość węglowodanów, niski poziom cukru, wysoka zawartość białka. Bogata w witaminę B12, niacynę, witaminę B6 i kwas foliowy",
-  "recipeInstructions3": "Składniki odżywcze zawarte w wątróbce wołowej, w tym niektóre witaminy i minerały, wspomagają detoksykację i metabolizm, wspierając ogólny stan zdrowia.",
+  "recipeIngredients3": "Niska zawartość węglowodanów, niski poziom cukru, wysoka zawartość białka. Bogata w witaminę B12, niacynę, witaminę B6 i kwas foliowy.",
+  "recipeInstructions3": "Składniki odżywcze w wątróbce wołowej, w tym witaminy i minerały, wspierają metabolizm i ogólne zdrowie.",
   "progress": {
       "analyzing": "Analiza Twojego profilu",
       "generating": "Generowanie Twojego planu"
@@ -27,4 +27,4 @@
   "yChart2": "Cel",
   "xChart1": "Teraz",
   "xChart2": "1 miesiąc"
-  }
+}
