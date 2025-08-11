@@ -9,7 +9,10 @@ import { Elements, PaymentElement, useStripe, useElements } from '@stripe/react-
 import { Carousel } from 'react-responsive-carousel';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { useTranslation } from 'next-i18next';
+import fs from 'fs';
+import path from 'path';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+
 
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL,
@@ -58,12 +61,12 @@ export default function PaymentPage() {
   }, [router]);
 
   useEffect(() => {
-  if (!['one-time', '6-month', '12-month'].includes(plan)) {
-    router.push('/offer'); // Redirect to safe page
-  }
-}, [plan]);
+    if (!['one-time', '6-month', '12-month'].includes(plan)) {
+      router.push('/offer'); // Redirect to safe page
+    }
+  }, [plan]);
 
- 
+  
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100 p-5">
@@ -95,10 +98,7 @@ export default function PaymentPage() {
         </button> 
       </div> */ }
 
-      
 
- 
-     
       {/* Payment Element */}
       <div id="payment" className="bg-white p-6 rounded-lg shadow-md w-full max-w-md text-center mt-10">
         <h2 className="text-2xl font-bold mb-2">{t('paymentTitle')}</h2>
@@ -114,8 +114,6 @@ export default function PaymentPage() {
         )}
       </div>
 
-      
-
     </div>
   );
 }
@@ -124,7 +122,77 @@ function CheckoutForm() {
   const { t } = useTranslation('payment');
   const stripe = useStripe();
   const elements = useElements();
+  const router = useRouter();
+  const { plan } = router.query;
   const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    const renderPayPalButton = (plan) => {
+      const email = sessionStorage.getItem('email');
+      const sessionId = sessionStorage.getItem('sessionId');
+
+      let paypalPlanId;
+      switch (plan) {
+        case 'one-time':
+          paypalPlanId = process.env.NEXT_PUBLIC_PAYPAL_PLAN_ONE_TIME;
+          break;
+        case '6-month':
+          paypalPlanId = process.env.NEXT_PUBLIC_PAYPAL_PLAN_6_MONTH;
+          break;
+        case '12-month':
+          paypalPlanId = process.env.NEXT_PUBLIC_PAYPAL_PLAN_12_MONTH;
+          break;
+        default:
+          return;
+      }
+
+      if (!email || !sessionId || !window.paypal || !paypalPlanId) return;
+
+      window.paypal.Buttons({
+        style: {
+          shape: 'pill',
+          color: 'gold',
+          layout: 'vertical',
+          label: 'subscribe'
+        },
+        createSubscription: (data, actions) => {
+          return actions.subscription.create({ plan_id: paypalPlanId });
+        },
+        onApprove: async (data) => {
+          const subscriptionID = data.subscriptionID;
+
+          const res = await fetch('/api/paypal-subscription-success', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email, sessionId, subscriptionID, plan }),
+          });
+
+          if (res.ok) {
+            window.location.href = '/success';
+          } else {
+            alert('Something went wrong. Please try again.');
+          }
+        },
+        onError: (err) => {
+          console.error('❌ PayPal error:', err);
+          alert('Something went wrong with PayPal');
+        },
+      }).render('#paypal-subscription-button');
+    };
+
+    const loadPayPalScript = () => {
+      if (document.getElementById('paypal-sdk')) return;
+
+      const script = document.createElement('script');
+      script.id = 'paypal-sdk';
+      script.src = `https://www.paypal.com/sdk/js?client-id=${process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID}&vault=true&intent=subscription&currency=EUR`;
+      script.async = true;
+      script.onload = () => renderPayPalButton(plan);
+      document.body.appendChild(script);
+    };
+
+    loadPayPalScript();
+  }, [plan]);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -145,70 +213,13 @@ function CheckoutForm() {
     }
   };
 
-  useEffect(() => {
-    const loadPayPalScript = () => {
-      if (document.getElementById('paypal-sdk')) return;
-  
-      const script = document.createElement('script');
-      script.id = 'paypal-sdk';
-      script.src = `https://www.paypal.com/sdk/js?client-id=${process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID}&vault=true&intent=subscription&currency=EUR`;
-      script.async = true;
-      script.onload = renderPayPalButton;
-      document.body.appendChild(script);
-    };
-  
-    const renderPayPalButton = () => {
-      const email = sessionStorage.getItem('email');
-      const sessionId = sessionStorage.getItem('sessionId');
-  
-      if (!email || !sessionId || !window.paypal || !process.env.NEXT_PUBLIC_PAYPAL_PLAN_ID) return;
-  
-      window.paypal.Buttons({
-        style: {
-          shape: 'pill',
-          color: 'gold',
-          layout: 'vertical',
-          label: 'subscribe'
-        },
-        createSubscription: function (data, actions) {
-          return actions.subscription.create({
-            plan_id: process.env.NEXT_PUBLIC_PAYPAL_PLAN_ID
-          });
-        },
-        onApprove: async function (data, actions) {
-          const subscriptionID = data.subscriptionID;
-  
-          const res = await fetch('/api/paypal-subscription-success', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ email, sessionId, subscriptionID, plan }),
-          });
-  
-          if (res.ok) {
-            window.location.href = '/success';
-          } else {
-            alert('Something went wrong. Please try again.');
-          }
-        },
-        onError: (err) => {
-          console.error('❌ PayPal error:', err);
-          alert('Something went wrong with PayPal');
-        }
-      }).render('#paypal-subscription-button');
-    };
-  
-    loadPayPalScript();
-  }, []);
-  
-
   return (
     <form onSubmit={handleSubmit} className="flex flex-col space-y-4">
-    {/* 🟡 PayPal Option First */}
-    <div className="mb-4">
-      <div id="paypal-subscription-button" className="flex justify-center mb-2" />
-      <p className="text-gray-600 text-sm text-center mt-2">{t('cardOption')}</p>
-    </div>
-    
+      <div className="mb-4">
+        <div id="paypal-subscription-button" className="flex justify-center mb-2" />
+        <p className="text-gray-600 text-sm text-center mt-2">{t('cardOption')}</p>
+      </div>
+
       <PaymentElement />
       <div className="flex justify-center space-x-2 mt-2">
         <img src="/images/visa.png" alt="Visa" className="h-6" />
@@ -224,12 +235,19 @@ function CheckoutForm() {
       >
         {loading ? t('processing') : t('payNow')}
       </button>
-
     </form>
   );
 }
 
-export async function getStaticProps({ locale }) {
+export async function getServerSideProps({ locale }) {
+  // 👇 Print which locale is being requested
+  console.log('🧭 Requested locale:', locale);
+
+  // 👇 Check if the translation file exists for the current locale
+  const filePath = path.resolve(`./public/locales/${locale}/payment.json`);
+  const fileExists = fs.existsSync(filePath);
+  console.log(`📄 Does ${filePath} exist?`, fileExists);
+
   return {
     props: {
       ...(await serverSideTranslations(locale, ['payment'])),

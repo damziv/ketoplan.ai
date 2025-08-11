@@ -4,12 +4,12 @@
   "generating": "Twój plan posiłków jest generowany. Proszę czekać...",
   "warning": "Proces może potrwać 1 minutę, nie opuszczaj tej strony!",
   "steps": [
-  "Profil demograficzny",
-  "Stan zdrowia",
-  "Obliczanie zapotrzebowania żywieniowego",
-  "Aktywność i nawyki",
-  "Finalizowanie planu posiłków"
-  ],
+        "Profil demograficzny",
+        "Stan zdrowia",
+        "Obliczanie zapotrzebowania żywieniowego",
+        "Aktywność i nawyki",
+        "Finalizowanie planu posiłków"
+        ],
   "planTitle": "Twój spersonalizowany plan posiłków z przepisami 📖",
   "planEmailNote": "Plan został wysłany na Twój adres e-mail! Sprawdź folder SPAM",
   "planDownloadNote": "Zalecamy pobranie planu! Adres e-mail może być blokowany przez dostawcę",
