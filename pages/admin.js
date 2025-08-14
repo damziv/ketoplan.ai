@@ -3,6 +3,7 @@ import { useEffect, useMemo, useState } from 'react'
 import { withPageSession } from '@/lib/session'
 
 const RANGES = [
+  { key: 'today', label: 'Today' },
   { key: '24h', label: '24h' },
   { key: '3d', label: '3 days' },
   { key: '1w', label: '1 week' },

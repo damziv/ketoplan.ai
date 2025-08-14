@@ -3,20 +3,25 @@ import { supabaseAdmin } from '@/lib/supabaseAdmin'
 import { withApiSession } from '@/lib/session'
 
 function getStartDate(range) {
-  const now = Date.now()
-  switch (range) {
-    case '24h':
-      return new Date(now - 24 * 60 * 60 * 1000)
-    case '3d':
-      return new Date(now - 3 * 24 * 60 * 60 * 1000)
-    case '1w':
-      return new Date(now - 7 * 24 * 60 * 60 * 1000)
-    case '1m':
-      return new Date(now - 30 * 24 * 60 * 60 * 1000)
-    default:
-      return null
+    const now = Date.now()
+    switch (range) {
+      case 'today': {
+        const d = new Date()
+        d.setHours(0, 0, 0, 0)
+        return d
+      }
+      case '24h':
+        return new Date(now - 24 * 60 * 60 * 1000)
+      case '3d':
+        return new Date(now - 3 * 24 * 60 * 60 * 1000)
+      case '1w':
+        return new Date(now - 7 * 24 * 60 * 60 * 1000)
+      case '1m':
+        return new Date(now - 30 * 24 * 60 * 60 * 1000)
+      default:
+        return null
+    }
   }
-}
 
 async function handler(req, res) {
   // Optional: method guard
