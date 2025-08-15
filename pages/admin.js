@@ -11,7 +11,7 @@ const RANGES = [
 ]
 
 export default function AdminPage() {
-  const [range, setRange] = useState('24h')
+  const [range, setRange] = useState('today')
   const [metrics, setMetrics] = useState(null)
   const [emails, setEmails] = useState([])
   const [page, setPage] = useState(1)
