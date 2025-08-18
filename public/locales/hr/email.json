@@ -1,20 +1,56 @@
 {
-  "title": "Još samo par koraka",
-  "subtitle": "Još samo nekoliko detalja i vaš personalizirani plan obroka bit će spreman!",
   "fields": {
-    "age": "Godine",
-    "height": "Visina (cm)",
-    "currentWeight": "Trenutna težina (kg)",
-    "desiredWeight": "Željena težina (kg)",
-    "email": "Email adresa"
+    "email": "Your email"
+  },
+  "continue": "Continue",
+  "privacy": "We’ll never share your email. You’ll get your plan and occasional tips.",
+  "info": {
+    "rules": "By continuing you agree to our Terms & Privacy."
   },
   "error": {
-    "fillAll": "Ispunite sva polja za nastavak.",
-    "invalidEmail": "Unesite valjanu adresu e-pošte."
+    "fillAll": "Please enter your email.",
+    "invalidEmail": "Please enter a valid email address."
   },
-  "continue": "Nastavi",
-  "stepInfo": "Super! · Zadnji korak prije vašeg prilagođenog plana",
-  "privacy": "Vaši podaci su 100% privatni. Nikada ne dijelimo vašu e-poštu.",
-  "socialProof": "✅ Više od 8000 korisnika je poboljšalo svoje zdravlje prehranom",
-  "fallbackButton": "Generiraj plan"
+  "types": {
+    "energySeeker": { "name": "Energy Seeker", "insights": ["..."] },
+    "gutHealer": { "name": "Gut Healer", "insights": ["..."] },
+    "fatBurner": { "name": "Fat Burner", "insights": ["..."] },
+    "stressReducer": { "name": "Stress Reducer", "insights": ["..."] },
+    "balancedType": { "name": "Balanced Type", "insights": ["..."] }
+  },
+  "preview": {
+    "headline": "Your plan is waiting for you",
+    "subheadline": "Enter your email to continue",
+    "gender": "Gender",
+    "activity": "Activity",
+    "profileSummary": "Plan tuned to your goal: {{goal}}.",
+    "profileFallback": "Based on your answers, we tailored this plan to your goals.",
+    "netCarbs": "Net carbs",
+    "protein": "Protein",
+    "fats": "Fats",
+    "fatsValue": "To satiety from whole foods",
+    "magnesium": "Magnesium-rich foods",
+    "magnesiumValue": "Pumpkin seeds, cocoa, leafy greens",
+    "fiber": "Gentle fiber",
+    "fiberValue": "Cooked veg, chia, fermented foods",
+    "emphasizeList": "Protein-rich foods, colorful veggies, healthy fats",
+    "limitList": "Refined carbs, sugary drinks, ultra-processed snacks",
+    "morning": "Protein-rich breakfast or delayed start, light movement",
+    "daytime": "Focused meals, walking breaks, electrolytes",
+    "evening": "Screen dimming, relaxing brew, early wind-down",
+    "movement": "Gentle daily movement + 2–3 short strength sessions/week.",
+    "extras": "10–20 min walks, mobility snacks, posture resets.",
+    "supp1": "Electrolytes (Na/Mg/K)",
+    "supp2": "Omega-3 or oily fish",
+    "supp3": "Vitamin D in winter",
+    "stressTool": "Box breathing, short nature breaks, journaling prompts",
+    "sleep": "Consistent schedule, cool/dark room, relaxing pre-bed routine",
+    "dayX": "Day X",
+    "habitX": "Simple, doable habit for steady progress.",
+    "check1": "Hit protein at 2+ meals",
+    "check2": "Walk 7,000–10,000 steps",
+    "check3": "3 stress resets",
+    "lockTitle": "Unlock the full plan",
+    "lockCopy": "Enter your email above to continue."
+  }
 }

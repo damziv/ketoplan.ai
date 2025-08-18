@@ -12,7 +12,7 @@
       "genericError": "Coś poszło nie tak",
       "alreadyGenerated": "✅ W tym miesiącu już wygenerowałeś swój plan. Wróć za {{daysLeft}} dzień/dni.",
       "canGenerateIn": "⏳ Możesz wygenerować nowy plan za {{daysLeft}} dzień/dni.",
-      "finalizingPayment": "Finalizujemy Twoją płatność. Poczekaj kilka sekund i odśwież tę stronę.",
+      "finalizingPayment": "Finalizujemy Twoją płatność. Poczekaj kilka sekund.",
       "steps": [
         "Analiza Twoich odpowiedzi",
         "Ustalanie celów żywieniowych i rutyn",

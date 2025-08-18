@@ -1,79 +1,56 @@
 {
-  "topTitle": "Erhalten Sie Ihren Leitfaden und Plan zur Erreichung Ihres Ziels per E-Mail",
-  "title": "Ihre Gesundheit ist uns wichtig – deshalb haben wir diesen Leitfaden erstellt",
-  "subtitle": "Ihre Gesundheit ist uns wichtig – deshalb haben wir diesen Leitfaden erstellt",
-  "testimonial": "Nach 2 Wochen fühle ich mich energiegeladener und weniger aufgebläht. Die natürlichen Tipps funktionieren wirklich!",
   "fields": {
-    "age": "Ihr Alter",
-    "email": "Ihre E-Mail-Adresse"
+    "email": "Your email"
+  },
+  "continue": "Continue",
+  "privacy": "We’ll never share your email. You’ll get your plan and occasional tips.",
+  "info": {
+    "rules": "By continuing you agree to our Terms & Privacy."
   },
   "error": {
-    "fillAll": "Alter und E-Mail-Adresse helfen uns, Ihren Plan anzupassen.",
-    "invalidEmail": "Geben Sie eine gültige E-Mail-Adresse ein."
-  },
-  "whatYouGetTitle":"Was Sie bekommen:",
-  "whatYouGet1": "Ein personalisiertes PDF-Buch basierend auf Ihrem Quiz",
-  "whatYouGet2": "Auf Sie zugeschnittene Tipps zu Naturkost und Nahrungsergänzungsmitteln",
-  "whatYouGet3": "Jeden Monat neue Tipps und Rezept-Updates",
-  "continue": "Individuellen Plan sichern",
-  "stepInfo": "Basierend auf Ihren Antworten – mehr Details in Ihrem vollständigen Plan.",
-  "privacy": "Ihre Daten bleiben 100 % privat – wir geben Ihre E-Mail-Adresse niemals weiter.",
-  "socialProof": "✅ Über 8.000 Menschen haben bereits eine Verbesserung ihrer Energie und Konzentration verzeichnet.",
-  "fallbackButton": "Meinen Leitfaden erstellen",
-  "whyUs": {
-    "title": "Wissenschaftlich fundiert · Kein Spam",
-    "points": [
-      "Individuelle Empfehlungen, die Sie nur hier finden",
-      "Natürliche Wege zur Verbesserung von Energie und Verdauung",
-      "Wichtige Vitamine und Mineralien basierend auf Ihren Angaben"
-    ]
+    "fillAll": "Please enter your email.",
+    "invalidEmail": "Please enter a valid email address."
   },
   "types": {
-    "energySeeker": {
-      "name": "Du bist Der Energiesucher",
-      "insights": [
-        "Ihr Ziel besteht darin, Energie und Konzentration zu steigern – Geist und Stimmung wieder mit Energie zu versorgen.",
-        "Sie essen täglich drei Mahlzeiten mit Proteinen, Eiern und Gemüse – eine großartige Grundlage für ausgewogene Energie, aber Zeitpunkt und Kombination sind wichtig.",
-        "Wenn Sie sich müde oder niedergeschlagen fühlen, kann es sein, dass Ihre Mahlzeiten Ihre Energie in die Höhe treiben oder abfallen lassen – Ihr Plan gleicht dies auf natürliche Weise aus.",
-        "Holen Sie sich einfache Rezepte und tägliche Tipps für stetige Energie, einen klaren Geist und eine gehobene Stimmung"
-      ]
-    },
-    "gutHealer": {
-      "name": "Du bist Der Darmheiler",
-      "insights": [
-        "Ihr Fokus liegt auf Darmgesundheit und Verdauung – Ihr Plan fördert Ballaststoffe und unterstützt Ihr Mikrobiom.",
-        "Ihre Antworten zeigen Lebensmittel, die Blähungen und Unwohlsein auf natürliche Weise ausgleichen.",
-        "Einfache tägliche Änderungen helfen, Ihren Darm zu beruhigen und die Nährstoffaufnahme zu verbessern.",
-        "Erhalten Sie darmfreundliche Rezepte, einfache Zubereitungstipps und die besten Lebensmittel für eine ausgeglichene Verdauung."
-      ]
-    },
-    "balancedType": {
-      "name": "Du bist Ausgewogener Typ",
-      "insights": [
-        "Du bist besser aufgestellt als 89 % der anderen.",
-        "Anhand deiner Antworten kannst du mit unserem Plan innerhalb der ersten zwei Wochen bis zu 5 kg abnehmen.",
-        "89 % der Nutzer mit einem sehr ähnlichen Profil haben ihre Gewichtsziele innerhalb der geplanten Zeitspanne erreicht.",
-        "Ihre Antworten bilden eine ausgewogene Grundlage – eine hervorragende Ausgangsbasis!"
-      ]
-    },
-    "fatBurner": {
-      "name": "Du bist Der Fettverbrenner",
-      "insights": [
-        "Ihr Ziel ist es, überschüssiges Gewicht auf natürliche Weise zu verlieren.",
-        "Ihre Antworten zeigen, dass Ihr Körper bereit ist, mit dem richtigen Plan Fett zu verbrennen.",
-        "Sie profitieren am meisten von einfachen, sättigenden Mahlzeiten mit wenig Zucker.",
-        "Ihr Plan nutzt traditionelle Methoden, um den Stoffwechsel anzukurbeln und Fett zu reduzieren."
-      ]
-    },
-    "stressReducer": {
-      "name": "Du bist Der Stressabbauer",
-      "insights": [
-        "Ihre Antworten zeigen Anzeichen von stressbedingter Müdigkeit.",
-        "Ihr Plan enthält natürliche Techniken zur Förderung von Ruhe und besserem Schlaf.",
-        "Bestimmte Lebensmittel können helfen, Stimmungsschwankungen zu stabilisieren.",
-        "Sie erhalten einfache tägliche Routinen zur Reduktion von Stress und zur Förderung von mentaler Ausgeglichenheit."
-      ]
-    }
-    
+    "energySeeker": { "name": "Energy Seeker", "insights": ["..."] },
+    "gutHealer": { "name": "Gut Healer", "insights": ["..."] },
+    "fatBurner": { "name": "Fat Burner", "insights": ["..."] },
+    "stressReducer": { "name": "Stress Reducer", "insights": ["..."] },
+    "balancedType": { "name": "Balanced Type", "insights": ["..."] }
+  },
+  "preview": {
+    "headline": "Your plan is waiting for you",
+    "subheadline": "Enter your email to continue",
+    "gender": "Gender",
+    "activity": "Activity",
+    "profileSummary": "Plan tuned to your goal: {{goal}}.",
+    "profileFallback": "Based on your answers, we tailored this plan to your goals.",
+    "netCarbs": "Net carbs",
+    "protein": "Protein",
+    "fats": "Fats",
+    "fatsValue": "To satiety from whole foods",
+    "magnesium": "Magnesium-rich foods",
+    "magnesiumValue": "Pumpkin seeds, cocoa, leafy greens",
+    "fiber": "Gentle fiber",
+    "fiberValue": "Cooked veg, chia, fermented foods",
+    "emphasizeList": "Protein-rich foods, colorful veggies, healthy fats",
+    "limitList": "Refined carbs, sugary drinks, ultra-processed snacks",
+    "morning": "Protein-rich breakfast or delayed start, light movement",
+    "daytime": "Focused meals, walking breaks, electrolytes",
+    "evening": "Screen dimming, relaxing brew, early wind-down",
+    "movement": "Gentle daily movement + 2–3 short strength sessions/week.",
+    "extras": "10–20 min walks, mobility snacks, posture resets.",
+    "supp1": "Electrolytes (Na/Mg/K)",
+    "supp2": "Omega-3 or oily fish",
+    "supp3": "Vitamin D in winter",
+    "stressTool": "Box breathing, short nature breaks, journaling prompts",
+    "sleep": "Consistent schedule, cool/dark room, relaxing pre-bed routine",
+    "dayX": "Day X",
+    "habitX": "Simple, doable habit for steady progress.",
+    "check1": "Hit protein at 2+ meals",
+    "check2": "Walk 7,000–10,000 steps",
+    "check3": "3 stress resets",
+    "lockTitle": "Unlock the full plan",
+    "lockCopy": "Enter your email above to continue."
   }
 }

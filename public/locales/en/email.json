@@ -1,77 +1,56 @@
 {
-  "topTitle": "Receive your guide & plan in your email to reach your goal",
-  "title": "Your health profile",
-  "subtitle":  "We truly care about your health — that’s why we created this guide",
-  "testimonial": "After 2 weeks, I feel more energized and less bloated. The natural tips really work!",
   "fields": {
-    "age": "Your age",
-    "email": "Your email address"
+    "email": "Your email"
+  },
+  "continue": "Continue",
+  "privacy": "We’ll never share your email. You’ll get your plan and occasional tips.",
+  "info": {
+    "rules": "By continuing you agree to our Terms & Privacy."
   },
   "error": {
-    "fillAll": "Age and email help us tailor your plan.",
-    "invalidEmail": "Enter a valid email address."
-  },
-  "whatYouGetTitle": "What you’ll get:",
-  "whatYouGet1": "A personalized PDF book based on your quiz",
-  "whatYouGet2": "Natural food & supplement tips tailored to you",
-  "whatYouGet3": "New tips and recipe updates every month",
-  "continue": "Generate My Guide",
-  "stepInfo": "Discover the best foods, habits, and supplements for your age and needs.",
-  "privacy": "Your data stays 100% private — we never share your email.",
-  "socialProof": "✅ Over 8,000 people have already improved their energy, digestion, and focus.",
-  "fallbackButton": "Generate My Guide",
-  "whyUs": {
-    "title": " Science-based · No spam ever",
-    "points": [
-      "Foods that match your body’s needs",
-      "Natural ways to improve energy & digestion",
-      "Key vitamins & minerals based on your input"
-    ]
+    "fillAll": "Please enter your email.",
+    "invalidEmail": "Please enter a valid email address."
   },
   "types": {
-    "energySeeker": {
-      "name": "The Energy Seeker",
-      "insights": [
-        "Your goal is to boost energy and focus — your plan rebuilds steady fuel for mind and mood.",
-        "You eat 3 meals daily with protein, eggs and greens — great base for balanced energy, but timing & pairing matter.",
-        "Feeling tired or low shows your meals may spike & drop your energy — your plan balances this naturally.",
-        "Get easy recipes, food swaps & daily tips to feel steady energy, clear mind & lifted mood — without cutting your favorites."
-      ]
-    },
-    "gutHealer": {
-      "name": "The Gut Healer",
-      "insights": [
-        "Your focus is gut health and digestion — your plan boosts fiber and supports your microbiome.",
-        "Your answers show foods that help balance bloating and discomfort naturally.",
-        "Simple daily swaps help calm your gut and improve nutrient absorption.",
-        "Get gut-friendly recipes, easy prep tips & the best foods to restore digestive balance."
-      ]
-    },
-    "balancedType": {
-      "name": "Balanced Type",
-      "insights": [
-        "Your answers show a balanced base — great starting point!",
-        "Your plan fine-tunes meal timing, food pairing and daily habits for steady energy & gut health.",
-        "No radical changes — just practical steps to feel your best naturally."
-      ]
-    },
-    "fatBurner": {
-      "name": "You are The Fat Burner",
-      "insights": [
-      "Your goal is to lose excess weight naturally.",
-      "Your answers show that your body is ready to burn fat with the right plan.",
-      "You benefit most from simple, filling meals with little sugar.",
-      "Your plan uses traditional methods to boost metabolism and reduce fat."
-      ]
-    },
-    "stressReducer": {
-      "name": "You are The Stress Reducer",
-      "insights": [
-      "Your answers show signs of stress-related fatigue.",
-      "Your plan includes natural techniques to promote calm and better sleep.",
-      "Certain foods can help stabilize mood swings.",
-      "You'll receive simple daily routines to reduce stress and promote mental balance."
-      ]
-    }
+    "energySeeker": { "name": "Energy Seeker", "insights": ["..."] },
+    "gutHealer": { "name": "Gut Healer", "insights": ["..."] },
+    "fatBurner": { "name": "Fat Burner", "insights": ["..."] },
+    "stressReducer": { "name": "Stress Reducer", "insights": ["..."] },
+    "balancedType": { "name": "Balanced Type", "insights": ["..."] }
+  },
+  "preview": {
+    "headline": "Your plan is waiting for you",
+    "subheadline": "Enter your email to continue",
+    "gender": "Gender",
+    "activity": "Activity",
+    "profileSummary": "Plan tuned to your goal: {{goal}}.",
+    "profileFallback": "Based on your answers, we tailored this plan to your goals.",
+    "netCarbs": "Net carbs",
+    "protein": "Protein",
+    "fats": "Fats",
+    "fatsValue": "To satiety from whole foods",
+    "magnesium": "Magnesium-rich foods",
+    "magnesiumValue": "Pumpkin seeds, cocoa, leafy greens",
+    "fiber": "Gentle fiber",
+    "fiberValue": "Cooked veg, chia, fermented foods",
+    "emphasizeList": "Protein-rich foods, colorful veggies, healthy fats",
+    "limitList": "Refined carbs, sugary drinks, ultra-processed snacks",
+    "morning": "Protein-rich breakfast or delayed start, light movement",
+    "daytime": "Focused meals, walking breaks, electrolytes",
+    "evening": "Screen dimming, relaxing brew, early wind-down",
+    "movement": "Gentle daily movement + 2–3 short strength sessions/week.",
+    "extras": "10–20 min walks, mobility snacks, posture resets.",
+    "supp1": "Electrolytes (Na/Mg/K)",
+    "supp2": "Omega-3 or oily fish",
+    "supp3": "Vitamin D in winter",
+    "stressTool": "Box breathing, short nature breaks, journaling prompts",
+    "sleep": "Consistent schedule, cool/dark room, relaxing pre-bed routine",
+    "dayX": "Day X",
+    "habitX": "Simple, doable habit for steady progress.",
+    "check1": "Hit protein at 2+ meals",
+    "check2": "Walk 7,000–10,000 steps",
+    "check3": "3 stress resets",
+    "lockTitle": "Unlock the full plan",
+    "lockCopy": "Enter your email above to continue."
   }
 }
