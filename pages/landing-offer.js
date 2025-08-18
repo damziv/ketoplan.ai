@@ -133,9 +133,6 @@ export default function LandingOffer() {
           <div className="text-center pt-2">
             <p className="text-xl font-semibold mb-1">{t('right.price.headline')}</p>
             <p className="text-sm text-gray-600 mb-4">{t('right.price.subline')}</p>
-            <span className="inline-block bg-green-600 text-white px-6 py-3 rounded-full font-medium">
-              {t('right.price.badge')}
-            </span>
           </div>
 
           {/* Email + One-time Checkout */}
