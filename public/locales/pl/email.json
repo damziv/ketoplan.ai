@@ -12,11 +12,11 @@
     "invalidEmail": "Please enter a valid email address."
   },
   "types": {
-    "energySeeker": { "name": "Energy Seeker", "insights": ["..."] },
-    "gutHealer": { "name": "Gut Healer", "insights": ["..."] },
-    "fatBurner": { "name": "Fat Burner", "insights": ["..."] },
-    "stressReducer": { "name": "Stress Reducer", "insights": ["..."] },
-    "balancedType": { "name": "Balanced Type", "insights": ["..."] }
+    "energySeeker": { "name": "Food Type: Energy Seeker", "insights": ["..."] },
+    "gutHealer": { "name": "Food Type: Gut Healer", "insights": ["Get gut-friendly recipes, easy prep tips & the best foods to restore digestive balance."] },
+    "fatBurner": { "name": "Food Type: Fat Burner", "insights": ["..."] },
+    "stressReducer": { "name": "Food Type: Stress Reducer", "insights": ["..."] },
+    "balancedType": { "name": "Food Type: Balanced Type", "insights": ["..."] }
   },
   "preview": {
     "headline": "Your plan is waiting for you",
