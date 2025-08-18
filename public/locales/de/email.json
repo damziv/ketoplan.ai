@@ -1,56 +1,71 @@
 {
   "fields": {
-    "email": "Your email"
+    "email": "Ihre E-Mail-Adresse"
   },
-  "continue": "Continue",
-  "privacy": "We’ll never share your email. You’ll get your plan and occasional tips.",
+  "continue": "Weiter",
+  "privacy": "Wir geben Ihre E-Mail-Adresse niemals weiter. Sie erhalten Ihren Plan und gelegentliche Tipps.",
   "info": {
-    "rules": "By continuing you agree to our Terms & Privacy."
+    "rules": "Durch das Fortfahren stimmen Sie unseren Nutzungsbedingungen und Datenschutzrichtlinien zu."
   },
   "error": {
-    "fillAll": "Please enter your email.",
-    "invalidEmail": "Please enter a valid email address."
+    "fillAll": "Bitte geben Sie Ihre E-Mail-Adresse ein.",
+    "invalidEmail": "Bitte geben Sie eine gültige E-Mail-Adresse ein."
   },
   "types": {
-    "energySeeker": { "name": "Food Type: Energy Seeker", "insights": ["Feeling tired or low shows your meals may spike & drop your energy — your plan balances this naturally."] },
-    "gutHealer": { "name": "Food Type: Gut Healer", "insights": ["Get gut-friendly recipes, easy prep tips & the best foods to restore digestive balance."] },
-    "fatBurner": { "name": "Food Type: Fat Burner", "insights": ["Your answers show that your body is ready to burn fat with the right plan."] },
-    "stressReducer": { "name": "Food Type: Stress Reducer", "insights": ["Your answers show signs of stress-related fatigue."] },
-    "balancedType": { "name": "Food Type: Balanced Type", "insights": ["Your answers show a balanced base — great starting point!"] }
+    "energySeeker": { 
+      "name": "Ernährungstyp: Energiesucher", 
+      "insights": ["Müdigkeit oder Schwäche zeigen, dass Ihre Mahlzeiten Ihre Energie sprunghaft ansteigen und abfallen lassen können — Ihr Plan gleicht dies auf natürliche Weise aus."] 
+    },
+    "gutHealer": { 
+      "name": "Ernährungstyp: Darmheiler", 
+      "insights": ["Erhalten Sie darmfreundliche Rezepte, einfache Zubereitungstipps und die besten Lebensmittel, um die Verdauungsbalance wiederherzustellen."] 
+    },
+    "fatBurner": { 
+      "name": "Ernährungstyp: Fettverbrenner", 
+      "insights": ["Ihre Antworten zeigen, dass Ihr Körper mit dem richtigen Plan bereit ist, Fett zu verbrennen."] 
+    },
+    "stressReducer": { 
+      "name": "Ernährungstyp: Stressreduzierer", 
+      "insights": ["Ihre Antworten zeigen Anzeichen von stressbedingter Erschöpfung."] 
+    },
+    "balancedType": { 
+      "name": "Ernährungstyp: Ausgeglichener Typ", 
+      "insights": ["Ihre Antworten zeigen eine ausgeglichene Basis — ein großartiger Ausgangspunkt!"] 
+    }
   },
   "preview": {
-    "headline": "Your plan is waiting for you",
-    "subheadline": "Enter your email to continue",
-    "gender": "Gender",
-    "activity": "Activity",
-    "profileSummary": "Plan tuned to your goal: {{goal}}.",
-    "profileFallback": "Based on your answers, we tailored this plan to your goals.",
-    "netCarbs": "Net carbs",
+    "headline": "Ihr Plan wartet auf Sie",
+    "subheadline": "Geben Sie Ihre E-Mail-Adresse ein, um fortzufahren",
+    "gender": "Geschlecht",
+    "activity": "Aktivität",
+    "profileSummary": "Plan abgestimmt auf Ihr Ziel: {{goal}}.",
+    "profileFallback": "Basierend auf Ihren Antworten haben wir diesen Plan auf Ihre Ziele zugeschnitten.",
+    "netCarbs": "Netto-Kohlenhydrate",
     "protein": "Protein",
-    "fats": "Fats",
-    "fatsValue": "To satiety from whole foods",
-    "magnesium": "Magnesium-rich foods",
-    "magnesiumValue": "Pumpkin seeds, cocoa, leafy greens",
-    "fiber": "Gentle fiber",
-    "fiberValue": "Cooked veg, chia, fermented foods",
-    "emphasizeList": "Protein-rich foods, colorful veggies, healthy fats",
-    "limitList": "Refined carbs, sugary drinks, ultra-processed snacks",
-    "morning": "Protein-rich breakfast or delayed start, light movement",
-    "daytime": "Focused meals, walking breaks, electrolytes",
-    "evening": "Screen dimming, relaxing brew, early wind-down",
-    "movement": "Gentle daily movement + 2–3 short strength sessions/week.",
-    "extras": "10–20 min walks, mobility snacks, posture resets.",
-    "supp1": "Electrolytes (Na/Mg/K)",
-    "supp2": "Omega-3 or oily fish",
-    "supp3": "Vitamin D in winter",
-    "stressTool": "Box breathing, short nature breaks, journaling prompts",
-    "sleep": "Consistent schedule, cool/dark room, relaxing pre-bed routine",
-    "dayX": "Day X",
-    "habitX": "Simple, doable habit for steady progress.",
-    "check1": "Hit protein at 2+ meals",
-    "check2": "Walk 7,000–10,000 steps",
-    "check3": "3 stress resets",
-    "lockTitle": "Unlock the full plan",
-    "lockCopy": "Enter your email above to continue."
+    "fats": "Fette",
+    "fatsValue": "Bis zur Sättigung aus Vollwertkost",
+    "magnesium": "Magnesiumreiche Lebensmittel",
+    "magnesiumValue": "Kürbiskerne, Kakao, Blattgemüse",
+    "fiber": "Sanfte Ballaststoffe",
+    "fiberValue": "Gekochtes Gemüse, Chiasamen, fermentierte Lebensmittel",
+    "emphasizeList": "Proteinreiche Lebensmittel, buntes Gemüse, gesunde Fette",
+    "limitList": "Raffinierte Kohlenhydrate, zuckerhaltige Getränke, stark verarbeitete Snacks",
+    "morning": "Proteinreiches Frühstück oder verzögerter Start, leichte Bewegung",
+    "daytime": "Fokussierte Mahlzeiten, Gehpausen, Elektrolyte",
+    "evening": "Bildschirme dimmen, entspannender Tee, frühes Zur-Ruhe-Kommen",
+    "movement": "Sanfte tägliche Bewegung + 2–3 kurze Krafttrainingseinheiten/Woche.",
+    "extras": "10–20 Minuten Spaziergänge, Mobilitäts-Snacks, Haltungsanpassungen.",
+    "supp1": "Elektrolyte (Na/Mg/K)",
+    "supp2": "Omega-3 oder fetter Fisch",
+    "supp3": "Vitamin D im Winter",
+    "stressTool": "Atemübungen, kurze Naturpausen, Tagebuchimpulse",
+    "sleep": "Fester Zeitplan, kühler/dunkler Raum, entspannende Routine vor dem Schlaf",
+    "dayX": "Tag X",
+    "habitX": "Einfache, umsetzbare Gewohnheit für stetigen Fortschritt.",
+    "check1": "Protein bei 2+ Mahlzeiten erreichen",
+    "check2": "7.000–10.000 Schritte gehen",
+    "check3": "3 Stress-Resets",
+    "lockTitle": "Vollständigen Plan freischalten",
+    "lockCopy": "Geben Sie oben Ihre E-Mail-Adresse ein, um fortzufahren."
   }
 }

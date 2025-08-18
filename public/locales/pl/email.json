@@ -1,56 +1,71 @@
 {
   "fields": {
-    "email": "Your email"
+    "email": "Twój adres e-mail"
   },
-  "continue": "Continue",
-  "privacy": "We’ll never share your email. You’ll get your plan and occasional tips.",
+  "continue": "Kontynuuj",
+  "privacy": "Nigdy nie udostępnimy Twojego adresu e-mail. Otrzymasz swój plan i okazjonalne porady.",
   "info": {
-    "rules": "By continuing you agree to our Terms & Privacy."
+    "rules": "Kontynuując, zgadzasz się na nasze Warunki i Politykę prywatności."
   },
   "error": {
-    "fillAll": "Please enter your email.",
-    "invalidEmail": "Please enter a valid email address."
+    "fillAll": "Proszę, podaj swój adres e-mail.",
+    "invalidEmail": "Proszę, podaj prawidłowy adres e-mail."
   },
   "types": {
-    "energySeeker": { "name": "Food Type: Energy Seeker", "insights": ["Feeling tired or low shows your meals may spike & drop your energy — your plan balances this naturally."] },
-    "gutHealer": { "name": "Food Type: Gut Healer", "insights": ["Get gut-friendly recipes, easy prep tips & the best foods to restore digestive balance."] },
-    "fatBurner": { "name": "Food Type: Fat Burner", "insights": ["Your answers show that your body is ready to burn fat with the right plan."] },
-    "stressReducer": { "name": "Food Type: Stress Reducer", "insights": ["Your answers show signs of stress-related fatigue."] },
-    "balancedType": { "name": "Food Type: Balanced Type", "insights": ["Your answers show a balanced base — great starting point!"] }
+    "energySeeker": { 
+      "name": "Typ żywieniowy: Poszukiwacz energii", 
+      "insights": ["Poczucie zmęczenia lub osłabienia wskazuje, że Twoje posiłki mogą powodować skoki i spadki energii — Twój plan naturalnie to równoważy."] 
+    },
+    "gutHealer": { 
+      "name": "Typ żywieniowy: Uzdrowiciel jelit", 
+      "insights": ["Otrzymaj przepisy przyjazne jelitom, proste wskazówki dotyczące przygotowania i najlepsze produkty spożywcze, aby przywrócić równowagę trawienną."] 
+    },
+    "fatBurner": { 
+      "name": "Typ żywieniowy: Spalacz tłuszczu", 
+      "insights": ["Twoje odpowiedzi wskazują, że Twój organizm jest gotowy na spalanie tłuszczu dzięki odpowiedniemu planowi."] 
+    },
+    "stressReducer": { 
+      "name": "Typ żywieniowy: Reduktor stresu", 
+      "insights": ["Twoje odpowiedzi wskazują na oznaki zmęczenia związanego ze stresem."] 
+    },
+    "balancedType": { 
+      "name": "Typ żywieniowy: Typ zrównoważony", 
+      "insights": ["Twoje odpowiedzi wskazują na zrównoważoną bazę — świetny punkt wyjścia!"] 
+    }
   },
   "preview": {
-    "headline": "Your plan is waiting for you",
-    "subheadline": "Enter your email to continue",
-    "gender": "Gender",
-    "activity": "Activity",
-    "profileSummary": "Plan tuned to your goal: {{goal}}.",
-    "profileFallback": "Based on your answers, we tailored this plan to your goals.",
-    "netCarbs": "Net carbs",
-    "protein": "Protein",
-    "fats": "Fats",
-    "fatsValue": "To satiety from whole foods",
-    "magnesium": "Magnesium-rich foods",
-    "magnesiumValue": "Pumpkin seeds, cocoa, leafy greens",
-    "fiber": "Gentle fiber",
-    "fiberValue": "Cooked veg, chia, fermented foods",
-    "emphasizeList": "Protein-rich foods, colorful veggies, healthy fats",
-    "limitList": "Refined carbs, sugary drinks, ultra-processed snacks",
-    "morning": "Protein-rich breakfast or delayed start, light movement",
-    "daytime": "Focused meals, walking breaks, electrolytes",
-    "evening": "Screen dimming, relaxing brew, early wind-down",
-    "movement": "Gentle daily movement + 2–3 short strength sessions/week.",
-    "extras": "10–20 min walks, mobility snacks, posture resets.",
-    "supp1": "Electrolytes (Na/Mg/K)",
-    "supp2": "Omega-3 or oily fish",
-    "supp3": "Vitamin D in winter",
-    "stressTool": "Box breathing, short nature breaks, journaling prompts",
-    "sleep": "Consistent schedule, cool/dark room, relaxing pre-bed routine",
-    "dayX": "Day X",
-    "habitX": "Simple, doable habit for steady progress.",
-    "check1": "Hit protein at 2+ meals",
-    "check2": "Walk 7,000–10,000 steps",
-    "check3": "3 stress resets",
-    "lockTitle": "Unlock the full plan",
-    "lockCopy": "Enter your email above to continue."
+    "headline": "Twój plan czeka na Ciebie",
+    "subheadline": "Wpisz swój adres e-mail, aby kontynuować",
+    "gender": "Płeć",
+    "activity": "Aktywność",
+    "profileSummary": "Plan dostosowany do Twojego celu: {{goal}}.",
+    "profileFallback": "Na podstawie Twoich odpowiedzi dostosowaliśmy ten plan do Twoich celów.",
+    "netCarbs": "Węglowodany netto",
+    "protein": "Białko",
+    "fats": "Tłuszcze",
+    "fatsValue": "Do sytości z pełnowartościowych produktów",
+    "magnesium": "Produkty bogate w magnez",
+    "magnesiumValue": "Nasiona dyni, kakao, zielone warzywa liściaste",
+    "fiber": "Łagodny błonnik",
+    "fiberValue": "Gotowane warzywa, nasiona chia, produkty fermentowane",
+    "emphasizeList": "Produkty bogate w białko, kolorowe warzywa, zdrowe tłuszcze",
+    "limitList": "Rafinowane węglowodany, napoje słodzone, wysoko przetworzone przekąski",
+    "morning": "Śniadanie bogate w białko lub opóźniony start, lekka aktywność",
+    "daytime": "Skoncentrowane posiłki, przerwy na spacer, elektrolity",
+    "evening": "Przyciemnianie ekranów, relaksująca herbatka, wczesne wyciszenie",
+    "movement": "Łagodna codzienna aktywność + 2–3 krótkie sesje siłowe w tygodniu.",
+    "extras": "Spacery 10–20 min, krótkie ćwiczenia mobilności, korekta postawy.",
+    "supp1": "Elektrolity (Na/Mg/K)",
+    "supp2": "Omega-3 lub tłuste ryby",
+    "supp3": "Witamina D zimą",
+    "stressTool": "Oddychanie przeponowe, krótkie przerwy na łonie natury, notatki refleksyjne",
+    "sleep": "Stały harmonogram, chłodny i ciemny pokój, relaksująca rutyna przed snem",
+    "dayX": "Dzień X",
+    "habitX": "Prosty, wykonalny nawyk dla stabilnego postępu.",
+    "check1": "Spożywaj białko w 2+ posiłkach",
+    "check2": "Wykonaj 7 000–10 000 kroków",
+    "check3": "3 resetowania stresu",
+    "lockTitle": "Odblokuj pełny plan",
+    "lockCopy": "Wpisz swój adres e-mail powyżej, aby kontynuować."
   }
 }
