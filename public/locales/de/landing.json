@@ -1,0 +1,58 @@
+{
+    "images": {
+      "beforeAfterAlt": "Vorher und Nachher",
+      "peopleReachedAlt": "Erreichte Personen"
+    },
+    "left": {
+      "title": "4-Wochen Gesundheitsguide für Hormonbalance",
+      "subtitle": "Schließen Sie sich Tausenden an, die Energie, Stimmung & Gewicht natürlich ausgleichen.",
+      "bullets": [
+        "Wöchentlicher Schritt-für-Schritt-Plan (Essen, Gewohnheiten, sanfte Bewegung).",
+        "Stress- & Schlafroutinen für einen besseren Cortisolrhythmus.",
+        "Ergänzungs- & Einkaufstipps für Frauen 35+.",
+        "Schnelle Rezepte und einfache Vorbereitung für volle Tage."
+      ]
+    },
+    "right": {
+      "reached": {
+        "prefix": "Vertraut von",
+        "number": "120.000+",
+        "suffix": "Frauen weltweit"
+      },
+      "get": {
+        "title": "Das erhalten Sie",
+        "bullets": [
+          "Klare Wochenstruktur – nie wieder raten, was als Nächstes kommt.",
+          "Lebensmitteltauschs, die Gelüste beruhigen und Hormone unterstützen.",
+          "Morgen-/Abendroutinen für stabile Energie und Stimmung.",
+          "Realistische, nachhaltige Schritte – keine Extremdiäten."
+        ],
+        "note": "Sofortiger Zugang nach dem Kauf. Ihr Guide kommt auch per E-Mail."
+      },
+      "price": {
+        "headline": "Schalten Sie den kompletten 4-Wochen-Guide frei",
+        "subline": "Einmalzahlung • Kein Abo",
+        "badge": "Nur 5,99 €"
+      }
+    },
+    "form": {
+      "label": "E-Mail eingeben, um den Guide zu erhalten:",
+      "placeholder": "sie@beispiel.de",
+      "cta": "Guide für 5,99 € erhalten",
+      "loading": "Checkout wird gestartet…",
+      "secureNote": "Sichere Zahlung über Stripe. Einmalkauf. Kein Abonnement."
+    },
+    "guarantee": {
+      "title": "7-Tage-Geld-zurück-Garantie",
+      "text": "Wenn es nicht passt, schreiben Sie uns – wir erstatten."
+    },
+    "footer": {
+      "backHome": "Zur Startseite"
+    },
+    "errors": {
+      "invalidEmail": "Bitte geben Sie eine gültige E-Mail ein.",
+      "checkoutStartFailed": "Checkout konnte nicht gestartet werden.",
+      "generic": "Etwas ist schiefgelaufen."
+    }
+  }
+  

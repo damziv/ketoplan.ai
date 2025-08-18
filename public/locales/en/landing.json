@@ -1,0 +1,58 @@
+{
+    "images": {
+      "beforeAfterAlt": "Before and After",
+      "peopleReachedAlt": "People reached"
+    },
+    "left": {
+      "title": "4-Week Hormone Balance Health Guide",
+      "subtitle": "Join thousands balancing energy, mood & weight—naturally.",
+      "bullets": [
+        "Step-by-step weekly plan (food, habits, gentle movement).",
+        "Stress & sleep routines for better cortisol rhythm.",
+        "Supplement & grocery pointers for women 35+.",
+        "Quick recipes and easy prep for busy days."
+      ]
+    },
+    "right": {
+      "reached": {
+        "prefix": "Trusted by",
+        "number": "120,000+",
+        "suffix": "women worldwide"
+      },
+      "get": {
+        "title": "What You’ll Get",
+        "bullets": [
+          "Clear, weekly structure so you never guess what to do next.",
+          "Food swaps that calm cravings and support hormones.",
+          "Morning-evening routines to steady mood and energy.",
+          "Realistic, sustainable steps—no extreme dieting."
+        ],
+        "note": "Instant access after purchase. Your guide will also arrive by email."
+      },
+      "price": {
+        "headline": "Unlock the complete 4-week guide",
+        "subline": "One-time payment • No subscription",
+        "badge": "Only €5.99"
+      }
+    },
+    "form": {
+      "label": "Enter your email to receive the guide:",
+      "placeholder": "you@example.com",
+      "cta": "Get the Guide for €5.99",
+      "loading": "Starting checkout…",
+      "secureNote": "Secure payment via Stripe. One-time purchase. No subscription."
+    },
+    "guarantee": {
+      "title": "7-Day Money-Back Guarantee",
+      "text": "If it’s not a fit, email us and we’ll refund you.",
+    "footer": {
+      "backHome": "Back to home"
+    },
+    "errors": {
+      "invalidEmail": "Please enter a valid email.",
+      "checkoutStartFailed": "Failed to start checkout.",
+      "generic": "Something went wrong."
+    }
+}
+}
+  

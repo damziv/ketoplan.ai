@@ -1,0 +1,58 @@
+{
+    "images": {
+      "beforeAfterAlt": "Przed i po",
+      "peopleReachedAlt": "Liczba odbiorców"
+    },
+    "left": {
+      "title": "4-tygodniowy przewodnik zdrowia dla równowagi hormonalnej",
+      "subtitle": "Dołącz do tysięcy kobiet, które naturalnie równoważą energię, nastrój i wagę.",
+      "bullets": [
+        "Tygodniowy plan krok po kroku (jedzenie, nawyki, delikatny ruch).",
+        "Rutyny antystresowe i senne dla lepszego rytmu kortyzolu.",
+        "Wskazówki suplementacyjne i zakupowe dla kobiet 35+.",
+        "Szybkie przepisy i łatwe przygotowanie na zabiegane dni."
+      ]
+    },
+    "right": {
+      "reached": {
+        "prefix": "Zaufanie",
+        "number": "120 000+",
+        "suffix": "kobiet na całym świecie"
+      },
+      "get": {
+        "title": "Co otrzymasz",
+        "bullets": [
+          "Jasna struktura tygodniowa – koniec z domysłami.",
+          "Zamienniki produktów wspierające hormony i ograniczające zachcianki.",
+          "Poranne i wieczorne rutyny dla stabilnej energii i nastroju.",
+          "Realne, trwałe kroki — bez ekstremalnych diet."
+        ],
+        "note": "Natychmiastowy dostęp po zakupie. Przewodnik wyślemy także e-mailem."
+      },
+      "price": {
+        "headline": "Odblokuj kompletny przewodnik na 4 tygodnie",
+        "subline": "Płatność jednorazowa • Bez subskrypcji",
+        "badge": "Tylko 5,99 €"
+      }
+    },
+    "form": {
+      "label": "Podaj e-mail, aby otrzymać przewodnik:",
+      "placeholder": "twoj@przyklad.pl",
+      "cta": "Odbierz przewodnik za 5,99 €",
+      "loading": "Uruchamiam płatność…",
+      "secureNote": "Bezpieczna płatność Stripe. Zakup jednorazowy. Bez abonamentu."
+    },
+    "guarantee": {
+      "title": "Gwarancja zwrotu 7 dni",
+      "text": "Jeśli Ci nie odpowiada, napisz – zwrócimy pieniądze."
+    },
+    "footer": {
+      "backHome": "Powrót na stronę główną"
+    },
+    "errors": {
+      "invalidEmail": "Wpisz poprawny adres e-mail.",
+      "checkoutStartFailed": "Nie udało się rozpocząć płatności.",
+      "generic": "Coś poszło nie tak."
+    }
+  }
+  
