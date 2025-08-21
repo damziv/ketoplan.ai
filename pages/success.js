@@ -128,7 +128,7 @@ export default function SuccessPage() {
          });
 
         if (typeof window !== "undefined" && window.fbq) {
-          window.fbq("track", "Purchase", { value: 2.99, currency: "EUR" });
+          window.fbq("track", "Purchase", { value: 8.99, currency: "EUR" });
         }
 
         setTimeout(() => {
